@@ -1,5 +1,12 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-02-15 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	Release 0.2.1
+	Changed license to the Lesser GNU Public License (LGPL).
+	
+2001-01-25 Cedric Le Goater <cedric@legoater.com>
+	Added EMER, ALERT, CRIT and NOTICE shortcuts methods to Category.
+	
 2000-12-22 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	Merged more patches from Cedric Le Goater, including an RPMS spec
 	file and a testbench.
