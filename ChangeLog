@@ -1,6 +1,8 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
 2002-10-29 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* Release as 0.3.4b
+	
 	* include/log4cp/config-win32.h, src/PortabilityImpl.hh: added 
 	workarounds for abs() and strftime() and localtime() not being
 	defined in std:: on MSVC6. See bug report #630334.
