@@ -23,6 +23,7 @@
 /* define if the compiler has int64_t */
 #ifndef LOG4CPP_HAVE_INT64_T 
 #define LOG4CPP_HAVE_INT64_T   
+#include <inttypes.h>
 #endif
 
 /* Define if you have the <io.h> header file. */
