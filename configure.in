@@ -108,8 +108,13 @@ tests/Makefile
 debian/Makefile
 msvc6/Makefile
 msvc6/log4cpp/Makefile
+msvc6/log4cppDLL/Makefile
 msvc6/testCategory/Makefile
+msvc6/testDLL/Makefile
+msvc6/testMain/Makefile
 msvc6/testNDC/Makefile
+msvc6/testNTEventLog/Makefile
+msvc6/testPattern/Makefile
 bcb5/Makefile
 bcb5/log4cpp/Makefile
 bcb5/testCategory/Makefile

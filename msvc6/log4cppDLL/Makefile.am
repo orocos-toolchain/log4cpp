@@ -1,1 +1,2 @@
-EXTRA_DIST = log4cppDLL.dsp
+EXTRA_DIST = log4cppDLL.dsp log4cppDLL.rc
+
