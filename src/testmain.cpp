@@ -61,7 +61,11 @@ int main(int argc, char** argv) {
     sub1.warn("sub1 warn");
     sub2.error("sub2 error");
     sub2.warn("sub2 warn");
-    
+
+    sub2.warnStream() << "streamed warn";
+
+    sub2 << log4cpp::Priority::WARN << "streamed warn 2" << "streamed warn 3";
+
     {
         for(int i = 0; i < 10000; i++) {
             char ndc2[20];

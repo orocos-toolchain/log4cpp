@@ -11,6 +11,7 @@
 #define _LOG4CPP_CATEGORY_HH
 
 #include <string>
+#include <strstream>
 #include <map>
 #include <set>
 #include <stdarg.h>
@@ -25,6 +26,37 @@ namespace log4cpp {
  * features of log4j (and hence log4cpp) are hierarchal categories and 
  * their evaluation.
  **/
+
+    class Category;
+
+    class CategoryStream {
+        public:
+        CategoryStream(Category& category, int priority) :
+            _category(category),
+            _priority(priority) {
+        }
+        
+        ~CategoryStream() { };
+        
+        inline Category& getCategory() const { return _category; };
+        inline int getPriority() const { return _priority; };
+        
+        private:
+        Category& _category;
+        int _priority;    
+
+        public:
+        template<class T> CategoryStream& operator<<(/*CategoryStream& stream,*/ 
+                                                     const T& t) {
+        if (getPriority() != Priority::NOTSET) {
+            ostrstream buffer;
+            buffer << t << '\0';
+            getCategory().log(getPriority(), 
+                              string(buffer.str()));
+        }
+        return *this;
+        };
+    };
 
     class Category {
         friend class HierarchyMaintainer;
@@ -196,7 +228,11 @@ namespace log4cpp {
         inline bool isDebugEnabled() const { 
             return isPriorityEnabled(Priority::DEBUG); 
         };
-        
+
+        inline CategoryStream debugStream() {
+            return getStream(Priority::DEBUG);
+        }
+
         /** 
          * Log a message with info priority.
          * @param stringFormat Format specifier for the string to write 
@@ -213,6 +249,10 @@ namespace log4cpp {
         inline bool isInfoEnabled() const { 
             return isPriorityEnabled(Priority::INFO); 
         };
+
+        inline CategoryStream infoStream() {
+            return getStream(Priority::INFO);
+        }
         
         /** 
          * Log a message with warn priority.
@@ -230,6 +270,10 @@ namespace log4cpp {
         inline bool isWarnEnabled() const { 
             return isPriorityEnabled(Priority::WARN); 
         };
+
+        inline CategoryStream warnStream() {
+            return getStream(Priority::WARN);
+        }
         
         /** 
          * Log a message with error priority.
@@ -248,6 +292,14 @@ namespace log4cpp {
             return isPriorityEnabled(Priority::ERROR); 
         };
         
+        inline CategoryStream errorStream() {
+            return getStream(Priority::ERROR);
+        }
+
+        CategoryStream getStream(int priority);
+
+        CategoryStream operator<<(int priority);
+
         protected:
 
         /**
@@ -285,7 +337,7 @@ namespace log4cpp {
          * The parent of this category. All categories have al least one
          * ancestor which is the root category. 
          **/
-       Category* _parent;
+        Category* _parent;
 
         /**
          *  The assigned priority of this category. 
@@ -311,7 +363,9 @@ namespace log4cpp {
          * ancestor's appenders by default. 
          */
         bool _isAdditive;
-    };    
-}
 
+    };
+
+
+}
 #endif // _LOG4CPP_CATEGORY_HH

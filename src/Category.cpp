@@ -195,6 +195,14 @@ namespace log4cpp {
         if (isPriorityEnabled(Priority::ERROR))
             _logUnconditionally2(Priority::ERROR, message);
     }
-    
+
+    CategoryStream Category::getStream(int priority) {
+        return CategoryStream(*this, isPriorityEnabled(priority) ?
+                              priority : Priority::NOTSET);
+    }
+
+    CategoryStream Category::operator<<(int priority) {
+        return getStream(priority);
+    }
 } 
 
