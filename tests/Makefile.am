@@ -1,5 +1,6 @@
 TESTS = testCategory testFixedContextCategory testNDC testPattern \
-	testErrorCollision testConfig testPriority testFilter
+	testErrorCollision testPriority testFilter testProperties \
+	testConfig testPropertyConfig
 
 check_PROGRAMS = $(TESTS)
 check_DATA = log4cpp.init
@@ -8,7 +9,7 @@ EXTRA_DIST = log4cpp.init
 
 noinst_PROGRAMS = testmain testbench
 
-INCLUDES = -I$(top_srcdir)/include
+INCLUDES = -I$(top_srcdir)/include -I$(top_srcdir)/src
 
 testmain_SOURCES = testmain.cpp
 testmain_LDADD = $(top_builddir)/src/liblog4cpp.la
@@ -31,8 +32,14 @@ testPriority_LDADD = $(top_builddir)/src/liblog4cpp.la
 testConfig_SOURCES = testConfig.cpp
 testConfig_LDADD = $(top_builddir)/src/liblog4cpp.la
 
+testPropertyConfig_SOURCES = testPropertyConfig.cpp
+testPropertyConfig_LDADD = $(top_builddir)/src/liblog4cpp.la
+
 testFilter_SOURCES = testFilter.cpp
 testFilter_LDADD = $(top_builddir)/src/liblog4cpp.la
+
+testProperties_SOURCES = testProperties.cpp
+testProperties_LDADD = $(top_builddir)/src/liblog4cpp.la
 
 testbench_SOURCES = Clock.cpp Clock.hh testbench.cpp 
 testbench_LDADD = $(top_builddir)/src/liblog4cpp.la
