@@ -1,5 +1,27 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-01-25 Uwe Jäger <jaeger@varial.de>
+	* src/SimpleConfigurator.cpp: Replaced STDOUT_FILENO and STDERR_FILENO
+	with fileno(stdout) and fileno(stderr) which seems to be more portable.
+
+	* tests/testConfig.cpp: Replace ?-:-operator with if/else because of
+	compiler problems; retabbed file.
+
+	* bcb5/Makefile.am, bcb5/bcb5.bpg, bcb5/bcb5.mak: Added testConfig
+
+	* bcb5/log4cpp/log4cpp.bpf, bcb5/log4cpp/log4cpp.bpr, 
+	bcb5/log4cpp/log4cpp.mak: Added new files.
+
+	* bcb5/testConfig/Makefile.am, bcb5/testConfig/testConfig.bpf,
+	bcb5/testConfig/testConfig.bpr, bcb5/testConfig/testConfig.mak: Added
+	testConfig.
+
+	* bcb5/testCategory/testCategory.bpr, 
+	bcb5/testFixedContextCategory/testFixedContextCategory.bpr,
+	bcb5/testNDC/testNDC.bpr, bcb5/testPattern/testPattern.bpr
+	bcb5/testPattern/testPattern.mak, bcb5/testmain/testmain.bpr: Adjusted
+	makefiles/project files for BCB.
+
 2002-01-21 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/Category.cpp: fix ownsAppender() methods.
 

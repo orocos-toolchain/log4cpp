@@ -3,7 +3,7 @@ ROOT = $(MAKEDIR)\..
 !endif
 
 PROJECTS = log4cpp.dll testmain.exe testCategory.exe testNDC.exe \
-  testFixedContextCategory.exe testPattern.exe
+  testFixedContextCategory.exe testPattern.exe testConfig.exe
 
 default: $(PROJECTS)
 
@@ -38,5 +38,11 @@ testPattern.exe:
   cd testPattern
   $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
   cd ..
+
+testConfig.exe:
+  cd testConfig 
+  $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
+  cd ..
+
 
 

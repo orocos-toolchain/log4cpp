@@ -10,7 +10,7 @@ DCC = $(ROOT)\bin\dcc32.exe $**
 BRCC = $(ROOT)\bin\brcc32.exe $**
 #------------------------------------------------------------------------------
 PROJECTS = log4cpp.dll testPattern.exe testmain.exe testCategory.exe \
-  testFixedContextCategory.exe testNDC.exe
+  testFixedContextCategory.exe testNDC.exe testConfig.exe
 #------------------------------------------------------------------------------
 default: $(PROJECTS)
 #------------------------------------------------------------------------------
@@ -36,6 +36,10 @@ testFixedContextCategory.exe: testFixedContextCategory\testFixedContextCategory.
   $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
 
 testNDC.exe: testNDC\testNDC.bpr
+  $(ROOT)\bin\bpr2mak $**
+  $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
+
+testConfig.exe: testConfig\testConfig.bpr
   $(ROOT)\bin\bpr2mak $**
   $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
 

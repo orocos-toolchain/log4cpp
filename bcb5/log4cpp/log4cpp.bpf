@@ -24,6 +24,7 @@ USEUNIT("..\..\src\PatternLayout.cpp");
 USEUNIT("..\..\src\SimpleConfigurator.cpp");
 T//---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 his file is used by the project manager only and should be treated like the project file
 
 DllEntryPoint

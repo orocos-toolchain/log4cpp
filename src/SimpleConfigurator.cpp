@@ -13,6 +13,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <stdio.h>
 
 #include "log4cpp/Category.hh"
 #include "log4cpp/Appender.hh"
@@ -81,11 +82,11 @@ namespace log4cpp {
                     }
                     else if (appenderName.compare("stdout") == 0) {
                         appender =
-                            new log4cpp::FileAppender(categoryName, dup(STDOUT_FILENO));
+                            new log4cpp::FileAppender(categoryName, dup(fileno(stdout)));
                     }
                     else if (appenderName.compare("stderr") == 0) {
                         appender =
-                            new log4cpp::FileAppender(categoryName, dup(STDERR_FILENO));
+                            new log4cpp::FileAppender(categoryName, dup(fileno(stderr)));
                     }
 #if LOG4CPP_HAVE_SYSLOG
                     else if (appenderName.compare("syslog") == 0) {

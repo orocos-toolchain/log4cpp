@@ -3,16 +3,18 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.05.03"/>
-    <PROJECT value="testmain.exe"/>
-    <OBJFILES value="testmain.obj"/>
+    <PROJECT value="testConfig.exe"/>
+    <OBJFILES value="testConfig.obj"/>
     <RESFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
     <LIBFILES value="..\log4cpp\log4cpp.lib"/>
     <LIBRARIES value=""/>
     <SPARELIBS value=""/>
-    <PACKAGES value="Vcl50.bpi Vclx50.bpi bcbsmp50.bpi dclocx50.bpi bcb97axserver50.bpi 
-      QRPT50.bpi VCLDB50.bpi VCLBDE50.bpi NMFast50.bpi"/>
+    <PACKAGES value="Vcl50.bpi Vclx50.bpi bcbsmp50.bpi ibsmp50.bpi VCLDB50.bpi VCLBDE50.bpi 
+      vcldbx50.bpi TeeUI50.bpi TeeDB50.bpi Tee50.bpi TeeQR50.bpi VCLIB50.bpi 
+      bcbie50.bpi vclie50.bpi Inetdb50.bpi Inet50.bpi NMFast50.bpi dclocx50.bpi 
+      bcb2kaxserver50.bpi Qrpt50.bpi asgc5.bpi VarCom10.bpi"/>
     <PATHCPP value=".;..\..\tests"/>
     <PATHPAS value=".;"/>
     <PATHRC value=".;"/>
@@ -20,15 +22,16 @@
     <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
     <RELEASELIBPATH value="$(BCB)\lib\release"/>
     <LINKER value="tlink32"/>
-    <USERDEFINES value="_DEBUG;LOG4CPP_HAS_DLL"/>
+    <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="NO_STRICT;_NO_VCL;_RTLDLL"/>
-    <MAINSOURCE value="testmain.bpf"/>
-    <INCLUDEPATH value="..\..\tests;..\..\include;$(BCB)\include"/>
-    <LIBPATH value="..\..\tests;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <MAINSOURCE value="testConfig.bpf"/>
+    <INCLUDEPATH value="..\..\include;..\..\tests;$(BCB)\include"/>
+    <LIBPATH value="..\..\tests;..\log4cpp;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
   </MACROS>
   <OPTIONS>
-    <CFLAG1 value="-Od -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -tWC -tWM -c"/>
+    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl50.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -tWC 
+      -tWM -c"/>
     <PFLAGS value="-N2. -N0. -$YD -$W -$O- -v -JPHNE -M"/>
     <RFLAGS value=""/>
     <AFLAGS value="/mx /w2 /zd"/>
@@ -68,12 +71,15 @@ ProductVersion=1.0.0.0
 Comments=
 
 [HistoryLists\hlIncludePath]
-Count=1
-Item0=..\..\tests;..\..\include;$(BCB)\include
+Count=2
+Item0=..\..\include;..\..\tests;$(BCB)\include
+Item1=..\..\tests;$(BCB)\include;$(BCB)\include\vcl
 
 [HistoryLists\hlLibraryPath]
-Count=1
-Item0=..\..\tests;$(BCB)\lib\obj;$(BCB)\lib
+Count=3
+Item0=..\..\tests;..\log4cpp;$(BCB)\lib\obj;$(BCB)\lib
+Item1=..\log4cpp;$(BCB)\lib\obj;$(BCB)\lib
+Item2=..\..\tests;$(BCB)\lib\obj;$(BCB)\lib
 
 [HistoryLists\hlDebugSourcePath]
 Count=1
@@ -81,7 +87,7 @@ Item0=$(BCB)\source\vcl
 
 [HistoryLists\hlConditionals]
 Count=1
-Item0=_DEBUG;LOG4CPP_HAS_DLL
+Item0=_DEBUG
 
 [HistoryLists\hlIntOutputDir]
 Count=1
@@ -101,5 +107,10 @@ RemoteDebug=0
 ShowInfoMsgs=0
 LinkDebugVcl=0
 LinkCGLIB=0
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
   </IDEOPTIONS>
 </PROJECT>

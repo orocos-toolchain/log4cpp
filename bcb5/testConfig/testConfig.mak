@@ -2,15 +2,15 @@
 BCB = $(MAKEDIR)\..
 !endif
 
-PROJECT = testPattern.exe
-OBJFILES = testPattern.obj
+PROJECT = testConfig.exe
+OBJFILES = testConfig.obj
 LIBFILES = ..\log4cpp\log4cpp.lib
 # ---------------------------------------------------------------------------
 PATHCPP = .;..\..\tests
-USERDEFINES = _DEBUG;LOG4CPP_HAS_DLL
+USERDEFINES = _DEBUG
 SYSDEFINES = NO_STRICT;_NO_VCL;_RTLDLL
-INCLUDEPATH = ..\..\tests;..\..\include;$(BCB)\include;$(BCB)\include\vcl
-LIBPATH = $(BCB)\Projects\Lib;..\..\tests;..\log4cpp;$(BCB)\lib\obj;$(BCB)\lib
+INCLUDEPATH = ..\..\include;..\..\tests;$(BCB)\include
+LIBPATH = ..\..\tests;..\log4cpp;$(BCB)\lib\obj;$(BCB)\lib
 WARNINGS= -w-par
 # ---------------------------------------------------------------------------
 CFLAG1 = -Od -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -tWC -tWM -c

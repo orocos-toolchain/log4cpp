@@ -24,20 +24,20 @@
 
 #include "log4cpp/SimpleConfigurator.hh"
 
-double calcPi()                                                                
-{                                                                              
-  double denominator = 3.0;                                                    
-  double retVal = 4.0;                                                         
-  long i;                                                                      
-  for (i = 0; i < 50000000l; i++)                                              
-    {                                                                          
-      retVal = retVal - (4.0 / denominator);                                   
-      denominator += 2.0;                                                      
-      retVal = retVal + (4.0 /denominator);                                    
-      denominator += 2.0;                                                      
-    }                                                                          
-  return retVal;                                                               
-}                                                                              
+double calcPi()
+{
+    double denominator = 3.0;
+    double retVal = 4.0;
+    long i;
+    for (i = 0; i < 50000000l; i++)
+    {
+        retVal = retVal - (4.0 / denominator);
+        denominator += 2.0;
+        retVal = retVal + (4.0 /denominator);
+        denominator += 2.0;
+    }
+    return retVal;
+}
 
 int main(int argc, char* argv[])
 {
@@ -46,10 +46,14 @@ int main(int argc, char* argv[])
            automake's distcheck target.
         */
         char* srcdir = ::getenv("srcdir");
-        std::string initFileName((srcdir == NULL) ?
-                                 "./log4cpp.init" : 
-                                 std::string(srcdir) + "/log4cpp.init");
-	log4cpp::SimpleConfigurator::configure(initFileName);
+        std::string initFileName;
+        if (srcdir == NULL) {
+            initFileName = "./log4cpp.init";
+        }
+        else {
+            initFileName = std::string(srcdir) + "/log4cpp.init";
+        }
+        log4cpp::SimpleConfigurator::configure(initFileName);
     } catch(log4cpp::ConfigureFailure& f) {
         std::cout << "Configure Problem " << f.what() << std::endl;
         return -1;
@@ -72,16 +76,16 @@ int main(int argc, char* argv[])
 
     sub2.error("sub2 error");
     sub2.warn("sub2 warn");
-    
-	root.error("root error");
+
+    root.error("root error");
     root.warn("root warn");
     sub1.error("sub1 error");
     sub1.warn("sub1 warn");
 
 #ifdef WIN32
-	Sleep(3000);
+    Sleep(3000);
 #else
-	sleep(3);
+    sleep(3);
 #endif
 
     sub2.error("sub2 error");
