@@ -18,8 +18,9 @@ namespace log4cpp {
     /**
      * This class implements a simple Configurator for log4cpp.
      * It is a temporary hack with an undocumented configuration format.
-     * It should be superseded with a PropertyConfigurator and XMLConfigurator
-     * class in newer versions of log4cpp.
+     * @deprecated As of version 0.3.2 log4cpp includes a log4j format 
+     * compatible PropertyConfigurator, removing the need for 
+     * SimpleConfigurator. This class will be removed in 0.4.0.
      **/
     class LOG4CPP_EXPORT SimpleConfigurator {
     public:
