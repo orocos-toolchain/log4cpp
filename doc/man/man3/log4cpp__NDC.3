@@ -1,0 +1,144 @@
+.TH log4cpp::NDC 3 "5 Dec 2000" "log4cpp" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4cpp::NDC \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <NDC.hh>\fR
+.PP
+.SS Public Types
+
+.in +1c
+.ti -1c
+.RI "typedef vector<\fBDiagnosticContext\fR> \fBContextStack\fR"
+.br
+.in -1c
+.SS Static Public Methods
+
+.in +1c
+.ti -1c
+.RI "void \fBclear\fR ()"
+.br
+.ti -1c
+.RI "\fBContextStack\fR* \fBcloneStack\fR ()"
+.br
+.ti -1c
+.RI "const string& \fBget\fR ()"
+.br
+.ti -1c
+.RI "int \fBgetDepth\fR ()"
+.br
+.ti -1c
+.RI "void \fBinherit\fR (\fBContextStack\fR* stack)"
+.br
+.ti -1c
+.RI "string \fBpop\fR ()"
+.br
+.ti -1c
+.RI "void \fBpush\fR (const string& message)"
+.br
+.ti -1c
+.RI "void \fBsetMaxDepth\fR (int maxDepth)"
+.br
+.ti -1c
+.RI "NDC& \fBgetNDC\fR ()"
+.br
+.in -1c
+.SS Protected Methods
+
+.in +1c
+.ti -1c
+.RI "\fBNDC\fR ()"
+.br
+.ti -1c
+.RI "virtual \fB~NDC\fR ()"
+.br
+.ti -1c
+.RI "virtual void \fB_clear\fR ()"
+.br
+.ti -1c
+.RI "virtual \fBContextStack\fR* \fB_cloneStack\fR ()"
+.br
+.ti -1c
+.RI "virtual const string& \fB_get\fR () const"
+.br
+.ti -1c
+.RI "virtual int \fB_getDepth\fR () const"
+.br
+.ti -1c
+.RI "virtual void \fB_inherit\fR (\fBContextStack\fR* stack)"
+.br
+.ti -1c
+.RI "virtual string \fB_pop\fR ()"
+.br
+.ti -1c
+.RI "virtual void \fB_push\fR (const string& message)"
+.br
+.ti -1c
+.RI "virtual void \fB_setMaxDepth\fR (int maxDepth)"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "\fBContextStack\fR \fB_stack\fR"
+.br
+.in -1c
+.SH MEMBER TYPEDEF DOCUMENTATION
+.PP 
+.SS typedef vector<\fBDiagnosticContext\fR> log4cpp::NDC::ContextStack
+.PP
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS log4cpp::NDC::NDC ()\fC [protected]\fR
+.PP
+.SS virtual log4cpp::NDC::~NDC ()\fC [protected, virtual]\fR
+.PP
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS virtual void log4cpp::NDC::_clear ()\fC [protected, virtual]\fR
+.PP
+.SS virtual \fBContextStack\fR* log4cpp::NDC::_cloneStack ()\fC [protected, virtual]\fR
+.PP
+.SS virtual const string& log4cpp::NDC::_get () const\fC [protected, virtual]\fR
+.PP
+.SS virtual int log4cpp::NDC::_getDepth () const\fC [protected, virtual]\fR
+.PP
+.SS virtual void log4cpp::NDC::_inherit (\fBContextStack\fR * stack)\fC [protected, virtual]\fR
+.PP
+.SS virtual string log4cpp::NDC::_pop ()\fC [protected, virtual]\fR
+.PP
+.SS virtual void log4cpp::NDC::_push (const string & message)\fC [protected, virtual]\fR
+.PP
+.SS virtual void log4cpp::NDC::_setMaxDepth (int maxDepth)\fC [protected, virtual]\fR
+.PP
+.SS void log4cpp::NDC::clear ()\fC [static]\fR
+.PP
+.SS \fBContextStack\fR* log4cpp::NDC::cloneStack ()\fC [static]\fR
+.PP
+.SS const string& log4cpp::NDC::get ()\fC [static]\fR
+.PP
+.SS int log4cpp::NDC::getDepth ()\fC [static]\fR
+.PP
+.SS NDC& log4cpp::NDC::getNDC ()\fC [static]\fR
+.PP
+.SS void log4cpp::NDC::inherit (\fBContextStack\fR * stack)\fC [static]\fR
+.PP
+.SS string log4cpp::NDC::pop ()\fC [static]\fR
+.PP
+.SS void log4cpp::NDC::push (const string & message)\fC [static]\fR
+.PP
+.SS void log4cpp::NDC::setMaxDepth (int maxDepth)\fC [static]\fR
+.PP
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS \fBContextStack\fR log4cpp::NDC::_stack\fC [protected]\fR
+.PP
+
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for log4cpp from the source code.

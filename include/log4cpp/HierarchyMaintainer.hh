@@ -24,7 +24,7 @@ namespace log4cpp {
         HierarchyMaintainer();
         virtual ~HierarchyMaintainer();
         virtual Category& getInstance(const string& name);
-        virtual const set<Category*>* getCurrentCategories();
+        virtual set<Category*>* getCurrentCategories() const;
 
         protected:
         CategoryMap _categoryMap;

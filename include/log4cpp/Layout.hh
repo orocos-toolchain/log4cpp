@@ -13,10 +13,19 @@
 #include "log4cpp/LoggingEvent.hh"
 
 namespace log4cpp {
-    
+
+/**
+ * Extend this abstract class to create your own log layout format.
+ **/
     class Layout {
         public:
         virtual ~Layout() { };
+        /**
+         * Formats the LoggingEvent data to a string that appenders can log.
+         * Implement this method to create your own layout format.
+         * @param event The LoggingEvent.
+         * @returns an appendable string.
+        */
         virtual char* format(const LoggingEvent& event) = 0;
     };        
 }

@@ -31,7 +31,7 @@ namespace log4cpp {
         return HierarchyMaintainer::getDefaultMaintainer().getInstance(name);
     }
 
-    const set<Category*>* getCurrentCategories() {
+    set<Category*>* Category::getCurrentCategories() {
         return HierarchyMaintainer::getDefaultMaintainer().
             getCurrentCategories();
     }
@@ -109,15 +109,15 @@ namespace log4cpp {
         _isAdditive = additivity;
     }
 
-    void Category::logUnconditionally(int priority, const char* format, va_list arguments) {
+    void Category::_logUnconditionally(int priority, const char* format, va_list arguments) {
         ostrstream messageBuffer;
         messageBuffer.vform(format, arguments);
         messageBuffer << '\0';
         string message = string(messageBuffer.str());
-        logUnconditionally2(priority, message);
+        _logUnconditionally2(priority, message);
     }
     
-    void Category::logUnconditionally2(int priority, const string& message) {
+    void Category::_logUnconditionally2(int priority, const string& message) {
         LoggingEvent event(getName(), message, NDC::get(), priority);
         _appender->doAppend(event);
     }
@@ -130,70 +130,70 @@ namespace log4cpp {
         if (isPriorityEnabled(priority)) {
             va_list va;
             va_start(va,stringFormat);
-            logUnconditionally(priority, stringFormat, va);
+            _logUnconditionally(priority, stringFormat, va);
             va_end(va);
         }
     }
     
     void Category::log(int priority, const string& message) { 
         if (isPriorityEnabled(priority))
-            logUnconditionally2(priority, message);
+            _logUnconditionally2(priority, message);
     }
     
     void Category::debug(const char* stringFormat, ...) { 
         if (isPriorityEnabled(Priority::DEBUG)) {
             va_list va;
             va_start(va,stringFormat);
-            logUnconditionally(Priority::DEBUG, stringFormat, va);
+            _logUnconditionally(Priority::DEBUG, stringFormat, va);
             va_end(va);
         }
     }
     
     void Category::debug(const string& message) { 
         if (isPriorityEnabled(Priority::DEBUG))
-            logUnconditionally2(Priority::DEBUG, message);
+            _logUnconditionally2(Priority::DEBUG, message);
     }
     
     void Category::info(const char* stringFormat, ...) { 
         if (isPriorityEnabled(Priority::INFO)) {
             va_list va;
             va_start(va,stringFormat);
-            logUnconditionally(Priority::INFO, stringFormat, va);
+            _logUnconditionally(Priority::INFO, stringFormat, va);
             va_end(va);
         }
     }
     
     void Category::info(const string& message) { 
         if (isPriorityEnabled(Priority::INFO))
-            logUnconditionally2(Priority::INFO, message);
+            _logUnconditionally2(Priority::INFO, message);
     }
     
     void Category::warn(const char* stringFormat, ...) { 
         if (isPriorityEnabled(Priority::WARN)) {
             va_list va;
             va_start(va,stringFormat);
-            logUnconditionally(Priority::WARN, stringFormat, va);
+            _logUnconditionally(Priority::WARN, stringFormat, va);
             va_end(va);
         }
     }
     
     void Category::warn(const string& message) { 
         if (isPriorityEnabled(Priority::WARN))
-            logUnconditionally2(Priority::WARN, message);
+            _logUnconditionally2(Priority::WARN, message);
     }
     
     void Category::error(const char* stringFormat, ...) { 
         if (isPriorityEnabled(Priority::ERROR)) {
             va_list va;
             va_start(va,stringFormat);
-            logUnconditionally(Priority::ERROR, stringFormat, va);
+            _logUnconditionally(Priority::ERROR, stringFormat, va);
             va_end(va);
         }
     }
     
     void Category::error(const string& message) { 
         if (isPriorityEnabled(Priority::ERROR))
-            logUnconditionally2(Priority::ERROR, message);
+            _logUnconditionally2(Priority::ERROR, message);
     }
     
 } 

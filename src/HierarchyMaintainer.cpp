@@ -52,7 +52,7 @@ namespace log4cpp {
         }
     }
 
-    const set<Category*>* HierarchyMaintainer::getCurrentCategories() {
+    set<Category*>* HierarchyMaintainer::getCurrentCategories() const {
         set<Category*>* categories = new set<Category*>;
 
         for(CategoryMap::const_iterator i = _categoryMap.begin(); i != _categoryMap.end(); i++) {

@@ -12,18 +12,55 @@
 
 #include <string>
 
+/**
+ * The top level namespace for all 'Log for C++' types and classes.
+ **/
 namespace log4cpp {
+
+/**
+ * The internal representation of logging events. When a affirmative
+ * logging decision is made a <code>LoggingEvent</code> instance is
+ * created. This instance is passed around the different log4cpp
+ * components.
+ *
+ * <p>This class is of concern to those wishing to extend log4cpp. 
+ **/
 
     struct LoggingEvent {
     public:
-        LoggingEvent(const string& categoryName, const string& message, 
+        /**
+         * Instantiate a LoggingEvent from the supplied parameters.
+         *
+         * <p>Except <code>timeStamp</code> all the other fields of
+         * <code>LoggingEvent</code> are filled when actually needed.
+         * <p>
+         * @param category The category of this event.
+         * @param message  The message of this event.
+         * @param ndc The nested diagnostic context of this event. 
+         * @param priority The priority of this event.
+         **/
+        LoggingEvent(const string& category, const string& message, 
                      const string& ndc, int priority);
 
+
+        /** The category name. */
         const string& categoryName;
+
+        /** The application supplied message of logging event. */
         const string& message;
+
+        /** The nested diagnostic context (NDC) of logging event. */
         const string& ndc;
+
+        /** Priority of logging event. */
         int priority;
+
+        /** The name of thread in which this logging event was generated,
+            e.g. the PID. */
         const string& threadName;
+
+        /** The number of seconds elapsed since the epoch 
+            (1/1/1970 00:00:00 UTC) until logging event was created. */
         time_t timeStamp;
     };
 }

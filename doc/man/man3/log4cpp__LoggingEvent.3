@@ -1,0 +1,107 @@
+.TH log4cpp::LoggingEvent 3 "5 Dec 2000" "log4cpp" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4cpp::LoggingEvent \- The internal representation of logging events. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <LoggingEvent.hh>\fR
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBLoggingEvent\fR (const string& category, const string& \fBmessage\fR, const string& \fBndc\fR, int \fBpriority\fR)"
+.br
+.RI "\fIInstantiate a \fBLoggingEvent\fR from the supplied parameters.\fR"
+.in -1c
+.SS Public Attributes
+
+.in +1c
+.ti -1c
+.RI "const string& \fBcategoryName\fR"
+.br
+.RI "\fIThe category name.\fR"
+.ti -1c
+.RI "const string& \fBmessage\fR"
+.br
+.RI "\fIThe application supplied message of logging event.\fR"
+.ti -1c
+.RI "const string& \fBndc\fR"
+.br
+.RI "\fIThe nested diagnostic context (\fBNDC\fR) of logging event.\fR"
+.ti -1c
+.RI "int \fBpriority\fR"
+.br
+.RI "\fI\fBPriority\fR of logging event.\fR"
+.ti -1c
+.RI "const string& \fBthreadName\fR"
+.br
+.RI "\fIThe name of thread in which this logging event was generated, e.g.\fR"
+.ti -1c
+.RI "time_t \fBtimeStamp\fR"
+.br
+.RI "\fIThe number of seconds elapsed since the epoch (1/1/1970 00:00:00 UTC) until logging event was created.\fR"
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+The internal representation of logging events.
+.PP
+When a affirmative logging decision is made a \fC\fBLoggingEvent\fR\fR instance is created. This instance is passed around the different \fBlog4cpp\fR components.
+.PP
+This class is of concern to those wishing to extend \fBlog4cpp\fR. 
+.PP
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS log4cpp::LoggingEvent::LoggingEvent (const string & category, const string & message, const string & ndc, int priority)
+.PP
+Instantiate a \fBLoggingEvent\fR from the supplied parameters.
+.PP
+.PP
+Except \fCtimeStamp\fR all the other fields of \fC\fBLoggingEvent\fR\fR are filled when actually needed. 
+.PP
+ 
+.PP
+\fBParameters: \fR
+.in +1c
+.TP
+\fB\fIcategory\fR\fR The category of this event. 
+.TP
+\fB\fImessage\fR\fR The message of this event. 
+.TP
+\fB\fIndc\fR\fR The nested diagnostic context of this event.  
+.TP
+\fB\fIpriority\fR\fR The priority of this event. 
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS const string & log4cpp::LoggingEvent::categoryName
+.PP
+The category name.
+.PP
+.SS const string & log4cpp::LoggingEvent::message
+.PP
+The application supplied message of logging event.
+.PP
+.SS const string & log4cpp::LoggingEvent::ndc
+.PP
+The nested diagnostic context (\fBNDC\fR) of logging event.
+.PP
+.SS int log4cpp::LoggingEvent::priority
+.PP
+\fBPriority\fR of logging event.
+.PP
+.SS const string & log4cpp::LoggingEvent::threadName
+.PP
+The name of thread in which this logging event was generated, e.g.
+.PP
+the PID. 
+.SS time_t log4cpp::LoggingEvent::timeStamp
+.PP
+The number of seconds elapsed since the epoch (1/1/1970 00:00:00 UTC) until logging event was created.
+.PP
+
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for log4cpp from the source code.

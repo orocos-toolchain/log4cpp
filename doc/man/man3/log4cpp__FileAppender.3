@@ -1,0 +1,91 @@
+.TH log4cpp::FileAppender 3 "5 Dec 2000" "log4cpp" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4cpp::FileAppender \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <FileAppender.hh>\fR
+.PP
+Inherits \fBlog4cpp::Appender\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBFileAppender\fR (const string& name, const string& fileName)"
+.br
+.ti -1c
+.RI "\fBFileAppender\fR (const string& name, int fd)"
+.br
+.ti -1c
+.RI "virtual \fB~FileAppender\fR ()"
+.br
+.ti -1c
+.RI "virtual void \fBdoAppend\fR (const \fBLoggingEvent\fR& event)"
+.br
+.ti -1c
+.RI "virtual bool \fBreopen\fR ()"
+.br
+.ti -1c
+.RI "virtual void \fBclose\fR ()"
+.br
+.ti -1c
+.RI "virtual bool \fBrequiresLayout\fR () const"
+.br
+.ti -1c
+.RI "virtual void \fBsetLayout\fR (\fBLayout\fR* layout)"
+.br
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "const string \fB_fileName\fR"
+.br
+.ti -1c
+.RI "int \fB_fd\fR"
+.br
+.ti -1c
+.RI "\fBLayout\fR* \fB_layout\fR"
+.br
+.in -1c
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS log4cpp::FileAppender::FileAppender (const string & name, const string & fileName)
+.PP
+.SS log4cpp::FileAppender::FileAppender (const string & name, int fd)
+.PP
+.SS virtual log4cpp::FileAppender::~FileAppender ()\fC [virtual]\fR
+.PP
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS virtual void log4cpp::FileAppender::close ()\fC [virtual]\fR
+.PP
+Reimplemented from \fBlog4cpp::Appender\fR.
+.SS virtual void log4cpp::FileAppender::doAppend (const \fBLoggingEvent\fR & event)\fC [virtual]\fR
+.PP
+Reimplemented from \fBlog4cpp::Appender\fR.
+.SS virtual bool log4cpp::FileAppender::reopen ()\fC [virtual]\fR
+.PP
+Reimplemented from \fBlog4cpp::Appender\fR.
+.SS virtual bool log4cpp::FileAppender::requiresLayout () const\fC [virtual]\fR
+.PP
+Reimplemented from \fBlog4cpp::Appender\fR.
+.SS virtual void log4cpp::FileAppender::setLayout (\fBLayout\fR * layout)\fC [virtual]\fR
+.PP
+Reimplemented from \fBlog4cpp::Appender\fR.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS int log4cpp::FileAppender::_fd\fC [protected]\fR
+.PP
+.SS const string log4cpp::FileAppender::_fileName\fC [protected]\fR
+.PP
+.SS \fBLayout\fR * log4cpp::FileAppender::_layout\fC [protected]\fR
+.PP
+
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for log4cpp from the source code.

@@ -1,0 +1,94 @@
+.TH log4cpp::Appender 3 "5 Dec 2000" "log4cpp" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4cpp::Appender \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <Appender.hh>\fR
+.PP
+Inherited by \fBlog4cpp::FileAppender\fR.
+.PP
+.SS Public Types
+
+.in +1c
+.ti -1c
+.RI "typedef map<string, Appender*> \fBAppenderMap\fR"
+.br
+.in -1c
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBAppender\fR (const string& name)"
+.br
+.ti -1c
+.RI "virtual \fB~Appender\fR ()"
+.br
+.ti -1c
+.RI "virtual void \fBdoAppend\fR (const \fBLoggingEvent\fR& event) = 0"
+.br
+.ti -1c
+.RI "virtual bool \fBreopen\fR ()"
+.br
+.ti -1c
+.RI "virtual void \fBclose\fR () = 0"
+.br
+.ti -1c
+.RI "virtual bool \fBrequiresLayout\fR () const = 0"
+.br
+.ti -1c
+.RI "virtual void \fBsetLayout\fR (\fBLayout\fR* layout) = 0"
+.br
+.ti -1c
+.RI "const string& \fBgetName\fR () const"
+.br
+.in -1c
+.SS Static Public Methods
+
+.in +1c
+.ti -1c
+.RI "Appender* \fBgetAppender\fR (const string& name)"
+.br
+.ti -1c
+.RI "bool \fBreopenAll\fR ()"
+.br
+.in -1c
+.SH MEMBER TYPEDEF DOCUMENTATION
+.PP 
+.SS typedef map<string, Appender*> log4cpp::Appender::AppenderMap
+.PP
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS log4cpp::Appender::Appender (const string & name)
+.PP
+.SS virtual log4cpp::Appender::~Appender ()\fC [virtual]\fR
+.PP
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS virtual void log4cpp::Appender::close ()\fC [pure virtual]\fR
+.PP
+Reimplemented in \fBlog4cpp::FileAppender\fR.
+.SS virtual void log4cpp::Appender::doAppend (const \fBLoggingEvent\fR & event)\fC [pure virtual]\fR
+.PP
+Reimplemented in \fBlog4cpp::FileAppender\fR.
+.SS Appender* log4cpp::Appender::getAppender (const string & name)\fC [static]\fR
+.PP
+.SS const string & log4cpp::Appender::getName () const\fC [inline]\fR
+.PP
+.SS virtual bool log4cpp::Appender::reopen ()\fC [virtual]\fR
+.PP
+Reimplemented in \fBlog4cpp::FileAppender\fR.
+.SS bool log4cpp::Appender::reopenAll ()\fC [static]\fR
+.PP
+.SS virtual bool log4cpp::Appender::requiresLayout () const\fC [pure virtual]\fR
+.PP
+Reimplemented in \fBlog4cpp::FileAppender\fR.
+.SS virtual void log4cpp::Appender::setLayout (\fBLayout\fR * layout)\fC [pure virtual]\fR
+.PP
+Reimplemented in \fBlog4cpp::FileAppender\fR.
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for log4cpp from the source code.
