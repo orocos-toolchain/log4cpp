@@ -1,5 +1,13 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-06-07 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/LayoutAppender.hh: 
+	set SimpleLayout as DefaultLayoutType.
+	* src/LayoutAppender.cpp (LayoutAppender, setLayout): use 
+	DefaultLayoutType to construct new Layouts.
+	* src/LayoutAppender.cpp (setLayout): check whether old Layout and
+	new Layout are the same object.
+	
 2001-06-06 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/AppenderSkeleton.hh, include/log4cpp/BasicLayout.hh,
 	include/log4cpp/HierarchyMaintainer.hh, 
