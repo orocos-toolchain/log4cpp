@@ -20,6 +20,8 @@ namespace std {
         strtoul(const char *nptr, char **endptr, int base) { 
         return ::strtol(nptr, endptr, base); 
     };
+    static inline void abort(void) { ::abort(); };
+
 }
 #endif
     
