@@ -26,19 +26,4 @@
 #    pragma warning( disable : 4786 )
 #endif
 
-#ifndef LOG4CPP_HAVE_STRCASECMP
-#ifdef LOG4CPP_HAVE_STRICMP
-
-#include <string.h>
-namespace log4cpp {
-    inline int strcasecmp(const char *s1, const char *s2) {
-	return stricmp(s1, s2);
-    };
-}
-
-#else
-#error no strcasecmp alternative for this platform implemented yet
-#endif // LOG4CPP_HAVE_STRICMP
-#endif // LOG4CPP_HAVE_STRCASECMP
-
 #endif

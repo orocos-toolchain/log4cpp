@@ -71,7 +71,6 @@ AC_FUNC_SNPRINTF
 AC_CHECK_FUNCS([syslog])
 AC_CHECK_FUNCS([gettimeofday])
 AC_CHECK_FUNCS([ftime])
-AC_CHECK_FUNCS([strcasecmp stricmp], break)
 
 # Checks for libraries
 # ----------------------------------------------------------------------------
