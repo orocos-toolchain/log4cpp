@@ -12,12 +12,52 @@ This will install log4cpp under /usr/local. To install in another localation spe
 
 On Win32, use the project files in the msvc6 dir to build the library and the test programs.
 
-Build Requiremnts.
+Build Requirements.
 ==================
 
 The primary development platform for log4cpp is RedHat Linux 7.0, which contains g++ version "2.96 20000731 (Red Hat Linux 7.0)". As a consequence new versions may occasinally break compatibility with older g++ versions. Please report these compile problems as bugs. The aim is to have log4cpp compile on GNU/Linux, BSD and UNIX platforms with g++ >= 2.91. As of 0.2.2 Win32 has been added to this list.
 
 For the generation of documentation you need to have installed the Doxygen package created by Dimitry van Heesch (see http://www.stack.nl/~dimitri/doxygen/index.html). The current documenation has been generated with Doxygen 1.2.5, older versions may or may not work.
+
+Options for ./configure
+=======================
+
+Besides the usual ./configure options like --prefix a few others are 
+available:
+
+--with-idsa
+  Include support for logging to IDSA 
+  (http://jade.cs.uct.ac.za/idsa/index.html). This will give you an 
+  IdsaAppender Appender class.
+
+--with-omnithreads[=<path-to-omniORB>]
+  Enable multi-threading support using omniORB4's omniThreads MT abstraction
+  library (http://www.omniorb.org). configure expects the omnithread 
+  header files to reside in <path-to-omniORB>/include and the library in 
+  <path-to-omniORB>/lib, i.e. not in a platform specific subdirectory. Create
+  symlinks where necessary.
+  NB. omniORB4 is required: omniORB3 will not suffice as it lacks sufficient
+  support for thread specific data. At the moment (Februari 2002) omniORB4 is
+  in pre-beta stage, however most parts and specifically the threading 
+  library appear quite stable.
+
+--enable-doxyen
+  Enables generation of API documentation by Dimitri van Heeschs Doxygen tool
+  (http://www.doxygen.org/). Defaults to yes if doxygen can be found in the
+  search path. 
+
+--enable-html-docs
+  If doxygen is enabled, have it generate HTML formatted documentation.
+
+--enable-latex-docs
+  If doxygen is enabled, have it generate LaTeX formatted documentation.
+
+--enable-dot
+  Let Doxygen use the 'dot' tool of GraphViz (http://www.graphviz.org) to
+  draw its graphs.
+
+
+  
 
 Platform Specific Build Instructions
 ====================================
