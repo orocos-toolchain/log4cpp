@@ -1,8 +1,38 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-09-17 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/Priority.hh:
+	Fix workaround for #define DEBUG
+
+	* config/Makefile.am: 
+	Added newline to keep broken tar utilities happy
+
+	* include/log4cpp/FixedContextCategory.hh:
+	Added default value for context parameter in constructor.
+
+	* include/log4cpp/LayoutAppender.hh:
+	Made BasicLayout the DefaultLayoutType
+
+	* configure.in:
+	Set requirement for Autoconf 2.50
+	Bumped version to 0.2.6
+	Incremented LT_VERSION to 2:0:1
+
+	* Makefile.am:
+	Fix EXTRA_DIST m4 inclusion.
+	
+	* bcb5/log4cpp/log4cpp.bpf, bcb5/log4cpp/log4cpp.bpr, 
+	bcb5/log4cpp/log4cpp.mak:
+	Added RemoteSyslogAppender.
+	
 2001-08-23 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/Priority.hh:
 	Added workaround for #define DEBUG in EDK.h on Win32.
+
+2001-07-17 Walter Stroebel <walter.stroebel@lifeline.nl>
+	* include/log4cpp/RemoteSyslogAppender.hh,
+	src/RemoteSyslogAppender:
+	Added.
 	
 2001-07-16 Uwe Jäger <jaeger@varial.de>
 	* bcb5/log4cpp.bpf, bcb5/log4cpp.bpr:
