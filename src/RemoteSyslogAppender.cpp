@@ -81,8 +81,8 @@ namespace log4cpp {
     void RemoteSyslogAppender::open() {
 	if (!_ipAddr) {
 	    struct hostent *pent = gethostbyname (_relayer.c_str ());
-	    if (pent == NULL) {
 #ifdef WIN32
+	    if (pent == NULL) {
 		if (WSAGetLastError () == WSANOTINITIALISED) {
 		    WSADATA wsaData;
 		    int err;
@@ -98,17 +98,17 @@ namespace log4cpp {
 		    // loglog("RemoteSyslogAppender: gethostbyname returned error");
                     return; // fail silently
 		}
-#endif
 	    }
+#endif
 	    if (pent == NULL) {
-		unsigned long ip = (unsigned long) inet_addr (_relayer.c_str ());
-		pent = gethostbyaddr ((const char *) &ip, 4, AF_INET);
+		in_addr_t ip = inet_addr (_relayer.c_str ());
+		pent = gethostbyaddr ((const char *) &ip, sizeof(in_addr_t), AF_INET);
                 if (pent == NULL) {
                     // loglog("RemoteSyslogAppender: failed to resolve host %s", _relayer.c_str());
                     return; // fail silently                    
                 }
             }
-	    _ipAddr = *((unsigned long *) pent->h_addr);
+	    _ipAddr = *(pent->h_addr);
 	}
 	// Get a datagram socket.
 	

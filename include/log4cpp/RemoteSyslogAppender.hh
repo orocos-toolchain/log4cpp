@@ -15,6 +15,11 @@
 #include <stdarg.h>
 #include <log4cpp/LayoutAppender.hh>
 #include <log4cpp/Priority.hh>
+#ifdef WIN32
+#include <winsock2.h>
+#else
+#include <netinet/in.h>
+#endif
 
 #ifdef LOG4CPP_HAVE_SYSLOG
 #include <syslog.h>
@@ -121,7 +126,7 @@ namespace log4cpp {
         int _facility;
         int _portNumber;
         int _socket;
-        unsigned long _ipAddr;
+        in_addr_t _ipAddr;
         private:
         int _cludge;
     };

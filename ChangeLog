@@ -1,5 +1,11 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2003-03-05 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/RemoteSyslogAppender.hh, 
+	src/RemoteSyslogAppender.cpp: use correct type for _ipAddr. 
+	Pointed out by Andrew Morrow. Current fix most likely breaks
+	some platforms that don't define in_addr_t.
+	
 2003-02-21 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/AbortAppender.hh, src/AbortAppender.cpp: added
 	missing layout methods.
