@@ -15,6 +15,10 @@ EXTRA_DIST = log4cpp.spec.in log4cpp.spec
 check: 
 	$(MAKE) -C tests
 
+dist-hook:
+	perl -pi -e 's/\n/\r\n/g' `find $(distdir) -name '*.ds?'`
+	cp -dpR include/config.h.in $(distdir)/include/config.h
+
 distclean-local:
 	$(MAKE) -C tests distclean
 	-rm -rf CONTENTS TAGS
