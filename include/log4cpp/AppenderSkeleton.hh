@@ -67,18 +67,18 @@ namespace log4cpp {
         virtual void setLayout(Layout* layout) = 0;
 
         /**
-         * Set the treshold priority of this Appender. The Appender will not
-         * appender LoggingEvents with a priority lower than the treshold.
-         * Use Priority::NOTSET to disable treshold checking.
+         * Set the threshold priority of this Appender. The Appender will not
+         * appender LoggingEvents with a priority lower than the threshold.
+         * Use Priority::NOTSET to disable threshold checking.
          * @param priority The priority to set.
          **/
-        virtual void setTreshold(Priority::Value priority);
+        virtual void setThreshold(Priority::Value priority);
 
         /**
-         * Get the treshold priority of this Appender.
-         * @returns the treshold
+         * Get the threshold priority of this Appender.
+         * @returns the threshold
          **/
-        virtual Priority::Value getTreshold();
+        virtual Priority::Value getThreshold();
 
         /**
          * Set a Filter for this appender. 
@@ -101,7 +101,7 @@ namespace log4cpp {
 
         
         private:
-        Priority::Value _treshold;
+        Priority::Value _threshold;
         Filter* _filter;
     };
 }

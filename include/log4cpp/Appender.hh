@@ -105,18 +105,18 @@ namespace log4cpp {
         inline const std::string& getName() const { return _name; };
 
         /**
-         * Set the treshold priority of this Appender. The Appender will not
-         * appender LoggingEvents with a priority lower than the treshold.
-         * Use Priority::NOTSET to disable treshold checking.
+         * Set the threshold priority of this Appender. The Appender will not
+         * appender LoggingEvents with a priority lower than the threshold.
+         * Use Priority::NOTSET to disable threshold checking.
          * @param priority The priority to set.
          **/
-        virtual void setTreshold(Priority::Value priority) = 0;
+        virtual void setThreshold(Priority::Value priority) = 0;
 
         /**
-         * Get the treshold priority of this Appender.
-         * @returns the treshold
+         * Get the threshold priority of this Appender.
+         * @returns the threshold
          **/
-         virtual Priority::Value getTreshold() = 0;
+        virtual Priority::Value getThreshold() = 0;
 
         /**
          * Set a Filter for this appender. 
