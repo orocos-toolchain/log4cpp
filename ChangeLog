@@ -3,6 +3,11 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 2002-01-09 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/SimpleConfigurator.cpp: skip all whitespace before PatternLayout 
 	pattern, not just one.
+
+	* include/log4cpp/RollingFileAppender.cpp,
+	include/log4cpp/Makefile.am,
+	src/RollingFileAppender.cpp, src/MakeFile.am: 
+	added RollingFileAppender contributed by Alex Tapaccos.
 	
 2002-01-08 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/SimpleConfigurator.cpp: skip space before PatternLayout 
