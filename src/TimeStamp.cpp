@@ -34,7 +34,7 @@ namespace log4cpp {
 #else
 #ifdef LOG4CPP_HAVE_FTIME
         struct timeb tb;
-        ::ftime(*tb);
+        ::ftime(&tb);
         _seconds = tb.time;
         _microSeconds = 1000 * tb.millitm;
 #else
