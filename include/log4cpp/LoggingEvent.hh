@@ -46,13 +46,13 @@ namespace log4cpp {
 
 
         /** The category name. */
-        const std::string& categoryName;
+        const std::string categoryName;
 
         /** The application supplied message of logging event. */
-        const std::string& message;
+        const std::string message;
 
         /** The nested diagnostic context (NDC) of logging event. */
-        const std::string& ndc;
+        const std::string ndc;
 
         /** Priority of logging event. */
         Priority::Value priority;
