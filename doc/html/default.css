@@ -3,9 +3,15 @@ BODY
     BACKGROUND-COLOR: white
 }
 
-H3
+H2
 {
  color: white;
  background-color: darkBlue;
-;
+ font-family: arial,helvetica,sanserif;
 }
+
+DT
+{
+ font-weight: bold;
+}
+
