@@ -33,6 +33,8 @@
 #define LOG_INFO        6       /* informational */
 /// from syslog.h
 #define LOG_DEBUG       7       /* debug-level messages */
+/// from syslog.h
+#define LOG_USER        (1<<3)  /* random user-level messages */
 
 namespace log4cpp {
 
@@ -62,7 +64,7 @@ namespace log4cpp {
          * port number (514).
          **/         
         RemoteSyslogAppender(const std::string& name, const std::string& syslogName, 
-                       const std:string& relayer, int facility = LOG_USER, int portNumber = 514);
+                       const std::string& relayer, int facility = LOG_USER, int portNumber = 514);
         virtual ~RemoteSyslogAppender();
 
         /**
@@ -101,7 +103,10 @@ namespace log4cpp {
         int _facility;
         Layout* _layout;
         int _socket;
+        unsigned long _ipAddr;
         int _portNumber;
+        private:
+        int _cludge;
     };
 }
 

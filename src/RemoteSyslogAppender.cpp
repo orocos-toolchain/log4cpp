@@ -8,7 +8,6 @@
  */
 
 #include "log4cpp/Portability.hh"
-#include "log4cpp/OstringStream.hh"
 
 #ifdef LOG4CPP_HAVE_UNISTD_H
 #    include <unistd.h>
@@ -17,6 +16,9 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include "log4cpp/RemoteSyslogAppender.hh"
+#ifdef WIN32
+#include <winsock2.h>
+#endif
 
 namespace log4cpp {
 
@@ -50,20 +52,68 @@ namespace log4cpp {
         _syslogName(syslogName),
 	_relayer(relayer),
         _facility(facility),
-	_portNumber (portNumber)
-	_socket (0);
+	_portNumber (portNumber),
+	_socket (0),
+	_ipAddr (0),
+	_cludge (0)
     {
         open();
     }
     
     RemoteSyslogAppender::~RemoteSyslogAppender() {
         close();
+#ifdef WIN32
+	if (_cludge) {
+	    // we started it, we end it.
+	    WSACleanup ();
+	}
+#endif
     }
 
     void RemoteSyslogAppender::open() {
+	if (!_ipAddr) {
+	    struct hostent *pent = gethostbyname (_relayer.c_str ());
+	    if (pent == NULL) {
+#ifdef WIN32
+		if (WSAGetLastError () == WSANOTINITIALISED) {
+		    WSADATA wsaData;
+		    int err;
+ 
+		    err = WSAStartup (0x101, &wsaData );
+		    if (err) abort ();
+		    pent = gethostbyname (_relayer.c_str ());
+		    _cludge = 1;
+		} else {
+		    abort ();
+		}
+#endif
+	    }
+	    if (pent == NULL) {
+		unsigned long ip = (unsigned long) inet_addr (_relayer.c_str ());
+		pent = gethostbyaddr ((const char *) &ip, 4, AF_INET);
+	    }
+	    if (pent == NULL) {
+		abort ();
+	    }
+	    _ipAddr = *((unsigned long *) pent->h_addr);
+	}
+	// Get a datagram socket.
+	
+	if ((_socket = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
+	    abort ();
+	}
+
     }
 
     void RemoteSyslogAppender::close() {
+	if (_socket) {
+#if WIN32
+	    closesocket (_socket);
+#else
+	    close (_socket);
+#endif
+	    _socket = 0;
+	}
     }
 
     void RemoteSyslogAppender::_append(const LoggingEvent& event) {
@@ -73,7 +123,17 @@ namespace log4cpp {
         }
 
         const char* message = _layout->format(event).c_str();
+	int len = strlen (message) + 16;
+	char *buf = new char [len];
         int priority = toSyslogPriority(event.priority);
+	sprintf (buf, "<%d>", priority);
+	memcpy (buf + strlen (buf), message, len - 16);
+	sockaddr_in sain;
+	sain.sin_family = AF_INET;
+	sain.sin_port   = htons (_portNumber);
+        sain.sin_addr.s_addr = htonl (_ipAddr);
+	sendto (_socket, buf, (int) len, 0, (struct sockaddr *) &sain, sizeof (sain));
+	delete buf;
     }
 
     bool RemoteSyslogAppender::reopen() {
