@@ -23,7 +23,7 @@ pdf: @PACKAGE_TARNAME@.pdf
 
 install-data-local:
 	$(mkinstalldirs) $(DESTDIR)$(man3dir)
-	@for i in ./man/man3/*.3; do \
+	@for i in ./man/man3/log4cpp.3 ./man/man3/log4cpp_*.3; do \
 		inst=`basename $$i | sed 's/_/:/g'`; \
 		echo "$(INSTALL_DATA) $$i $(DESTDIR)$(man3dir)/$$inst"; \
 		$(INSTALL_DATA) $$i $(DESTDIR)$(man3dir)/$$inst; \
@@ -34,6 +34,11 @@ install-data-local:
 		$(docdir)/html/Makefile.am \
 		$(docdir)/html/Makefile.in \
 		$(docdir)/html/Makefile
+
+uninstall-data-local:
+	$(RM) $(DESTDIR)$(man3dir)/log4cpp.3
+	$(RM) $(DESTDIR)$(man3dir)/log4cpp_*.3
+	$(RM) -r -f $(docdir)
 
 clean-local:
 	$(RM) -r latex
