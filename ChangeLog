@@ -1,6 +1,12 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
 2001-12-11 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* Release as 0.2.6
+
+	* TODO: Mark PatternLayout and SimpleConfigurator as done.
+
+	* NEWS: release 0.2.6
+	
 	* Makefile.am: exclude CVS subdir from doc-dist tar ball.
 	
 	* include/log4cpp/config-win32.h: #define int64_t as __int64, 
@@ -11,6 +17,8 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	
 	* src/TimeStamp.cpp: fix ref typo for timeb struct.
 
+	* include/log4cpp/config-win32.h: #define LOG4CPP_USE_CLEANUP.
+
 2001-11-30 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* tests/testbench.cpp: use TimeStamp instead of ::time()
 
@@ -19,7 +27,7 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	* include/log4cpp/Appender.hh, include/log4cpp/HierarchyMaintainer.hh,
 	include/log4cpp/Log4cpCleanup.hh, src/Appender.cpp,
 	src/HierarchyMaintainer.cpp, src/Log4cppCleanup.cpp: conditionally
-	use Log4cppCleanup, based on #define LOG4CPP_USE_CLEANUP. The new 
+	use Log4cppCleanup, depending on #define LOG4CPP_USE_CLEANUP. The new 
 	default is NOT to use it, because it causes segfaults on some 
 	platforms (e.g. Solaris).
 
