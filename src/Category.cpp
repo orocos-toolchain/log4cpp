@@ -148,18 +148,16 @@ namespace log4cpp {
     void Category::removeAllAppenders() {
         threading::ScopedLock lock(_appenderSetMutex);
         {
-            AppenderSet::iterator i2;
             for (AppenderSet::iterator i = _appender.begin();
                  i != _appender.end(); i++) {
                 // found
-                OwnsAppenderMap::iterator i3;
-                if (ownsAppender(*i, i3)) {
-                    _ownsAppender.erase(i3);
+                OwnsAppenderMap::iterator i2;
+                if (ownsAppender(*i, i2)) {
                     delete (*i);
                 }
                 
-                i2 = i;
-                _appender.erase(i2);
+                _ownsAppender.clear();
+                _appender.clear();
             }
         }
     }
