@@ -12,6 +12,7 @@
 #ifdef LOG4CPP_HAVE_UNISTD_H
 #    include <unistd.h>
 #endif
+#include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -122,7 +123,7 @@ namespace log4cpp {
 #if WIN32
 	    closesocket (_socket);
 #else
-	    close (_socket);
+	    ::close (_socket);
 #endif
 	    _socket = 0;
 	}
