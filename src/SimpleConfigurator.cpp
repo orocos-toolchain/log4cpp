@@ -153,7 +153,7 @@ namespace log4cpp {
                             facility = LOG_USER;
                         }
                         if (!(initFile >> portNumber)) {
-                            facility = 514;
+                            portNumber = 514;
                         }
                         appender =
                             new log4cpp::RemoteSyslogAppender(categoryName, syslogName, relayer, facility, portNumber);
