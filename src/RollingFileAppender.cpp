@@ -4,7 +4,7 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include <log4cpp/Portability.hh>
+#include "PortabilityImpl.hh"
 #include <log4cpp/OstringStream.hh>
 #ifdef LOG4CPP_HAVE_IO_H
 #    include <io.h>

@@ -5,7 +5,7 @@
  *
  * See the COPYING file for the terms of usage and distribution.
  */
-#include <log4cpp/Portability.hh>
+#include "PortabilityImpl.hh"
 #include <log4cpp/PropertyConfigurator.hh>
 #include "PropertyConfiguratorImpl.hh"
 

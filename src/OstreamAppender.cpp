@@ -7,7 +7,7 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include <log4cpp/Portability.hh>
+#include "PortabilityImpl.hh"
 #ifdef LOG4CPP_HAVE_UNISTD_H
 #    include <unistd.h>
 #endif

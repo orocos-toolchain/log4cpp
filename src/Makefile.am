@@ -45,6 +45,7 @@ liblog4cpp_la_SOURCES = \
 	DummyThreads.cpp \
 	MSThreads.cpp \
 	OmniThreads.cpp \
-	PThreads.cpp
+	PThreads.cpp \
+	PortabilityImpl.hh
 
 liblog4cpp_la_LDFLAGS = -version-info @LT_VERSION@

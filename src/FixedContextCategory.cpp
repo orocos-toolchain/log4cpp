@@ -7,7 +7,7 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include <log4cpp/Portability.hh>
+#include "PortabilityImpl.hh"
 #include <log4cpp/FixedContextCategory.hh>
 
 namespace log4cpp {

@@ -7,7 +7,7 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include <log4cpp/Portability.hh>
+#include "PortabilityImpl.hh"
 #if LOG4CPP_HAVE_SYSLOG
 
 #include <unistd.h>

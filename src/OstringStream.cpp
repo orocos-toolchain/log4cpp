@@ -7,7 +7,7 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include <log4cpp/Portability.hh>
+#include "PortabilityImpl.hh"
 #include <stdio.h>
 #include <log4cpp/OstringStream.hh>
 

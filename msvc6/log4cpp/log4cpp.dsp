@@ -231,6 +231,10 @@ SOURCE=..\..\src\Win32DebugAppender.cpp
 # PROP Default_Filter "h;hh;hpp;hxx;hm;inl"
 # Begin Source File
 
+SOURCE=..\src\PortabilityImpl.hh
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\include\log4cpp\Appender.hh
 # End Source File
 # Begin Source File

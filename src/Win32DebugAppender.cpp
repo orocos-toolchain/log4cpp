@@ -1,20 +1,16 @@
 /*
- * FileAppender.cpp
+ * Win32DebugAppender.cpp
  *
- * Copyright 2000, LifeLine Networks BV (www.lifeline.nl). All rights reserved.
- * Copyright 2000, Bastiaan Bakker. All rights reserved.
+ * Copyright 2002, the Log4cpp project.
  *
  * See the COPYING file for the terms of usage and distribution.
  */
 
 #ifdef WIN32	// only available on Win32
 
-#include "log4cpp/Portability.hh"
+#include "PortabilityImpl.hh"
 #ifdef LOG4CPP_HAVE_IO_H
 #    include <io.h>
-#endif
-#ifdef LOG4CPP_HAVE_UNISTD_H
-#    include <unistd.h>
 #endif
 
 #include <windows.h>

@@ -21,7 +21,6 @@
 
 #if defined(_MSC_VER) && _MSC_VER < 1300
 #define LOG4CPP_MISSING_INT64_OSTREAM_OP   
-typedef int mode_t;
 #endif
 
 #endif
@@ -40,11 +39,6 @@ typedef int mode_t;
 /* Define if you have the `strcasecmp' function. */
 /* #undef LOG4CPP_HAVE_STRCASECMP */
 
-/* Define if you have the `stricmp' function. */
-#ifndef LOG4CPP_HAVE_STRICMP
-#define LOG4CPP_HAVE_STRICMP 1 
-#endif
-
 /* Name of package */
 #ifndef LOG4CPP_PACKAGE
 #define LOG4CPP_PACKAGE  "log4cpp"
@@ -52,7 +46,7 @@ typedef int mode_t;
 
 /* Version number of package */
 #ifndef LOG4CPP_VERSION
-#define LOG4CPP_VERSION  "0.3.1"
+#define LOG4CPP_VERSION  "0.3.3"
 #endif
 
 /* define if the compiler implements namespaces */
@@ -98,6 +92,24 @@ typedef int mode_t;
 /* supply DLL main */
 #ifndef LOG4CPP_SUPPLY_DLLMAIN
 #define LOG4CPP_SUPPLY_DLLMAIN
+#endif
+
+/* MSVCs <cstdlib> and <cstring> headers are broken in the sense that they
+   put functions in the global namespace instead of std::
+   The #defines below enable a workaround for MSVC 6 and lower. If MSVC 7
+   is still broken please adjust the _MSC_VER version check and report it.
+   See also bug report #628211.
+*/
+#if defined(_MSC_VER) && _MSC_VER < 1300
+
+#ifndef LOG4CPP_CSTDLIB_NOT_IN_STD
+#define LOG4CPP_CSTDLIB_NOT_IN_STD
+#endif
+
+#ifndef LOG4CPP_CSTRING_NOT_IN_STD
+#define LOG4CPP_CSTRING_NOT_IN_STD
+#endif
+
 #endif
 
 /* define mode_t. Move to Portability.hh if more platforms need it */

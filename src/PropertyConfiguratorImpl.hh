@@ -9,7 +9,7 @@
 #ifndef _LOG4CPP_PROPERTYCONFIGURATORIMPL_HH
 #define _LOG4CPP_PROPERTYCONFIGURATORIMPL_HH
 
-#include <log4cpp/Portability.hh>
+#include "PortabilityImpl.hh"
 #include <log4cpp/Configurator.hh>
 #include <log4cpp/Appender.hh>
 #include <log4cpp/Category.hh>

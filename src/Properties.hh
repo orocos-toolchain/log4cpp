@@ -9,7 +9,7 @@
 #ifndef _LOG4CPP_PROPERTIES_HH
 #define _LOG4CPP_PROPERTIES_HH
 
-#include <log4cpp/Portability.hh>
+#include "PortabilityImpl.hh"
 #include <string>
 #include <iostream>
 #include <map>
