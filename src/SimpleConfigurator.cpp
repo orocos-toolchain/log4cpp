@@ -28,6 +28,7 @@
 #if LOG4CPP_HAVE_SYSLOG
 #include "log4cpp/SyslogAppender.hh"
 #endif
+#include "log4cpp/RemoteSyslogAppender.hh"
 
 namespace log4cpp {
 
@@ -92,6 +93,26 @@ namespace log4cpp {
                             new log4cpp::SyslogAppender(categoryName, syslogName, facility);
                     } 
 #endif
+                    else if (appenderName.compare("remotesyslog") == 0) {
+                        std::string syslogName;
+                        std::string relayer;
+                        int facility;
+                        int portNumber;
+                        if (!(initFile >> syslogName)) {
+                            throw ConfigureFailure("Missing syslogname for SysLogAppender for category: " + categoryName);
+                        }
+                        if (!(initFile >> relayer)) {
+                            throw ConfigureFailure("Missing syslog host for SysLogAppender for category: " + categoryName);
+                        }
+                        if (!(initFile >> facility)) {
+                            facility = LOG_USER;
+                        }
+                        if (!(initFile >> portNumber)) {
+                            facility = 514;
+                        }
+                        appender =
+                            new log4cpp::RemoteSyslogAppender(categoryName, syslogName, relayer, facility, portNumber);
+                    } 
                     else {
                         throw ConfigureFailure("Invalid appender name (" +
                                                appenderName +
