@@ -10,6 +10,7 @@
 #ifndef _LOG4CPP_LAYOUT_HH
 #define _LOG4CPP_LAYOUT_HH
 
+#include <string>
 #include "log4cpp/LoggingEvent.hh"
 
 namespace log4cpp {
@@ -23,13 +24,14 @@ namespace log4cpp {
          * Destructor for Layout.
          **/
         virtual ~Layout() { };
+
         /**
          * Formats the LoggingEvent data to a string that appenders can log.
          * Implement this method to create your own layout format.
          * @param event The LoggingEvent.
          * @returns an appendable string.
-        */
-        virtual char* format(const LoggingEvent& event) = 0;
+         **/
+        virtual std::string format(const LoggingEvent& event) = 0;
     };        
 }
 

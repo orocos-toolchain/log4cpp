@@ -15,6 +15,7 @@
 #include <map>
 #include <stdarg.h>
 #include "log4cpp/Layout.hh"
+#include "log4cpp/SimpleLayout.hh"
 #include "log4cpp/LoggingEvent.hh"
 
 namespace log4cpp {
@@ -77,8 +78,7 @@ namespace log4cpp {
         /**
          * Check if the appender uses a layout.
          * 
-         * <p>If the appender implementation admits a layout but can also
-         *  work without it, then it should return <code>true</code>.
+         * @returns true if the appender implementation requires a layout.
          **/
         virtual bool requiresLayout() const = 0;
 
@@ -94,7 +94,10 @@ namespace log4cpp {
          **/
         inline const std::string& getName() const { return _name; };
         
-        
+
+        protected:
+        static SimpleLayout _defaultLayout;
+
         private:
         typedef std::map<std::string, Appender*> AppenderMap;
 

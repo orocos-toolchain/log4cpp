@@ -10,6 +10,7 @@
 #include "log4cpp/Appender.hh"
 
 namespace log4cpp {
+    SimpleLayout Appender::_defaultLayout;
     Appender::AppenderMap Appender::_allAppenders;
 
     Appender* Appender::getAppender(const std::string& name) {

@@ -67,11 +67,9 @@ namespace log4cpp {
             return;
         }
 
-        char* message = _layout->format(event);
+        const char* message = _layout->format(event).c_str();
         int priority = toSyslogPriority(event.priority);
         ::syslog(priority | _facility, message);
-
-        free(message);
     }
 
     bool SyslogAppender::reopen() {

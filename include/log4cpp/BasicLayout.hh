@@ -18,7 +18,7 @@ namespace log4cpp {
         public:
         BasicLayout();
         virtual ~BasicLayout();
-        virtual char* format(const LoggingEvent& event);
+        virtual std::string format(const LoggingEvent& event);
     };        
 }
 

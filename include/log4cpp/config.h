@@ -14,8 +14,8 @@
 #define VERSION "0.2.2"
 
 /* define if you have new iostreams */
-/* #undef LOG4CPP_USE_NEW_IOSTREAM */
+#define LOG4CPP_USE_NEW_IOSTREAM 1
 
 /* define if ostrstream has vform() */
-#define HAVE_STRSTREAM_VFORM 1
+/* #undef HAVE_STRSTREAM_VFORM */
 

@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
 	clock.start();
 	for (int i = 0; i < count; i++) root.error("%s", buffer);    
 	clock.stop();
-	std::cout << "buffer: " << clock.elapsed() / count << " us" << std::endl;
+	std::cout << "buffer: " << ((float)clock.elapsed()) / count << " us" << std::endl;
     }
     
     {
@@ -45,14 +45,14 @@ int main(int argc, char* argv[])
 	clock.start();
 	for (int i = 0; i < count; i++) root.error(str);
 	clock.stop();
-	std::cout << "string: " << clock.elapsed() / count << " us" << std::endl;
+	std::cout << "string: " << ((float)clock.elapsed()) / count << " us" << std::endl;
     }
 
     {
 	clock.start();
 	for (int i = 0; i < count; i++) fprintf(stderr, "%s\n", buffer);
 	clock.stop();
-	std::cout << "fprintf: " << clock.elapsed() / count << " us" << std::endl;
+	std::cout << "fprintf: " << ((float)clock.elapsed()) / count << " us" << std::endl;
     }
     
     return 0;

@@ -19,12 +19,12 @@ namespace log4cpp {
     SimpleLayout::~SimpleLayout() {
     }
 
-    char* SimpleLayout::format(const LoggingEvent& event) {
+    std::string SimpleLayout::format(const LoggingEvent& event) {
         ostringstream message;
 
         const std::string& priorityName = Priority::getPriorityName(event.priority);
-        message << priorityName << " - " << event.message << std::endl << '\0';
+        message << priorityName << " - " << event.message << std::endl;
 
-        return strdup(message.str().c_str());
+        message.str();
     }
 }
