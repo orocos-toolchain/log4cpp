@@ -20,7 +20,6 @@ namespace log4cpp {
         message(message),
         ndc(ndc),
         priority(priority),
-        threadName("thread1"),
-        timeStamp(::time(NULL)) {
+        threadName("thread1") {
     }
 }

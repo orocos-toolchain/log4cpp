@@ -15,13 +15,6 @@
 
 namespace log4cpp {
 
-#ifdef LOG4CPP_HAVE_INT64_T
-    typedef int64_t QUITE_LONG;
-#else
-    typedef double QUITE_LONG;
-#endif
-
-    
     /**
      * BasicLayout is a simple fixed format Layout implementation. 
      **/
@@ -71,26 +64,9 @@ namespace log4cpp {
          * the "setConversionPattern" can call doFormat with a fake
          * LoggingEvent to see if the conversionPattern is valid.
          */
-        std::string doFormat(const LoggingEvent& event, std::string conversionPattern, bool *success);
-        
-        // GetTickCount() (Windows) or milliseconds since 1970 (64 bit long systems) at construction time
-        QUITE_LONG millisecondsAtCreation;
-
-        /**
-         * Returns the number of milliseconds elapsed since this layout
-         * was created. On systems where <b>long</b> is only 32 bits (most),
-         * this method will start to give "funny" values on systems
-         * that are kept up for a long time
-         * @return the milliseconds since layout creation time
-         */
-        QUITE_LONG millisecondsSinceCreation();
-
-        /**
-         * Facade method to hide details of how to get some get-time-call in
-         * milliseconds resolution.
-         * @return milliseconds according to some increasing clock
-         */
-        QUITE_LONG getMillisecondsTime();
+        std::string doFormat(const LoggingEvent& event, 
+                             std::string conversionPattern,
+                             bool *success);        
     };        
 }
 

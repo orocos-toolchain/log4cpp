@@ -13,6 +13,7 @@
 #endif
 
 #include <string>
+#include <time.h>
 
 #ifdef LOG4CPP_HAVE_SSTREAM
 #include <sstream>
@@ -23,22 +24,17 @@
 #include <iomanip>
 //#include <ios>
 
-#include <time.h>
-#ifdef LOG4CPP_HAVE_GETTIMEOFDAY
-#include <sys/time.h>
-#endif
 
 #include "log4cpp/PatternLayout.hh"
 #include "log4cpp/Priority.hh"
 #include "log4cpp/OstringStream.hh"
 #include "log4cpp/NDC.hh"
-
+#include "log4cpp/TimeStamp.hh"
 
 namespace log4cpp {
 
     PatternLayout::PatternLayout() {
         convPatn = "%m%n";
-        millisecondsAtCreation = getMillisecondsTime();
     }
     
     PatternLayout::~PatternLayout() {
@@ -94,9 +90,8 @@ namespace log4cpp {
                     case 'd':
                         {
                             struct tm *currentTime;
-                            time_t aclock;
-                            time(&aclock);
-                            currentTime = localtime(&aclock);
+                            time_t t = event.timeStamp.getSeconds();
+                            currentTime = localtime(&t);
                             std::string currentTimeOnOneLine = asctime(currentTime);
                             currentTimeOnOneLine = currentTimeOnOneLine.substr(0, currentTimeOnOneLine.length()-1);
                             
@@ -104,7 +99,7 @@ namespace log4cpp {
                         }
                         break;
                     case 'R':
-                        message << event.timeStamp;
+                        message << event.timeStamp.getSeconds();
                         break;
                     case 'p':
                         {
@@ -114,11 +109,25 @@ namespace log4cpp {
                         }
                         break;
                     case 'r':
+                        {
 #ifdef LOG4CPP_HAVE_INT64_T
-                        message << millisecondsSinceCreation();
+                            int64_t t = event.timeStamp.getSeconds() -
+                                TimeStamp::getStartTime().getSeconds();
+                            t *= 1000;
+                            t += event.timeStamp.getMilliSeconds() -
+                                TimeStamp::getStartTime().getMilliSeconds();
+                            
+                            message << t;
 #else
-                        message << std::setiosflags(std::ios::fixed) << std::setprecision(0) << millisecondsSinceCreation();
+                            double t = event.timeStamp.getSeconds() -
+                                TimeStamp::getStartTime().getSeconds();
+                            t *= 1000;
+                            t += event.timeStamp.getMilliSeconds() -
+                                TimeStamp::getStartTime().getMilliSeconds();
+                            
+                            message << std::setiosflags(std::ios::fixed) << std::setprecision(0) << t;
 #endif
+                        }
                         break;
                     case 'u':
                         message << clock();
@@ -143,23 +152,5 @@ namespace log4cpp {
         
         std::string convertedMessage;
         return convertedMessage;
-    }
-
-    QUITE_LONG PatternLayout::getMillisecondsTime()	{
-#ifdef LOG4CPP_HAVE_GETTIMEOFDAY
-        struct timeval tv;
-        
-        gettimeofday(&tv, NULL);
-        return (((QUITE_LONG)tv.tv_sec)*1000000.0+(QUITE_LONG)tv.tv_usec)/1000.0;
-#else
-#ifdef _WIN32
-        return GetTickCount();
-#else
-#error no gettimeofday or GetTickCount available on this platform
-#endif
-#endif
-	}
-    QUITE_LONG PatternLayout::millisecondsSinceCreation() {
-        return getMillisecondsTime() - millisecondsAtCreation;
     }
 }

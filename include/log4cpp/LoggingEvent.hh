@@ -10,10 +10,12 @@
 #ifndef _LOG4CPP_LOGGINGEVENT_HH
 #define _LOG4CPP_LOGGINGEVENT_HH
 
+#include "log4cpp/Portability.hh"
 #include <string>
-#include <time.h>
+
 #include "log4cpp/Export.hh"
 #include "log4cpp/Priority.hh"
+#include "log4cpp/TimeStamp.hh"
 
 /**
  * The top level namespace for all 'Log for C++' types and classes.
@@ -64,7 +66,7 @@ namespace log4cpp {
 
         /** The number of seconds elapsed since the epoch 
             (1/1/1970 00:00:00 UTC) until logging event was created. */
-        time_t timeStamp;
+        TimeStamp timeStamp;
     };
 }
 
