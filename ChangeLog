@@ -1,5 +1,9 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-06-17 Aaron Ingram <ai8@yahoo.com>
+	* Fixed default port for syslog in SimpleConfigurator.cpp
+	* Added a sample configuration file: log4cpp.cfg 
+
 2002-06-17 David Resnick <dresnick@mobilespear.com>
     * Merge of MS Threads & DLL Build support patch by Aaron Ingram <ai8@yahoo.com>
     with these changes:
