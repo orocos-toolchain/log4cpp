@@ -109,6 +109,10 @@ SOURCE=..\..\src\Filter.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\FixedContextCategory.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\HierarchyMaintainer.cpp
 # End Source File
 # Begin Source File
@@ -148,6 +152,10 @@ SOURCE=..\..\src\Priority.cpp
 SOURCE=..\..\src\SimpleLayout.cpp
 # End Source File
 # Begin Source File
+
+SOURCE=..\..\src\StringQueueAppender.cpp
+# End Source File
+# Begin Source File
 # Begin Group "Header Files"
 
 # PROP Default_Filter "h;hh;hpp;hxx;hm;inl"
@@ -178,6 +186,10 @@ SOURCE=..\..\include\log4cpp\FileAppender.hh
 # Begin Source File
 
 SOURCE=..\..\include\log4cpp\Filter.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\FixedContextCategory.hh
 # End Source File
 # Begin Source File
 
@@ -222,6 +234,10 @@ SOURCE=..\..\include\log4cpp\Priority.hh
 # Begin Source File
 
 SOURCE=..\..\include\log4cpp\SimpleLayout.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\StringQueueAppender.hh
 # End Source File
 # Begin Source File
 
