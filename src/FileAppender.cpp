@@ -27,16 +27,24 @@
 namespace log4cpp {
 
     FileAppender::FileAppender(const std::string& name, 
-                               const std::string& fileName) : 
+                               const std::string& fileName,
+                               bool append,
+                               mode_t mode) : 
             LayoutAppender(name),
-            _fileName(fileName) {
-        _fd = ::open(_fileName.c_str(), O_CREAT | O_APPEND | O_WRONLY, 00644);
+            _fileName(fileName),
+            _flags(O_CREAT | O_APPEND | O_WRONLY),
+            _mode(mode) {
+        if (!append)
+            _flags |= O_TRUNC;
+        _fd = ::open(_fileName.c_str(), _flags, _mode);
     }
     
     FileAppender::FileAppender(const std::string& name, int fd) :
         LayoutAppender(name),
         _fileName(""),
-        _fd(fd) {
+        _fd(fd),
+        _flags(O_CREAT | O_APPEND | O_WRONLY),
+        _mode(00644) {
     }
     
     FileAppender::~FileAppender() {
@@ -50,6 +58,26 @@ namespace log4cpp {
         }
     }
 
+    void FileAppender::setAppend(bool append) {
+        if (append) {
+            _flags &= ~O_TRUNC;
+        } else {
+            _flags |= O_TRUNC;
+        }
+    }
+
+    bool FileAppender::getAppend() const {
+        return (_flags & O_TRUNC) == 0;
+    }
+
+    void FileAppender::setMode(mode_t mode) {
+        _mode = mode;
+    }
+
+    mode_t FileAppender::getMode() const {
+        return _mode;
+    }
+
     void FileAppender::_append(const LoggingEvent& event) {
         std::string message(_getLayout().format(event));
         if (!::write(_fd, message.data(), message.length())) {
@@ -59,11 +87,11 @@ namespace log4cpp {
 
     bool FileAppender::reopen() {
         if (_fileName != "") {
-            int fd = ::open(_fileName.c_str(), O_CREAT | O_APPEND | O_WRONLY, 00644);
+            int fd = ::open(_fileName.c_str(), _flags, _mode);
             if (fd < 0)
                 return false;
             else {
-	        if (_fd!=-1)
+	        if (_fd != -1)
                     ::close(_fd);
                 _fd = fd;
                 return true;
