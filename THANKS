@@ -13,6 +13,5 @@ Steve Ostlind <s.ostlind@pentasafe.com> (MSVC++ support, various fixes)
 Marcel Harkema <marcel@debian.org> (Debian packaging)
 Uwe Jäger <jaeger@varial.de> (Borland support)
 Walter Stroebel <walter.stroebel@lifeline.nl> (RemoteSyslogAppender)
-
-
+Glen Scott <glen_s@yahoo.com> (PatternLayout)
 
