@@ -22,13 +22,10 @@
 
 namespace log4cpp {
 
-    HierarchyMaintainer* HierarchyMaintainer::_defaultMaintainer = NULL;
-
     HierarchyMaintainer& HierarchyMaintainer::getDefaultMaintainer() {
-        if (!_defaultMaintainer)
-            _defaultMaintainer = new HierarchyMaintainer();
+        static HierarchyMaintainer defaultMaintainer;
 
-        return *_defaultMaintainer;
+        return defaultMaintainer;
     }
 
     HierarchyMaintainer::HierarchyMaintainer() {
@@ -68,7 +65,6 @@ namespace log4cpp {
         if (NULL == result) {            
             if (name == "") {
                 result = new Category(name, NULL, Priority::INFO);
-                result->addAppender(new FileAppender("_", ::dup(fileno(stderr))));
             } else {
                 std::string parentName;
                 size_t dotIndex = name.find_last_of('.');
