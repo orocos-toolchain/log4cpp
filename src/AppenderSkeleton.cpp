@@ -28,7 +28,7 @@ namespace log4cpp {
     }
     
     void AppenderSkeleton::doAppend(const LoggingEvent& event) {
-        if ((Priority::NOTSET == _threshold) || (event.priority >= _threshold)) {
+        if ((Priority::NOTSET == _threshold) || (event.priority <= _threshold)) {
             if (!_filter || (_filter->decide(event) != Filter::DENY)) {
                 _append(event);
             }

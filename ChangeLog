@@ -1,5 +1,11 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-02-05 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/AppenderSkeleton.cpp: doAppend(): correct comparison of 
+	_threshold against event priority (bug #513481).
+
+	* tests/Clock.cpp: add missing 'std::'.
+
 2002-01-27 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* Release as 0.2.7
 	
