@@ -13,15 +13,23 @@
 #include <string>
 
 /*
- * Work around rudeness in windows.h on Win32.
+ * Optionally work around rudeness in windows.h on Win32.
  */
 #ifdef ERROR
+#ifdef LOG4CPP_FIX_ERROR_COLLISION
+
+namespace log4cpp {
+    static const int _tmpERRORValue = ERROR;
+}
 
 #undef ERROR
-enum {
-    ERROR = 0
-};
+    static const int ERROR = log4cpp::_tmpERRORValue;
 #define ERROR ERROR
+
+#else
+#error Naming collision for 'ERROR' detected. Please read the FAQ for a \
+       workaround. 
+#endif // LOG4CPP_FIX_ERROR_COLLISION 
 
 #endif // ERROR
 

@@ -1,4 +1,4 @@
-TESTS = testCategory testFixedContextCategory testNDC
+TESTS = testCategory testFixedContextCategory testNDC testErrorCollision
 check_PROGRAMS = $(TESTS)
 
 noinst_PROGRAMS = testmain testbench
@@ -19,3 +19,6 @@ testNDC_LDADD = $(top_builddir)/src/liblog4cpp.la
 
 testbench_SOURCES = Clock.cpp Clock.hh testbench.cpp 
 testbench_LDADD = $(top_builddir)/src/liblog4cpp.la
+
+testErrorCollision_SOURCES = testErrorCollision.cpp
+testErrorCollision_LDADD = $(top_builddir)/src/liblog4cpp.la

@@ -1,5 +1,11 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-06-01 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* Priority.hh: #define ERROR workaround try 3, put fix inside 
+	LOG4CPP_FIX_ERROR_COLLISION switch.
+	* tests/testErrorCollision.cpp, tests/Makefile.am: added test for
+	#define ERROR workaround.
+	
 2001-05-29 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* Priority.hh: #define ERROR workaround try 2.
 	* Merge of Borland support patch by Uwe Jäger <jaeger@varial.de>.

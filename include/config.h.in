@@ -3,6 +3,12 @@
 /* Define if you have the syslog function.  */
 #undef HAVE_SYSLOG
 
+/* Define if you have the <io.h> header file.  */
+#undef HAVE_IO_H
+
+/* Define if you have the <unistd.h> header file.  */
+#undef HAVE_UNISTD_H
+
 /* Define if you have the idsa library (-lidsa).  */
 #undef HAVE_LIBIDSA
 
