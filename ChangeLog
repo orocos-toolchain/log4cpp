@@ -6,6 +6,16 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	* tests/testCategory.cpp: rename appender 'default' to 'default2'.
 
 	* configure.in: upped version to 0.2.7rc1 and LT_VERSION to 3:1:2
+
+	* src/SimpleConfigurator.cpp, tests/testFixedContextCategory.cpp,
+	tests/testPattern.cpp, tests/testbench.cpp, tests/testmain.cpp:
+	replaced setAppender() with addAppender().
+
+	* include/log4cpp/Category.hh: update doxygen comments.
+
+	* include/log4cpp/FixedContextCategory.hh, 
+	src/FixedContextCategory.cpp: sync methods for multiple Appender
+	support.
 	
 2002-01-20 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/Category.hh, src/Category.cpp, 
