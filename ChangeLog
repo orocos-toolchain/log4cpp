@@ -11,6 +11,8 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	not available.
 
 	* include/log4cpp/RemoteSyslogAppender.hh: added SyslogFacility type.
+
+	* src/SimpleConfigurator.cpp: added 'stdout' and 'stderr' appenders.
 	
 2002-01-09 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/SimpleConfigurator.cpp: skip all whitespace before PatternLayout 

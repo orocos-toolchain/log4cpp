@@ -79,6 +79,14 @@ namespace log4cpp {
                         appender =
                             new log4cpp::OstreamAppender(categoryName, &std::cout);
                     }
+                    else if (appenderName.compare("stdout") == 0) {
+                        appender =
+                            new log4cpp::FileAppender(categoryName, dup(STDOUT_FILENO));
+                    }
+                    else if (appenderName.compare("stderr") == 0) {
+                        appender =
+                            new log4cpp::FileAppender(categoryName, dup(STDERR_FILENO));
+                    }
 #if LOG4CPP_HAVE_SYSLOG
                     else if (appenderName.compare("syslog") == 0) {
                         std::string syslogName;
