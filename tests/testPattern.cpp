@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
     appender->setLayout(layout);
 
     log4cpp::Category& root = log4cpp::Category::getRoot();
-    root.setAppender(appender);
+    root.addAppender(appender);
        root.setPriority(log4cpp::Priority::ERROR);
     
     log4cpp::Category& sub1 = 

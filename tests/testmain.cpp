@@ -38,11 +38,11 @@ int main(int argc, char** argv) {
 	appender->setLayout(new log4cpp::BasicLayout());
 
 	log4cpp::Category& root = log4cpp::Category::getRoot();
-	root.setAppender(syslogAppender);
+	root.addAppender(syslogAppender);
 	root.setPriority(log4cpp::Priority::ERROR);
 
 	log4cpp::Category& sub1 = log4cpp::Category::getInstance(std::string("sub1"));
-	sub1.setAppender(appender);
+	sub1.addAppender(appender);
 
 	log4cpp::Category& sub2 = log4cpp::Category::getInstance(std::string("sub1.sub2"));
 

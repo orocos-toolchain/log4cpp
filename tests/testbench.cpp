@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
         new log4cpp::FileAppender("stderr", fileno(stderr));
     appender->setLayout(new log4cpp::BasicLayout());
     fileAppender->setLayout(new log4cpp::BasicLayout());
-    root.setAppender(appender);
+    root.addAppender(appender);
     root.setPriority(log4cpp::Priority::ERROR);    
 
     Clock  clock;
@@ -54,7 +54,7 @@ int main(int argc, char* argv[])
 
     {
 	std::string str(size, 'X');
-        root.setAppender(fileAppender);
+        root.addAppender(fileAppender);
 
 	clock.start();
 	for (int i = 0; i < count; i++) root.error(str);
