@@ -1,5 +1,8 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-02-18 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* INSTALL: added some platform specific build instructions.
+	
 2002-02-11 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* configure.in: integrated check of omnithreads.
 	* m4/BB_CHECK_OMNITHREADS.m4: added

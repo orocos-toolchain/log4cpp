@@ -18,4 +18,41 @@ Build Requiremnts.
 The primary development platform for log4cpp is RedHat Linux 7.0, which contains g++ version "2.96 20000731 (Red Hat Linux 7.0)". As a consequence new versions may occasinally break compatibility with older g++ versions. Please report these compile problems as bugs. The aim is to have log4cpp compile on GNU/Linux, BSD and UNIX platforms with g++ >= 2.91. As of 0.2.2 Win32 has been added to this list.
 
 For the generation of documentation you need to have installed the Doxygen package created by Dimitry van Heesch (see http://www.stack.nl/~dimitri/doxygen/index.html). The current documenation has been generated with Doxygen 1.2.5, older versions may or may not work.
+
+Platform Specific Build Instructions
+====================================
  
+POSIX - g++
+---------
+Use './configure; make; make install'. 
+g++ >= 2.91 is required. 
+ 
+Solaris - Sun CC compiler
+---------------
+Compilation with Suns CC compiler requires setting some enviroment variables.
+Also static libraries appear not to work. In short do:
+ 
+CC=CC CXX=CC LD="CC -KPIC" ./configure --disable-static
+
+Win32 - MSVC++ 6
+--------------
+Use the workspace and project files in subdirectory msvc6.
+Building log4cpp with MSVC++ 5 is not supported and will not be, unless 
+someone can find a way to do so without mutilating the source code.
+
+Win32 - Borland C++ Builder 5
+---------------------------
+Use the project and make files in subdirectory bcb5
+
+Win32 - Cygwin
+------------
+Use './configure; make; make install'. 
+Be warned that there have been very few success or failure reports for this
+platform, so either it works very smoothly or noone actively uses log4cpp
+with Cygwin :-)
+
+OpenVMS
+-------
+Do the usual (I presume you know better what that is than I do). Edit 
+include/log4cpp/config-openvms.h if you need different settings.
+[Tony may want to add some wise words here]
