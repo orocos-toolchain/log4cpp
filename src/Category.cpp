@@ -20,29 +20,6 @@
 
 namespace log4cpp {
 
-    CategoryStream::CategoryStream(Category& category, Priority::Value priority) :
-        _category(category),
-        _priority(priority),
-        _buffer(NULL) {
-    }
-
-    CategoryStream::~CategoryStream() { 
-        flush();
-    }
-
-    CategoryStream& CategoryStream::operator<<(CategoryStream::Separator separator) {
-        flush();
-        return *this;
-    }
-
-    void CategoryStream::flush() {
-        if (_buffer) {
-            getCategory().log(getPriority(), _buffer->str());
-            delete _buffer;
-            _buffer = NULL;
-        }
-    }
-
     Category& Category::getRoot() {
         return getInstance("");
     }

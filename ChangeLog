@@ -1,5 +1,12 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-06-17 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/Category.hh, include/log4cpp/CategoryStream.hh,
+	include/log4cpp/Makefile.am, 
+	src/Category.cpp, src/CategoryStream.cpp, src/Makefile.am:
+	Put CategoryStream class into its own files.
+	
+
 2001-06-11 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* m4/AC_CREATE_PREFIX_CONFIG_H.m4: fix to overwrite 
 	include/log4cpp/config.h instead of append to it.

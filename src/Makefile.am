@@ -15,6 +15,7 @@ liblog4cpp_la_SOURCES = \
 	SimpleLayout.cpp \
 	BasicLayout.cpp \
 	Category.cpp \
+	CategoryStream.cpp \
 	HierarchyMaintainer.cpp \
 	LoggingEvent.cpp \
 	Priority.cpp \
