@@ -2,13 +2,19 @@ Description
 
 Log for C++ is a library of C++ classes for flexible logging to files, syslog (planned) and other destinations. It is modeled after the Log for Java library (http://www.log4j.org), staying as close to their API as is reasonable.
 
+Project information
+
 See the project page for more information: http://log4cpp.sourceforge.net.
-Please send comments/suggestions/bug reports to bastiaan.bakker@lifeline.nl.
+Please submit bug reports, patches or feature requests to the appriopiate 
+tracker on the SourceForge page (http://sourceforge.net/projects/log4cpp).
+The project also has forums for general discussion and a development mailing
+list for those interested in participating development of log4cpp.  
+Alternatively, if you wish to contact me directly, use:
+bastiaan.bakker@lifeline.nl.
 
 License
 
 As of version 0.2.1 this library is licensed under the Lesser General Public License instead of the General Public License. No further license changes are planned :-).
-
  
 Log for C++ (short name: log4cpp), a C++ library for flexible logging.
 Copyright (C) 2000,2001 LifeLine Networks bv

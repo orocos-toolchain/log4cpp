@@ -1,5 +1,12 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+	
+2001-04-06 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	Added class Filter, with which Appenders can filter out LoggingEvents
+	Added class AppenderSkeleton, base class for Appender implementations
+	Modified the Layout interface: it now returns a std::string instead of
+	a char*.
+	
 2001-03-11 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	Added LayoutAppender. Changed Layout ownership for Appenders: they
 	now own their Appender.

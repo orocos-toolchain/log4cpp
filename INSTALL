@@ -1,17 +1,21 @@
 Log for C++ installation.
 =========================
 
-As of version 0.2.0 log4cpp can be build using configure. Simply do:
+Log4cpp has been succesfully build on Linux (g++ >= 2.91), Tru64 UNIX (DEC++) and Win32 (MSVC6++). Very likely, it will work on other POSIX platforms too. If you do use log4cpp on a platform not listed yet, please drop us a note.
+
+As of version 0.2.0 log4cpp can be build using configure on platforms supporting it. Simply do:
 ./configure
 make
 make install
 
 This will install log4cpp under /usr/local. To install in another localation specify --prefix=<location> when running configure. 
 
+On Win32, use the project files in the msvc6 dir to build the library and the test programs.
+
 Build Requiremnts.
 ==================
 
-The primary development platform for log4cpp is RedHat Linux 7.0, which contains g++ version "2.96 20000731 (Red Hat Linux 7.0)". As a consequence new versions may occasinally break compatibility with older g++ versions. Please report these compile problems as bugs. The aim is to have log4cpp compile on GNU/Linux BSD and UNIX platforms with g++ >= 2.91. 
+The primary development platform for log4cpp is RedHat Linux 7.0, which contains g++ version "2.96 20000731 (Red Hat Linux 7.0)". As a consequence new versions may occasinally break compatibility with older g++ versions. Please report these compile problems as bugs. The aim is to have log4cpp compile on GNU/Linux, BSD and UNIX platforms with g++ >= 2.91. As of 0.2.2 Win32 has been added to this list.
 
-For the generation of documentation you need to have installed the Doxygen package created by Dimitry van Heesch (see http://www.stack.nl/~dimitri/doxygen/index.html). The current documenation has been generated with Doxygen 1.2.1, older versions may or may not work.
+For the generation of documentation you need to have installed the Doxygen package created by Dimitry van Heesch (see http://www.stack.nl/~dimitri/doxygen/index.html). The current documenation has been generated with Doxygen 1.2.5, older versions may or may not work.
  
