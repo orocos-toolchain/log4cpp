@@ -22,3 +22,5 @@ liblog4cppinclude_HEADERS =  \
 	Log4cppCleanup.hh \
 	Filter.hh \
 	Config.hh
+
+EXTRA_DIST = Config.hh.in
