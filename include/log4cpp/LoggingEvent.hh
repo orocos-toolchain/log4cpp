@@ -58,8 +58,7 @@ namespace log4cpp {
         Priority::Value priority;
 
         /** The name of thread in which this logging event was generated,
-            e.g. the PID. Because MSVC++ crashes if it is declared as a 
-            reference at this point I made it a member for now. 
+            e.g. the PID. 
         */
         const std::string threadName;
 

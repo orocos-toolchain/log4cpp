@@ -1,6 +1,8 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
 2001-10-04 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/Priority.cpp: fix conversion from PriorityLevel to PriorityName.
+	
 	* include/log4cpp/Makefile.am, src/Makefile.am, tests/Makefile.am:
 	Added PatternLayout files 
 	* configure.in, Makefile.am, m4/C_C_INT64_T: Added check for int64_t.
