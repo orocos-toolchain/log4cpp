@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <iostream>
 
-#include "log4cpp/Category.hh"
-#include "log4cpp/OstreamAppender.hh"
-#include "log4cpp/FileAppender.hh"
-#include "log4cpp/BasicLayout.hh"
-#include "log4cpp/PatternLayout.hh"
-#include "log4cpp/TimeStamp.hh"
+#include <log4cpp/Category.hh>
+#include <log4cpp/OstreamAppender.hh>
+#include <log4cpp/FileAppender.hh>
+#include <log4cpp/BasicLayout.hh>
+#include <log4cpp/PatternLayout.hh>
+#include <log4cpp/TimeStamp.hh>
 
 #include "Clock.hh"
 

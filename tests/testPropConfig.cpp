@@ -1,7 +1,7 @@
 // testConfig.cpp : Derived from testPattern.cpp.
 //
 
-#include "log4cpp/Portability.hh"
+#include <log4cpp/Portability.hh>
 
 #ifdef WIN32
 #include <windows.h>
@@ -12,8 +12,8 @@
 
 #include <iostream>
 
-#include "log4cpp/Category.hh"
-#include "log4cpp/PropertyConfigurator.hh"
+#include <log4cpp/Category.hh>
+#include <log4cpp/PropertyConfigurator.hh>
 
 int main(int argc, char* argv[])
 {

@@ -1,4 +1,5 @@
-#include "log4cpp/Filter.hh"
+#include <log4cpp/Filter.hh>
+#include <iostream>
 
 class TestFilter : public log4cpp::Filter {
     public:

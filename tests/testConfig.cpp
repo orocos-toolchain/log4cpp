@@ -1,7 +1,7 @@
 // testConfig.cpp : Derived from testPattern.cpp.
 //
 
-#include "log4cpp/Portability.hh"
+#include <log4cpp/Portability.hh>
 
 #ifdef WIN32
 #include <windows.h>
@@ -12,17 +12,17 @@
 
 #include <stdlib.h>
 
-#include "log4cpp/Category.hh"
-#include "log4cpp/Appender.hh"
-#include "log4cpp/OstreamAppender.hh"
-#include "log4cpp/FileAppender.hh"
-#include "log4cpp/Layout.hh"
-#include "log4cpp/BasicLayout.hh"
-#include "log4cpp/Priority.hh"
-#include "log4cpp/NDC.hh"
-#include "log4cpp/PatternLayout.hh"
+#include <log4cpp/Category.hh>
+#include <log4cpp/Appender.hh>
+#include <log4cpp/OstreamAppender.hh>
+#include <log4cpp/FileAppender.hh>
+#include <log4cpp/Layout.hh>
+#include <log4cpp/BasicLayout.hh>
+#include <log4cpp/Priority.hh>
+#include <log4cpp/NDC.hh>
+#include <log4cpp/PatternLayout.hh>
 
-#include "log4cpp/SimpleConfigurator.hh"
+#include <log4cpp/SimpleConfigurator.hh>
 
 double calcPi()
 {
