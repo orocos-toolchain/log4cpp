@@ -30,16 +30,12 @@ namespace log4cpp {
         public:
 
         /**
-         * Empty struct which acts as a special token to separe log messages 
-         * in a CategoryStream.
+         * Enumeration of special 'Separators'. Currently only contains the
+         * 'ENDLINE' separator, which separates two log messages.
          **/
-        struct Separator {
-        };
-
-        /**
-         * This Separator separates two log messages in a CategoryStream
-         **/
-        static Separator ENDLINE;
+        typedef enum {
+            ENDLINE
+        } Separator;
 
         /**
          * Construct a CategoryStream for given Category with given priority.
@@ -73,7 +69,7 @@ namespace log4cpp {
          * @param Separator The Separator
          * @returns A reference to itself.
          **/
-        CategoryStream& operator<<(const Separator& separator);
+        CategoryStream& operator<<(Separator separator);
 
         /**
          * Flush the contents of the stream buffer to the Category and
@@ -92,9 +88,8 @@ namespace log4cpp {
                     if (!(_buffer = new ostringstream)) {
                         // XXX help help help
                     }
-                } else {
-                    (*_buffer) << t;
-                } 
+                }
+                (*_buffer) << t;
             }
             return *this;
         }

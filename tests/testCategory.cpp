@@ -52,15 +52,8 @@ int main(int argc, char** argv) {
 
     sub2.warnStream() << "streamed warn";
 
-    /* XXX 
-     * MSC++ barfs on "ambiguous operators" and char[6] undefined input type
-     * May be caused by improper streaming support in Category. 
-     * Anyone with more iostream expertise, look at this.
-     */ 
-#ifndef _MSC_VER 
-    sub2 << log4cpp::Priority::WARN << "warn2" << " warn3" << 
-        log4cpp::CategoryStream::ENDLINE << " warn4";
-#endif
+    sub2 << log4cpp::Priority::WARN << "warn2.." << "..warn3..value=" << 0 << 
+        log4cpp::CategoryStream::ENDLINE << "..warn4";
 
     log4cpp::Category::shutdown();
 }

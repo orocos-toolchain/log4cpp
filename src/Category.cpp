@@ -19,8 +19,6 @@
 
 namespace log4cpp {
 
-    CategoryStream::Separator CategoryStream::ENDLINE;
-
     CategoryStream::CategoryStream(Category& category, Priority::Value priority) :
         _category(category),
         _priority(priority),
@@ -31,7 +29,7 @@ namespace log4cpp {
         flush();
     }
 
-    CategoryStream& CategoryStream::operator<<(const CategoryStream::Separator& separator) {
+    CategoryStream& CategoryStream::operator<<(CategoryStream::Separator separator) {
         flush();
         return *this;
     }
