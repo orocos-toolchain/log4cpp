@@ -7,7 +7,6 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include <time.h>
 #include "log4cpp/LoggingEvent.hh"
 
 namespace log4cpp {

@@ -11,6 +11,7 @@
 #define _LOG4CPP_LOGGINGEVENT_HH
 
 #include <string>
+#include <time.h>
 
 /**
  * The top level namespace for all 'Log for C++' types and classes.
