@@ -107,14 +107,6 @@ namespace log4cpp {
 	
 	if ((_socket = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
 	    abort ();
-	} else {
-	    sockaddr_in sain;
-	    sain.sin_family = AF_INET;
-	    sain.sin_port   = htons (_portNumber);
-	    sain.sin_addr.s_addr = htonl (_ipAddr);
-	    if (connect (_socket, (struct sockaddr *) &sain, sizeof (sain)) < 0) {
-		abort ();
-	    }
 	}
     }
 
@@ -141,12 +133,14 @@ namespace log4cpp {
 	char *buf = new char [len];
         int priority = toSyslogPriority(event.priority);
 	sprintf (buf, "<%d>", priority);
-	memcpy (buf + strlen (buf), message, len - 16);
+	int len2 = strlen (buf);
+	memcpy (buf + len2, message, len - 16);
 	sockaddr_in sain;
 	sain.sin_family = AF_INET;
 	sain.sin_port   = htons (_portNumber);
-        sain.sin_addr.s_addr = htonl (_ipAddr);
-	int r = sendto (_socket, buf, (int) len, 0, (struct sockaddr *) &sain, sizeof (sain));
+	// NO, do NOT use htonl on _ipAddr. Is already in network order.
+        sain.sin_addr.s_addr = _ipAddr;
+	int r = sendto (_socket, buf, len - 16 + len2, 0, (struct sockaddr *) &sain, sizeof (sain));
 	printf ("sendto: %d\n", r);
 	delete buf;
     }
