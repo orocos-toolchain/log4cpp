@@ -160,8 +160,5 @@ namespace log4cpp {
         }
         
         return message.str();
-        
-        std::string convertedMessage;
-        return convertedMessage;
     }
 }
