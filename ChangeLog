@@ -1,5 +1,11 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-01-25 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* configure.in: added bcb5/testConfig/Makefile to AC_OUTPUT
+
+	* include/log4cpp/FixedContextCategory.hh: removed superfluous class
+	qualification for ownsAppender().
+	
 2002-01-25 Uwe Jäger <jaeger@varial.de>
 	* src/SimpleConfigurator.cpp: Replaced STDOUT_FILENO and STDERR_FILENO
 	with fileno(stdout) and fileno(stderr) which seems to be more portable.
