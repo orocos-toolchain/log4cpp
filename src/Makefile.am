@@ -23,9 +23,10 @@ liblog4cpp_la_SOURCES = \
 	CategoryStream.cpp \
 	HierarchyMaintainer.cpp \
 	Configurator.cpp \
-	ConfiguratorSkeleton.cpp \
 	SimpleConfigurator.cpp \
 	PropertyConfigurator.cpp \
+	PropertyConfiguratorImpl.hh \
+	PropertyConfiguratorImpl.cpp \
 	LoggingEvent.cpp \
 	Priority.cpp \
 	NDC.cpp \
@@ -33,6 +34,10 @@ liblog4cpp_la_SOURCES = \
 	Filter.cpp \
 	Log4cppCleanup.cpp \
 	TimeStamp.cpp \
+	StringUtil.hh \
+	StringUtil.cpp \
+	Properties.hh \
+	Properties.cpp \
 	Win32DebugAppender.cpp \
 	NTEventLogAppender.cpp \
 	DllMain.cpp
