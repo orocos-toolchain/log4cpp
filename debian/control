@@ -1,9 +1,9 @@
 Source: log4cpp
-Section: devel
+Section: contrib/devel
 Priority: optional
 Maintainer: Marcel Harkema <marcel@debian.org>
 Standards-Version: 3.5.2
-Build-Depends: debhelper, task-c++-dev, doxygen, graphviz
+Build-Depends: debhelper (>> 3.0.0), libtool, doxygen, graphviz
 
 Package: liblog4cpp0
 Architecture: any
@@ -15,7 +15,7 @@ Description: A C++ library for flexible logging
  Java library (http://jakarta.apache.org/log4j/), staying as close to
  their API as is reasonable.
 
-Package: liblog4cpp0-dev
+Package: liblog4cpp-dev
 Architecture: any
 Depends: liblog4cpp0 (= ${Source-Version}), libc6-dev
 Description: A C++ library for flexible logging (development files)
@@ -24,8 +24,8 @@ Description: A C++ library for flexible logging (development files)
  Java library (http://jakarta.apache.org/log4j/), staying as close to
  their API as is reasonable.
 
-Package: liblog4cpp0-doc
-Architecture: any
+Package: liblog4cpp-doc
+Architecture: all
 Description: A C++ library for flexible logging (documentation)
  Log for C++ is a library of C++ classes for flexible logging to files,
  syslog and other destinations. It is modeled after the Log for

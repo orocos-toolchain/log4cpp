@@ -1,14 +1,10 @@
-log4cpp (0.2.3b-1) unstable; urgency=low
+log4cpp (0.2.4b-0) unstable; urgency=low
 
-  * New upstream version.
+  * The debian packaging files in this directory build un-official packages. 
+    Official log4cpp debian packages are available from the debian archives,
+    see http://packages.debian.org/liblog4cpp*.
 
- -- Marcel Harkema <marcel@debian.org>  Wed, 11 April 2001 15:59:32 +0100
-
-log4cpp (0.2.2-1) unstable; urgency=low
-
-  * Initial release. (Closes: #88439)
-
- -- Marcel Harkema <marcel@debian.org>  Sat, 7 April 2001 19:24:11 +0100
+ -- Marcel Harkema <marcel@debian.org>  Sat, 21 April 2001 13:36:10 +0200
 
 Local variables:
 mode: debian-changelog
