@@ -208,11 +208,11 @@ namespace log4cpp {
 
     struct FormatModifierComponent : public PatternLayout::PatternComponent {
         FormatModifierComponent(PatternLayout::PatternComponent* component,
-                                int minWidth, int maxWidth) :
+                                size_t minWidth, size_t maxWidth, bool alignLeft) :
             _component(component) , 
-            _minWidth(std::abs(minWidth)),
+            _minWidth(minWidth),
             _maxWidth(maxWidth),
-            _alignLeft(minWidth < 0) {
+            _alignLeft(alignLeft) {
         }
 
         virtual ~FormatModifierComponent() {
@@ -223,7 +223,7 @@ namespace log4cpp {
             std::ostringstream s;
             _component->append(s, event);
             std::string msg = s.str();
-            if (_maxWidth > 0 && _maxWidth < msg.length())) {
+            if (_maxWidth > 0 && _maxWidth < msg.length()) {
                 msg.erase(_maxWidth);
             }
             int fillCount = _minWidth - msg.length();
@@ -240,8 +240,8 @@ namespace log4cpp {
 
         private:
         PatternLayout::PatternComponent* _component;
-        int _minWidth;
-        int _maxWidth;
+        size_t _minWidth;
+        size_t _maxWidth;
         bool _alignLeft;
     };
 
@@ -281,7 +281,7 @@ namespace log4cpp {
         char ch;
         PatternLayout::PatternComponent* component = NULL;
         int minWidth = 0;
-        int maxWidth = 0;
+        size_t maxWidth = 0;
         clearConversionPattern();
         while (conversionStream.get(ch)) {
             if (ch == '%') {
@@ -364,7 +364,7 @@ namespace log4cpp {
                         literal = "";
                     }
                     if ((minWidth != 0) || (maxWidth != 0)) {
-                        component = new FormatModifierComponent(component, minWidth, maxWidth);
+                        component = new FormatModifierComponent(component, std::abs(minWidth), maxWidth, minWidth < 0);
                         minWidth = maxWidth = 0;
                     }
                     _components.push_back(component);
