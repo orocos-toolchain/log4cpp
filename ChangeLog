@@ -1,5 +1,15 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-11-29 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/Portability.hh: use config-openvms.h based on 
+	__OPENVMS__ flag.
+
+	* src/snprintf.c: replaced static_cast with C-style cast: this file
+	should remain C only.
+
+	* configure.in, Makefile.am: added openvms subdirectory.
+	* openvms/Makefile.am: added empty Makefile template.
+
 2001-11-28 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/snprintf.c: added portable snprintf 2.2 from 
 	http://www.ijs.si/software/snprintf/

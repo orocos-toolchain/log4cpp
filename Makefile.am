@@ -4,7 +4,7 @@ else
 SUBDIRS = debian msvc6 bcb5 config src include tests
 endif
 
-DIST_SUBDIRS = debian msvc6 bcb5 config src include doc tests
+DIST_SUBDIRS = debian msvc6 bcb5 openvms config src include doc tests
 
 bin_SCRIPTS = log4cpp-config
 
