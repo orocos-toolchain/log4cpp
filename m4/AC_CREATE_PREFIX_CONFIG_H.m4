@@ -74,7 +74,7 @@ if test "$ac_prefix_conf_INP" = "_"; then
 fi
 changequote([, ])dnl
 if test -z "$ac_prefix_conf_PKG" ; then
-   AC_MSG_ERROR([no prefix ${PACKAGE_TARNAME} for _PREFIX_PKG_CONFIG_H])
+   AC_MSG_ERROR([no prefix for _PREFIX_PKG_CONFIG_H])
 else
   AC_MSG_RESULT(creating $ac_prefix_conf_OUT - prefix $ac_prefix_conf_UPP for $ac_prefix_conf_INP defines)
   if test -f $ac_prefix_conf_INP ; then
