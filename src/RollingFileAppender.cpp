@@ -28,8 +28,8 @@ namespace log4cpp {
                                              bool append,
                                              mode_t mode) :
         FileAppender(name, fileName, append, mode),
-        _maxFileSize(maxFileSize),
-        _maxBackupIndex(maxBackupIndex) {
+        _maxBackupIndex(maxBackupIndex),
+        _maxFileSize(maxFileSize) {
     }
 
     void RollingFileAppender::setMaxBackupIndex(unsigned int maxBackups) { 

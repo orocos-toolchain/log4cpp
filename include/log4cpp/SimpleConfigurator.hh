@@ -11,14 +11,9 @@
 #include <log4cpp/Portability.hh>
 #include <iostream>
 #include <string>
-#include <stdexcept>
+#include <log4cpp/Configurator.hh>
 
 namespace log4cpp {
-
-    class LOG4CPP_EXPORT ConfigureFailure : public std::runtime_error {
-    public:
-        ConfigureFailure(const std::string& reason);
-    };
 
     /**
      * This class implements a simple Configurator for log4cpp.

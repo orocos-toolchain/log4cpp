@@ -40,10 +40,6 @@
 
 namespace log4cpp {
 
-    ConfigureFailure::ConfigureFailure(const std::string& reason) :
-        std::runtime_error(reason) {
-    }
-    
     void SimpleConfigurator::configure(const std::string& initFileName) throw (ConfigureFailure) {
         std::ifstream initFile(initFileName.c_str());
         

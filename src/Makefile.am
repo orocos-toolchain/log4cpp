@@ -22,7 +22,10 @@ liblog4cpp_la_SOURCES = \
 	Category.cpp \
 	CategoryStream.cpp \
 	HierarchyMaintainer.cpp \
+	Configurator.cpp \
+	ConfiguratorSkeleton.cpp \
 	SimpleConfigurator.cpp \
+	PropertyConfigurator.cpp \
 	LoggingEvent.cpp \
 	Priority.cpp \
 	NDC.cpp \

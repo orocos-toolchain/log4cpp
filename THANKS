@@ -21,3 +21,4 @@ Brendan B. Boerner <bboerner@texas.net> (Multiple Appender support for
 Paulo Pizarro <paulo.pizarro@digitro.com.br> (RollingFileAppender)
 David Resnick <dresnick@mobilespear.com> (NTEventAppender, integration work)
 Aaron Ingram <ai8@yahoo.com> (MSThreads support)
+Alan Anderson <alan@rushmore.com> (Win32DebugAppender, PropertyConfigurator)
