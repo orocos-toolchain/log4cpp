@@ -67,5 +67,10 @@
 #define WIN32
 #endif
 
+/* use Log4cppCleanup class */
+#ifndef LOG4CPP_USE_CLEANUP
+#define LOG4CPP_USE_CLEANUP
+#endif
+
 /* _INCLUDE_LOG4CPP_CONFIG_WIN32_H */
 #endif
