@@ -15,4 +15,5 @@ liblog4cppinclude_HEADERS =  \
 	LoggingEvent.hh \
 	Priority.hh \
 	NDC.hh \
+	StreamUtil.hh \
 	config.h
