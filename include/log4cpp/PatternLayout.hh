@@ -62,7 +62,7 @@ namespace log4cpp {
          * Sets the format of log lines handled by this
          * PatternLayout. By default, set to "%%m%%n".<br>
          * Format characters are as follows:<br>
-         * <li><b>%%%%</b> - a single percent sign</li>
+         * <li><b>%%</b> - a single percent sign</li>
          * <li><b>%%c</b> - the category</li>
          * <li><b>%%d</b> - the date\n
          *  Date format: The date format character may be followed by a date format 
