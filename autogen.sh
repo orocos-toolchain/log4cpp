@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Adding libtools."
-libtoolize --automake
+libtoolize --force --automake
 
 echo "Building macros."
 aclocal -I m4 $ACLOCAL_FLAGS

@@ -15,6 +15,7 @@ liblog4cpp_la_SOURCES = \
 	RemoteSyslogAppender.cpp \
 	SimpleLayout.cpp \
 	BasicLayout.cpp \
+	PatternLayout.cpp \
 	Category.cpp \
 	CategoryStream.cpp \
 	HierarchyMaintainer.cpp \

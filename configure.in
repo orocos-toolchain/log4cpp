@@ -63,11 +63,13 @@ AC_CHECK_HEADERS([io.h])
 
 # Checks local idioms
 # ----------------------------------------------------------------------------
+AC_C_INT64_T
 AC_CXX_HAVE_SSTREAM
 AC_FUNC_SNPRINTF
 
 # syslog_test
 AC_CHECK_FUNCS([syslog])
+AC_CHECK_FUNCS([gettimeofday])
 
 # Checks for libraries
 # ----------------------------------------------------------------------------

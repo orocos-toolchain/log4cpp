@@ -14,6 +14,7 @@ liblog4cppinclude_HEADERS =  \
 	Layout.hh \
 	SimpleLayout.hh \
 	BasicLayout.hh \
+	PatternLayout.hh \
 	Category.hh \
 	CategoryStream.hh \
 	HierarchyMaintainer.hh \
