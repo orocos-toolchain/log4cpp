@@ -165,6 +165,7 @@ int main(int argc, char* argv[])
 	std::cout << std::endl << "  fprintf:        " << ((float)clock.elapsed()) / count << " us" << std::endl;
     }
 
+    delete[] buffer;
     log4cpp::Category::shutdown();
 
     return 0;
