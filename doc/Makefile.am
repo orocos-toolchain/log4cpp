@@ -1,10 +1,16 @@
 man3dir = $(mandir)/man3
 docdir  = $(prefix)/doc/@PACKAGE_TARNAME@-@PACKAGE_VERSION@
 
+EXTRA_DIST = \
+	html/index.html \
+	html/default.css
+
+.PHONY: dox pdf
+
 all-local: dox #pdf
 
-dox: html/index.html
-html/index.html: Doxyfile
+dox: html/api/index.html
+html/api/index.html: Doxyfile
 	@DOXYGEN@
 
 pdf: @PACKAGE_TARNAME@.pdf
@@ -22,12 +28,8 @@ install-data-local:
 		$(INSTALL_DATA) $$i $(DESTDIR)$(man3dir)/$$inst; \
 	done
 	$(mkinstalldirs) $(DESTDIR)$(docdir)
-#	@for i in ../README ../ChangeLog @PACKAGE_TARNAME@.ps @PACKAGE_TARNAME@.pdf; do \
-#		echo "$(INSTALL_DATA) $$i $(DESTDIR)$(docdir)"; \
-#		$(INSTALL_DATA) $$i $(DESTDIR)$(docdir); \
-#	done
 	cp -r html $(docdir)
 
 clean-local:
 	$(RM) -r latex
-	$(RM) -r html man @PACKAGE_TARNAME@.ps @PACKAGE_TARNAME@.pdf
+	$(RM) -r html/api man @PACKAGE_TARNAME@.ps @PACKAGE_TARNAME@.pdf

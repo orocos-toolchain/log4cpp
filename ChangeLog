@@ -1,5 +1,10 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-08-02 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* doc/Makefile.am, doc/Doxyfile.in, doc/html/index.html,
+	doc/html/default.css: added new index page and move Doxygen generated
+	docs to api subdirectory.
+
 2002-08-01 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/threading/PThreads.hh: added POSIX threads support
 	file contributed by Emiliano Martin.
@@ -10,7 +15,7 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	to nick a good macro somewhere else :-)
 	* m4/BB_CHECK_OMNITHREADS.m4: added 'thread safity' defines, needed
 	at least for STL.
-	* THANKS: added Emimiliano.
+	* THANKS: added Emiliano.
 	
 2002-07-30 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/TimeStatemp.hh: added some doxygen comments

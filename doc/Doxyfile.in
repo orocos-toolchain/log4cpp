@@ -12,7 +12,7 @@ GENERATE_MAN         = YES
 GENERATE_RTF         = NO
 
 OUTPUT_DIRECTORY     = .
-HTML_OUTPUT          = html
+HTML_OUTPUT          = html/api
 HTML_HEADER          =
 HTML_FOOTER          = 
 LATEX_OUTPUT         = latex
