@@ -1,5 +1,12 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-07-02 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/HierarchyMaintainer.hh, include/log4cpp/Category.hh,
+	src/HierarchyMaintainer.cpp, src/Category.cpp:
+	Changed return type of getCurrentCategories() to std:vector<Category>.
+	vector<> is more efficient than set<> and works around MSVC++ DLL 
+	export brain damage, see Microsoft Q168958.
+	
 2002-06-19 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/Makefile.am: added NTEventlog.cpp and DllMain.cpp to sources.
 	* src/DllMan.cpp: enclosed in #ifdef LOG4CPP_SUPPLY_DLLMAIN
@@ -48,7 +55,14 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	(Paulo Pizarro)
 
 	* Makefile.am: convert *.bpg files to CRLF in dist.(Paulo Pizarro)
-	
+
+	* bcb5/log4cpp/log4cpp.bpf, bcb5/log4cpp/log4cpp.bpr, 
+	bcb5/log4cpp/log4cpp.mak, include/log4cpp/Makefile.am,
+	msvc6/log4cpp/log4cpp.dsp, src/Makefile.am, 
+	include/log4cpp/Win32DebugAppender.hh,
+	src/Win32DebugAppender.cpp: added Win32DebugAppender contributed by
+	Alan Anderson.
+
 2002-04-21 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/config-win32.h: added mode_t typedef.
 

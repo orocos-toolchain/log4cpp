@@ -17,7 +17,7 @@
 #    include <unistd.h>
 #endif
 
-#include <stdio.h>
+#include <cstdio>
 #include <log4cpp/HierarchyMaintainer.hh>
 #include <log4cpp/FileAppender.hh>
 
@@ -89,13 +89,13 @@ namespace log4cpp {
         return *result;
     }
 
-    std::set<Category*>* HierarchyMaintainer::getCurrentCategories() const {
-        std::set<Category*>* categories = new std::set<Category*>;
+    std::vector<Category*>* HierarchyMaintainer::getCurrentCategories() const {
+        std::vector<Category*>* categories = new std::vector<Category*>;
 
         threading::ScopedLock lock(_categoryMutex);
         {
             for(CategoryMap::const_iterator i = _categoryMap.begin(); i != _categoryMap.end(); i++) {
-                categories->insert((*i).second);
+                categories->push_back((*i).second);
             }
         }
 

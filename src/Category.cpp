@@ -40,7 +40,7 @@ namespace log4cpp {
         return HierarchyMaintainer::getDefaultMaintainer().getExistingInstance(name);
     }
 
-    std::set<Category*>* Category::getCurrentCategories() {
+    std::vector<Category*>* Category::getCurrentCategories() {
         return HierarchyMaintainer::getDefaultMaintainer().
             getCurrentCategories();
     }

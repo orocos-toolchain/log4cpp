@@ -19,8 +19,8 @@
 #include <log4cpp/threading/Threading.hh>
 
 #include <map>
-#include <set>
-#include <stdarg.h>
+#include <vector>
+#include <cstdarg>
 #include <stdexcept>
 
 namespace log4cpp {
@@ -76,16 +76,18 @@ namespace log4cpp {
         static Category* exists(const std::string& name);
 
         /**
-         * Returns all the currently defined categories as a set of
+         * Returns all the currently defined categories as a vector of
          * Category pointers. Note: this function does not pass ownership
-         * of the categories in the set to the caller, only the ownership
-         * of the set. However set<Category&>* is not legal C++, so we can't
-         * follow the default ownership conventions.
+         * of the categories in the vector to the caller, only the ownership
+         * of the vector. However vector<Category&>* is not legal C++,
+         * so we can't follow the default ownership conventions.
          *
          * <p>Unlike in log4j, the root category <em>is</em> included 
          * in the returned set.
+         *
+         * @since 0.3.2. Before 0.3.2 this method returned a std::set
          **/
-        static std::set<Category*>* getCurrentCategories();
+        static std::vector<Category*>* getCurrentCategories();
 
         /**
          * This method will remove all Appenders from Categories.XXX

@@ -12,6 +12,8 @@
 
 #include <log4cpp/Portability.hh>
 #include <string>
+#include <map>
+#include <vector>
 #include <log4cpp/Category.hh>
 #include <log4cpp/Log4cppCleanup.hh>
 #include <log4cpp/threading/Threading.hh>
@@ -35,7 +37,7 @@ namespace log4cpp {
         virtual ~HierarchyMaintainer();
         virtual Category* getExistingInstance(const std::string& name);
         virtual Category& getInstance(const std::string& name);
-        virtual std::set<Category*>* getCurrentCategories() const;
+        virtual std::vector<Category*>* getCurrentCategories() const;
         virtual void shutdown();
         virtual void deleteAllCategories();
 
