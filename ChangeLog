@@ -1,5 +1,11 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-09-18 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/PatternLayout.hh, src/PatternLayout.cpp,
+	tests/testPattern.cpp: 
+	Added PatternLayout contributed by Glenn Scott. Is not in autoconf
+	setup yet.
+	
 2001-09-17 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* configure.in:
 	Added checks for -lsocket and -lnsl
