@@ -1,13 +1,13 @@
 This file records noteworthy changes.
 
-0.2.7 not yet released
+0.2.7 (27 Januari 2002)
 Support for multiple Appenders per Category added (feature request #501360).
 Fixed variable scope bug in SyslogAppender (bug #499315)
 Fixed memory leak in SyslogAppender and RemoteSyslogAppender (bug #499524)
 Fixed compile problem in Filter (bug #)
 Fixed config file parse problem in SimpleConfigurator (bug #500766)
 Added methods for logging at FATAL level (bug #504314)
-
+Fixed Win32 compile problem (bug #506907)
 
 0.2.6 (11 December 2001)
 Preliminary support for OpenVMS added.
