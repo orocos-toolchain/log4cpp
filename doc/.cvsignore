@@ -2,3 +2,5 @@
 Makefile
 Makefile.in
 Doxyfile
+html
+doc
