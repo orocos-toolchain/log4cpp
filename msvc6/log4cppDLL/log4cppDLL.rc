@@ -30,7 +30,7 @@ BEGIN
             VALUE "CompanyName", "Bastiaan Bakker, LifeLine Networks bv \0"
             VALUE "ContributingAuthors", "Cedric Le Goater, Marc Welz, others. See documentation for complete list\0"     
             VALUE "FileDescription", "Log library for C++ DLL\0"
-            VALUE "FileVersion", "0.3.2rc2\0"
+            VALUE "FileVersion", "0.4.3B\0"
             VALUE "InternalName", "log4cpp\0"
             VALUE "LegalCopyright", "Copyright © 2000-2002 the Log4cpp Project, others\0"
             VALUE "LegalTrademarks", "\0"
@@ -41,7 +41,7 @@ BEGIN
 #endif
             VALUE "PrivateBuild", "\0"
             VALUE "ProductName", "Log library for C++\0"
-            VALUE "ProductVersion", "0.3.2rc2\0"
+            VALUE "ProductVersion", "0.3.4B\0"
             VALUE "SpecialBuild", "\0"
         END
     END
