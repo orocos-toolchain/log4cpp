@@ -31,20 +31,23 @@
 #include <log4cpp/NDC.hh>
 #include <log4cpp/TimeStamp.hh>
 
+#ifdef LOG4CPP_HAVE_INT64_T
 #ifdef LOG4CPP_MISSING_INT64_OSTREAM_OP
 /* workaround suggested at:
    http://support.microsoft.com/default.aspx?scid=kb;EN-US;q168440
 */
 
 #include <stdio.h>
-
+#include <stdint.h>
+ 
 std::ostream& operator<<(std::ostream& os, int64_t i) {
     char buf[20];
     ::sprintf(buf,"%I64d", i);
     return os << buf;
 }
-#endif
-
+#endif // LOG4CPP_MISSING_INT64_OSTREAM_OP
+#endif // LOG4CPP_HAVE_INT64_T
+ 
 namespace log4cpp {
 
     PatternLayout::PatternLayout() {
