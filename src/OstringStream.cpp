@@ -26,7 +26,7 @@
 #include <stdarg.h>
 
 extern "C" {
-#include <snprintf.c"
+#include "snprintf.c"
 }
 
 #define VSNPRINTF portable_vsnprintf
