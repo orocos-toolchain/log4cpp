@@ -20,6 +20,5 @@ using namespace std;
 ])
 if test "$ac_cv_cxx_have_sstream" = yes; then
   AC_DEFINE(HAVE_SSTREAM,,[define if the compiler has stringstream])
-  AC_DEFINE(LOG4CPP_HAVE_SSTREAM,,[define if the compiler has stringstream])
 fi
 ])
