@@ -1,6 +1,10 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
 2001-12-21 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* Release as 0.2.6b
+	
+	* configure.in: upped release to 0.2.6b
+	
 	* src/Priority.cpp: getPriorityValue(): fix bug in numerical input 
 	handling.
 
