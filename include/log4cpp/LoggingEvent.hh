@@ -12,6 +12,7 @@
 
 #include <string>
 #include <time.h>
+#include "log4cpp/Export.hh"
 #include "log4cpp/Priority.hh"
 
 /**
@@ -28,7 +29,7 @@ namespace log4cpp {
  * <p>This class is of concern to those wishing to extend log4cpp. 
  **/
 
-    struct LoggingEvent {
+    struct LOG4CPP_EXPORT LoggingEvent {
     public:
         /**
          * Instantiate a LoggingEvent from the supplied parameters.

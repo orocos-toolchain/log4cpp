@@ -12,11 +12,12 @@
 
 #include <string>
 #include <iostream>
+#include "log4cpp/Export.hh"
 #include "log4cpp/LayoutAppender.hh"
 
 namespace log4cpp {
 
-    class OstreamAppender : public LayoutAppender {
+    class LOG4CPP_EXPORT OstreamAppender : public LayoutAppender {
         public:
         OstreamAppender(const std::string& name, std::ostream* stream);
         virtual ~OstreamAppender();

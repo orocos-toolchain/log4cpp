@@ -7,7 +7,8 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#ifndef _MSC_VER
+#include "config.h"
+#ifdef HAVE_UNISTD_H
 #    include <unistd.h>
 #endif
 
@@ -264,16 +265,16 @@ namespace log4cpp {
     }
     
     void Category::error(const char* stringFormat, ...) throw() { 
-        if (isPriorityEnabled(Priority::ERROR)) {
+               if (isPriorityEnabled(Priority::ERROR)) {
             va_list va;
             va_start(va,stringFormat);
-            _logUnconditionally(Priority::ERROR, stringFormat, va);
+                       _logUnconditionally(Priority::ERROR, stringFormat, va);
             va_end(va);
         }
     }
     
     void Category::error(const std::string& message) throw() { 
-        if (isPriorityEnabled(Priority::ERROR))
+               if (isPriorityEnabled(Priority::ERROR))
             _logUnconditionally2(Priority::ERROR, message);
     }
 

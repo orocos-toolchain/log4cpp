@@ -7,13 +7,15 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
+#include "config.h"
 #include "log4cpp/OstringStream.hh"
 
-#ifdef _MSC_VER
+#ifdef HAVE_IO_H
 #    include <io.h>
-#else
+#endif
+#ifdef HAVE_UNISTD_H
 #    include <unistd.h>
-#endif // _MSC_VER
+#endif
 
 #include <stdio.h>
 #include "log4cpp/HierarchyMaintainer.hh"
@@ -45,7 +47,7 @@ namespace log4cpp {
             Category* result;
             
             if (name == "") {
-                result = new Category(name, NULL, Priority::INFO);
+                               result = new Category(name, NULL, Priority::INFO);
                 result->setAppender(new FileAppender("_", ::dup(fileno(stderr))));
             } else {
                 std::string parentName;

@@ -10,6 +10,8 @@
 #ifndef _LOG4CPP_APPENDERSKELETON_HH
 #define _LOG4CPP_APPENDERSKELETON_HH
 
+
+#include "log4cpp/Export.hh"
 #include "log4cpp/OstringStream.hh"
 #include "log4cpp/Appender.hh"
 
@@ -19,7 +21,7 @@ namespace log4cpp {
      *  Implement this interface for your own strategies for printing log
      *  statements. 
      **/
-    class AppenderSkeleton : public Appender {
+    class LOG4CPP_EXPORT AppenderSkeleton : public Appender {
         protected:
         /**
          * Constructor for AppenderSkeleton. Will only be used in 

@@ -10,6 +10,7 @@
 #ifndef _LOG4CPP_FILTER_HH
 #define _LOG4CPP_FILTER_HH
 
+#include "log4cpp/Export.hh"
 #include "log4cpp/LoggingEvent.hh"
 
 namespace log4cpp {
@@ -45,7 +46,7 @@ namespace log4cpp {
        Linux ipchains. 
     **/
 
-    class Filter {
+    class LOG4CPP_EXPORT Filter {
         public:
         
         typedef enum { DENY = -1,

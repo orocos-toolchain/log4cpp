@@ -10,9 +10,10 @@
 #ifndef _LOG4CPP_OSTRINGSTREAM_HH
 #define _LOG4CPP_OSTRINGSTREAM_HH
 
-#include "log4cpp/Config.hh"
 #include <string>
 #include <stdarg.h>
+#include "log4cpp/Export.hh"
+#include "log4cpp/Config.hh"
 
 #ifdef LOG4CPP_HAVE_SSTREAM
 #    include <sstream>
@@ -23,9 +24,9 @@
 namespace log4cpp {
 
 #ifdef LOG4CPP_HAVE_SSTREAM
-    class OstringStream : public std::ostringstream
+    class LOG4CPP_EXPORT OstringStream : public std::ostringstream
 #else
-    class OstringStream : public std::ostrstream
+    class LOG4CPP_EXPORT OstringStream : public std::ostrstream
 #endif
     {
     public:

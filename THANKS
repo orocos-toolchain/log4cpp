@@ -11,4 +11,6 @@ Marc Welz <marc@jade.cs.uct.ac.za> (IdsaAppender)
 Lynn Owen <opl@agoby.com> (MSVC++ support)
 Steve Ostlind <s.ostlind@pentasafe.com> (MSVC++ support, various fixes)
 Marcel Harkema <marcel@debian.org> (Debian packaging)
+Uwe Jäger <jaeger@varial.de> (Borland support)
+
 

@@ -52,6 +52,11 @@ esac
 
 PETI_PEDANTIC_GCC
 
+# Checks header files
+# ----------------------------------------------------------------------------
+AC_CHECK_HEADERS([unistd.h])
+AC_CHECK_HEADERS([io.h])
+
 # Checks local idioms
 # ----------------------------------------------------------------------------
 AC_CXX_HAVE_SSTREAM
@@ -94,4 +99,10 @@ msvc6/Makefile
 msvc6/log4cpp/Makefile
 msvc6/testCategory/Makefile
 msvc6/testNDC/Makefile
+bcb5/Makefile
+bcb5/log4cpp/Makefile
+bcb5/testCategory/Makefile
+bcb5/testFixedContextCategory/Makefile
+bcb5/testmain/Makefile
+bcb5/testNDC/Makefile
 ])

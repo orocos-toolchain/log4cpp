@@ -10,23 +10,24 @@
 #ifndef _LOG4CPP_CATEGORY_HH
 #define _LOG4CPP_CATEGORY_HH
 
-#include "log4cpp/OstringStream.hh"
 #include <map>
 #include <set>
 #include <stdarg.h>
+#include "log4cpp/Export.hh"
+#include "log4cpp/OstringStream.hh"
 #include "log4cpp/Appender.hh"
 #include "log4cpp/LoggingEvent.hh"
 #include "log4cpp/Priority.hh"
 
 namespace log4cpp {
 
-    class Category;
+    class LOG4CPP_EXPORT Category;
 
     /**
      * This class enables streaming simple types and objects to a category.
      * Use category.errorStream(), etc. to obtain a CategoryStream class.
      **/
-    class CategoryStream {
+    class LOG4CPP_EXPORT CategoryStream {
         public:
 
         /**
@@ -107,7 +108,7 @@ namespace log4cpp {
      * features of log4j (and hence log4cpp) are hierarchal categories and 
      * their evaluation.
      **/   
-    class Category {
+    class LOG4CPP_EXPORT Category {
         friend class HierarchyMaintainer;
 
         public:
@@ -312,7 +313,7 @@ namespace log4cpp {
          * @returns Whether the Category will log.
          **/ 
         inline bool isDebugEnabled() const throw() { 
-            return isPriorityEnabled(Priority::DEBUG); 
+                       return isPriorityEnabled(Priority::DEBUG);
         };
 
         /**
@@ -320,7 +321,7 @@ namespace log4cpp {
          * @returns The CategoryStream.
          **/
         inline CategoryStream debugStream() {
-            return getStream(Priority::DEBUG);
+                       return getStream(Priority::DEBUG);
         }
 
         /** 
@@ -342,7 +343,7 @@ namespace log4cpp {
          * @returns Whether the Category will log.
          **/ 
         inline bool isInfoEnabled() const throw() { 
-            return isPriorityEnabled(Priority::INFO); 
+                       return isPriorityEnabled(Priority::INFO);
         };
 
         /**
@@ -350,7 +351,7 @@ namespace log4cpp {
          * @returns The CategoryStream.
          **/
         inline CategoryStream infoStream() {
-            return getStream(Priority::INFO);
+                       return getStream(Priority::INFO);
         }
         
         /** 
@@ -372,7 +373,7 @@ namespace log4cpp {
          * @returns Whether the Category will log.
          **/ 
         inline bool isNoticeEnabled() const throw() { 
-            return isPriorityEnabled(Priority::NOTICE); 
+                       return isPriorityEnabled(Priority::NOTICE);
         };
 
         /**
@@ -380,7 +381,7 @@ namespace log4cpp {
          * @returns The CategoryStream.
          **/
         inline CategoryStream noticeStream() {
-            return getStream(Priority::NOTICE);
+                       return getStream(Priority::NOTICE);
         }
         
         /** 
@@ -402,7 +403,7 @@ namespace log4cpp {
          * @returns Whether the Category will log.
          **/ 
         inline bool isWarnEnabled() const throw() { 
-            return isPriorityEnabled(Priority::WARN); 
+                       return isPriorityEnabled(Priority::WARN);
         };
 
         /**
@@ -410,7 +411,7 @@ namespace log4cpp {
          * @returns The CategoryStream.
          **/
         inline CategoryStream warnStream() {
-            return getStream(Priority::WARN);
+                       return getStream(Priority::WARN);
         }
         
         /** 
@@ -432,7 +433,7 @@ namespace log4cpp {
          * @returns Whether the Category will log.
          **/ 
         inline bool isErrorEnabled() const throw() { 
-            return isPriorityEnabled(Priority::ERROR); 
+                       return isPriorityEnabled(Priority::ERROR);
         };
         
         /**
@@ -440,7 +441,7 @@ namespace log4cpp {
          * @returns The CategoryStream.
          **/
         inline CategoryStream errorStream() {
-            return getStream(Priority::ERROR);
+                       return getStream(Priority::ERROR);
         }
 
         /** 
@@ -462,7 +463,7 @@ namespace log4cpp {
          * @returns Whether the Category will log.
          **/ 
         inline bool isCritEnabled() const throw() { 
-            return isPriorityEnabled(Priority::CRIT); 
+                       return isPriorityEnabled(Priority::CRIT);
         };
         
         /**
@@ -470,7 +471,7 @@ namespace log4cpp {
          * @returns The CategoryStream.
          **/
         inline CategoryStream critStream() {
-            return getStream(Priority::CRIT);
+                       return getStream(Priority::CRIT);
         }
 
         /** 
@@ -492,7 +493,7 @@ namespace log4cpp {
          * @returns Whether the Category will log.
          **/ 
         inline bool isAlertEnabled() const throw() { 
-            return isPriorityEnabled(Priority::ALERT); 
+                       return isPriorityEnabled(Priority::ALERT);
         };
         
         /**
@@ -500,7 +501,7 @@ namespace log4cpp {
          * @returns The CategoryStream.
          **/
         inline CategoryStream alertStream() throw() {
-            return getStream(Priority::ALERT);
+                       return getStream(Priority::ALERT);
         }
 
         /** 
@@ -522,7 +523,7 @@ namespace log4cpp {
          * @returns Whether the Category will log.
          **/ 
         inline bool isEmergEnabled() const throw() { 
-            return isPriorityEnabled(Priority::EMERG); 
+                       return isPriorityEnabled(Priority::EMERG);
         };
         
         /**
@@ -558,7 +559,7 @@ namespace log4cpp {
          * Priority::NOTSET
          **/
         Category(const std::string& name, Category* parent, 
-                 Priority::Value priority = Priority::NOTSET);
+                                Priority::Value priority = Priority::NOTSET);
         
         virtual void _logUnconditionally(Priority::Value priority, 
                                          const char* format, 

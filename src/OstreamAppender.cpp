@@ -7,7 +7,8 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#ifndef _MSC_VER
+#include "config.h"
+#ifdef HAVE_UNISTD_H
 #    include <unistd.h>
 #endif
 #include <sys/types.h>

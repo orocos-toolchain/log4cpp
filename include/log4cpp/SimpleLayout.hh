@@ -10,11 +10,12 @@
 #ifndef _LOG4CPP_SIMPLELAYOUT_HH
 #define _LOG4CPP_SIMPLELAYOUT_HH
 
+#include "log4cpp/Export.hh"
 #include "log4cpp/Layout.hh"
 
 namespace log4cpp {
     
-    class SimpleLayout : public Layout {
+    class LOG4CPP_EXPORT SimpleLayout : public Layout {
         public:
         SimpleLayout();
         virtual ~SimpleLayout();

@@ -12,6 +12,7 @@
 
 #include <string>
 #include <vector>
+#include "log4cpp/Export.hh"
 
 namespace log4cpp {
     /**
@@ -65,7 +66,7 @@ namespace log4cpp {
        not multithread aware, it implicitly assumes only one thread exists, 
        the main process thread. </em>        
     **/
-    class NDC {
+    class LOG4CPP_EXPORT NDC {
         public:
 
         struct DiagnosticContext {

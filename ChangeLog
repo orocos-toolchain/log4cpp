@@ -2,6 +2,7 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 
 2001-05-29 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* Priority.hh: #define ERROR workaround try 2.
+	* Merge of Borland support patch by Uwe Jäger <jaeger@varial.de>.
 	
 2001-05-28 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* Priority.hh: included workaround for #define ERROR rudeness in 

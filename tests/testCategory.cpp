@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
 
     log4cpp::Category& root = log4cpp::Category::getRoot();
     root.setAppender(appender);
-    root.setPriority(log4cpp::Priority::ERROR);
+       root.setPriority(log4cpp::Priority::ERROR);
     
     log4cpp::Category& sub1 = 
         log4cpp::Category::getInstance(std::string("sub1"));
@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
     sub2.error("sub2 error");
     sub2.warn("sub2 warn");
     
-    sub1.setPriority(log4cpp::Priority::INFO);
+       sub1.setPriority(log4cpp::Priority::INFO);
     std::cout << " root priority = " << root.getPriority() << std::endl;
     std::cout << " sub1 priority = " << sub1.getPriority() << std::endl;
     std::cout << " sub2 priority = " << sub2.getPriority() << std::endl;

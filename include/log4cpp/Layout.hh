@@ -11,6 +11,7 @@
 #define _LOG4CPP_LAYOUT_HH
 
 #include <string>
+#include "log4cpp/Export.hh"
 #include "log4cpp/LoggingEvent.hh"
 
 namespace log4cpp {
@@ -18,7 +19,7 @@ namespace log4cpp {
 /**
  * Extend this abstract class to create your own log layout format.
  **/
-    class Layout {
+    class LOG4CPP_EXPORT Layout {
         public:
         /**
          * Destructor for Layout.

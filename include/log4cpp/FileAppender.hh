@@ -12,11 +12,12 @@
 
 #include <string>
 #include <stdarg.h>
+#include "log4cpp/Export.hh"
 #include "log4cpp/LayoutAppender.hh"
 
 namespace log4cpp {
 
-    class FileAppender : public LayoutAppender {
+    class LOG4CPP_EXPORT FileAppender : public LayoutAppender {
         public:
         FileAppender(const std::string& name, const std::string& fileName);
         FileAppender(const std::string& name, int fd);

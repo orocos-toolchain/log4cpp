@@ -12,6 +12,7 @@
 
 #include <string>
 #include <queue>
+#include "log4cpp/Export.hh"
 #include "log4cpp/LayoutAppender.hh"
 
 namespace log4cpp {
@@ -22,7 +23,7 @@ namespace log4cpp {
      *
      * @since 0.2.4
      **/
-    class StringQueueAppender : public LayoutAppender {
+    class LOG4CPP_EXPORT StringQueueAppender : public LayoutAppender {
         public:
 
         StringQueueAppender(const std::string& name);

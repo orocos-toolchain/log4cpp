@@ -10,6 +10,7 @@
 #ifndef _LOG4CPP_FIXEDCONTEXTCATEGORY_HH
 #define _LOG4CPP_FIXEDCONTEXTCATEGORY_HH
 
+#include "log4cpp/Export.hh"
 #include "log4cpp/Category.hh"
 
 namespace log4cpp {
@@ -25,7 +26,7 @@ namespace log4cpp {
      * implies one has to take cake of destruction of the instance as well.
      * @since 0.2.4
      **/
-    class FixedContextCategory : public Category {
+    class LOG4CPP_EXPORT FixedContextCategory : public Category {
 
         public:
 

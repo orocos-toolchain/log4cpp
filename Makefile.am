@@ -1,14 +1,14 @@
 if DOC
-SUBDIRS = debian msvc6 config src include tests doc 
+SUBDIRS = debian msvc6 bcb5 config src include tests doc 
 else
-SUBDIRS = debian msvc6 config src include tests
+SUBDIRS = debian msvc6 bcb5 config src include tests
 endif
 
-DIST_SUBDIRS = debian msvc6 config src include doc tests
+DIST_SUBDIRS = debian msvc6 bcb5 config src include doc tests
 
 bin_SCRIPTS = log4cpp-config
 
-EXTRA_DIST = log4cpp.spec.in log4cpp.spec
+EXTRA_DIST = log4cpp.spec.in log4cpp.spec m4
 
 .PHONY: check rpm docs doc-dist
 
