@@ -54,6 +54,9 @@ int main(int argc, char* argv[])
         cat.error("%d message", i);
     }
 
+    // test bug #688715
+    test("%.10m", layout, cat);
+
     log4cpp::Category::shutdown();
 
     return 0;
