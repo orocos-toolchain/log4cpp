@@ -1,6 +1,12 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
 2001-09-17 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* configure.in:
+	Added checks for -lsocket and -lnsl
+	
+	* m4/AC_FUNC_SNPRINTF.m4:
+	Relax snprintf() check: full C99 compliancy is not needed.
+	
 	* include/log4cpp/Priority.hh:
 	Fix workaround for #define DEBUG
 

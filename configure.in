@@ -72,6 +72,10 @@ AC_CHECK_FUNCS([syslog])
 # Checks for libraries
 # ----------------------------------------------------------------------------
 
+# for RemoteSyslogAppender
+AC_CHECK_LIB(socket,socket, LIBS="-lsocket $LIBS",,)
+AC_CHECK_LIB(nsl,gethostbyname, LIBS="-lnsl $LIBS",,)
+
 # idsa_test
 if test "x$with_idsa" = xyes; then
     AC_CHECK_LIB([idsa], [idsa_open])
