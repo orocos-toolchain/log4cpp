@@ -4,7 +4,7 @@
  * Copyright 2000, LifeLine Networks BV (www.lifeline.nl). All rights reserved.
  * Copyright 2000, Bastiaan Bakker. All rights reserved.
  *
- * See the LICENSE file for the terms of usage and distribution.
+ * See the COPYING file for the terms of usage and distribution.
  */
 
 #ifndef _LOG4CPP_CATEGORY_HH
@@ -21,37 +21,84 @@
 #include "log4cpp/Priority.hh"
 
 namespace log4cpp {
-/**
- * This is the central class in the log4j package. One of the distintive
- * features of log4j (and hence log4cpp) are hierarchal categories and 
- * their evaluation.
- **/
 
     class Category;
 
+    /**
+     * This class enables streaming simple types and objects to a category.
+     * Use category.errorStream(), etc. to obtain a CategoryStream class.
+     **/
     class CategoryStream {
         public:
 
+        /**
+         * Empty struct which acts as a special token to separe log messages 
+         * in a CategoryStream.
+         **/
         struct Separator {
         };
 
+        /**
+         * This Separator separates two log messages in a CategoryStream
+         **/
         static Separator ENDLINE;
 
+        /**
+         * Construct a CategoryStream for given Category with given priority.
+         * @param category The category this stream will send log messages to.
+         * @param priority The priority the log messages will get or 
+         * Priority::NOTSET to silently discard any streamed in messages.
+         **/
         CategoryStream(Category& category, int priority);
+
+        /**
+         * Destructor for CategoryStream
+         **/
         ~CategoryStream();
         
+        /**
+         * Returns the destination Category for this stream.
+         * @returns The Category.
+         **/
         inline Category& getCategory() const { return _category; };
+
+        /**
+         * Returns the priority for this stream.
+         * @returns The priority.
+         **/
         inline int getPriority() const { return _priority; };
 
+        /**
+         * Streams in a Separator. If the separator equals 
+         * CategoryStream::ENDLINE it sends the contents of the stream buffer
+         * to the Category with set priority and empties the buffer.
+         * @param Separator The Separator
+         * @returns A reference to itself.
+         **/
         CategoryStream& operator<<(const Separator& separator);
+
+        /**
+         * Flush the contents of the stream buffer to the Category and
+         * empties the buffer.
+         **/
         void flush();
 
+        /**
+         * Stream in arbitrary types and objects. 
+         * @param t The value or object to stream in.
+         * @returns A reference to itself.
+         **/
         template<class T> CategoryStream& operator<<(const T& t) {
             if (getPriority() != Priority::NOTSET) {
                 if (!_buffer) {
-                    _buffer = new ostrstream;
-                }
-                (*_buffer) << t;
+                    if (!(_buffer = new ostrstream)) {
+                        // XXX help help help
+                    } else {
+                        (*_buffer) << t;
+                    }
+                } else {
+                    (*_buffer) << t;
+                } 
             }
             return *this;
         };
@@ -61,7 +108,12 @@ namespace log4cpp {
         int _priority;
         ostrstream* _buffer;
     };
-   
+
+    /**
+     * This is the central class in the log4j package. One of the distintive
+     * features of log4j (and hence log4cpp) are hierarchal categories and 
+     * their evaluation.
+     **/   
     class Category {
         friend class HierarchyMaintainer;
 
@@ -112,7 +164,10 @@ namespace log4cpp {
          * in the returned set.
          **/
         static set<Category*>* getCurrentCategories();
- 
+
+        /**
+         * Destructor for Category.
+         **/
         virtual ~Category();
         
         /**
@@ -145,8 +200,10 @@ namespace log4cpp {
         int getChainedPriority() const;
 
         /** 
-         * Returns true if the Category has set a priority.
-         * @returns whether a priority has been set.
+         * Returns true if the chained priority of the Category is equal to
+         * or higher than given priority.
+         * @param priority The priority to compare with.
+         * @returns whether logging is enable for this priority.
          **/
         bool isPriorityEnabled(int priority) const;
         
@@ -229,10 +286,19 @@ namespace log4cpp {
          * @param message string to write in the log file
          **/  
         void debug(const string& message);
+
+        /**
+         * Return true if the Category will log messages with priority DEBUG.
+         * @returns Whether the Category will log.
+         **/ 
         inline bool isDebugEnabled() const { 
             return isPriorityEnabled(Priority::DEBUG); 
         };
 
+        /**
+         * Return a CategoryStream with priority DEBUG.
+         * @returns The CategoryStream.
+         **/
         inline CategoryStream debugStream() {
             return getStream(Priority::DEBUG);
         }
@@ -250,10 +316,19 @@ namespace log4cpp {
          * @param message string to write in the log file
          **/  
         void info(const string& message);
+
+        /**
+         * Return true if the Category will log messages with priority INFO.
+         * @returns Whether the Category will log.
+         **/ 
         inline bool isInfoEnabled() const { 
             return isPriorityEnabled(Priority::INFO); 
         };
 
+        /**
+         * Return a CategoryStream with priority INFO.
+         * @returns The CategoryStream.
+         **/
         inline CategoryStream infoStream() {
             return getStream(Priority::INFO);
         }
@@ -271,10 +346,19 @@ namespace log4cpp {
          * @param message string to write in the log file
          **/  
         void warn(const string& message);
+
+        /**
+         * Return true if the Category will log messages with priority WARN.
+         * @returns Whether the Category will log.
+         **/ 
         inline bool isWarnEnabled() const { 
             return isPriorityEnabled(Priority::WARN); 
         };
 
+        /**
+         * Return a CategoryStream with priority WARN.
+         * @returns The CategoryStream.
+         **/
         inline CategoryStream warnStream() {
             return getStream(Priority::WARN);
         }
@@ -292,16 +376,35 @@ namespace log4cpp {
          * @param message string to write in the log file
          **/  
         void error(const string& message);
+
+        /**
+         * Return true if the Category will log messages with priority ERROR.
+         * @returns Whether the Category will log.
+         **/ 
         inline bool isErrorEnabled() const { 
             return isPriorityEnabled(Priority::ERROR); 
         };
         
+        /**
+         * Return a CategoryStream with priority ERROR.
+         * @returns The CategoryStream.
+         **/
         inline CategoryStream errorStream() {
             return getStream(Priority::ERROR);
         }
 
+        /**
+         * Return a CategoryStream with given Priority.
+         * @param priority The Priority of the CategoryStream.
+         * @returns The requested CategoryStream.
+         **/
         CategoryStream getStream(int priority);
 
+        /**
+         * Return a CategoryStream with given Priority.
+         * @param priority The Priority of the CategoryStream.
+         * @returns The requested CategoryStream.
+         **/
         CategoryStream operator<<(int priority);
 
         protected:

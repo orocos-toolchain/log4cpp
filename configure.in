@@ -1,0 +1,60 @@
+AC_INIT(configure.in)
+
+LOG4CPP_MAJOR_VERSION=0
+LOG4CPP_MINOR_VERSION=2
+LOG4CPP_MICRO_VERSION=0
+
+PACKAGE=log4cpp
+VERSION=$LOG4CPP_MAJOR_VERSION.$LOG4CPP_MINOR_VERSION.$LOG4CPP_MICRO_VERSION
+RELEASE=$LOG4CPP_MAJOR_VERSION.$LOG4CPP_MINOR_VERSION
+LT_VERSION=1:0:0
+
+AC_SUBST(LOG4CPP_MAJOR_VERSION)
+AC_SUBST(LOG4CPP_MINOR_VERSION)
+AC_SUBST(LT_VERSION)
+
+AC_CONFIG_AUX_DIR(config)
+AM_CONFIG_HEADER(src/config.h)
+AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
+
+# Checks for programs
+# ----------------------------------------------------------------------------
+AC_CANONICAL_HOST
+
+AM_PROG_LIBTOOL
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+
+AC_PROG_CXX
+AC_PROG_CXXCPP
+dnl AC_LANG_CPLUSPLUS
+
+# Checks local idioms
+# ----------------------------------------------------------------------------
+
+# check for extensions
+# ----------------------------------------------------------------------------
+AC_PATH_PROG(DOXYGEN, doxygen, , $PATH)
+if test x$DOXYGEN = x; then
+        enable_doc=no
+else
+        enable_doc=yes
+fi
+AM_CONDITIONAL(DOC, test x$enable_doc = xyes)
+
+
+# CXX fine tuning
+# ----------------------------------------------------------------------------
+
+# Create files
+# ----------------------------------------------------------------------------
+AC_OUTPUT([
+Makefile
+config/Makefile
+doc/Makefile
+doc/Doxyfile
+src/Makefile
+include/Makefile
+include/log4cpp/Makefile
+tests/Makefile
+])

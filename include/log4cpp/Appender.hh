@@ -4,7 +4,7 @@
  * Copyright 2000, LifeLine Networks BV (www.lifeline.nl). All rights reserved.
  * Copyright 2000, Bastiaan Bakker. All rights reserved.
  *
- * See the LICENSE file for the terms of usage and distribution.
+ * See the COPYING file for the terms of usage and distribution.
  */
 
 #ifndef _LOG4CPP_APPENDER_HH
@@ -25,7 +25,6 @@ namespace log4cpp {
      **/
     class Appender {
         public:
-        typedef map<string, Appender*> AppenderMap;
 
         /**
          * Get a pointer to an exitsing Appender.
@@ -42,9 +41,17 @@ namespace log4cpp {
         static bool reopenAll();
 
         protected:
+        /**
+         * Constructor for Appender. Will only be used in getAppender() (and 
+         * in derived classes of course).
+         * @param name The name of this Appender.
+         **/
         Appender(const string& name);
 
         public:
+        /**
+         * Destructor for Appender.
+         **/
         virtual ~Appender();
         
         /**
@@ -88,6 +95,8 @@ namespace log4cpp {
         
         
         private:
+        typedef map<string, Appender*> AppenderMap;
+
         static AppenderMap _allAppenders;
         static void _addAppender(Appender* appender);
         static void _removeAppender(Appender* appender);

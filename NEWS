@@ -1,0 +1,6 @@
+This file records noteworthy changes.
+
+0.2.0 (10 December 2000)
+
+log4cpp now uses autoconf and automake.
+
