@@ -1,0 +1,6 @@
+.cvsignore
+stamp-h
+Makefile
+.libs
+.deps
+liblog4cpp.la
