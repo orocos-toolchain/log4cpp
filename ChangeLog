@@ -1,5 +1,8 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-03-07 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	Moved to new iostreams.
+	
 2001-03-04 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	Release 0.2.2
 	Added doc-dist make target

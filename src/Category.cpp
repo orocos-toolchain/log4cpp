@@ -15,6 +15,7 @@
 #include "log4cpp/Category.hh"
 #include "log4cpp/HierarchyMaintainer.hh"
 #include "log4cpp/NDC.hh"
+#include "log4cpp/StreamUtil.hh"
 
 namespace log4cpp {
 
@@ -37,8 +38,7 @@ namespace log4cpp {
 
     void CategoryStream::flush() {
         if (_buffer) {
-            (*_buffer) << '\0';
-            getCategory().log(getPriority(), std::string(StreamUtil::str(*_buffer)));
+            getCategory().log(getPriority(), _buffer->str());
             delete _buffer;
             _buffer = NULL;
         }
@@ -142,9 +142,7 @@ namespace log4cpp {
         ostringstream messageBuffer;
 
         StreamUtil::vform(messageBuffer, format, arguments);
-        messageBuffer << '\0';
-        std::string message(StreamUtil::str(messageBuffer));
-        _logUnconditionally2(priority, message);
+        _logUnconditionally2(priority, messageBuffer.str());
     }
     
     void Category::_logUnconditionally2(int priority, const std::string& message) {

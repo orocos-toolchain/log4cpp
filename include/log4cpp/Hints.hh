@@ -11,6 +11,7 @@
 #define _LOG4CPP_HINTS_HH
 
 #include "log4cpp/config.h"
+#include <string>
 #include <stdarg.h>
 
 #if defined(_MSC_VER)
@@ -29,13 +30,12 @@ namespace log4cpp {
 #ifdef LOG4CPP_USE_NEW_IOSTREAM
     typedef std::ostringstream ostringstream;
 #else
-    typedef ostrstream ostringstream;
+    class ostringstream : public ostrstream {
+        public:
+        std::string str();
+    };
+
 #endif
 
-    class StreamUtil {
-        public:
-        static char* str(ostringstream& s);
-	static void vform(ostringstream& s, const char* format, va_list args);
-    };
 }
 #endif // _LOG4CPP_HINTS_HH

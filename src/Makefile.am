@@ -15,7 +15,8 @@ liblog4cpp_la_SOURCES = \
 	HierarchyMaintainer.cpp \
 	LoggingEvent.cpp \
 	Priority.cpp \
-	NDC.cpp
+	NDC.cpp \
+	StreamUtil.cpp
 
 
 liblog4cpp_la_LDFLAGS = -version-info @LT_VERSION@

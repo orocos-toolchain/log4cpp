@@ -25,6 +25,6 @@ namespace log4cpp {
         const std::string& priorityName = Priority::getPriorityName(event.priority);
         message << priorityName << " - " << event.message << std::endl << '\0';
 
-        return StreamUtil::str(message);
+        return strdup(message.str().c_str());
     }
 }
