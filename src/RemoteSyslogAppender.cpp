@@ -149,6 +149,7 @@ namespace log4cpp {
 		// note: we might need to sleep a bit here
 	    } else {
 		sendto (_socket, buf, len, 0, (struct sockaddr *) &sain, sizeof (sain));
+		break;
 	    }
 	}
 	delete buf;
