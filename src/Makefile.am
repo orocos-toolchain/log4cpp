@@ -25,6 +25,7 @@ liblog4cpp_la_SOURCES = \
 	NDC.cpp \
 	OstringStream.cpp \
 	Filter.cpp \
-	Log4cppCleanup.cpp
+	Log4cppCleanup.cpp \
+	TimeStamp.cpp
 
 liblog4cpp_la_LDFLAGS = -version-info @LT_VERSION@
