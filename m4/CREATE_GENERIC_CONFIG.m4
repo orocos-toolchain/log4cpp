@@ -72,7 +72,7 @@ echo 'fi' >>$F
 echo ' ' >>$F
 echo 'o=""' >>$F
 echo 'h=""' >>$F
-echo 'for i in $* ; do' >>$F
+echo 'for i in '"\$""*"' ; do' >>$F
 echo '  case $i in' >>$F
 echo '  --prefix=*) prefix=`echo $i | sed -e "s/--prefix=//"` ;;' >>$F
 echo '  --prefix)    o="$o $prefix" ;;' >>$F
