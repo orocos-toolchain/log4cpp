@@ -70,6 +70,7 @@ AC_FUNC_SNPRINTF
 # syslog_test
 AC_CHECK_FUNCS([syslog])
 AC_CHECK_FUNCS([gettimeofday])
+AC_CHECK_FUNCS([ftime])
 
 # Checks for libraries
 # ----------------------------------------------------------------------------
