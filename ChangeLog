@@ -6,7 +6,11 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	* configure.ac, log4cpp.spec.in, doc/Doxyfile.in, doc/Makefile.am,
 	m4/AC_CREATE_PREFIX_CONFIG_H.m4, m4/AC_CXX_HAVE_SSTREAM.m4, 
 	m4/AC_CXX_NAMESPACES.m4, m4/BB_CHECK_OMNITHREADS.m4:
-	updated AC macros and variables to autoconf 2.50. 
+	updated AC macros and variables to autoconf 2.50.
+
+	* src/Priority.cpp: put names[] in anonymous namespace instead of 
+	declaring it static. This should solve Solaris 8 dynamic library
+	problem (see patch #583905).
 
 2002-07-11 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/PatternLayout.cpp: use std::string::size_type instead of int.
