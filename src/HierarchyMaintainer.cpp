@@ -59,7 +59,7 @@ namespace log4cpp {
         if (NULL == result) {            
             if (name == "") {
 		result = new Category(name, NULL, Priority::INFO);
-                result->setAppender(new FileAppender("_", ::dup(fileno(stderr))));
+                result->addAppender(new FileAppender("_", ::dup(fileno(stderr))));
             } else {
                 std::string parentName;
                 size_t dotIndex = name.find_last_of('.');

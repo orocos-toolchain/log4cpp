@@ -145,7 +145,7 @@ namespace log4cpp {
                                                ") in logging configuration file for category: " +
                                                categoryName);
                     }
-                    category.setAppender(appender);
+                    category.addAppender(appender);
                 }
             }
             else if (nextCommand.compare("priority") == 0) {
