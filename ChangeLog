@@ -11,6 +11,29 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	Made some exception messages clearer.
 	Compacted the code a bit.	
 
+	* src/Properties.hh, src/Properties.cpp: added, moved
+	PropertyConfigurator::parseConfig() to load().
+	* src/PropertyConfiguratorImpl.hh, src/PropertyConfiguratorImpl.cpp:
+	added. This class is a merge of PropertyConfigurator and 
+	ConfiguratorSkeleton. ConfiguratorSkeleton is not generic enough to 
+	be exposed in the API.
+	* include/log4cpp/PropertyConfigurator.hh,
+	src/PropertyConfigurator.cpp: leave only 2 static configure() methods,
+	like SimpleConfigurator. The actual implementation is now in 
+	PropertyConfiguratorImpl.
+	* include/log4cpp/ConfiguratorSkeleton.hh,
+	src/ConfiguratorSkeleton.cpp: removed.
+
+	* src/StringUtil.hh, src/StringUtil.cpp: added, contains 
+	ConfiguratorSkeleton::trim().
+
+	* src/RollingFileAppender.cpp: fix signed/unsigned comparison warning.
+
+	* m4/PETI_PEDANTIC_GCC.m4: remove -pedantic flag for g++ 2.96 to 
+	get rid of those iritating warnings about std IOstreams code.
+
+	* src/TimeStamp.cpp: replaced #include <string.h> with <cstring>.
+	
 2002-07-02 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/HierarchyMaintainer.hh, include/log4cpp/Category.hh,
 	src/HierarchyMaintainer.cpp, src/Category.cpp:
