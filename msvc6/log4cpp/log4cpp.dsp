@@ -148,6 +148,7 @@ SOURCE=..\..\src\Priority.cpp
 SOURCE=..\..\src\SimpleLayout.cpp
 # End Source File
 # Begin Source File
+# Begin Group "Header Files"
 
 # PROP Default_Filter "h;hh;hpp;hxx;hm;inl"
 # Begin Source File
