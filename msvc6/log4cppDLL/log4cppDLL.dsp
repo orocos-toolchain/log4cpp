@@ -92,6 +92,10 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
+SOURCE=..\..\src\AbortAppender.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\Appender.cpp
 # End Source File
 # Begin Source File
@@ -244,10 +248,6 @@ SOURCE=..\..\src\Win32DebugAppender.cpp
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
-SOURCE=..\src\PortabilityImpl.hh
-# End Source File
-# Begin Source File
-
 SOURCE=..\..\include\log4cpp\Appender.hh
 # End Source File
 # Begin Source File
@@ -349,6 +349,10 @@ SOURCE=..\..\include\log4cpp\PatternLayout.hh
 # Begin Source File
 
 SOURCE=..\..\include\log4cpp\Portability.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\PortabilityImpl.hh
 # End Source File
 # Begin Source File
 
