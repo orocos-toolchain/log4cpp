@@ -41,4 +41,7 @@ liblog4cppinclude_HEADERS =  \
 	config-openvms.h
 
 dist-hook:
-	rm -f $(distdir)/config.h
+	$(RM) -f $(distdir)/config.h
+
+distclean-local:
+	$(RM) config.h

@@ -48,3 +48,6 @@ testbench_LDADD = $(top_builddir)/src/liblog4cpp.la
 
 testErrorCollision_SOURCES = testErrorCollision.cpp
 testErrorCollision_LDADD = $(top_builddir)/src/liblog4cpp.la
+
+distclean-local:
+	$(RM) -f *.log
