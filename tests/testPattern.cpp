@@ -6,6 +6,7 @@
 #include <log4cpp/NDC.hh>
 #include <log4cpp/PatternLayout.hh>
 #include <log4cpp/BasicConfigurator.hh>
+#include <iostream>
 
 void test(std::string pattern, log4cpp::PatternLayout* layout, log4cpp::Category& cat)
 {

@@ -1,5 +1,8 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-10-28 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* tests/testPattern.cpp: added missing 'std::'.
+	
 2002-10-27 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/OstringStream.hh, src/OstringStream.cpp: removed
 	* src/StringUtil.hh, src/StringUtil.cpp: added vform() method.
