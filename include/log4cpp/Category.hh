@@ -177,13 +177,13 @@ namespace log4cpp {
          * @param priority The priority to set. Use Priority::NOTSET to let 
          * the category use its parents priority as effective priority.
          **/
-        void setPriority(Priority::Value priority);
+        virtual void setPriority(Priority::Value priority);
 
         /**
          * Returns the assigned Priority, if any, for this Category.
          * @return Priority - the assigned Priority, can be Priority::NOTSET
          **/
-        Priority::Value getPriority() const;
+        virtual Priority::Value getPriority() const;
 
         /**
          * Starting from this Category, search the category hierarchy for a
@@ -193,7 +193,7 @@ namespace log4cpp {
          * <p>The Category class is designed so that this method executes as
          * quickly as possible.
          **/
-        Priority::Value getChainedPriority() const;
+        virtual Priority::Value getChainedPriority() const;
 
         /** 
          * Returns true if the chained priority of the Category is equal to
@@ -201,43 +201,43 @@ namespace log4cpp {
          * @param priority The priority to compare with.
          * @returns whether logging is enable for this priority.
          **/
-        bool isPriorityEnabled(Priority::Value priority) const;
+        virtual bool isPriorityEnabled(Priority::Value priority) const;
         
         /**
          * Sets an Appender for this Category.
          * This method passes ownership from the caller to the Category.
          * @param appender The Appender this category has to log to.
          **/
-        void setAppender(Appender* appender);
+        virtual void setAppender(Appender* appender);
 
         /**
          * Sets an Appender for this Category.
          * This method does not pass ownership from the caller to the Category.
          * @param appender The Appender this category has to log to.
          **/
-        void setAppender(Appender& appender);
+        virtual void setAppender(Appender& appender);
 
         /**
          * Returns the Appender for this Category, or NULL if no Appender has
          * been set.
          * @returns The Appender.
          **/
-        Appender* getAppender() const;
+        virtual Appender* getAppender() const;
 
         /**
          * Removes all appenders set for this Category. Currently a Category
          * can have only one appender, but this may change in the future.
          **/
-        void removeAllAppenders();
+        virtual void removeAllAppenders();
 
         /**
          * Returns true if the Category owns the Appender. In that case the
          * Category destructor will delete the Appender.
          **/
-        bool ownsAppender() const;
+        virtual bool ownsAppender() const;
 
         /**
-         * Call the appenders in the hierrachy starting at
+         * Call the appenders in the hierarchy starting at
          *  <code>this</code>.  If no appenders could be found, emit a
          * warning.
          * 
@@ -247,17 +247,31 @@ namespace log4cpp {
          * 
          * @param LoggingEvent the event to log.
          **/
-        void callAppenders(const LoggingEvent& event);
+        virtual void callAppenders(const LoggingEvent& event);
         
         /**
          * Set the additivity flag for this Category instance.
          **/
-        void setAdditivity(bool additivity);
+        virtual void setAdditivity(bool additivity);
 
         /**
          * Returns the additivity flag for this Category instance.
          **/        
-        inline bool getAdditivity() const { return _isAdditive; };
+        virtual bool getAdditivity() const;
+
+        /**
+         * Returns the parent category of this category, or NULL
+         * if the category is the root category.
+         * @return the parent category.
+         **/
+        virtual Category* getParent();
+
+        /**
+         * Returns the parent category of this category, or NULL
+         * if the category is the root category.
+         * @return the parent category.
+         **/
+        virtual const Category* getParent() const;
 
         /** 
          * Log a message with the specified priority.
@@ -266,14 +280,15 @@ namespace log4cpp {
          * in the log file.
          * @param ... The arguments for stringFormat 
          **/  
-        void log(Priority::Value priority, const char* stringFormat, ...);
+        virtual void log(Priority::Value priority, const char* stringFormat,
+                         ...);
 
         /** 
          * Log a message with the specified priority.
          * @param priority The priority of this log message.
          * @param message string to write in the log file
          **/  
-        void log(Priority::Value priority, const std::string& message);
+        virtual void log(Priority::Value priority, const std::string& message);
         
         /** 
          * Log a message with debug priority.
@@ -520,45 +535,42 @@ namespace log4cpp {
          * @param priority The Priority of the CategoryStream.
          * @returns The requested CategoryStream.
          **/
-        CategoryStream getStream(Priority::Value priority);
+        virtual CategoryStream getStream(Priority::Value priority);
 
         /**
          * Return a CategoryStream with given Priority.
          * @param priority The Priority of the CategoryStream.
          * @returns The requested CategoryStream.
          **/
-        CategoryStream operator<<(Priority::Value priority);
+        virtual CategoryStream operator<<(Priority::Value priority);
 
         protected:
 
         /**
-         * Returns the parent category of this category, or NULL
-         * if the category is the root category.
-         * @return the parent category.
+         * Constructor 
+         * @param name the fully qualified name of this Category
+         * @param parent the parent of this parent, or NULL for the root 
+         * Category
+         * @param priority the priority for this Category. Defaults to
+         * Priority::NOTSET
          **/
-        inline Category* getParent() { return _parent; };
-
-        /**
-         * Returns the parent category of this category, or NULL
-         * if the category is the root category.
-         * @return the parent category.
-         **/
-        inline const Category* getParent() const { return _parent; };
-
-        void _logUnconditionally(Priority::Value priority, const char* format, 
-                                va_list arguments);
+        Category(const std::string& name, Category* parent, 
+                 Priority::Value priority = Priority::NOTSET);
+        
+        virtual void _logUnconditionally(Priority::Value priority, 
+                                         const char* format, 
+                                         va_list arguments);
         
         /** 
          * Unconditionally log a message with the specified priority.
          * @param priority The priority of this log message.
          * @param message string to write in the log file
          **/  
-        void _logUnconditionally2(Priority::Value priority, const std::string& message);
+        virtual void _logUnconditionally2(Priority::Value priority, 
+                                          const std::string& message);
 
         private:
-        Category(const std::string& name, Category* parent, 
-                 Priority::Value priority = Priority::NOTSET);
-        
+
         /** The name of this category. */
         const std::string _name;
 

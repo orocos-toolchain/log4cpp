@@ -82,7 +82,14 @@ namespace log4cpp {
     }
     
     void Category::setPriority(Priority::Value priority) {
-        _priority = priority;
+        if ((priority != Priority::NOTSET) || (getParent() != NULL)) {
+            _priority = priority;
+        } else {
+            /* caller tried to set NOTSET priority to root Category. 
+               Bad caller!
+               Will ignore for now.
+            */
+        }
     }
     
     Priority::Value Category::getPriority() const {
@@ -147,6 +154,18 @@ namespace log4cpp {
 
     void Category::setAdditivity(bool additivity) {
         _isAdditive = additivity;
+    }
+
+    bool Category::getAdditivity() const {
+        return _isAdditive; 
+    }
+
+    Category* Category::getParent() {
+        return _parent; 
+    }
+
+    const Category* Category::getParent() const {
+        return _parent; 
     }
 
     void Category::_logUnconditionally(Priority::Value priority, const char* format, va_list arguments) {
