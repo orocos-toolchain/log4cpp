@@ -84,7 +84,10 @@ namespace log4cpp {
     void PropertyConfiguratorImpl::instantiateAllAppenders() throw(ConfigureFailure) {
         std::string currentAppender;
 
-        for(Properties::const_iterator i = _properties.lower_bound("appender.");i != _properties.end(); ++i) {
+        std::string prefix("appender");
+        Properties::const_iterator from = _properties.lower_bound(prefix + '.');
+        Properties::const_iterator to = _properties.lower_bound(prefix + '/');
+        for(Properties::const_iterator i = from; i != to; ++i) {
             const std::string& key = (*i).first;
             const std::string& value = (*i).second;
             std::list<std::string> propNameParts;
@@ -92,15 +95,7 @@ namespace log4cpp {
             StringUtil::split(pnpIt, key, '.');
             std::list<std::string>::const_iterator i2 = propNameParts.begin();
             std::list<std::string>::const_iterator iEnd = propNameParts.end();
-            if (i2 == iEnd) {
-                // bogus entry, skip
-                continue;
-            }
-            if (*i2++ != "appender") {
-                // moved past appender properties
-                break;
-            }
-            if (i2 == iEnd) {
+            if (++i2 == iEnd) {
                 throw ConfigureFailure(std::string("missing appender name"));
             }
 
@@ -113,13 +108,14 @@ namespace log4cpp {
             if (appenderName == currentAppender) {
                 // simply skip properties for the current appender
             } else {
-                // a new appender
-                currentAppender = appenderName;
-                if (i2 != iEnd) {
+                if (i2 == iEnd) {
+                    // a new appender
+                    currentAppender = appenderName;
+                    _allAppenders[currentAppender] = 
+                        instantiateAppender(currentAppender);
+                } else {
                     throw ConfigureFailure(std::string("partial appender definition : ") + key);
                 }
-
-                _allAppenders[currentAppender] = instantiateAppender(currentAppender);
             }                            
         }
     }
@@ -284,21 +280,18 @@ namespace log4cpp {
      * to search the entire map to figure out which properties are category
      * listings.  Seems like there might be a more elegant solution.
      */
-    void PropertyConfiguratorImpl::getCategories(std::vector<std::string>& catlist) throw (ConfigureFailure) {
+    void PropertyConfiguratorImpl::getCategories(std::vector<std::string>& categories) const {
+        categories.clear();
+
         // add the root category first
-        catlist.push_back(std::string("rootCategory"));
+        categories.push_back(std::string("rootCategory"));
 
         // then look for "category."
-        for (Properties::iterator iter = _properties.begin();
-             iter != _properties.end(); iter++) {
-            // get the property name and test against "category."
-            std::string::size_type length = (*iter).first.find("category.");
-            if (length != std::string::npos) {
-                // found one, so add it to the list
-                std::string catname =
-                    (*iter).first.substr(length + std::string("category.").size());
-                catlist.push_back(catname);
-            }
+        std::string prefix("category");
+        Properties::const_iterator from = _properties.lower_bound(prefix + '.');
+        Properties::const_iterator to = _properties.lower_bound(prefix + '/'); // '/' = '.' + 1
+        for (Properties::const_iterator iter = from; iter != to; iter++) {
+            categories.push_back((*iter).first.substr(prefix.size() + 1));
         }
     }
 }

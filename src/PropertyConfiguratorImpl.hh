@@ -48,9 +48,8 @@ namespace log4cpp {
          * Get a list of categories for which we should do the configuration.  This simply
          * extracts the categories from the map.
          * @param	catlist	Reference to a list which is to receive the list of categories.
-         * @throw	ConfigureFailure
          */
-        void getCategories(std::vector<std::string>& catlist) throw (ConfigureFailure);
+        void getCategories(std::vector<std::string>& categories) const;
 
         void instantiateAllAppenders() throw(ConfigureFailure);
 
