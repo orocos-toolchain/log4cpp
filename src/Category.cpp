@@ -142,7 +142,10 @@ namespace log4cpp {
     }
 
     AppenderSet Category::getAllAppenders() const {
-        return _appender;
+        threading::ScopedLock lock(_appenderSetMutex);
+        {
+            return _appender;
+        }
     }
 
     void Category::removeAllAppenders() {
@@ -345,7 +348,7 @@ namespace log4cpp {
     }
     
     void Category::error(const char* stringFormat, ...) throw() { 
-               if (isPriorityEnabled(Priority::ERROR)) {
+        if (isPriorityEnabled(Priority::ERROR)) {
             va_list va;
             va_start(va,stringFormat);
                        _logUnconditionally(Priority::ERROR, stringFormat, va);
@@ -354,7 +357,7 @@ namespace log4cpp {
     }
     
     void Category::error(const std::string& message) throw() { 
-               if (isPriorityEnabled(Priority::ERROR))
+        if (isPriorityEnabled(Priority::ERROR))
             _logUnconditionally2(Priority::ERROR, message);
     }
 
