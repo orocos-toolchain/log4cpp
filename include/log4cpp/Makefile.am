@@ -22,7 +22,7 @@ liblog4cppinclude_HEADERS =  \
 	Log4cppCleanup.hh \
 	Filter.hh \
 	Export.hh \
-	Config.hh \
+	Portability.hh \
 	config.h \
 	config-win32.h
 

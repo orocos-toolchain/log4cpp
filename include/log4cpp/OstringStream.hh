@@ -13,7 +13,7 @@
 #include <string>
 #include <stdarg.h>
 #include "log4cpp/Export.hh"
-#include "log4cpp/Config.hh"
+#include "log4cpp/Portability.hh"
 
 #ifdef LOG4CPP_HAVE_SSTREAM
 #    include <sstream>
