@@ -35,12 +35,12 @@ rpm: dist
 		$(top_srcdir)
 
 debian:
-	chmod a+x $(top_srcdir)debian/rules
+	chmod a+x $(top_srcdir)/debian/rules
 	dpkg-buildpackage -rfakeroot -sa -us -uc -tc 
 
 docs:
 	$(MAKE) -C doc
 
 doc-dist: docs
-	tar -zcf $(PACKAGE)-docs-$(VERSION).tar.gz -C $(top_scrdir)/doc/html .
+	tar -zcf $(PACKAGE)-docs-$(VERSION).tar.gz -C $(top_srcdir)/doc/html .
  
