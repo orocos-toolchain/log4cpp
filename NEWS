@@ -1,9 +1,11 @@
 This file records noteworthy changes.
 
+0.2.2 (04 March 2001)
+Inclusion of Win32 platform (MSVC++ 6.0)
+
 0.2.1 (15 Februari 2001)
 license change to LGPL.
 
 0.2.0 (10 December 2000)
-
 log4cpp now uses autoconf and automake.
 

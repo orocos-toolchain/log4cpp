@@ -1,5 +1,10 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-03-04 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	Release 0.2.2
+	Added doc-dist make target
+	Added testCategory to tests
+	
 2001-02-25 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	Merged in Win32 / MSVC++6.0 support patches from Lynn Owen 
 	<opl@agoby.com>
