@@ -30,4 +30,4 @@ install-data-local:
 
 clean-local:
 	$(RM) -r latex
-	$(RM) -f html/*.html html/*.gif html/*.css man/man3/*.3 log4cpp.ps log4cpp.pdf
+	$(RM) -f html man log4cpp.ps log4cpp.pdf
