@@ -10,6 +10,8 @@ bin_SCRIPTS = log4cpp-config
 
 EXTRA_DIST = log4cpp.spec.in log4cpp.spec
 
+.PHONY: check rpm docs doc-dist
+
 check: 
 	$(MAKE) -C tests
 
@@ -24,15 +26,15 @@ TAGS:: CONTENTS
 	etags `cat $<`
 
 rpm: dist
-	rpm -ta log4cpp-$(VERSION).tar.gz
-	mv -f /usr/src/redhat/SRPMS/log4cpp-$(VERSION)-*.rpm .
-	mv -f /usr/src/redhat/RPMS/i386/log4cpp-$(VERSION)-*.rpm .
-	mv -f /usr/src/redhat/RPMS/i386/log4cpp-devel-$(VERSION)-*.rpm .
-	mv -f /usr/src/redhat/RPMS/i386/log4cpp-doc-$(VERSION)-*.rpm .
+	rpm -ta $(PACKAGE)-$(VERSION).tar.gz
+	mv -f /usr/src/redhat/SRPMS/$(PACKAGE)-$(VERSION)-*.rpm .
+	mv -f /usr/src/redhat/RPMS/*/$(PACKAGE)-$(VERSION)-*.rpm .
+	mv -f /usr/src/redhat/RPMS/*/$(PACKAGE)-devel-$(VERSION)-*.rpm .
+	mv -f /usr/src/redhat/RPMS/*/$(PACKAGE)-doc-$(VERSION)-*.rpm .
 
 docs:
 	$(MAKE) -C doc
 
 doc-dist: docs
-	tar -zcf log4cpp-docs-$(VERSION).tar.gz -C doc/html .
+	tar -zcf $(PACKAGE)-docs-$(VERSION).tar.gz -C doc/html .
  

@@ -5,6 +5,7 @@ liblog4cpp_la_SOURCES = \
 	AppenderSkeleton.cpp \
 	LayoutAppender.cpp \
 	FileAppender.cpp \
+	FixedContextCategory.cpp \
 	IdsaAppender.cpp \
 	OstreamAppender.cpp \
 	StringQueueAppender.cpp \

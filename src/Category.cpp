@@ -80,6 +80,10 @@ namespace log4cpp {
             delete _appender;
         }
     }
+
+    const std::string& Category::getName() const {
+        return _name; 
+    }
     
     void Category::setPriority(Priority::Value priority) {
         if ((priority != Priority::NOTSET) || (getParent() != NULL)) {

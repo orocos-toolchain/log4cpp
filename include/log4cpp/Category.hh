@@ -170,7 +170,7 @@ namespace log4cpp {
          * Return the category name.
          * @returns The category name.
         */       
-        inline const std::string& getName() const { return _name; };
+        virtual const std::string& getName() const; 
         
         /**
          * Set the priority of this Category.

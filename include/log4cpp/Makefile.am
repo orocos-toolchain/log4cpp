@@ -3,6 +3,7 @@ liblog4cppinclude_HEADERS =  \
 	OstringStream.hh \
 	Appender.hh \
 	AppenderSkeleton.hh \
+	FixedContextCategory.hh \
 	LayoutAppender.hh \
 	FileAppender.hh \
 	IdsaAppender.hh \

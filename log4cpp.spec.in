@@ -62,7 +62,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,755)
 %attr(755,root,root) %prefix/lib/lib*.so.*
-%doc AUTHORS COPYING README NEWS ChangeLog
+%doc AUTHORS COPYING INSTALL NEWS README THANKS ChangeLog
 
 %files devel
 %defattr(-,root,root,755)

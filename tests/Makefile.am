@@ -1,4 +1,4 @@
-bin_PROGRAMS = testmain testCategory testNDC testbench
+bin_PROGRAMS = testmain testCategory testFixedContextCategory testNDC testbench
 
 INCLUDES = -I../include
 
@@ -7,6 +7,9 @@ testmain_LDADD = ../src/liblog4cpp.la
 
 testCategory_SOURCES = testCategory.cpp
 testCategory_LDADD = ../src/liblog4cpp.la
+
+testFixedContextCategory_SOURCES = testFixedContextCategory.cpp
+testFixedContextCategory_LDADD = ../src/liblog4cpp.la
 
 testNDC_SOURCES = testNDC.cpp
 testNDC_LDADD = ../src/liblog4cpp.la
