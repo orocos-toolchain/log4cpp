@@ -1,9 +1,17 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-01-17 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/HierarchyMaintainer.hh, src/HierarchyMaintainer.cpp:
+	added getExistingInstance(std::string). 
+	* include/log4cpp/Category.hh, src/Category.cpp: 
+	added exists(std::string).
+
 2002-01-16 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/Category.hh, src/Category.cpp: fix bug #504314:
 	added missing log methods for priority 'fatal'.
 
+	* src/SimpleConfigurator.cpp: added 'stdout' and 'stderr' appenders.
+	
 2002-01-10 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* configure.in: added check for strcasecmp() and stricmp().
 	* include/log4cpp/config-win32.h: have stricmp() but not strcasecmp().
@@ -12,8 +20,6 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 
 	* include/log4cpp/RemoteSyslogAppender.hh: added SyslogFacility type.
 
-	* src/SimpleConfigurator.cpp: added 'stdout' and 'stderr' appenders.
-	
 2002-01-09 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/SimpleConfigurator.cpp: skip all whitespace before PatternLayout 
 	pattern, not just one.

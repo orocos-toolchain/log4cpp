@@ -66,6 +66,13 @@ namespace log4cpp {
          * @param name The name of the category to retrieve.
          **/
         static Category& getInstance(const std::string& name);
+            
+        /**
+         * If the named category exists (in the default hierarchy) then it
+         * returns a reference to the category, otherwise it returns NULL.
+         * @since 0.2.7
+         **/
+        static Category* exists(const std::string& name);
 
         /**
          * Returns all the currently defined categories as a set of
@@ -457,7 +464,8 @@ namespace log4cpp {
 
         /** 
          * Log a message with fatal priority. 
-	 * NB. priority 'fatal' is equivalent to 'emerg'.
+         * NB. priority 'fatal' is equivalent to 'emerg'.
+         * @since 0.2.7
          * @param stringFormat Format specifier for the string to write 
          * in the log file.
          * @param ... The arguments for stringFormat 
@@ -466,14 +474,16 @@ namespace log4cpp {
 
         /** 
          * Log a message with fatal priority.
-	 * NB. priority 'fatal' is equivalent to 'emerg'.
+         * NB. priority 'fatal' is equivalent to 'emerg'.
+         * @since 0.2.7
          * @param message string to write in the log file
          **/  
         void fatal(const std::string& message) throw();
 
         /**
          * Return true if the Category will log messages with priority FATAL.
-	 * NB. priority 'fatal' is equivalent to 'emerg'.
+         * NB. priority 'fatal' is equivalent to 'emerg'.
+         * @since 0.2.7
          * @returns Whether the Category will log.
          **/ 
         inline bool isFatalEnabled() const throw() { 
@@ -482,7 +492,8 @@ namespace log4cpp {
         
         /**
          * Return a CategoryStream with priority FATAL.
-	 * NB. priority 'fatal' is equivalent to 'emerg'.
+         * NB. priority 'fatal' is equivalent to 'emerg'.
+         * @since 0.2.7
          * @returns The CategoryStream.
          **/
         inline CategoryStream fatalStream() {

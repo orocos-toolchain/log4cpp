@@ -31,6 +31,7 @@ namespace log4cpp {
 
         HierarchyMaintainer();
         virtual ~HierarchyMaintainer();
+        virtual Category* getExistingInstance(const std::string& name);
         virtual Category& getInstance(const std::string& name);
         virtual std::set<Category*>* getCurrentCategories() const;
         virtual void shutdown();

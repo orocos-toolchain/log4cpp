@@ -43,13 +43,22 @@ namespace log4cpp {
         deleteAllCategories();
     }
 
-    Category& HierarchyMaintainer::getInstance(const std::string& name) {
+    Category* HierarchyMaintainer::getExistingInstance(const std::string& name) {
+	Category* result = NULL;
         CategoryMap::iterator i = _categoryMap.find(name);
-        if (_categoryMap.end() == i) {
-            Category* result;
-            
+        if (_categoryMap.end() != i) {
+	    result = (*i).second;
+	}
+
+	return result;
+    }
+
+    Category& HierarchyMaintainer::getInstance(const std::string& name) {
+	Category* result = getExistingInstance(name);
+
+        if (NULL == result) {            
             if (name == "") {
-                               result = new Category(name, NULL, Priority::INFO);
+		result = new Category(name, NULL, Priority::INFO);
                 result->setAppender(new FileAppender("_", ::dup(fileno(stderr))));
             } else {
                 std::string parentName;
@@ -63,10 +72,9 @@ namespace log4cpp {
                 result = new Category(name, &parent, Priority::NOTSET);
             }	  
             _categoryMap[name] = result; 
-            return *result;
-        } else {
-            return *((*i).second);
-        }
+	}
+
+	return *result;
     }
 
     std::set<Category*>* HierarchyMaintainer::getCurrentCategories() const {
