@@ -31,5 +31,13 @@ namespace log4cpp {
 
     bool AbortAppender::reopen() {
         return true;
-    }      
+    }
+      
+    bool AbortAppender::requiresLayout() const {
+        return false;
+    }
+
+    void AbortAppender::setLayout(Layout* layout) {
+        return;
+    }
 }

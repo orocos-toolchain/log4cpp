@@ -30,6 +30,14 @@ namespace log4cpp {
         virtual bool reopen();
         virtual void close();
 
+        /**
+         * The AbortAppender does not layout.
+         * @returns false
+         **/
+        virtual bool requiresLayout() const;
+
+        virtual void setLayout(Layout* layout);
+
         protected:        
         virtual void _append(const LoggingEvent& event);
     };
