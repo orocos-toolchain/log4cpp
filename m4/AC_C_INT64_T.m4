@@ -13,6 +13,7 @@ AC_DEFUN([AC_C_INT64_T],
 ]) 
 if test $ac_cv_c_int64_t = yes; then
   AC_DEFINE(HAVE_INT64_T,,[define if the compiler has int64_t])
+  AC_DEFINE(HAVE_STDINT_H,,[define if you have the <stdint.h> header file.])
 fi
 ])
 
