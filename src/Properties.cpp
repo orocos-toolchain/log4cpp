@@ -8,6 +8,7 @@
 
 #include "Properties.hh"
 #include <cstdlib>
+#include "StringUtil.hh"
 
 namespace log4cpp {
     
@@ -46,8 +47,8 @@ namespace log4cpp {
             // check the command and handle it
             length = command.find('=');
             if (length != std::string::npos) {
-                leftSide = command.substr(0, length);
-                rightSide = command.substr(length + 1, command.size() - length);
+                leftSide = StringUtil::trim(command.substr(0, length));
+                rightSide = StringUtil::trim(command.substr(length + 1, command.size() - length));
                 _substituteVariables(rightSide);
             } else {
                 continue;
