@@ -10,8 +10,7 @@
 #ifndef _LOG4CPP_TIMESTAMP_HH
 #define _LOG4CPP_TIMESTAMP_HH
 
-#include "log4cpp/Portability.hh"
-#include "log4cpp/Export.hh"
+#include <log4cpp/Portability.hh>
 
 namespace log4cpp {
 
