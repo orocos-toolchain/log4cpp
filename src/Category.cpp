@@ -155,29 +155,33 @@ namespace log4cpp {
     }
 
     bool Category::ownsAppender(Appender* appender) const throw() {
-        bool found = false;
+        bool owned = false;
 
         if (NULL != appender) {            
             OwnsAppenderMap::const_iterator i = _ownsAppender.find(appender);
-            found = (_ownsAppender.end() != i);
+            if (_ownsAppender.end() != i) {
+                owned = (*i).second;
+            }
         }
 
-        return found;
+        return owned;
     }
 
     bool Category::ownsAppender(Appender* appender, 
                                 Category::OwnsAppenderMap::iterator& i2) throw() {
-        bool found = false;
+        bool owned = false;
 
         if (NULL != appender) {
             OwnsAppenderMap::iterator i = _ownsAppender.find(appender);
             if (_ownsAppender.end() != i) {
-                found = true;
-                i2 = i;
+                owned = (*i).second;
+                if (owned) {
+                    i2 = i;
+                }
             }
         }
 
-        return found;
+        return owned;
     }
 
     void Category::callAppenders(const LoggingEvent& event) throw() {
