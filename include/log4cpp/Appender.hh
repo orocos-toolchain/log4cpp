@@ -17,6 +17,7 @@
 #include "log4cpp/Priority.hh"
 #include "log4cpp/Layout.hh"
 #include "log4cpp/LoggingEvent.hh"
+#include "log4cpp/Filter.hh"
 #include "log4cpp/Log4cppCleanup.hh"
 
 namespace log4cpp {
@@ -111,7 +112,22 @@ namespace log4cpp {
          **/
         virtual void setTreshold(Priority::Value priority) = 0;
 
-        virtual Priority::Value getTreshold() = 0;
+        /**
+         * Get the treshold priority of this Appender.
+         * @returns the treshold
+         **/
+         virtual Priority::Value getTreshold() = 0;
+
+        /**
+         * Set a Filter for this appender. 
+         **/
+        virtual void setFilter(Filter* filter) = 0;
+
+        /**
+         * Get the Filter for this appender.
+         * @returns the filter, or NULL if no filter has been set.
+         **/
+        virtual Filter* getFilter() = 0;
 
         private:
         typedef std::map<std::string, Appender*> AppenderMap;

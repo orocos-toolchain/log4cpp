@@ -17,6 +17,7 @@ liblog4cpp_la_SOURCES = \
 	Priority.cpp \
 	NDC.cpp \
 	StreamUtil.cpp \
+	Filter.cpp \
 	Log4cppCleanup.cpp
 
 liblog4cpp_la_LDFLAGS = -version-info @LT_VERSION@

@@ -74,11 +74,26 @@ namespace log4cpp {
          **/
         virtual void setTreshold(Priority::Value priority);
 
+        /**
+         * Get the treshold priority of this Appender.
+         * @returns the treshold
+         **/
         virtual Priority::Value getTreshold();
+
+        /**
+         * Set a Filter for this appender. 
+         **/
+        virtual void setFilter(Filter* filter);
+
+        /**
+         * Get the Filter for this appender.
+         * @returns the filter, or NULL if no filter has been set.
+         **/
+        virtual Filter* getFilter();
 
         protected:
         /**
-         * Log in Appender specific way. Sublclasses of Appender should
+         * Log in Appender specific way. Subclasses of Appender should
          * implement this method to perform actual logging.
          * @param event  The LoggingEvent to log. 
          **/
@@ -87,6 +102,7 @@ namespace log4cpp {
         
         private:
         Priority::Value _treshold;
+        Filter* _filter;
     };
 }
 
