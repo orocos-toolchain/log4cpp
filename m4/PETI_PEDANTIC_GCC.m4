@@ -14,11 +14,11 @@ AC_DEFUN([PETI_PEDANTIC_GCC],
     [
     if test "$GCC" = yes; then
         case `$CXX --version` in
-            *2.97*) CFLAGS="$CFLAGS -Wall -pedantic -D_ISOC99_SOURCE"
-                    CXXFLAGS="$CXXFLAGS -Wall -pedantic -D_ISOC99_SOURCE" 
+            *2.97*) CFLAGS="$CFLAGS -Wall -Wno-unused -pedantic -D_ISOC99_SOURCE"
+                    CXXFLAGS="$CXXFLAGS -Wall -Wno-unused -pedantic -D_ISOC99_SOURCE" 
                     ;;
-	    *)      CFLAGS="$CFLAGS -Wall -pedantic"
-                    CXXFLAGS="$CXXFLAGS -Wall -pedantic"
+	    *)      CFLAGS="$CFLAGS -Wall -Wno-unused -pedantic"
+                    CXXFLAGS="$CXXFLAGS -Wall -Wno-unused -pedantic"
                     ;;
         esac
     fi
