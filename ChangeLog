@@ -1,5 +1,11 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-01-04 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/config-openvms.h: #include <inttypes.h> for int64_t.
+
+	* src/PatternLayout.cpp(doFormat): removed superfluous return
+	statement.
+	
 2002-01-03 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/Filter.hh: decide() is NOT abstract.
 
