@@ -138,8 +138,10 @@ namespace log4cpp {
         static void _deleteAllAppenders();
         static void _addAppender(Appender* appender);
         static void _removeAppender(Appender* appender);
+
+#ifdef LOG4CPP_USE_CLEANUP
         static Log4cppCleanup& _fuckinDummy;
-        
+#endif        
         const std::string _name;
     };
 }

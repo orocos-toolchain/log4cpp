@@ -1,5 +1,17 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-11-30 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* tests/testbench.cpp: use TimeStamp instead of ::time()
+
+	* include/log4cpp/Makefile.am: added config-openvms.h to headers.
+
+	* include/log4cpp/Appender.hh, include/log4cpp/HierarchyMaintainer.hh,
+	include/log4cpp/Log4cpCleanup.hh, src/Appender.cpp,
+	src/HierarchyMaintainer.cpp, src/Log4cppCleanup.cpp: conditionally
+	use Log4cppCleanup, based on #define LOG4CPP_USE_CLEANUP. The new 
+	default is NOT to use it, because it causes segfaults on some 
+	platforms (e.g. Solaris).
+
 2001-11-29 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/Portability.hh: use config-openvms.h based on 
 	__OPENVMS__ flag.

@@ -41,7 +41,10 @@ namespace log4cpp {
         
         private:
         static HierarchyMaintainer* _defaultMaintainer;
+
+#ifdef LOG4CPP_USE_CLEANUP
         static Log4cppCleanup& _fuckinDummy;
+#endif        
     };        
 }
 

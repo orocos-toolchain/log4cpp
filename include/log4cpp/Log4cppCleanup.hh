@@ -28,7 +28,9 @@ namespace log4cpp {
         ~Log4cppCleanup();
 
         public:
+#ifdef LOG4CPP_USE_CLEANUP
         static Log4cppCleanup _cleanup;
+#endif        
     };
 }
 

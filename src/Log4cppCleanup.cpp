@@ -14,7 +14,9 @@
 #include <iostream>
 
 namespace log4cpp {
+#ifdef LOG4CPP_USE_CLEANUP
     Log4cppCleanup Log4cppCleanup::_cleanup;
+#endif
 
     Log4cppCleanup::Log4cppCleanup() {
 #ifdef LOG4CPP_DEBUGCLEANUP

@@ -22,7 +22,9 @@
 #include "log4cpp/FileAppender.hh"
 
 namespace log4cpp {
+#ifdef LOG4CPP_USE_CLEANUP
     Log4cppCleanup& HierarchyMaintainer::_fuckinDummy = Log4cppCleanup::_cleanup;
+#endif
 
     HierarchyMaintainer* HierarchyMaintainer::_defaultMaintainer = NULL;
 
