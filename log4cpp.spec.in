@@ -1,4 +1,4 @@
-%define  RELEASE 3
+%define  RELEASE 4
 %define  rel     %{?CUSTOM_RELEASE} %{!?CUSTOM_RELEASE:%RELEASE}
 
 %define lib_name log4cpp
@@ -84,6 +84,7 @@ fi
 %attr(755,root,root) %prefix/bin/log4cpp-config
 %attr(755,root,root) %prefix/lib/lib*.so
 %attr(644,root,root) %prefix/lib/*.*a
+%attr(644,root,root) %prefix/share/aclocal/*.m4
 
 %files doc
 %defattr(-,root,root)

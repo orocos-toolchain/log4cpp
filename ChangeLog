@@ -1,5 +1,8 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2003-04-07 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* log4cpp.spec.in: added log4cpp.m4 to -devel package.
+	
 2003-03-26 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/StringUtil.cpp: added \r and \n to whitespace characters.
 	* src/Properties.cpp: trim property keys and values. Fixes
