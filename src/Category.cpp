@@ -38,7 +38,7 @@ namespace log4cpp {
     void CategoryStream::flush() {
         if (_buffer) {
             (*_buffer) << '\0';
-            getCategory().log(getPriority(), std::string(_buffer->str()));
+            getCategory().log(getPriority(), std::string(StreamUtil::str(*_buffer)));
             delete _buffer;
             _buffer = NULL;
         }
@@ -139,20 +139,11 @@ namespace log4cpp {
     }
 
     void Category::_logUnconditionally(int priority, const char* format, va_list arguments) {
-        ostrstream messageBuffer;
+        ostringstream messageBuffer;
 
-// XXX fix properly in Hints.cpp, not here 
-#ifdef _MSC_VER
-        char buffer[512];
-        int  err = _vsnprintf(buffer, sizeof(buffer), format, arguments );
-        
-        messageBuffer << (err == -1 ? "message too long" : buffer);
-#else
-        messageBuffer.vform(format, arguments);
-#endif // _MSC_VER
-
+        StreamUtil::vform(messageBuffer, format, arguments);
         messageBuffer << '\0';
-        std::string message = std::string(messageBuffer.str());
+        std::string message(StreamUtil::str(messageBuffer));
         _logUnconditionally2(priority, message);
     }
     

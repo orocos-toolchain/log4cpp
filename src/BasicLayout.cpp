@@ -20,13 +20,13 @@ namespace log4cpp {
     }
 
     char* BasicLayout::format(const LoggingEvent& event) {
-        ostrstream message;
+        ostringstream message;
 
         const std::string& priorityName = Priority::getPriorityName(event.priority);
         message << event.timeStamp << " " << priorityName << " " 
                 << event.categoryName << " " << event.ndc << ": " 
                 << event.message << std::endl << '\0';
 
-        return message.str();
+        return StreamUtil::str(message);
     }
 }

@@ -536,7 +536,7 @@ fi
 
 LOG4CPP_MAJOR_VERSION=0
 LOG4CPP_MINOR_VERSION=2
-LOG4CPP_MICRO_VERSION=1
+LOG4CPP_MICRO_VERSION=2
 
 PACKAGE=log4cpp
 VERSION=$LOG4CPP_MAJOR_VERSION.$LOG4CPP_MINOR_VERSION.$LOG4CPP_MICRO_VERSION
@@ -1783,6 +1783,80 @@ fi
 CXXCPP="$ac_cv_prog_CXXCPP"
 echo "$ac_t""$CXXCPP" 1>&6
 
+ac_ext=C
+# CXXFLAGS is not in ac_cpp because -g, -O, etc. are not valid cpp options.
+ac_cpp='$CXXCPP $CPPFLAGS'
+ac_compile='${CXX-g++} -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext 1>&5'
+ac_link='${CXX-g++} -o conftest${ac_exeext} $CXXFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS 1>&5'
+cross_compiling=$ac_cv_prog_cxx_cross
+
+
+# Checks for headers
+
+echo $ac_n "checking for std::stringstream""... $ac_c" 1>&6
+echo "configure:1798: checking for std::stringstream" >&5
+cat > conftest.$ac_ext <<EOF
+#line 1800 "configure"
+#include "confdefs.h"
+#include <ssstream>
+int main() {
+std::stringstream s;
+; return 0; }
+EOF
+if { (eval echo configure:1807: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; }; then
+  rm -rf conftest*
+  HAVE_STRINGSTREAM=yes
+else
+  echo "configure: failed program was:" >&5
+  cat conftest.$ac_ext >&5
+  rm -rf conftest*
+  HAVE_STRINGSTREAM=no
+fi
+rm -f conftest*
+
+if test "$HAVE_STRINGSTREAM" = "yes" ; then
+        cat >> confdefs.h <<\EOF
+#define LOG4CPP_USE_NEW_IOSTREAM 1
+EOF
+
+        echo "$ac_t""yes" 1>&6
+else
+        echo "$ac_t""no" 1>&6
+        echo $ac_n "checking for vform() in ostrstream""... $ac_c" 1>&6
+echo "configure:1827: checking for vform() in ostrstream" >&5
+        cat > conftest.$ac_ext <<EOF
+#line 1829 "configure"
+#include "confdefs.h"
+#include <strstream>
+                        #include <stdarg.h>
+                       
+int main() {
+using namespace std; va_list args;
+                        ostrstream s; s.vform("%s", args);
+                       
+; return 0; }
+EOF
+if { (eval echo configure:1840: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; }; then
+  rm -rf conftest*
+  HAVE_STRSTREAM_VFORM=yes
+else
+  echo "configure: failed program was:" >&5
+  cat conftest.$ac_ext >&5
+  rm -rf conftest*
+  HAVE_STRSTREAM_VFORM=no
+fi
+rm -f conftest*
+        if test "$HAVE_STRSTREAM_VFORM" = "yes" ; then
+                cat >> confdefs.h <<\EOF
+#define HAVE_STRSTREAM_VFORM 1
+EOF
+
+                echo "$ac_t""yes" 1>&6
+        else
+                echo "$ac_t""no" 1>&6
+        fi
+fi
+
 
 # Checks for libraries
 # ----------------------------------------------------------------------------
@@ -1795,7 +1869,7 @@ echo "$ac_t""$CXXCPP" 1>&6
 # Extract the first word of "doxygen", so it can be a program name with args.
 set dummy doxygen; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1799: checking for $ac_word" >&5
+echo "configure:1873: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_path_DOXYGEN'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1864,17 +1938,20 @@ fi
 for ac_func in syslog
 do
 echo $ac_n "checking for $ac_func""... $ac_c" 1>&6
-echo "configure:1868: checking for $ac_func" >&5
+echo "configure:1942: checking for $ac_func" >&5
 if eval "test \"`echo '$''{'ac_cv_func_$ac_func'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
   cat > conftest.$ac_ext <<EOF
-#line 1873 "configure"
+#line 1947 "configure"
 #include "confdefs.h"
 /* System header to define __stub macros and hopefully few prototypes,
     which can conflict with char $ac_func(); below.  */
 #include <assert.h>
 /* Override any gcc2 internal prototype to avoid an error.  */
+#ifdef __cplusplus
+extern "C"
+#endif
 /* We use char because int might match the return type of a gcc2
     builtin and then its argument prototype would still apply.  */
 char $ac_func();
@@ -1892,7 +1969,7 @@ $ac_func();
 
 ; return 0; }
 EOF
-if { (eval echo configure:1896: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+if { (eval echo configure:1973: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
   rm -rf conftest*
   eval "ac_cv_func_$ac_func=yes"
 else
@@ -1921,7 +1998,7 @@ done
 
 if test "x$with_idsa" = xyes; then
     echo $ac_n "checking for idsa_open in -lidsa""... $ac_c" 1>&6
-echo "configure:1925: checking for idsa_open in -lidsa" >&5
+echo "configure:2002: checking for idsa_open in -lidsa" >&5
 ac_lib_var=`echo idsa'_'idsa_open | sed 'y%./+-%__p_%'`
 if eval "test \"`echo '$''{'ac_cv_lib_$ac_lib_var'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
@@ -1929,9 +2006,12 @@ else
   ac_save_LIBS="$LIBS"
 LIBS="-lidsa  $LIBS"
 cat > conftest.$ac_ext <<EOF
-#line 1933 "configure"
+#line 2010 "configure"
 #include "confdefs.h"
 /* Override any gcc2 internal prototype to avoid an error.  */
+#ifdef __cplusplus
+extern "C"
+#endif
 /* We use char because int might match the return type of a gcc2
     builtin and then its argument prototype would still apply.  */
 char idsa_open();
@@ -1940,7 +2020,7 @@ int main() {
 idsa_open()
 ; return 0; }
 EOF
-if { (eval echo configure:1944: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+if { (eval echo configure:2024: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
   rm -rf conftest*
   eval "ac_cv_lib_$ac_lib_var=yes"
 else
@@ -2085,7 +2165,7 @@ src/Makefile
 include/Makefile
 include/log4cpp/Makefile
 tests/Makefile
- src/config.h" | sed "s/:[^ ]*//g"` conftest*; exit 1' 1 2 15
+ include/log4cpp/config.h" | sed "s/:[^ ]*//g"` conftest*; exit 1' 1 2 15
 EOF
 cat >> $CONFIG_STATUS <<EOF
 
@@ -2281,7 +2361,7 @@ ac_eD='%g'
 if test "${CONFIG_HEADERS+set}" != set; then
 EOF
 cat >> $CONFIG_STATUS <<EOF
-  CONFIG_HEADERS="src/config.h"
+  CONFIG_HEADERS="include/log4cpp/config.h"
 EOF
 cat >> $CONFIG_STATUS <<\EOF
 fi
@@ -2372,7 +2452,7 @@ cat >> $CONFIG_STATUS <<EOF
 
 EOF
 cat >> $CONFIG_STATUS <<\EOF
-test -z "$CONFIG_HEADERS" || echo timestamp > src/stamp-h
+test -z "$CONFIG_HEADERS" || echo timestamp > include/log4cpp/stamp-h
 
 exit 0
 EOF

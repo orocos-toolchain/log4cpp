@@ -10,53 +10,32 @@
 #ifndef _LOG4CPP_HINTS_HH
 #define _LOG4CPP_HINTS_HH
 
-#ifdef __GNUC__
+#include "log4cpp/config.h"
+#include <stdarg.h>
 
-#    if (__GNUC__ < 2) || (__GNUC__ == 2 && __GNUC_MINOR__ <= 95)
-#        include <strstream>
-#        define LOG4CPP_USE_OLD_IOSTREAM 1
-#    else
-#        include <sstream>
-#        define LOG4CPP_USE_NEW_IOSTREAM 1
-#    endif
-
-#elif __DECCXX
-
-#    if (defined (__STD_STRICT_ANSI) || defined (__STD_STRICT_ANSI_ERRORS))
-#        include <sstream>
-#	 define LOG4CPP_USE_NEW_IOSTREAM 1
-#    else
-#        include <strstream>
-#        define LOG4CPP_USE_OLD_IOSTREAM 1
-#    endif
-
-#elif defined(_MSC_VER)
-
+#if defined(_MSC_VER)
 #    pragma warning( disable : 4786 )
-#    include <strstream>
      using namespace std;
-#    define LOG4CPP_USE_OLD_IOSTREAM 1
-#    undef LOG4CPP_USE_NEW_IOSTREAM
-
-#else
-
-#    error "Unknown Compiler !!"
-
 #endif
 
+#ifdef LOG4CPP_USE_NEW_IOSTREAM
+#    include <sstream>
+#else
+#    include <strstream>
+#endif
 
 namespace log4cpp {
 
 #ifdef LOG4CPP_USE_NEW_IOSTREAM
+    typedef std::ostringstream ostringstream;
+#else
+    typedef ostrstream ostringstream;
+#endif
 
-    class ostrstream: public std::ostringstream 
-    {
-    public:
-	char*	str();
-	void	vform(const char* format, va_list args);
+    class StreamUtil {
+        public:
+        static char* str(ostringstream& s);
+	static void vform(ostringstream& s, const char* format, va_list args);
     };
-
-#endif // LOG4CPP_USE_NEW_IOSTREAM
-
 }
 #endif // _LOG4CPP_HINTS_HH

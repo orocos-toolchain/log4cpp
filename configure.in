@@ -22,7 +22,7 @@ AC_SUBST(LOG4CPP_MINOR_VERSION)
 AC_SUBST(LT_VERSION)
 
 AC_CONFIG_AUX_DIR(config)
-AM_CONFIG_HEADER(src/config.h)
+AM_CONFIG_HEADER(include/log4cpp/config.h)
 AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
 
 # General "with" options
@@ -40,7 +40,37 @@ AC_PROG_MAKE_SET
 
 AC_PROG_CXX
 AC_PROG_CXXCPP
-dnl AC_LANG_CPLUSPLUS
+AC_LANG_CPLUSPLUS
+
+# Checks for headers
+
+AC_MSG_CHECKING([for std::stringstream])
+AC_TRY_COMPILE([#include <sstream>], [std::stringstream s;], 
+               HAVE_STRINGSTREAM=yes, HAVE_STRINGSTREAM=no)
+
+if test "$HAVE_STRINGSTREAM" = "yes" ; then
+        AC_DEFINE(LOG4CPP_USE_NEW_IOSTREAM, 1, 
+                  [define if you have new iostreams])
+        AC_MSG_RESULT(yes)
+else
+        AC_MSG_RESULT(no)
+        AC_MSG_CHECKING([for vform() in ostrstream])
+        AC_TRY_COMPILE([#include <strstream>
+                        #include <stdarg.h>
+                       ], 
+                       [using namespace std; va_list args;
+                        ostrstream s; s.vform("%s", args);
+                       ], 
+                       HAVE_STRSTREAM_VFORM=yes, HAVE_STRSTREAM_VFORM=no)
+        if test "$HAVE_STRSTREAM_VFORM" = "yes" ; then
+                AC_DEFINE(HAVE_STRSTREAM_VFORM, 1, 
+                          [define if ostrstream has vform()])
+                AC_MSG_RESULT(yes)
+        else
+                AC_MSG_RESULT(no)
+        fi
+fi
+
 
 # Checks for libraries
 # ----------------------------------------------------------------------------

@@ -79,7 +79,7 @@ VERSION = @VERSION@
 man3dir = $(mandir)/man3
 docdir = $(prefix)/doc/log4cpp-@VERSION@
 mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
-CONFIG_HEADER = ../src/config.h
+CONFIG_HEADER = ../include/log4cpp/config.h
 CONFIG_CLEAN_FILES =  Doxyfile
 DIST_COMMON =  Doxyfile.in Makefile.am Makefile.in
 
@@ -213,7 +213,7 @@ install-data-local:
 
 clean-local:
 	$(RM) -r latex
-	$(RM) -f html log4cpp.ps log4cpp.pdf
+	$(RM) -r html man log4cpp.ps log4cpp.pdf
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

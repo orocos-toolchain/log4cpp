@@ -78,7 +78,7 @@ VERSION = @VERSION@
 
 SUBDIRS = log4cpp
 mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
-CONFIG_HEADER = ../src/config.h
+CONFIG_HEADER = ../include/log4cpp/config.h
 CONFIG_CLEAN_FILES = 
 DIST_COMMON =  Makefile.am Makefile.in
 

@@ -92,12 +92,12 @@ testNDC_LDADD = ../src/liblog4cpp.la
 testbench_SOURCES = Clock.cpp testbench.cpp 
 testbench_LDADD = ../src/liblog4cpp.la
 mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
-CONFIG_HEADER = ../src/config.h
+CONFIG_HEADER = ../include/log4cpp/config.h
 CONFIG_CLEAN_FILES = 
 PROGRAMS =  $(bin_PROGRAMS)
 
 
-DEFS = @DEFS@ -I. -I$(srcdir) -I../src
+DEFS = @DEFS@ -I. -I$(srcdir) -I../include/log4cpp
 CPPFLAGS = @CPPFLAGS@
 LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@

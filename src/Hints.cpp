@@ -10,39 +10,41 @@
 #include "log4cpp/Hints.hh"
 
 #ifdef __osf__
-#include <stdarg.h>
 #include <stddef.h>
 
 extern int snprintf(char*, size_t, const char*, ...);
 extern int vsnprintf(char*, size_t, const char*, va_list);
 
-#elif defined(_MSC_VER)
-#    include <stdio.h>
-#    include <stdarg.h>
-#    include <windows.h>
 #else
 #    include <stdio.h>
 #endif // __osf__
 
+#if defined(_MSC_VER)
+#    include <windows.h>
+#endif // _MSC_VER
+
 namespace log4cpp {
 
+    char* StreamUtil::str(ostringstream& s) { 
 #ifdef LOG4CPP_USE_NEW_IOSTREAM
-
-    char* ostrstream::str() { 
-	return strdup(std::ostringstream::str().c_str()); 
+	return strdup(s.str().c_str()); 
+#else
+        return s.str();
+#endif // LOG4CPP_USE_NEW_IOSTREAM
     }
 
 
-    void ostrstream::vform(const char* format, va_list args) {
+    void StreamUtil::vform(ostringstream& s,const char* format, va_list args) {
+#ifdef HAVE_STRSTREAM_VFORM
+        s.vform(format, args);
+#else
 	// FIXME: max message size is 512
 	char buffer[512];
 	int  err = vsnprintf(buffer, sizeof(buffer), format, args);
 	
-	*this << (err == -1 ? "message too long" : buffer);
+	s << (err == -1 ? "message too long" : buffer);
+#endif // HAVE_STRSTREAM_VFORM     
     }
-
-#endif // LOG4CPP_USE_NEW_IOSTREAM
-
 }
 
 

@@ -32,5 +32,5 @@ docs:
 	$(MAKE)
 
 doc-dist: docs
-	tar -zcvf log4cpp-docs-$(VERSION)-tar.gz -C doc/html .
+	tar -zcf log4cpp-docs-$(VERSION).tar.gz -C doc/html .
  

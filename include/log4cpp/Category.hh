@@ -82,17 +82,15 @@ namespace log4cpp {
         void flush();
 
         /**
-         * Stream in arbitrary types and objects. 
+         * Stream in arbitrary types and objects.  
          * @param t The value or object to stream in.
          * @returns A reference to itself.
          **/
         template<typename T> CategoryStream& operator<<(const T& t) {
             if (getPriority() != Priority::NOTSET) {
                 if (!_buffer) {
-                    if (!(_buffer = new ostrstream)) {
+                    if (!(_buffer = new ostringstream)) {
                         // XXX help help help
-                    } else {
-                        (*_buffer) << t;
                     }
                 } else {
                     (*_buffer) << t;
@@ -104,7 +102,7 @@ namespace log4cpp {
         private:
         Category& _category;
         int _priority;
-        ostrstream* _buffer;
+        ostringstream* _buffer;
     };
 
     /**

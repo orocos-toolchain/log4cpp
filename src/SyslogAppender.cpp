@@ -7,7 +7,7 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include "config.h"
+#include "log4cpp/config.h"
 #if HAVE_SYSLOG
 
 #include <unistd.h>
