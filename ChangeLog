@@ -1,5 +1,13 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-07-22 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* configure.in, configure.ac: renamed configure.in to configure.ac.
+
+	* configure.ac, log4cpp.spec.in, doc/Doxyfile.in, doc/Makefile.am,
+	m4/AC_CREATE_PREFIX_CONFIG_H.m4, m4/AC_CXX_HAVE_SSTREAM.m4, 
+	m4/AC_CXX_NAMESPACES.m4, m4/BB_CHECK_OMNITHREADS.m4:
+	updated AC macros and variables to autoconf 2.50. 
+
 2002-07-11 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/PatternLayout.cpp: use std::string::size_type instead of int.
 	* src/PropertyConfiguratorImpl.cpp: use map.lower_bound() to determine 
