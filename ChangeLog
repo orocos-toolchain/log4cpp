@@ -1,6 +1,13 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
-2002-01-17 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+2002-01-21 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/Category.cpp: fix ownsAppender() methods.
+
+	* tests/testCategory.cpp: rename appender 'default' to 'default2'.
+
+	* configure.in: upped version to 0.2.7rc1 and LT_VERSION to 3:1:2
+	
+2002-01-20 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/Category.hh, src/Category.cpp, 
 	tests/testCategory.cpp: merged in support for multiple Appenders,
 	contributed by Brendan B. Boerner.
