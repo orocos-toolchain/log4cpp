@@ -30,7 +30,14 @@ namespace log4cpp {
                                const std::string& fileName) : 
             LayoutAppender(name),
             _fileName(fileName) {
+#if defined(__OPENVMS__)
+        // shr=get, File Sharing Options, Allow users to read
+        // ctx=rec, Force record mode access
+        // rop=rea, Record-processing options, Locks record for a read operation for this process, while allowing other accessors to read the record. 
+        _fd = ::open(_fileName.c_str(), O_CREAT | O_APPEND | O_WRONLY, 00644, "shr=get","ctx=rec","rop=rea");
+#else
         _fd = ::open(_fileName.c_str(), O_CREAT | O_APPEND | O_WRONLY, 00644);
+#endif
     }
     
     FileAppender::FileAppender(const std::string& name, int fd) :
