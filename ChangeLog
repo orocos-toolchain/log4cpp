@@ -1,5 +1,9 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-12-13 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/OstringStream.cpp: use portable_vsnprintf(), not
+	portable_snprintf().
+	
 2001-12-11 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* Release as 0.2.6
 

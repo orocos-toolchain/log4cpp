@@ -24,8 +24,12 @@
 
 #include <stdlib.h>
 #include <stdarg.h>
+
+extern "C" {
 #include "snprintf.c"
-#define VSNPRINTF portable_snprintf
+}
+
+#define VSNPRINTF portable_vsnprintf
 
 #endif // LOG4CPP_HAVE_SNPRINTF
 #endif // _MSC_VER
