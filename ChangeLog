@@ -1,6 +1,10 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
 2002-10-05 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* release as 0.3.2
+
+	* doc/html/index.html: added notes for 0.3.2 and 0.3.2rc5
+	
 	* configure.in, msvc6/Makefile.am, msvc6/testDLL/Makefile.am,
 	msvc6/testMain/Makefile.am, msvc6/testNTEventLog/Makefile.am,
 	msvc6/testPattern/Makefile.am: added missing makefiles.
