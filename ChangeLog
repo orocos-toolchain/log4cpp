@@ -1,7 +1,7 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
 2001-04-21 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
-	Rereleased of 0.2.4b
+	Rereleased as 0.2.4b
 	MSVC++: Stripped '\r' characters from .dsp and .dsw files.
 	MSVC++: Added StringQueueAppender and FixedContextCategory to 
 	log4cpp.dsp.
