@@ -49,6 +49,10 @@ namespace log4cpp {
             throw ConfigureFailure(std::string("Config File ") + initFileName + " does not exist or is unreadable");
         }
         
+        configure(initFile);
+    }
+          
+    void SimpleConfigurator::configure(std::istream& initFile) throw (ConfigureFailure) {
         std::string nextCommand;
         std::string categoryName;
         

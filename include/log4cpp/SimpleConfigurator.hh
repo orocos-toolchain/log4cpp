@@ -9,6 +9,7 @@
 #define _LOG4CPP_SIMPLECONFIGURATOR_HH
 
 #include <log4cpp/Portability.hh>
+#include <iostream>
 #include <string>
 #include <stdexcept>
 
@@ -22,7 +23,7 @@ namespace log4cpp {
     class LOG4CPP_EXPORT SimpleConfigurator {
     public:
         static void configure(const std::string& initFileName) throw (ConfigureFailure);
-    };
+        static void configure(std::istream& initFile) throw (ConfigureFailure);    };
 }
 
 #endif
