@@ -23,8 +23,8 @@ namespace log4cpp {
         public:
         RollingFileAppender(const std::string& name, 
                             const std::string& fileName,
-                            const size_t maxFileSize = 10*1024*1024, 
-                            const unsigned int maxBackupIndex = 1,
+                            size_t maxFileSize = 10*1024*1024, 
+                            unsigned int maxBackupIndex = 1,
                             bool append = true,
                             mode_t mode = 00644);
 
