@@ -83,10 +83,11 @@ BB_ENABLE_DOXYGEN
 # Create files
 # ----------------------------------------------------------------------------
 
+AC_CREATE_GENERIC_CONFIG
+
 AC_OUTPUT([
 Makefile
 log4cpp.spec
-log4cpp-config
 config/Makefile
 doc/Makefile
 doc/Doxyfile
