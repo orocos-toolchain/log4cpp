@@ -14,7 +14,6 @@
 #include <stdarg.h>
 #include "log4cpp/Export.hh"
 #include "log4cpp/LayoutAppender.hh"
-#include "log4cpp/AppenderSkeleton.hh"
 #include "log4cpp/Priority.hh"
 
 #ifdef LOG4CPP_HAVE_SYSLOG
@@ -41,7 +40,7 @@ namespace log4cpp {
      *
      * Also see: draft-ietf-syslog-syslog-12.txt
      **/
-    class LOG4CPP_EXPORT RemoteSyslogAppender : public AppenderSkeleton {
+    class LOG4CPP_EXPORT RemoteSyslogAppender : public LayoutAppender {
         public:
 
         /**
@@ -78,14 +77,6 @@ namespace log4cpp {
          **/
         virtual void close();
 
-        /**
-         * The RemoteSyslogAppender requires a Layout.
-         * @returns true
-         **/
-        virtual bool requiresLayout() const;
-
-        virtual void setLayout(Layout* layout);
-
         protected:
         
         /**
@@ -105,7 +96,6 @@ namespace log4cpp {
         int _portNumber;
         int _socket;
         unsigned long _ipAddr;
-        Layout* _layout;
         private:
         int _cludge;
     };

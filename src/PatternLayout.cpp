@@ -35,6 +35,9 @@
 /* workaround suggested at:
    http://support.microsoft.com/default.aspx?scid=kb;EN-US;q168440
 */
+
+#include <stdio.h>
+
 std::ostream& operator<<(std::ostream& os, int64_t i) {
     char buf[20];
     ::sprintf(buf,"%I64d", i);

@@ -42,7 +42,7 @@ namespace log4cpp {
     SyslogAppender::SyslogAppender(const std::string& name, 
                                    const std::string& syslogName, 
                                    int facility) : 
-        AppenderSkeleton(name),
+        LayoutAppender(name),
         _syslogName(syslogName),
         _facility(facility) 
     {
@@ -62,31 +62,16 @@ namespace log4cpp {
     }
 
     void SyslogAppender::_append(const LoggingEvent& event) {
-        if (!_layout) {
-            // XXX help! help!
-            return;
-        }
-
-	std::string msgStr = _layout->format(event);
-        const char* message = msgStr.c_str();
+	std::string message(_getLayout().format(event));
         int priority = toSyslogPriority(event.priority);
-        ::syslog(priority | _facility, message);
+        ::syslog(priority | _facility, message.c_str());
     }
 
     bool SyslogAppender::reopen() {
         close();
         open();
         return true;
-    }      
-
-    bool SyslogAppender::requiresLayout() const {
-        return true;
     }
-
-    void SyslogAppender::setLayout(Layout* layout) {
-        _layout = layout;
-    }
-
 }
 
 #endif // LOG4CPP_HAVE_SYSLOG

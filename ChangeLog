@@ -5,6 +5,14 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 
 	* src/PatternLayout.cpp(doFormat): removed superfluous return
 	statement.
+
+	* include/log4cpp/config-win32.h: fix int64_t for Borland compiler.
+
+	* include/log4cpp/SyslogAppender.hh,
+	include/log4cpp/RemoteSyslogAppender.hh,
+	src/SyslogAppender.cpp, src/RemoteSyslogAppender.cpp:
+	inherit from LayoutApppender instead of AppenderSkeleton 
+	(Bug #499524).
 	
 2002-01-03 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/Filter.hh: decide() is NOT abstract.

@@ -13,7 +13,7 @@
 #include <string>
 #include <stdarg.h>
 #include <syslog.h>
-#include "log4cpp/AppenderSkeleton.hh"
+#include "log4cpp/LayoutAppender.hh"
 #include "log4cpp/Priority.hh"
 
 namespace log4cpp {
@@ -21,7 +21,7 @@ namespace log4cpp {
     /**
      * SyslogAppender sends LoggingEvents to the local syslog system.
      **/
-    class SyslogAppender : public AppenderSkeleton {
+    class SyslogAppender : public LayoutAppender {
         public:
 
         /**
@@ -54,15 +54,7 @@ namespace log4cpp {
          **/
         virtual void close();
 
-        /**
-         * The SyslogAppender requires a Layout.
-         * @returns true
-         **/
-        virtual bool requiresLayout() const;
-
-        virtual void setLayout(Layout* layout);
-
-        protected:
+       protected:
         
         /**
          * Calls openlog(3).
@@ -77,7 +69,6 @@ namespace log4cpp {
 
         const std::string _syslogName;
         int _facility;
-        Layout* _layout;
     };
 }
 

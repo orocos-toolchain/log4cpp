@@ -54,7 +54,7 @@ namespace log4cpp {
 				   const std::string& relayer,
                                    int facility,
 				   int portNumber) : 
-        AppenderSkeleton(name),
+        LayoutAppender(name),
         _syslogName(syslogName),
 	_relayer(relayer),
         _facility(facility),
@@ -122,19 +122,12 @@ namespace log4cpp {
     }
 
     void RemoteSyslogAppender::_append(const LoggingEvent& event) {
-        if (!_layout) {
-            // XXX help! help!
-            return;
-        }
-	
-	std::string msgStr = _layout->format(event);
-        const char* message = msgStr.c_str();
-	int len = strlen (message) + 16;
+	std::string message(_getLayout().format(event));
+	int len = message.length() + 16;
 	char *buf = new char [len];
         int priority = toSyslogPriority(event.priority);
-	sprintf (buf, "<%d>", priority);
-	int len2 = strlen (buf);
-	memcpy (buf + len2, message, len - 16);
+	int len2 = sprintf (buf, "<%d>", priority);
+	memcpy (buf + len2, message.data(), len - 16);
 	sockaddr_in sain;
 	sain.sin_family = AF_INET;
 	sain.sin_port   = htons (_portNumber);
@@ -160,13 +153,4 @@ namespace log4cpp {
         open();
         return true;
     }      
-
-    bool RemoteSyslogAppender::requiresLayout() const {
-        return true;
-    }
-
-    void RemoteSyslogAppender::setLayout(Layout* layout) {
-        _layout = layout;
-    }
-
 }
