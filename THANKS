@@ -1,7 +1,12 @@
-The log4cpp library was ported from the LOG4J Java library by Bastiaan Bakker <bastiaan.bakker@lifeline.nl>. 
+The log4cpp library was ported from the LOG4J Java library by Bastiaan Bakker
+<bastiaan.bakker@lifeline.nl>. 
 
-This project would not have existed without Ceki Gülcü <cgu@urbanet.ch>, the maintainer of LOG4J.
+This project would not have existed without Ceki Gülcü <cgu@urbanet.ch>, the 
+maintainer of LOG4J.
 
 Cedric Le Goater <cedric@legoater.com> provided the autoconf setup.
+Marc Welz <marc@jade.cs.uct.ac.za> (IdsaAppender)
+Lynn Owen <opl@agoby.com> (MSVC++ support)
+
 
 
