@@ -79,7 +79,7 @@ namespace log4cpp {
         /**
          * For the moment this method does nothing.
          **/
-        virtual void addAppender(Appender* appender);
+        virtual void addAppender(Appender* appender) throw();
 
         /**
          * For the moment this method does nothing.

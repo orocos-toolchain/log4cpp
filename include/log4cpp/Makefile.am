@@ -1,3 +1,5 @@
+SUBDIRS = threading
+
 liblog4cppincludedir = $(includedir)/log4cpp
 liblog4cppinclude_HEADERS =  \
 	OstringStream.hh \

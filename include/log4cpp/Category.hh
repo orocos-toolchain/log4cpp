@@ -10,17 +10,19 @@
 #ifndef _LOG4CPP_CATEGORY_HH
 #define _LOG4CPP_CATEGORY_HH
 
-#include "log4cpp/Portability.hh"
-#include "log4cpp/Export.hh"
-#include "log4cpp/OstringStream.hh"
-#include "log4cpp/Appender.hh"
-#include "log4cpp/LoggingEvent.hh"
-#include "log4cpp/Priority.hh"
-#include "log4cpp/CategoryStream.hh"
+#include <log4cpp/Portability.hh>
+#include <log4cpp/Export.hh>
+#include <log4cpp/OstringStream.hh>
+#include <log4cpp/Appender.hh>
+#include <log4cpp/LoggingEvent.hh>
+#include <log4cpp/Priority.hh>
+#include <log4cpp/CategoryStream.hh>
+#include <log4cpp/threading/Threading.hh>
 
 #include <map>
 #include <set>
 #include <stdarg.h>
+#include <stdexcept>
 
 namespace log4cpp {
 
@@ -107,8 +109,11 @@ namespace log4cpp {
          * Set the priority of this Category.
          * @param priority The priority to set. Use Priority::NOTSET to let 
          * the category use its parents priority as effective priority.
+         * @exception std::invalid_argument if the caller tries to set
+         * Priority::NOTSET on the Root Category.
          **/
-        virtual void setPriority(Priority::Value priority);
+        virtual void setPriority(Priority::Value priority) 
+        throw(std::invalid_argument);
 
         /**
          * Returns the assigned Priority, if any, for this Category.
@@ -138,10 +143,11 @@ namespace log4cpp {
          * Adds an Appender to this Category.
          * This method passes ownership from the caller to the Category.
          * @since 0.2.7
-         * @param appender The Appender this category has to log to or NULL
-         * to unset the current Appender.
+         * @param appender The Appender to wich this category has to log.
+         * @exception std::invalid_argument if the appender is NULL.
          **/
-        virtual void addAppender(Appender* appender);
+        virtual void addAppender(Appender* appender) 
+        throw(std::invalid_argument);
 
         /**
          * Adds an Appender for this Category.
@@ -157,7 +163,7 @@ namespace log4cpp {
          * @deprecated use addAppender(Appender*) or removeAllAppenders() 
          * instead.
          * @param appender The Appender this category has to log to or NULL
-         * to unset the current Appender.
+         * to remove the current Appenders.
          **/
         inline void setAppender(Appender* appender) {
             if (appender) {
@@ -621,7 +627,7 @@ namespace log4cpp {
         /**
          *  The assigned priority of this category. 
          **/
-        Priority::Value _priority;
+        volatile Priority::Value _priority;
 
         typedef std::set<Appender *> AppenderSet;
         typedef std::map<Appender *, bool> OwnsAppenderMap;
@@ -636,19 +642,20 @@ namespace log4cpp {
                                   OwnsAppenderMap::iterator& i2) throw();
 
         AppenderSet _appender;
+        mutable threading::Mutex _appenderSetMutex;
 
         /**
          * Whether the category holds the ownership of the appender. If so,
          * it deletes the appender in its destructor.
          **/
-
-         OwnsAppenderMap _ownsAppender;
+        
+        OwnsAppenderMap _ownsAppender;
 
         /** 
          * Additivity is set to true by default, i.e. a child inherits its
          * ancestor's appenders by default. 
          */
-         bool _isAdditive;
+        volatile bool _isAdditive;
 
     };
 

@@ -10,9 +10,11 @@
 #ifndef _LOG4CPP_HIERARCHYMAINTAINER_HH
 #define _LOG4CPP_HIERARCHYMAINTAINER_HH
 
+#include <log4cpp/Portability.hh>
 #include <string>
-#include "log4cpp/Category.hh"
-#include "log4cpp/Log4cppCleanup.hh"
+#include <log4cpp/Category.hh>
+#include <log4cpp/Log4cppCleanup.hh>
+#include <log4cpp/threading/Threading.hh>
 
 namespace log4cpp {
 
@@ -38,11 +40,14 @@ namespace log4cpp {
         virtual void deleteAllCategories();
 
         protected:
+        virtual Category* _getExistingInstance(const std::string& name);
+        virtual Category& _getInstance(const std::string& name);
         CategoryMap _categoryMap;
-        
+        mutable threading::Mutex _categoryMutex;
+
         private:
         static HierarchyMaintainer* _defaultMaintainer;
-
+        
 #ifdef LOG4CPP_USE_CLEANUP
         static Log4cppCleanup& _fuckinDummy;
 #endif        

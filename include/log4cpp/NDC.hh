@@ -169,10 +169,6 @@ namespace log4cpp {
         virtual void _setMaxDepth(int maxDepth);
 
         ContextStack _stack;
-
-        private:
-        static NDC _nDC;
-
     };        
 }
 
