@@ -31,33 +31,37 @@ namespace log4cpp {
 
     class CategoryStream {
         public:
-        CategoryStream(Category& category, int priority) :
-            _category(category),
-            _priority(priority) {
-        }
-        
-        ~CategoryStream() { };
+
+        struct Separator {
+        };
+
+        static Separator ENDLINE;
+
+        CategoryStream(Category& category, int priority);
+        ~CategoryStream();
         
         inline Category& getCategory() const { return _category; };
         inline int getPriority() const { return _priority; };
+
+        CategoryStream& operator<<(const Separator& separator);
+        void flush();
+
+        template<class T> CategoryStream& operator<<(const T& t) {
+            if (getPriority() != Priority::NOTSET) {
+                if (!_buffer) {
+                    _buffer = new ostrstream;
+                }
+                (*_buffer) << t;
+            }
+            return *this;
+        };
         
         private:
         Category& _category;
-        int _priority;    
-
-        public:
-        template<class T> CategoryStream& operator<<(/*CategoryStream& stream,*/ 
-                                                     const T& t) {
-        if (getPriority() != Priority::NOTSET) {
-            ostrstream buffer;
-            buffer << t << '\0';
-            getCategory().log(getPriority(), 
-                              string(buffer.str()));
-        }
-        return *this;
-        };
+        int _priority;
+        ostrstream* _buffer;
     };
-
+   
     class Category {
         friend class HierarchyMaintainer;
 

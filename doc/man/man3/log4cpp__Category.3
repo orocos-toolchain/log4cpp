@@ -1,8 +1,8 @@
-.TH log4cpp::Category 3 "7 Dec 2000" "log4cpp" \" -*- nroff -*-
+.TH log4cpp::Category 3 "9 Dec 2000" "log4cpp" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-log4cpp::Category \- This is the central class in the log4j package. 
+log4cpp::Category \- 
 .SH SYNOPSIS
 .br
 .PP
@@ -82,6 +82,9 @@ log4cpp::Category \- This is the central class in the log4j package.
 .RI "bool \fBisDebugEnabled\fR () const"
 .br
 .ti -1c
+.RI "\fBCategoryStream\fR \fBdebugStream\fR ()"
+.br
+.ti -1c
 .RI "void \fBinfo\fR (const char* stringFormat, ...)"
 .br
 .RI "\fILog a message with info priority.\fR"
@@ -91,6 +94,9 @@ log4cpp::Category \- This is the central class in the log4j package.
 .RI "\fILog a message with info priority.\fR"
 .ti -1c
 .RI "bool \fBisInfoEnabled\fR () const"
+.br
+.ti -1c
+.RI "\fBCategoryStream\fR \fBinfoStream\fR ()"
 .br
 .ti -1c
 .RI "void \fBwarn\fR (const char* stringFormat, ...)"
@@ -104,6 +110,9 @@ log4cpp::Category \- This is the central class in the log4j package.
 .RI "bool \fBisWarnEnabled\fR () const"
 .br
 .ti -1c
+.RI "\fBCategoryStream\fR \fBwarnStream\fR ()"
+.br
+.ti -1c
 .RI "void \fBerror\fR (const char* stringFormat, ...)"
 .br
 .RI "\fILog a message with error priority.\fR"
@@ -113,6 +122,15 @@ log4cpp::Category \- This is the central class in the log4j package.
 .RI "\fILog a message with error priority.\fR"
 .ti -1c
 .RI "bool \fBisErrorEnabled\fR () const"
+.br
+.ti -1c
+.RI "\fBCategoryStream\fR \fBerrorStream\fR ()"
+.br
+.ti -1c
+.RI "\fBCategoryStream\fR \fBgetStream\fR (int priority)"
+.br
+.ti -1c
+.RI "\fBCategoryStream\fR \fBoperator<<\fR (int priority)"
 .br
 .in -1c
 .SS Static Public Methods
@@ -165,12 +183,6 @@ log4cpp::Category \- This is the central class in the log4j package.
 .RI "class \fBHierarchyMaintainer\fR"
 .br
 .in -1c
-.SH DETAILED DESCRIPTION
-.PP 
-This is the central class in the log4j package.
-.PP
-One of the distintive features of log4j (and hence \fBlog4cpp\fR) are hierarchal categories and  their evaluation. 
-.PP
 .SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
 .PP 
 .SS virtual log4cpp::Category::~Category ()\fC [virtual]\fR
@@ -219,6 +231,8 @@ Log a message with debug priority.
 \fB\fIstringFormat\fR\fR Format specifier for the string to write  in the log file. 
 .TP
 \fB\fI...\fR\fR The arguments for stringFormat 
+.SS \fBCategoryStream\fR log4cpp::Category::debugStream ()\fC [inline]\fR
+.PP
 .SS void log4cpp::Category::error (const string & message)
 .PP
 Log a message with error priority.
@@ -237,6 +251,8 @@ Log a message with error priority.
 \fB\fIstringFormat\fR\fR Format specifier for the string to write  in the log file. 
 .TP
 \fB\fI...\fR\fR The arguments for stringFormat 
+.SS \fBCategoryStream\fR log4cpp::Category::errorStream ()\fC [inline]\fR
+.PP
 .SS bool log4cpp::Category::getAdditivity () const\fC [inline]\fR
 .PP
 Returns the additivity flag for this \fBCategory\fR instance.
@@ -319,6 +335,8 @@ Get the priority of the \fCroot\fR \fBCategory\fR.
 \fBReturns: \fR
 .in +1c
  the priority of the root category 
+.SS \fBCategoryStream\fR log4cpp::Category::getStream (int priority)
+.PP
 .SS void log4cpp::Category::info (const string & message)
 .PP
 Log a message with info priority.
@@ -337,6 +355,8 @@ Log a message with info priority.
 \fB\fIstringFormat\fR\fR Format specifier for the string to write  in the log file. 
 .TP
 \fB\fI...\fR\fR The arguments for stringFormat 
+.SS \fBCategoryStream\fR log4cpp::Category::infoStream ()\fC [inline]\fR
+.PP
 .SS bool log4cpp::Category::isDebugEnabled () const\fC [inline]\fR
 .PP
 .SS bool log4cpp::Category::isErrorEnabled () const\fC [inline]\fR
@@ -374,6 +394,8 @@ Log a message with the specified priority.
 \fB\fIstringFormat\fR\fR Format specifier for the string to write  in the log file. 
 .TP
 \fB\fI...\fR\fR The arguments for stringFormat 
+.SS \fBCategoryStream\fR log4cpp::Category::operator<< (int priority)
+.PP
 .SS bool log4cpp::Category::ownsAppender () const
 .PP
 Returns true if the \fBCategory\fR owns the \fBAppender\fR.
@@ -437,6 +459,8 @@ Log a message with warn priority.
 \fB\fIstringFormat\fR\fR Format specifier for the string to write  in the log file. 
 .TP
 \fB\fI...\fR\fR The arguments for stringFormat 
+.SS \fBCategoryStream\fR log4cpp::Category::warnStream ()\fC [inline]\fR
+.PP
 .SH FRIENDS AND RELATED FUNCTION DOCUMENTATION
 .PP 
 .SS class HierarchyMaintainer\fC [friend]\fR

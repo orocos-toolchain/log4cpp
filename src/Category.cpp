@@ -15,6 +15,32 @@
 
 namespace log4cpp {
 
+    CategoryStream::Separator CategoryStream::ENDLINE;
+
+    CategoryStream::CategoryStream(Category& category, int priority) :
+        _category(category),
+        _priority(priority),
+        _buffer(NULL) {
+    }
+
+    CategoryStream::~CategoryStream() { 
+        flush();
+    }
+
+    CategoryStream& CategoryStream::operator<<(const CategoryStream::Separator& separator) {
+        flush();
+        return *this;
+    }
+
+    void CategoryStream::flush() {
+        if (_buffer) {
+            (*_buffer) << '\0';
+            getCategory().log(getPriority(), string(_buffer->str()));
+            delete _buffer;
+            _buffer = NULL;
+        }
+    }
+
     Category& Category::getRoot() {
         return getInstance("");
     }
