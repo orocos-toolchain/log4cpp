@@ -1,5 +1,10 @@
 This file records noteworthy changes.
 
+0.2.5 (11 June 2001)
+Inclusion of support for Borland C++ Builder.
+Library version 1.0.0: this release is not binary compatible with previous
+ones. (Version update should have been done in 0.2.4).
+
 0.2.2 (04 March 2001)
 Inclusion of Win32 platform (MSVC++ 6.0)
 

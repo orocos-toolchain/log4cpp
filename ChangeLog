@@ -1,5 +1,10 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-06-11 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* Release as 0.2.5
+
+	* NEWS: inclusion of Borland C++ Builder support.
+	
 2001-06-07 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/LayoutAppender.hh: set SimpleLayout as 
 	DefaultLayoutType.
