@@ -47,9 +47,9 @@ namespace log4cpp {
                 ::pthread_mutex_destroy(&mutex);
             }
 
-            inline void operator=(const Mutex &m) {
-                mutex = m.mutex;
-            }
+            private:
+            Mutex(const Mutex& m);
+            Mutex& operator=(const Mutex &m);
         };
 
         /**
@@ -57,11 +57,11 @@ namespace log4cpp {
          **/
         class ScopedLock {
             private:
-            Mutex _mutex;
+            Mutex& _mutex;
 
             public:
-            inline ScopedLock(const Mutex &mutex) { 
-                _mutex = mutex; 
+            inline ScopedLock(Mutex& mutex) :
+                _mutex(mutex) {
                 _mutex.lock();
             }
 
