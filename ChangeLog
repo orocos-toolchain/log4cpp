@@ -1,6 +1,9 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
 2002-08-16 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/threading/Makefile.am: added MSThreads.hh
+	
+2002-08-16 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* Release as 0.3.2rc3
 	
 	* src/SimpleConfigurator.cpp, src/PropertyConfiguratorImpl.cpp:

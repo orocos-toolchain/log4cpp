@@ -4,4 +4,5 @@ liblog4cppinclude_HEADERS =  \
 	DummyThreads.hh \
 	OmniThreads.hh \
 	PThreads.hh \
+	MSThreads.hh \
 	Threading.hh
