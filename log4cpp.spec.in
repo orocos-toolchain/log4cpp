@@ -1,4 +1,4 @@
-%define  RELEASE 2
+%define  RELEASE 3
 %define  rel     %{?CUSTOM_RELEASE} %{!?CUSTOM_RELEASE:%RELEASE}
 
 %define lib_name log4cpp
@@ -58,6 +58,12 @@ make prefix=$RPM_BUILD_ROOT%{prefix} install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post
+/sbin/ldconfig
+
+%postun
+/sbin/ldconfig
 
 %files
 %defattr(-,root,root,755)

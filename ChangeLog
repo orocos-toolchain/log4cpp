@@ -1,5 +1,10 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-05-23 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* log4cpp.spec.in: run ldconfig after install or uninstall. Upped 
+	  release# to 3.
+	* Makefile.am: in rpm target corrected top_srcdir variable name.
+
 2001-05-19 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* Fixed distcheck target.
 	* Fixed check target. It runs testNDC, testCategory and 

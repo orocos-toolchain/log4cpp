@@ -28,12 +28,12 @@ TAGS:: CONTENTS
 
 rpm: dist
 	rpm -ta $(PACKAGE)-$(VERSION).tar.gz
-	mv -f /usr/src/redhat/SRPMS/$(PACKAGE)-$(VERSION)-*.rpm $(top_scrdir)
-	mv -f /usr/src/redhat/RPMS/*/$(PACKAGE)-$(VERSION)-*.rpm $(top_scrdir)
+	mv -f /usr/src/redhat/SRPMS/$(PACKAGE)-$(VERSION)-*.rpm $(top_srcdir)
+	mv -f /usr/src/redhat/RPMS/*/$(PACKAGE)-$(VERSION)-*.rpm $(top_srcdir)
 	mv -f /usr/src/redhat/RPMS/*/$(PACKAGE)-devel-$(VERSION)-*.rpm \
-		$(top_scrdir)
+		$(top_srcdir)
 	mv -f /usr/src/redhat/RPMS/*/$(PACKAGE)-doc-$(VERSION)-*.rpm \
-		$(top_scrdir)
+		$(top_srcdir)
 
 debian:
 	chmod a+x $(top_srcdir)debian/rules
