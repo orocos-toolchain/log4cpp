@@ -1,6 +1,11 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
 2002-10-05 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* log4cpp.spec.in: don't require log4cpp for log4cpp-doc.
+
+	* doc/Makefile.am: fix install location.	
+
+2002-10-05 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* release as 0.3.2
 
 	* doc/html/index.html: added notes for 0.3.2 and 0.3.2rc5
