@@ -15,7 +15,7 @@
 
 namespace log4cpp {
 
-#ifndef LOG4CPP_USE_NEW_IOSTREAM
+#ifndef LOG4CPP_HAVE_STDIOSTREAM
     std::string ostringstream::str() {
         (*this) << '\0';
         return std::string(ostrstream::str());

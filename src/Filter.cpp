@@ -36,6 +36,7 @@ namespace log4cpp {
         while(end->getChainedFilter()) {
             end = end->getChainedFilter();
         }
+	return end;
     }
 
     void Filter::appendChainedFilter(Filter* filter) {

@@ -1,7 +1,6 @@
-
 liblog4cppincludedir = $(includedir)/log4cpp
 liblog4cppinclude_HEADERS =  \
-	Hints.hh \
+	OstringStream.hh \
 	Appender.hh \
 	AppenderSkeleton.hh \
 	LayoutAppender.hh \
@@ -17,7 +16,7 @@ liblog4cppinclude_HEADERS =  \
 	LoggingEvent.hh \
 	Priority.hh \
 	NDC.hh \
-	StreamUtil.hh \
+	OstringStream.hh \
 	Log4cppCleanup.hh \
 	Filter.hh \
-	log4cpp-config.hh
+ 	Config.hh

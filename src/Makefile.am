@@ -1,7 +1,6 @@
 lib_LTLIBRARIES = liblog4cpp.la
 
 liblog4cpp_la_SOURCES = \
-	Hints.cpp \
 	Appender.cpp \
 	AppenderSkeleton.cpp \
 	LayoutAppender.cpp \
@@ -16,7 +15,7 @@ liblog4cpp_la_SOURCES = \
 	LoggingEvent.cpp \
 	Priority.cpp \
 	NDC.cpp \
-	StreamUtil.cpp \
+	OstringStream.cpp \
 	Filter.cpp \
 	Log4cppCleanup.cpp
 

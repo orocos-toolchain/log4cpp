@@ -10,7 +10,7 @@
 #ifndef _LOG4CPP_APPENDERSKELETON_HH
 #define _LOG4CPP_APPENDERSKELETON_HH
 
-#include "log4cpp/Hints.hh"
+#include "log4cpp/OstringStream.hh"
 #include "log4cpp/Appender.hh"
 
 namespace log4cpp {

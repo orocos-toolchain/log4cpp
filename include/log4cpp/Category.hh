@@ -10,7 +10,7 @@
 #ifndef _LOG4CPP_CATEGORY_HH
 #define _LOG4CPP_CATEGORY_HH
 
-#include "log4cpp/Hints.hh"
+#include "log4cpp/OstringStream.hh"
 #include <map>
 #include <set>
 #include <stdarg.h>
@@ -85,7 +85,7 @@ namespace log4cpp {
         template<typename T> CategoryStream& operator<<(const T& t) {
             if (getPriority() != Priority::NOTSET) {
                 if (!_buffer) {
-                    if (!(_buffer = new ostringstream)) {
+                    if (!(_buffer = new OstringStream)) {
                         // XXX help help help
                     }
                 }
@@ -97,7 +97,7 @@ namespace log4cpp {
         private:
         Category& _category;
         Priority::Value _priority;
-        ostringstream* _buffer;
+        OstringStream* _buffer;
     };
 
     /**
@@ -555,7 +555,6 @@ namespace log4cpp {
          **/  
         void _logUnconditionally2(Priority::Value priority, const std::string& message);
 
-
         private:
         Category(const std::string& name, Category* parent, 
                  Priority::Value priority = Priority::NOTSET);
@@ -580,7 +579,6 @@ namespace log4cpp {
          * The value of this variable may be <code>null</code>. 
          **/
         Appender* _appender;
-
 
         /**
          * Whether the category holds the ownership of the appender. If so,

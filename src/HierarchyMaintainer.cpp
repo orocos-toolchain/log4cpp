@@ -7,7 +7,7 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include "log4cpp/Hints.hh"
+#include "log4cpp/OstringStream.hh"
 
 #ifdef _MSC_VER
 #    include <io.h>

@@ -7,7 +7,7 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include "log4cpp/Hints.hh"
+#include "log4cpp/OstringStream.hh"
 #include "log4cpp/SimpleLayout.hh"
 #include "log4cpp/Priority.hh"
 
@@ -20,7 +20,7 @@ namespace log4cpp {
     }
 
     std::string SimpleLayout::format(const LoggingEvent& event) {
-        ostringstream message;
+        OstringStream message;
 
         const std::string& priorityName = Priority::getPriorityName(event.priority);
         message << priorityName << " - " << event.message << std::endl;

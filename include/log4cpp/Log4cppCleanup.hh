@@ -10,7 +10,7 @@
 #ifndef _LOG4CPP_LOG4CPPCLEANUP_HH
 #define _LOG4CPP_LOG4CPPCLEANUP_HH
 
-#include "log4cpp/Hints.hh"
+#include "log4cpp/OstringStream.hh"
 
 namespace log4cpp {
     class Log4cppCleanup {

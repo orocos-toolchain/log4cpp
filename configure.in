@@ -65,30 +65,16 @@ fi
 # ----------------------------------------------------------------------------
 AC_MSG_CHECKING([for std::stringstream])
 AC_TRY_COMPILE([#include <sstream>], [std::stringstream s;], 
-               HAVE_STRINGSTREAM=yes, HAVE_STRINGSTREAM=no)
+               HAVE_STDIOSTREAM=yes, HAVE_STDIOSTREAM=no)
 
-if test "$HAVE_STRINGSTREAM" = "yes" ; then
+if test "$HAVE_STDIOSTREAM" = "yes" ; then
         AC_MSG_RESULT(yes)
 else
         AC_MSG_RESULT(no)
-        AC_MSG_CHECKING([for vform() in ostrstream])
-        AC_TRY_COMPILE([#include <strstream>
-                        #include <stdarg.h>
-                       ], 
-                       [using namespace std; va_list args;
-                        ostrstream s; s.vform("%s", args);
-                       ], 
-                       HAVE_STRSTREAM_VFORM=yes, HAVE_STRSTREAM_VFORM=no)
-        if test "$HAVE_STRSTREAM_VFORM" = "yes" ; then
-                AC_MSG_RESULT(yes)
-        else
-                AC_MSG_RESULT(no)
-        fi
 fi
 
 # syslog_test
 AC_CHECK_FUNCS([syslog])
-
 
 # Checks for libraries
 # ----------------------------------------------------------------------------
@@ -135,33 +121,31 @@ AC_SUBST(enable_latex_docs)
 # ----------------------------------------------------------------------------
 AC_OUTPUT_COMMANDS([
 
-hintfile=include/log4cpp/log4cpp-config.hh
+hintfile=include/log4cpp/Config.hh
 outfile=${hintfile}-tmp
 echo creating $hintfile
 
 cat > $outfile <<\_______EOF
 //
-// log4cpp-config.hh
+// Config.hh
 //
 // This is a generated file.  Please modify `configure.in'
 
 #ifndef _LOG4CPP_CONFIG_HH
 #define _LOG4CPP_CONFIG_HH
 
+#if defined(_MSC_VER)
+#    pragma warning( disable : 4786 )
+     using namespace std;
+#endif
+
 _______EOF
 
 echo "/* define if you have new iostreams */" >> $outfile 
-if test "$HAVE_STRINGSTREAM" = "yes" ; then
-	echo "#define LOG4CPP_USE_NEW_IOSTREAM 1" >> $outfile 
+if test "$HAVE_STDIOSTREAM" = "yes" ; then
+	echo "#define LOG4CPP_HAVE_STDIOSTREAM 1" >> $outfile 
 else
-	echo "/* #undef LOG4CPP_USE_NEW_IOSTREAM */" >> $outfile 
-fi
-
-echo "/* define if ostrstream has vform() */" >> $outfile 
-if test "$HAVE_STRSTREAM_VFORM" = "yes" ; then
-	echo "#define HAVE_STRSTREAM_VFORM 1" >> $outfile 
-else
-	echo "/* #undef HAVE_STRSTREAM_VFORM */" >> $outfile 
+	echo "/* #undef LOG4CPP_HAVE_STDIOSTREAM */" >> $outfile 
 fi
 
 echo "#endif" >> $outfile 
@@ -174,8 +158,7 @@ echo "#endif" >> $outfile
 	fi
 ],[
 
-HAVE_STRINGSTREAM=$HAVE_STRINGSTREAM
-HAVE_STRSTREAM_VFORM=$HAVE_STRSTREAM_VFORM
+HAVE_STDIOSTREAM=$HAVE_STDIOSTREAM
 
 ])
 
