@@ -12,6 +12,7 @@ liblog4cpp_la_SOURCES = \
 	OstreamAppender.cpp \
 	StringQueueAppender.cpp \
 	SyslogAppender.cpp \
+	RemoteSyslogAppender.cpp \
 	SimpleLayout.cpp \
 	BasicLayout.cpp \
 	Category.cpp \

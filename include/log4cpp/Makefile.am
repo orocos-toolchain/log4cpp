@@ -10,6 +10,7 @@ liblog4cppinclude_HEADERS =  \
 	OstreamAppender.hh \
 	StringQueueAppender.hh \
 	SyslogAppender.hh \
+	RemoteSyslogAppender.hh \
 	Layout.hh \
 	SimpleLayout.hh \
 	BasicLayout.hh \
