@@ -21,7 +21,6 @@
 #include <log4cpp/Priority.hh>
 #include <log4cpp/Layout.hh>
 #include <log4cpp/LoggingEvent.hh>
-#include <log4cpp/Log4cppCleanup.hh>
 #include <log4cpp/threading/Threading.hh>
 
 namespace log4cpp {
@@ -32,8 +31,6 @@ namespace log4cpp {
      *  statements.
      **/
     class LOG4CPP_EXPORT Appender {
-        friend class log4cpp::Log4cppCleanup;
-        
         public:
         
         /**
@@ -144,9 +141,6 @@ namespace log4cpp {
         static void _addAppender(Appender* appender);
         static void _removeAppender(Appender* appender);
 
-#ifdef LOG4CPP_USE_CLEANUP
-        static Log4cppCleanup& _fuckinDummy;
-#endif        
         const std::string _name;
     };
 

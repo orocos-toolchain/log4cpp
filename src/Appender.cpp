@@ -11,10 +11,6 @@
 #include <log4cpp/Appender.hh>
 
 namespace log4cpp {
-#ifdef LOG4CPP_USE_CLEANUP
-    Log4cppCleanup& Appender::_fuckinDummy = Log4cppCleanup::_cleanup;
-#endif
-
     Appender::AppenderMap* Appender::_allAppenders;
     threading::Mutex Appender::_appenderMapMutex;
 

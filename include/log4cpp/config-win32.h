@@ -74,11 +74,6 @@
 #define WIN32
 #endif
 
-/* use Log4cppCleanup class */
-#ifndef LOG4CPP_USE_CLEANUP
-#define LOG4CPP_USE_CLEANUP
-#endif
-
 /* use threads */
 #ifndef LOG4CPP_HAVE_THREADING
 #define LOG4CPP_HAVE_THREADING

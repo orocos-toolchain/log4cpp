@@ -26,7 +26,6 @@ OBJFILES = \
     HierarchyMaintainer.obj \
     IdsaAppender.obj \
     LayoutAppender.obj  \
-    Log4cppCleanup.obj  \
     LoggingEvent.obj \
     NDC.obj \
     OstreamAppender.obj  \

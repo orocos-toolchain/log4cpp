@@ -15,7 +15,6 @@
 #include <map>
 #include <vector>
 #include <log4cpp/Category.hh>
-#include <log4cpp/Log4cppCleanup.hh>
 #include <log4cpp/threading/Threading.hh>
 
 namespace log4cpp {
@@ -49,10 +48,6 @@ namespace log4cpp {
 
         private:
         static HierarchyMaintainer* _defaultMaintainer;
-        
-#ifdef LOG4CPP_USE_CLEANUP
-        static Log4cppCleanup& _fuckinDummy;
-#endif        
     };        
 }
 

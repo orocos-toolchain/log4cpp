@@ -1,5 +1,15 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-10-27 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/OstringStream.hh, src/OstringStream.cpp: removed
+	* src/StringUtil.hh, src/StringUtil.cpp: added vform() method.
+	* PortabilityImpl.cpp: added. 
+
+	* include/log4cpp/Appender.hh, include/log4cpp/HierachyMaintainer.hh,
+	include/log4cpp/Log4cppCleanup.hh, src/Appender.cpp, 
+	src/HierrachyMaintainer.cpp, src/log4cppCleanup.cpp:
+	removed Log4cppCleanup, it was kinda broken anyway.
+	
 2002-10-26 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* Release as 0.3.3.
 	

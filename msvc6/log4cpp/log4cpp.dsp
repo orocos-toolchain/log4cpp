@@ -139,10 +139,6 @@ SOURCE=..\..\src\LayoutAppender.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\src\Log4cppCleanup.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=..\..\src\LoggingEvent.cpp
 # End Source File
 # Begin Source File
@@ -304,10 +300,6 @@ SOURCE=..\..\include\log4cpp\Layout.hh
 # Begin Source File
 
 SOURCE=..\..\include\log4cpp\LayoutAppender.hh
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\include\log4cpp\Log4cppCleanup.hh
 # End Source File
 # Begin Source File
 

@@ -10,7 +10,6 @@ USEUNIT("..\..\src\FixedContextCategory.cpp");
 USEUNIT("..\..\src\HierarchyMaintainer.cpp");
 USEUNIT("..\..\src\IdsaAppender.cpp");
 USEUNIT("..\..\src\LayoutAppender.cpp");
-USEUNIT("..\..\src\Log4cppCleanup.cpp");
 USEUNIT("..\..\src\LoggingEvent.cpp");
 USEUNIT("..\..\src\NDC.cpp");
 USEUNIT("..\..\src\OstreamAppender.cpp");

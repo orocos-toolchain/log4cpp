@@ -27,7 +27,6 @@ liblog4cppinclude_HEADERS =  \
 	LoggingEvent.hh \
 	Priority.hh \
 	NDC.hh \
-	Log4cppCleanup.hh \
 	TimeStamp.hh \
 	Filter.hh \
 	Export.hh \

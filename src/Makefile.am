@@ -32,7 +32,6 @@ liblog4cpp_la_SOURCES = \
 	Priority.cpp \
 	NDC.cpp \
 	Filter.cpp \
-	Log4cppCleanup.cpp \
 	TimeStamp.cpp \
 	StringUtil.hh \
 	StringUtil.cpp \
