@@ -41,7 +41,15 @@ namespace log4cpp {
 
         protected:
         NDC();
+
+#if defined(__GNUG__) && (__GNUC__ == 2) && (__GNUC_MINOR__ <= 95)
+        public:
         virtual ~NDC();
+#else
+        protected: 
+        virtual ~NDC();
+#endif
+        protected:
         virtual void _clear();
         virtual ContextStack* _cloneStack();
         virtual const string& _get() const;
