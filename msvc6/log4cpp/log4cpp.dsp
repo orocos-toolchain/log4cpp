@@ -331,6 +331,10 @@ SOURCE=..\..\include\log4cpp\Priority.hh
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\Properties.hh
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\include\log4cpp\PropertyConfigurator.hh
 # End Source File
 # Begin Source File
@@ -376,19 +380,33 @@ SOURCE=..\NTEventLogCategories.mc
 
 !IF  "$(CFG)" == "log4cpp - Win32 Release"
 
-!ELSEIF  "$(CFG)" == "log4cpp - Win32 Debug"
-
 # Begin Custom Build
-OutDir=.\Debug
-WkspDir=.
+OutDir=.\Release
+ProjDir=.
 InputPath=..\NTEventLogCategories.mc
 InputName=NTEventLogCategories
 
 "$(OutDir)\NTEventLogAppender.dll" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
 	if not exist $(OutDir) md $(OutDir) 
-	"C:\Program Files\Microsoft Visual Studio\VC98\Bin\mc.exe" -h $(OutDir) -r $(OutDir) $(WkspDir)\$(InputName).mc 
-	"C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\RC.exe" -r -fo $(OutDir)\$(InputName).res $(OutDir)\$(InputName).rc 
-	"C:\Program Files\Microsoft Visual Studio\VC98\Bin\link.exe" /MACHINE:IX86 -dll -noentry -out:$(OutDir)\NTEventLogAppender.dll $(OutDir)\$(InputName).res 
+	"$(MSDEVDIR)\..\..\VC98\Bin\mc.exe" -h $(OutDir) -r $(OutDir) $(projdir)\..\$(InputName).mc 
+	"$(MSDEVDIR)\Bin\RC.exe" -r -fo $(OutDir)\$(InputName).res $(OutDir)\$(InputName).rc 
+	"$(MSDEVDIR)\..\..\VC98\Bin\link.exe" /MACHINE:IX86 -dll -noentry -out:$(OutDir)\NTEventLogAppender.dll $(OutDir)\$(InputName).res 
+	
+# End Custom Build
+
+!ELSEIF  "$(CFG)" == "log4cpp - Win32 Debug"
+
+# Begin Custom Build
+OutDir=.\Debug
+ProjDir=.
+InputPath=..\NTEventLogCategories.mc
+InputName=NTEventLogCategories
+
+"$(OutDir)\NTEventLogAppender.dll" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+	if not exist $(OutDir) md $(OutDir) 
+	"$(MSDEVDIR)\..\..\VC98\Bin\mc.exe" -h $(OutDir) -r $(OutDir) $(projdir)\..\$(InputName).mc 
+	"$(MSDEVDIR)\Bin\RC.exe" -r -fo $(OutDir)\$(InputName).res $(OutDir)\$(InputName).rc 
+	"$(MSDEVDIR)\..\..\VC98\Bin\link.exe" /MACHINE:IX86 -dll -noentry -out:$(OutDir)\NTEventLogAppender.dll $(OutDir)\$(InputName).res 
 	
 # End Custom Build
 
