@@ -19,14 +19,11 @@ int main(int argc, char** argv) {
     root.setAppender(appender);
        root.setPriority(log4cpp::Priority::ERROR);
     
-    log4cpp::FixedContextCategory sub1 = 
-        log4cpp::FixedContextCategory(std::string("sub1"), std::string("context1"));
+    log4cpp::FixedContextCategory sub1(std::string("sub1"), std::string("context1"));
 
-    log4cpp::FixedContextCategory sub1_2 = 
-        log4cpp::FixedContextCategory(std::string("sub1"), std::string("context1_2"));
+    log4cpp::FixedContextCategory sub1_2(std::string("sub1"), std::string("context1_2"));
 
-    log4cpp::FixedContextCategory sub2 = 
-        log4cpp::FixedContextCategory(std::string("sub1.sub2"), std::string("context2"));
+    log4cpp::FixedContextCategory sub2(std::string("sub1.sub2"), std::string("context2"));
 
     std::cout << " root priority = " << root.getPriority() << std::endl;
     std::cout << " sub1 priority = " << sub1.getPriority() << std::endl;
