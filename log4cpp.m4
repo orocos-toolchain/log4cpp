@@ -4,7 +4,7 @@
 dnl AM_PATH_LOG4CPP([MINIMUM-VERSION, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]]])
 dnl Test for LOG4CPP, and define LOG4CPP_CFLAGS and LOG4CPP_LIBS
 dnl
-AC_DEFUN(AM_PATH_LOG4CPP,
+AC_DEFUN([AM_PATH_LOG4CPP],
 [dnl 
 dnl Get the cflags and libraries from the log4cpp-config script
 dnl

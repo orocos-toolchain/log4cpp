@@ -1,5 +1,8 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2005-03-24 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* log4cpp.m4, m4/BB_ENABLE_DOXYGEN.m4: fixed 'underquoted definition' warning
+
 2003-06-23 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/PatternLayout.cpp: added missing '%t' thread name specifier 
 	(support request #753974)
