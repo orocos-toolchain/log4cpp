@@ -92,6 +92,9 @@ fi
 # ----------------------------------------------------------------------------
 BB_ENABLE_DOXYGEN
 
+# check for omnithreads
+BB_CHECK_OMNITHREADS
+
 # Create files
 # ----------------------------------------------------------------------------
 
@@ -106,6 +109,7 @@ doc/Doxyfile
 src/Makefile
 include/Makefile
 include/log4cpp/Makefile
+include/log4cpp/threading/Makefile
 tests/Makefile
 debian/Makefile
 msvc6/Makefile
