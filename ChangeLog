@@ -1,5 +1,9 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-11-20 Aaron Ingram <ai8@yahoo.com>
+	* Priority.hh: added LOG4CPP_EXPORT to export Priority class from the 
+        DLL (Win32 only)
+
 2002-11-11 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* configure.in: corrected library version.
 	
