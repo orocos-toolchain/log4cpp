@@ -1,5 +1,11 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-06-06 Uwe Jäger <jaeger@varial.de>
+	* include/log4cpp/config-win32.h: LOG4CPP_HAVE_SNPRINTF, WIN32,
+	LOG4CPP_FIX_ERROR_COLLISION are defined for win32
+	* tests/testmain.cpp: added #ifdef's to make it compile with Borland
+	C++ Builder
+
 2001-06-05 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/Config.hh, include/log4cpp/config-win32.h: Added
 	* include/log4cpp/Makefile.am: added Export.hh and config-win32.h to
