@@ -1,7 +1,7 @@
 if DOC
-SUBDIRS = debian msvc6 config src include doc 
+SUBDIRS = debian msvc6 config src include tests doc 
 else
-SUBDIRS = debian msvc6 config src include
+SUBDIRS = debian msvc6 config src include tests
 endif
 
 DIST_SUBDIRS = debian msvc6 config src include doc tests
@@ -11,9 +11,6 @@ bin_SCRIPTS = log4cpp-config
 EXTRA_DIST = log4cpp.spec.in log4cpp.spec
 
 .PHONY: check rpm docs doc-dist
-
-check: 
-	$(MAKE) -C tests
 
 dist-hook:
 	perl -pi -e 's/\n/\r\n/g' `find $(distdir) -name '*.ds?'`

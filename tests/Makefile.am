@@ -1,4 +1,7 @@
-check_PROGRAMS = testmain testCategory testFixedContextCategory testNDC testbench
+TESTS = testCategory testFixedContextCategory testNDC
+check_PROGRAMS = $(TESTS)
+
+noinst_PROGRAMS = testmain testbench
 
 INCLUDES = -I$(top_srcdir)/include
 
@@ -12,7 +15,7 @@ testFixedContextCategory_SOURCES = testFixedContextCategory.cpp
 testFixedContextCategory_LDADD = $(top_builddir)/src/liblog4cpp.la
 
 testNDC_SOURCES = testNDC.cpp
-testNDC_LDADD = $(top_builddir)//src/liblog4cpp.la
+testNDC_LDADD = $(top_builddir)/src/liblog4cpp.la
 
 testbench_SOURCES = Clock.cpp Clock.hh testbench.cpp 
 testbench_LDADD = $(top_builddir)/src/liblog4cpp.la
