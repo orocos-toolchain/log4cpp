@@ -57,9 +57,10 @@ namespace log4cpp {
         int priority;
 
         /** The name of thread in which this logging event was generated,
-            e.g. the PID. */
-        const std::string& threadName;
-        //QQQ        const std::string threadName;
+            e.g. the PID. Because MSVC++ crashes if it is declared as a 
+            reference at this point I made it a member for now. 
+        */
+        const std::string threadName;
 
         /** The number of seconds elapsed since the epoch 
             (1/1/1970 00:00:00 UTC) until logging event was created. */
