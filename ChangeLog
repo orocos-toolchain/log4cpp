@@ -1,5 +1,24 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-10-05 Uwe Jäger <jaeger@varial.de>
+	* bcb5/Makefile.am, bcb5/bcb5.bpg, bcb5/bcb5.mak:
+	Added testPattern.
+
+	* bcb5/log4cpp/log4cpp.bpf, bcb5/log4cpp/log4cpp.mak:
+	Added PatternLayout and SimpleConfigurator.
+
+	* bcb5/testPattern/testPattern.bpf, bcb5/testPattern/testPattern.bpr, bcb5/testPattern/testPattern.mak:
+	Added project file and makefile for pattern test.
+
+	* include/log4cpp/config-win32.h: 
+	Added support for PatternLayout.
+
+	* include/log4cpp/SimpleConfigurator.hh, src/SimpleConfigurator.cpp:
+	Make it compile with Borland C++.
+	
+	* src/PatternLayout.cpp, src/RemoteSyslogAppender.cpp, tests/testPattern.cpp:
+	Port to Borland C++.
+
 2001-10-04 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/SimpleConfigurator, include/log4cpp/SimpleConfigurator:
 	Added simple configurator class contributed by Glenn Scott. Not

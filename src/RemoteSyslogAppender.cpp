@@ -112,7 +112,7 @@ namespace log4cpp {
 
     void RemoteSyslogAppender::close() {
 	if (_socket) {
-#if WIN32
+#ifdef WIN32
 	    closesocket (_socket);
 #else
 	    ::close (_socket);

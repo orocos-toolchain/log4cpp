@@ -2,16 +2,15 @@
 BCB = $(MAKEDIR)\..
 !endif
 
-PROJECT = log4cpp.dll
-OBJFILES = \
-	RemoteSyslogAppender.obj SyslogAppender.obj AppenderSkeleton.obj BasicLayout.obj Category.obj \
-	CategoryStream.obj \
-    FileAppender.obj Filter.obj FixedContextCategory.obj \
-    HierarchyMaintainer.obj IdsaAppender.obj LayoutAppender.obj \
-    Log4cppCleanup.obj LoggingEvent.obj NDC.obj OstreamAppender.obj \
-    OstringStream.obj Priority.obj SimpleLayout.obj StringQueueAppender.obj \
-    Appender.obj
 # ---------------------------------------------------------------------------
+PROJECT = log4cpp.dll
+OBJFILES = SyslogAppender.obj RemoteSyslogAppender.obj AppenderSkeleton.obj \
+    BasicLayout.obj Category.obj FileAppender.obj Filter.obj \
+    FixedContextCategory.obj HierarchyMaintainer.obj IdsaAppender.obj \
+    LayoutAppender.obj Log4cppCleanup.obj LoggingEvent.obj NDC.obj \
+    OstreamAppender.obj OstringStream.obj Priority.obj SimpleLayout.obj \
+    StringQueueAppender.obj Appender.obj CategoryStream.obj PatternLayout.obj \
+	SimpleConfigurator.obj
 PATHCPP = .;..\..\src
 USERDEFINES = _DEBUG;LOG4CPP_HAS_DLL;LOG4CPP_BUILD_DLL
 SYSDEFINES = NO_STRICT;_NO_VCL;_RTLDLL

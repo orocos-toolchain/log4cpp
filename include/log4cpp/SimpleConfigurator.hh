@@ -15,15 +15,15 @@
 
 namespace log4cpp {
 
-    class ConfigureFailure() : public std::runtime_error {
+    class LOG4CPP_EXPORT ConfigureFailure : public std::runtime_error {
     public:
         ConfigureFailure(const std::string& reason);
     };
-    
+
     class LOG4CPP_EXPORT SimpleConfigurator {
-        public:
-        static void configure(const std::string& initFileName) throw ConfigureFailure;
-   };
+    public:
+        static void configure(const std::string& initFileName) throw (ConfigureFailure);
+    };
 }
 
 #endif

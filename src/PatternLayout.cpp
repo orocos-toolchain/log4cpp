@@ -8,10 +8,6 @@
 
 #include "log4cpp/Portability.hh"
 
-#ifdef _WIN32
-#include <windows.h>
-#endif
-
 #ifdef LOG4CPP_HAVE_UNISTD_H
 #include <unistd.h>
 #endif

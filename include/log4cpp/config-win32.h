@@ -47,6 +47,12 @@
 #define LOG4CPP_FIX_ERROR_COLLISION 1
 #endif
 
+/* define to compile PatternLayout */
+#ifndef HAVE_PATTERN_LAYOUT
+#define HAVE_PATTERN_LAYOUT 1
+#endif
+
+
 /* define WIN32 for Borland */
 #ifndef WIN32
 #define WIN32

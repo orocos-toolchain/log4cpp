@@ -19,7 +19,10 @@ USEUNIT("..\..\src\SimpleLayout.cpp");
 USEUNIT("..\..\src\StringQueueAppender.cpp");
 USEUNIT("..\..\src\Appender.cpp");
 USEUNIT("..\..\src\CategoryStream.cpp");
+USEUNIT("..\..\src\PatternLayout.cpp");
+USEUNIT("..\..\src\SimpleConfigurator.cpp");
+T//---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
-This file is used by the project manager only and should be treated like the project file
+his file is used by the project manager only and should be treated like the project file
 
 DllEntryPoint

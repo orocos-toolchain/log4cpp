@@ -4,12 +4,13 @@
   <MACROS>
     <VERSION value="BCB.05.03"/>
     <PROJECT value="log4cpp.dll"/>
-    <OBJFILES value="RemoteSyslogAppender.obj SyslogAppender.obj AppenderSkeleton.obj BasicLayout.obj Category.obj 
-      FileAppender.obj Filter.obj FixedContextCategory.obj 
-      HierarchyMaintainer.obj IdsaAppender.obj LayoutAppender.obj 
-      Log4cppCleanup.obj LoggingEvent.obj NDC.obj OstreamAppender.obj 
-      OstringStream.obj Priority.obj SimpleLayout.obj StringQueueAppender.obj 
-      Appender.obj CategoryStream.obj"/>
+    <OBJFILES value="SyslogAppender.obj RemoteSyslogAppender.obj AppenderSkeleton.obj 
+      BasicLayout.obj Category.obj FileAppender.obj Filter.obj 
+      FixedContextCategory.obj HierarchyMaintainer.obj IdsaAppender.obj 
+      LayoutAppender.obj Log4cppCleanup.obj LoggingEvent.obj NDC.obj 
+      OstreamAppender.obj OstringStream.obj Priority.obj SimpleLayout.obj 
+      StringQueueAppender.obj Appender.obj CategoryStream.obj PatternLayout.obj 
+      SimpleConfigurator.obj"/>
     <RESFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>

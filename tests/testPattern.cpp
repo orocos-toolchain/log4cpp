@@ -1,9 +1,7 @@
 // testLog4CPP.cpp : Derived from testCategory.cpp
 //
-
-#ifdef WIN32
-#include <windows.h>
-#else
+#include "log4cpp/Portability.hh"
+#ifdef LOG4CPP_HAVE_UNISTD_H
 #include <unistd.h>
 #endif
 
