@@ -15,19 +15,12 @@
 #include "log4cpp/NDC.hh"
 #include "log4cpp/PatternLayout.hh"
 
-double calcPi()                                                                
+void test(std::string pattern, log4cpp::PatternLayout* layout, log4cpp::Category& cat)
 {                                                                              
-  double denominator = 3.0;                                                    
-  double retVal = 4.0;                                                         
-  long i;                                                                      
-  for (i = 0; i < 50000000l; i++)                                              
-    {                                                                          
-      retVal = retVal - (4.0 / denominator);                                   
-      denominator += 2.0;                                                      
-      retVal = retVal + (4.0 /denominator);                                    
-      denominator += 2.0;                                                      
+	if (! layout->setConversionPattern(pattern)) {
+		std::cout << "bad pattern: \"" << pattern << '\"' << std::endl;
     }                                                                          
-  return retVal;                                                               
+    cat.error("message");
 }                                                                              
 
 int main(int argc, char* argv[])
@@ -35,63 +28,31 @@ int main(int argc, char* argv[])
     log4cpp::Appender* appender = 
         new log4cpp::OstreamAppender("default", &std::cout);
 
-    log4cpp::Layout* layout = new log4cpp::PatternLayout();
-	bool success = ((log4cpp::PatternLayout *)layout)->setConversionPattern("%% %r %c:%d (%R / %r) [%p] %x %m %% (%u) %n");
-	if (!success)
-	{
-		std::cout << "Problem" << std::endl;
-		return -1;
-	}
+    log4cpp::PatternLayout* layout = new log4cpp::PatternLayout();
     appender->setLayout(layout);
 
     log4cpp::Category& root = log4cpp::Category::getRoot();
+    root.removeAllAppenders();
     root.addAppender(appender);
        root.setPriority(log4cpp::Priority::ERROR);
+    std::string pattern;
     
-    log4cpp::Category& sub1 = 
-        log4cpp::Category::getInstance(std::string("sub1"));
+    test("%% %r %c:%d (%R / %r) [%p] %x %m %% (%u) %n", layout, root);
 
-    log4cpp::Category& sub2 = 
-        log4cpp::Category::getInstance(std::string("sub1.sub2"));
+    // test date format
+    test("%d{%d %b %Y %H:%M:%S.%l} %m %n", layout, root);
+    test("%d{%d %b %Y %H:%M:%S.%l", layout, root);
+    test("%d", layout, root);
 
-/*    std::cout << " root priority = " << root.getPriority() << std::endl;
-    std::cout << " sub1 priority = " << sub1.getPriority() << std::endl;
-    std::cout << " sub2 priority = " << sub2.getPriority() << std::endl;*/
-    
-    root.error("root error");
-    root.warn("root warn");
-    sub1.error("sub1 error");
-    sub1.warn("sub1 warn");
-
-    calcPi();
-
-    sub2.error("sub2 error");
-    sub2.warn("sub2 warn");
-    
-       sub1.setPriority(log4cpp::Priority::INFO);
-    /*std::cout << " root priority = " << root.getPriority() << std::endl;
-    std::cout << " sub1 priority = " << sub1.getPriority() << std::endl;
-    std::cout << " sub2 priority = " << sub2.getPriority() << std::endl;*/
-   
-//    std::cout << "priority info" << std::endl;
-    root.error("root error");
-    root.warn("root warn");
-    sub1.error("sub1 error");
-    sub1.warn("sub1 warn");
-
-#ifdef WIN32
-	Sleep(3000);
-#else
-	sleep(3);
-#endif
-
-    sub2.error("sub2 error");
-    sub2.warn("sub2 warn");
-    sub2.error("%s %s %d", "test", "vform", 123);
-    sub2.warnStream() << "streamed warn";
-
-    sub2 << log4cpp::Priority::WARN << "warn2.." << "..warn3..value=" << 0 << 
-        log4cpp::CategoryStream::ENDLINE << "..warn4";
+    test("%m %d%n", layout, root);
+    int i;
+    for (i = 0; i < 1000; i++) {
+        root.error("%d message", i);
+    }
+    test("%m %d{%d %b %Y %H:%M:%S.%l}%n", layout, root);
+    for (i = 0; i < 1000; i++) {
+        root.error("%d message", i);
+    }
 
     log4cpp::Category::shutdown();
 
