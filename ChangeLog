@@ -1,5 +1,11 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-01-03 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/Filter.hh: decide() is NOT abstract.
+
+	* tests/testFilter.cpp: added
+	* tests/Makefile.am: added testFilter.cpp to tests.
+	
 2001-12-21 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* Release as 0.2.6b
 	
