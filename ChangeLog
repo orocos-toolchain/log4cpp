@@ -1,8 +1,12 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-11-05 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/Category.hh: Added private copy constructor and
+	assignment operator (pointed out by Shane Baker).
+
 2001-11-01 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/Category.cpp: in setAppender(Appender*) allow NULL Appender.
-	* include/log4cpp/Category: in setAppender(Appender*) document 
+	* include/log4cpp/Category.hh: in setAppender(Appender*) document 
 	allowing NULL Appender parameter.
 	
 2001-10-24 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>

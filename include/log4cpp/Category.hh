@@ -496,6 +496,10 @@ namespace log4cpp {
 
         private:
 
+	/* prevent copying and assignment */
+	Category(const Category& other);
+	Category& operator=(const Category& other);
+
         /** The name of this category. */
         const std::string _name;
 
