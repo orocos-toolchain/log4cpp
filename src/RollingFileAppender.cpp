@@ -68,8 +68,13 @@ namespace log4cpp {
 
     void RollingFileAppender::_append(const LoggingEvent& event) {
         FileAppender::_append(event);
-        if(::lseek(_fd, 0, SEEK_END) >= _maxFileSize) {
-            rollOver();
+        off_t offset = ::lseek(_fd, 0, SEEK_END);
+        if (offset < 0) {
+            // XXX we got an error, ignore for now
+        } else {
+            if(static_cast<size_t>(offset) >= _maxFileSize) {
+                rollOver();
+            }
         }
     }
 }
