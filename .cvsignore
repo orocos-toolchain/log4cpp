@@ -7,3 +7,4 @@ config.status
 Makefile
 Makefile.in
 log4cpp.spec
+aclocal.m4
