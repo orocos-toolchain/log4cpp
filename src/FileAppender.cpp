@@ -44,7 +44,10 @@ namespace log4cpp {
     }
 
     void FileAppender::close() {
-        ::close(_fd);
+        if (_fd!=-1) {
+            ::close(_fd);
+            _fd=-1;
+        }
     }
 
     void FileAppender::_append(const LoggingEvent& event) {
@@ -60,7 +63,8 @@ namespace log4cpp {
             if (fd < 0)
                 return false;
             else {
-                ::close(_fd);
+	        if (_fd!=-1)
+                    ::close(_fd);
                 _fd = fd;
                 return true;
             }
