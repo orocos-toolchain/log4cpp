@@ -51,6 +51,7 @@ if test "x$OMNIDIR" != "xno"; then
             ;;
     esac
 
+    CPPFLAGS="$CPPFLAGS -D_PTHREADS -D_REENTRANT -D_THREAD_SAFE"
     CFLAGS="$CFLAGS $OMNIDEFINES -I$OMNIDIR/include"
     CXXFLAGS="$CXXCFLAGS $OMNIDEFINES -I$OMNIDIR/include"
     dnl AC_CHECK_HEADERS([omnithread.h])
