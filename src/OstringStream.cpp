@@ -88,10 +88,13 @@ namespace {
 namespace log4cpp {
 
 #ifndef LOG4CPP_HAVE_STDIOSTREAM
-    std::string OstringStream::str() {
-        (*this) << '\0';
-        return std::string(ostrstream::str());
-    }
+    std::string OstringStream::str() { 
+        (*this) << '\0'; 
+        std::string msg(ostrstream::str()); 
+        ostrstream::freeze(false); //unfreeze stream 
+        return msg; 
+        
+    } 
 #endif
 
     void OstringStream::vform(const char* format, va_list args) {
