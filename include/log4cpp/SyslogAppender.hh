@@ -14,6 +14,7 @@
 #include <stdarg.h>
 #include <syslog.h>
 #include "log4cpp/Appender.hh"
+#include "log4cpp/Priority.hh"
 
 namespace log4cpp {
 
@@ -25,7 +26,7 @@ namespace log4cpp {
          * @param priority The log4cpp priority.
          * @returns the syslog priority.
          **/
-        static int toSyslogPriority(int priority);
+        static int toSyslogPriority(Priority::Value priority);
 
         /**
          * Instantiate a SyslogAppender with given name and name and facility
@@ -39,12 +40,6 @@ namespace log4cpp {
         SyslogAppender(const std::string& name, const std::string& syslogName, 
                        int facility = LOG_USER);
         virtual ~SyslogAppender();
-
-        /**
-         * Sends a LoggingEvent to syslog.
-         * @param event the LoggingEvent to log.
-         **/
-        virtual void doAppend(const LoggingEvent& event);
 
         /**
          * Calls closelog(3) and openlog(3).
@@ -70,6 +65,12 @@ namespace log4cpp {
          * Calls openlog(3).
          **/
         virtual void open();
+
+        /**
+         * Sends a LoggingEvent to syslog.
+         * @param event the LoggingEvent to log.
+         **/
+        virtual void _append(const LoggingEvent& event);
 
         const std::string _syslogName;
         int _facility;

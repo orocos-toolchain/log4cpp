@@ -21,7 +21,7 @@ namespace log4cpp {
 
     CategoryStream::Separator CategoryStream::ENDLINE;
 
-    CategoryStream::CategoryStream(Category& category, int priority) :
+    CategoryStream::CategoryStream(Category& category, Priority::Value priority) :
         _category(category),
         _priority(priority),
         _buffer(NULL) {
@@ -48,11 +48,11 @@ namespace log4cpp {
         return getInstance("");
     }
 
-    void Category::setRootPriority(int priority) {
+    void Category::setRootPriority(Priority::Value priority) {
         getRoot().setPriority(priority);
     }
 
-    int Category::getRootPriority() {
+    Priority::Value Category::getRootPriority() {
         return getRoot().getPriority();
     }
 
@@ -69,7 +69,7 @@ namespace log4cpp {
         HierarchyMaintainer::getDefaultMaintainer().shutdown();
     }
 
-    Category::Category(const std::string& name, Category* parent, int priority) : 
+    Category::Category(const std::string& name, Category* parent, Priority::Value priority) : 
         _name(name),
         _parent(parent),
         _priority(priority),
@@ -84,15 +84,15 @@ namespace log4cpp {
         }
     }
     
-    void Category::setPriority(int priority) {
+    void Category::setPriority(Priority::Value priority) {
         _priority = priority;
     }
     
-    int Category::getPriority() const {
+    Priority::Value Category::getPriority() const {
         return _priority;
     }
    
-    int Category::getChainedPriority() const {
+    Priority::Value Category::getChainedPriority() const {
         // REQUIRE(rootCategory->getPriority() != Priority::NOTSET)
         
         const Category* c = this;
@@ -152,23 +152,23 @@ namespace log4cpp {
         _isAdditive = additivity;
     }
 
-    void Category::_logUnconditionally(int priority, const char* format, va_list arguments) {
+    void Category::_logUnconditionally(Priority::Value priority, const char* format, va_list arguments) {
         ostringstream messageBuffer;
 
         StreamUtil::vform(messageBuffer, format, arguments);
         _logUnconditionally2(priority, messageBuffer.str());
     }
     
-    void Category::_logUnconditionally2(int priority, const std::string& message) {
+    void Category::_logUnconditionally2(Priority::Value priority, const std::string& message) {
         LoggingEvent event(getName(), message, NDC::get(), priority);
         callAppenders(event);
     }
     
-    bool Category::isPriorityEnabled(int priority) const {
+    bool Category::isPriorityEnabled(Priority::Value priority) const {
         return(getChainedPriority() >= priority);
     }
 
-    void Category::log(int priority, const char* stringFormat, ...) { 
+    void Category::log(Priority::Value priority, const char* stringFormat, ...) { 
         if (isPriorityEnabled(priority)) {
             va_list va;
             va_start(va, stringFormat);
@@ -177,7 +177,7 @@ namespace log4cpp {
         }
     }
     
-    void Category::log(int priority, const std::string& message) { 
+    void Category::log(Priority::Value priority, const std::string& message) { 
         if (isPriorityEnabled(priority))
             _logUnconditionally2(priority, message);
     }
@@ -294,12 +294,12 @@ namespace log4cpp {
             _logUnconditionally2(Priority::EMERG, message);
     }
 
-    CategoryStream Category::getStream(int priority) {
+    CategoryStream Category::getStream(Priority::Value priority) {
         return CategoryStream(*this, isPriorityEnabled(priority) ?
                               priority : Priority::NOTSET);
     }
 
-    CategoryStream Category::operator<<(int priority) {
+    CategoryStream Category::operator<<(Priority::Value priority) {
         return getStream(priority);
     }
 } 

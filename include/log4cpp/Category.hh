@@ -47,7 +47,7 @@ namespace log4cpp {
          * @param priority The priority the log messages will get or 
          * Priority::NOTSET to silently discard any streamed in messages.
          **/
-        CategoryStream(Category& category, int priority);
+        CategoryStream(Category& category, Priority::Value priority);
 
         /**
          * Destructor for CategoryStream
@@ -64,7 +64,7 @@ namespace log4cpp {
          * Returns the priority for this stream.
          * @returns The priority.
          **/
-        inline int getPriority() const { return _priority; };
+        inline Priority::Value getPriority() const { return _priority; };
 
         /**
          * Streams in a Separator. If the separator equals 
@@ -101,7 +101,7 @@ namespace log4cpp {
         
         private:
         Category& _category;
-        int _priority;
+        Priority::Value _priority;
         ostringstream* _buffer;
     };
 
@@ -132,13 +132,13 @@ namespace log4cpp {
          * Set the priority of the root Category.
          * @param priority The new priority for the root Category 
          **/
-        static void setRootPriority(int priority);
+        static void setRootPriority(Priority::Value priority);
 
         /** 
          * Get the priority of the <code>root</code> Category.
          * @returns the priority of the root category
          **/
-        static int getRootPriority();
+        static Priority::Value getRootPriority();
 
         /**
          * Instantiate a Category with name <code>name</code>. This
@@ -182,13 +182,13 @@ namespace log4cpp {
          * @param priority The priority to set. Use Priority::NOTSET to let 
          * the category use its parents priority as effective priority.
          **/
-        void setPriority(int priority);
+        void setPriority(Priority::Value priority);
 
         /**
          * Returns the assigned Priority, if any, for this Category.
          * @return Priority - the assigned Priority, can be Priority::NOTSET
          **/
-        int getPriority() const;
+        Priority::Value getPriority() const;
 
         /**
          * Starting from this Category, search the category hierarchy for a
@@ -198,7 +198,7 @@ namespace log4cpp {
          * <p>The Category class is designed so that this method executes as
          * quickly as possible.
          **/
-        int getChainedPriority() const;
+        Priority::Value getChainedPriority() const;
 
         /** 
          * Returns true if the chained priority of the Category is equal to
@@ -206,7 +206,7 @@ namespace log4cpp {
          * @param priority The priority to compare with.
          * @returns whether logging is enable for this priority.
          **/
-        bool isPriorityEnabled(int priority) const;
+        bool isPriorityEnabled(Priority::Value priority) const;
         
         /**
          * Sets an Appender for this Category.
@@ -271,14 +271,14 @@ namespace log4cpp {
          * in the log file.
          * @param ... The arguments for stringFormat 
          **/  
-        void log(int priority, const char* stringFormat, ...);
+        void log(Priority::Value priority, const char* stringFormat, ...);
 
         /** 
          * Log a message with the specified priority.
          * @param priority The priority of this log message.
          * @param message string to write in the log file
          **/  
-        void log(int priority, const std::string& message);
+        void log(Priority::Value priority, const std::string& message);
         
         /** 
          * Log a message with debug priority.
@@ -525,14 +525,14 @@ namespace log4cpp {
          * @param priority The Priority of the CategoryStream.
          * @returns The requested CategoryStream.
          **/
-        CategoryStream getStream(int priority);
+        CategoryStream getStream(Priority::Value priority);
 
         /**
          * Return a CategoryStream with given Priority.
          * @param priority The Priority of the CategoryStream.
          * @returns The requested CategoryStream.
          **/
-        CategoryStream operator<<(int priority);
+        CategoryStream operator<<(Priority::Value priority);
 
         protected:
 
@@ -550,7 +550,7 @@ namespace log4cpp {
          **/
         inline const Category* getParent() const { return _parent; };
 
-        void _logUnconditionally(int priority, const char* format, 
+        void _logUnconditionally(Priority::Value priority, const char* format, 
                                 va_list arguments);
         
         /** 
@@ -558,12 +558,12 @@ namespace log4cpp {
          * @param priority The priority of this log message.
          * @param message string to write in the log file
          **/  
-        void _logUnconditionally2(int priority, const std::string& message);
+        void _logUnconditionally2(Priority::Value priority, const std::string& message);
 
 
         private:
         Category(const std::string& name, Category* parent, 
-                 int priority = Priority::NOTSET);
+                 Priority::Value priority = Priority::NOTSET);
         
         /** The name of this category. */
         const std::string _name;
@@ -577,7 +577,7 @@ namespace log4cpp {
         /**
          *  The assigned priority of this category. 
          **/
-        int _priority;
+        Priority::Value _priority;
 
         /**
          * The appender of this category. Unlike log4j, log4cpp does not

@@ -62,7 +62,8 @@ namespace log4cpp {
     
 
     Appender::Appender(const std::string& name) :
-        _name(name) {
+        _name(name),
+        _treshold(Priority::NOTSET) {
         _addAppender(this);
     }
     
@@ -74,9 +75,17 @@ namespace log4cpp {
         return true;
     }
 
-    /*
-    const std::string& Appender::getName() const {
-        return _name;
+    void Appender::doAppend(const LoggingEvent& event) {
+        if ((Priority::NOTSET == _treshold) || (event.priority >= _treshold)) {
+            _append(event);
+        }
     }
-    */
+
+    void Appender::setTreshold(Priority::Value priority) {
+        _treshold = priority;
+    }
+
+    Priority::Value Appender::getTreshold() {
+        return _treshold;
+    }
 }

@@ -28,7 +28,7 @@
 namespace log4cpp {
 
 #ifdef LOG4CPP_USE_NEW_IOSTREAM
-    typedef std::ostringstream ostringstream;
+    using std::ostringstream;
 #else
     class ostringstream : public ostrstream {
         public:

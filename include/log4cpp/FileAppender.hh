@@ -22,11 +22,12 @@ namespace log4cpp {
         FileAppender(const std::string& name, int fd);
         virtual ~FileAppender();
         
-        virtual void doAppend(const LoggingEvent& event);
         virtual bool reopen();
         virtual void close();
 
         protected:
+        virtual void _append(const LoggingEvent& event);
+
         const std::string _fileName;
         int _fd;
     };

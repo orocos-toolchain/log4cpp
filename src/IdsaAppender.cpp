@@ -40,7 +40,7 @@ namespace log4cpp {
         _idsaConnection=NULL;
     }
 
-    void IdsaAppender::doAppend(const LoggingEvent& event) {
+    void IdsaAppender::_append(const LoggingEvent& event) {
         IDSA_EVENT *idsaEvent;
         
         idsaEvent = idsa_event(_idsaConnection);

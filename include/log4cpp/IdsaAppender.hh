@@ -29,12 +29,6 @@ namespace log4cpp {
         virtual ~IdsaAppender();
 
         /**
-         * Sends a LoggingEvent to idsa.
-         * @param event the LoggingEvent to log.
-         **/
-        virtual void doAppend(const LoggingEvent& event);
-
-        /**
          * Calls idsa_open() and idsa_close()
          **/
         virtual bool reopen();
@@ -58,6 +52,12 @@ namespace log4cpp {
          * Calls idsa_open().
          **/
         virtual void open();
+
+        /**
+         * Sends a LoggingEvent to idsa.
+         * @param event the LoggingEvent to log.
+         **/
+        virtual void _append(const LoggingEvent& event);
 
         const string _idsaName;
 

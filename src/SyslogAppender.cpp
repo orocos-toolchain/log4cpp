@@ -18,7 +18,7 @@
 
 namespace log4cpp {
 
-    int SyslogAppender::toSyslogPriority(int priority) {
+    int SyslogAppender::toSyslogPriority(Priority::Value priority) {
         static int priorities[8] = { LOG_EMERG, LOG_ALERT, LOG_CRIT, LOG_ERR,
                                      LOG_WARNING, LOG_NOTICE, LOG_INFO, 
                                      LOG_DEBUG };
@@ -61,7 +61,7 @@ namespace log4cpp {
         ::closelog();
     }
 
-    void SyslogAppender::doAppend(const LoggingEvent& event) {
+    void SyslogAppender::_append(const LoggingEvent& event) {
         if (!_layout) {
             // XXX help! help!
             return;

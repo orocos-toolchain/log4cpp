@@ -46,7 +46,7 @@ namespace log4cpp {
         ::close(_fd);
     }
 
-    void FileAppender::doAppend(const LoggingEvent& event) {
+    void FileAppender::_append(const LoggingEvent& event) {
         const char* message = _getLayout().format(event).c_str();
         if (!::write(_fd, message, strlen(message))) {
             // XXX help! help!

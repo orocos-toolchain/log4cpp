@@ -21,11 +21,12 @@ namespace log4cpp {
         OstreamAppender(const std::string& name, std::ostream* stream);
         virtual ~OstreamAppender();
         
-        virtual void doAppend(const LoggingEvent& event);
         virtual bool reopen();
         virtual void close();
 
         protected:
+        virtual void _append(const LoggingEvent& event);
+
         std::ostream* _stream;
     };
 }

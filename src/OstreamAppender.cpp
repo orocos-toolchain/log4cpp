@@ -30,7 +30,7 @@ namespace log4cpp {
         // empty
     }
 
-    void OstreamAppender::doAppend(const LoggingEvent& event) {
+    void OstreamAppender::_append(const LoggingEvent& event) {
         (*_stream) << _getLayout().format(event);
         if (!_stream->good()) {
             // XXX help! help!

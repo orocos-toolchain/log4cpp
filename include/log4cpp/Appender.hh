@@ -14,8 +14,8 @@
 #include <string>
 #include <map>
 #include <stdarg.h>
+#include "log4cpp/Priority.hh"
 #include "log4cpp/Layout.hh"
-#include "log4cpp/SimpleLayout.hh"
 #include "log4cpp/LoggingEvent.hh"
 #include "log4cpp/Log4cppCleanup.hh"
 
@@ -69,7 +69,7 @@ namespace log4cpp {
          * Log in Appender specific way. 
          * @param event  The LoggingEvent to log. 
          **/
-        virtual void doAppend(const LoggingEvent& event) = 0;
+        virtual void doAppend(const LoggingEvent& event);
 
         /**
          * Reopens the output destination of this Appender, e.g. the logfile 
@@ -102,6 +102,25 @@ namespace log4cpp {
          * @returns the name of the appender.
          **/
         inline const std::string& getName() const { return _name; };
+
+        /**
+         * Set the treshold priority of this Appender. The Appender will not
+         * appender LoggingEvents with a priority lower than the treshold.
+         * Use Priority::NOTSET to disable treshold checking.
+         * @param priority The priority to set.
+         **/
+        virtual void setTreshold(Priority::Value priority);
+
+        virtual Priority::Value getTreshold();
+
+        protected:
+        /**
+         * Log in Appender specific way. Sublclasses of Appender should
+         * implement this method to perform actual logging.
+         * @param event  The LoggingEvent to log. 
+         **/
+        virtual void _append(const LoggingEvent& event) = 0;
+
         
         private:
         typedef std::map<std::string, Appender*> AppenderMap;
@@ -114,6 +133,7 @@ namespace log4cpp {
         static Log4cppCleanup& _fuckinDummy;
         
         const std::string _name;
+        Priority::Value _treshold;
     };
 }
 

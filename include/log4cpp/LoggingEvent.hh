@@ -12,6 +12,7 @@
 
 #include <string>
 #include <time.h>
+#include "log4cpp/Priority.hh"
 
 /**
  * The top level namespace for all 'Log for C++' types and classes.
@@ -41,7 +42,7 @@ namespace log4cpp {
          * @param priority The priority of this event.
          **/
         LoggingEvent(const std::string& category, const std::string& message, 
-                     const std::string& ndc, int priority);
+                     const std::string& ndc, Priority::Value priority);
 
 
         /** The category name. */
@@ -54,7 +55,7 @@ namespace log4cpp {
         const std::string& ndc;
 
         /** Priority of logging event. */
-        int priority;
+        Priority::Value priority;
 
         /** The name of thread in which this logging event was generated,
             e.g. the PID. Because MSVC++ crashes if it is declared as a 
