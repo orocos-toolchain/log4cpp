@@ -4,6 +4,9 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	* include/log4cpp/config-win32.h, src/PortabilityImpl.hh,
 	src/Makefile.am: worked around header definition bug in MSVC by
 	aliasing cstdlib/cstring functions in 'std::'. See #628211.
+
+	* src/NDC.cpp: added parentheses to return statement in _get() as
+	suggested by Derrick Hastings to fix #415160.
 	
 2002-10-19 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/PatternLayout.hh, src/PatternLayout.cpp: 

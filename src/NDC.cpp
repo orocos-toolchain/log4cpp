@@ -88,9 +88,7 @@ namespace log4cpp {
     const std::string& NDC::_get() const {
         static std::string empty = "";
 
-        return _stack.empty() ?
-            empty :
-            _stack.back().fullMessage;
+        return (_stack.empty() ? empty : _stack.back().fullMessage);
     }
 
     int NDC::_getDepth() const {
