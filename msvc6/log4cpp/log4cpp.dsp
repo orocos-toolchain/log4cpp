@@ -111,10 +111,6 @@ SOURCE=..\..\src\Configurator.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\src\ConfiguratorSkeleton.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=..\..\src\FileAppender.cpp
 # End Source File
 # Begin Source File
@@ -171,7 +167,15 @@ SOURCE=..\..\src\Priority.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\Properties.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\PropertyConfigurator.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\PropertyConfiguratorImpl.cpp
 # End Source File
 # Begin Source File
 

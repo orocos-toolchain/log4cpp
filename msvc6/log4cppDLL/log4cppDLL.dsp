@@ -112,6 +112,10 @@ SOURCE=..\..\src\CategoryStream.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\Configurator.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\DllMain.cpp
 # End Source File
 # Begin Source File
@@ -172,6 +176,18 @@ SOURCE=..\..\src\Priority.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\Properties.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\PropertyConfigurator.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\PropertyConfiguratorImpl.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\RemoteSyslogAppender.cpp
 # End Source File
 # Begin Source File
@@ -192,7 +208,15 @@ SOURCE=..\..\src\StringQueueAppender.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\StringUtil.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\TimeStamp.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\Win32DebugAppender.cpp
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -305,6 +329,10 @@ SOURCE=..\..\include\log4cpp\Portability.hh
 # Begin Source File
 
 SOURCE=..\..\include\log4cpp\Priority.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\PropertyConfigurator.hh
 # End Source File
 # Begin Source File
 
