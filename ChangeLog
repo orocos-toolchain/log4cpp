@@ -1,5 +1,8 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-05-22 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/config-win32.h: fix compilation in Visual .NET.
+	
 2002-05-12 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/RollingFileAppender.cpp: explicitly remove oldest file in 
 	rollOver() because win98 cannot rename() to existing files. 
