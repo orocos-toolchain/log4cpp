@@ -43,11 +43,7 @@ namespace log4cpp {
          * identifiers look like is completely up to the underlying 
          * thread library.
          **/
-        static std::string getThreadId() {
-            char buffer[16];
-            sprintf(buffer, "%lu", GetCurrentThreadId());
-            return std::string(buffer);
-        };
+        std::string getThreadId();
         
         /**
          * A simple object wrapper around CreateMutex() and DeleteMutex()

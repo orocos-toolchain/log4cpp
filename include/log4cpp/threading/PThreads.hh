@@ -22,11 +22,7 @@ namespace log4cpp {
         /** 
          * returns the thread ID
          **/
-        static std::string getThreadId() {
-            char buffer[16];
-            ::sprintf(buffer, "%ld", pthread_self());
-            return std::string(buffer);     
-        }
+        std::string getThreadId();
         
         /**
          **/

@@ -22,11 +22,7 @@ namespace log4cpp {
          * identifiers look like is completely up to the underlying 
          * thread library. OmniThreads returns the POSIX thread Id.
          **/
-        static std::string getThreadId() {
-            char buffer[16];
-            sprintf(buffer, "%d", ::omni_thread::self()->id());
-            return std::string(buffer);
-        };
+        std::string getThreadId();
         
         /**
          * A simple, non recursive Mutex.

@@ -16,10 +16,7 @@
 
 namespace log4cpp {
     namespace threading {
-        static std::string getThreadId() {
-            // more useful would be to return the PID.
-            return std::string("thread1");
-        };
+        std::string getThreadId();
         
         /**
            Dummy type 'int' for Mutex. Yes, this adds a bit of overhead in
