@@ -9,6 +9,13 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	include/log4cpp/Log4cppCleanup.hh, src/Appender.cpp, 
 	src/HierrachyMaintainer.cpp, src/log4cppCleanup.cpp:
 	removed Log4cppCleanup, it was kinda broken anyway.
+
+	* msvc6/log4cpp/log4cpp.dsp, msvc6/log4cppDLL/log4cppDLL.dsp,
+	bcb5/log4cpp/log4cpp.bpf, bcb5/log4cpp/log4cpp.bpr, 
+	bcb5/log4cpp/log4cpp.mak: added BasicConfigurator.
+
+	* src/PatternLayout.cpp: define static constant strings in 
+	TimeStampComponent outside class declaration.
 	
 2002-10-26 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* Release as 0.3.3.

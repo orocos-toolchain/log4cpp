@@ -124,9 +124,9 @@ namespace log4cpp {
     };
 
     struct TimeStampComponent : public PatternLayout::PatternComponent {
-        static const char* const FORMAT_ISO8601 = "%Y-%m-%d %H:%M:%S,%l";
-        static const char* const FORMAT_ABSOLUTE = "%H:%M:%S,%l";
-        static const char* const FORMAT_DATE = "%d %b %Y %H:%M:%S,%l";
+        static const char* const FORMAT_ISO8601;
+        static const char* const FORMAT_ABSOLUTE;
+        static const char* const FORMAT_DATE;
 
         TimeStampComponent(std::string timeFormat) {
             if ((timeFormat == "") || (timeFormat == "ISO8601")) {
@@ -172,6 +172,10 @@ namespace log4cpp {
         std::string _timeFormat2;
         bool _printMillis;
     };
+
+    const char* const TimeStampComponent::FORMAT_ISO8601 = "%Y-%m-%d %H:%M:%S,%l";
+    const char* const TimeStampComponent::FORMAT_ABSOLUTE = "%H:%M:%S,%l";
+    const char* const TimeStampComponent::FORMAT_DATE = "%d %b %Y %H:%M:%S,%l";
 
     struct SecondsSinceEpochComponent : public PatternLayout::PatternComponent {
         virtual void append(std::ostringstream& out, const LoggingEvent& event) {
