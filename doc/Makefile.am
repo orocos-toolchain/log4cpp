@@ -29,11 +29,11 @@ install-data-local:
 		$(INSTALL_DATA) $$i $(man3dir)/$$inst; \
 	done
 	$(mkinstalldirs) $(docdir)
-	cp -r html $(docdir)
-	$(RM) -r -f $(docdir)/html/CVS \
-		$(docdir)/html/Makefile.am \
-		$(docdir)/html/Makefile.in \
-		$(docdir)/html/Makefile
+	cp -r html/. $(docdir)
+	$(RM) -r -f $(docdir)/CVS \
+		$(docdir)/Makefile.am \
+		$(docdir)/Makefile.in \
+		$(docdir)/Makefile
 
 uninstall-local:
 	$(RM) $(man3dir)/log4cpp.3
