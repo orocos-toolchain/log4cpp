@@ -14,4 +14,5 @@ liblog4cppinclude_HEADERS =  \
 	HierarchyMaintainer.hh \
 	LoggingEvent.hh \
 	Priority.hh \
-	NDC.hh
+	NDC.hh \
+	config.h
