@@ -223,7 +223,7 @@ namespace log4cpp {
             std::ostringstream s;
             _component->append(s, event);
             std::string msg = s.str();
-            if (_maxWidth > 0) {
+            if (_maxWidth > 0 && _maxWidth < msg.length())) {
                 msg.erase(_maxWidth);
             }
             int fillCount = _minWidth - msg.length();
