@@ -84,5 +84,8 @@
 #define LOG4CPP_USE_CLEANUP
 #endif
 
+/* define mode_t. Move to Portability.hh if more platforms need it */
+typedef int mode_t;
+
 /* _INCLUDE_LOG4CPP_CONFIG_WIN32_H */
 #endif

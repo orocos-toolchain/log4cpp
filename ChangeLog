@@ -1,5 +1,11 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-04-21 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/config-win32.h: added mode_t typedef.
+
+2002-04-09 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* tests/Clock.cpp: test for i386 architecture on linux (patch #541608)
+
 2002-04-04 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* Release as 0.3.1
 
