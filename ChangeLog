@@ -1,7 +1,14 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
 2002-04-04 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* Release as 0.3.1
+
 	* src/Category.cpp: fix previous fix for bug #527467.
+
+	* m4/PETI_PEDANTIC_GCC.m4: add -Wno-unused to g++ options.
+
+	* configure.in: increment version to 0.3.1.
+
 	
 2002-03-31 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/Portability.hh: Disable exception specifier
