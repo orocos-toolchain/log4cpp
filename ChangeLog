@@ -1,5 +1,16 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-08-04 David Resnick <dresnick@mobilespear.com>
+	* src/PropertyConfiguratorImpl.cpp: added RollingFileAppender,
+	NTEventLogAppender. Threshold attrib added for appenders. Invalid
+	priority in configureCategory prints message of invalid_argument
+	exception.
+	* src/Priority.cpp: surrounding quotes added around invalid priority
+	in thrown invalid_argument exception.
+	* tests/testPropConfig.cpp, tests/log4cpp.property, 
+	msvc6\testPropConfig\testPropConfig.dsp: test for PropertyConfigurator
+	added.
+	
 2002-08-02 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* doc/Makefile.am, doc/Doxyfile.in, doc/html/index.html,
 	doc/html/default.css: added new index page and move Doxygen generated
