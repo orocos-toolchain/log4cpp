@@ -18,7 +18,8 @@
 #ifndef LOG4CPP_HAVE_INT64_T 
 #define LOG4CPP_HAVE_INT64_T
 
-#define int64_t __int64
+#include <boost/cstdint.hpp>
+using boost::int64_t;
 
 #endif
 
