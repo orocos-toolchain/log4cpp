@@ -95,7 +95,7 @@ namespace log4cpp {
         
         
         private:
-        typedef map<std::string, Appender*> AppenderMap;
+        typedef std::map<std::string, Appender*> AppenderMap;
 
         static AppenderMap _allAppenders;
         static void _addAppender(Appender* appender);

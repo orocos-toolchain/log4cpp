@@ -18,7 +18,7 @@ namespace log4cpp {
 
     class OstreamAppender : public Appender {
         public:
-        OstreamAppender(const std::string& name, ostream* stream);
+        OstreamAppender(const std::string& name, std::ostream* stream);
         virtual ~OstreamAppender();
         
         virtual void doAppend(const LoggingEvent& event);
@@ -28,7 +28,7 @@ namespace log4cpp {
         virtual void setLayout(Layout* layout);
 
         protected:
-        ostream* _stream;
+        std::ostream* _stream;
         Layout* _layout;
     };
 }

@@ -17,14 +17,14 @@ namespace log4cpp {
     
     class HierarchyMaintainer {
         public:
-        typedef map<std::string, Category*> CategoryMap;
+        typedef std::map<std::string, Category*> CategoryMap;
   
         static HierarchyMaintainer& getDefaultMaintainer();
 
         HierarchyMaintainer();
         virtual ~HierarchyMaintainer();
         virtual Category& getInstance(const std::string& name);
-        virtual set<Category*>* getCurrentCategories() const;
+        virtual std::set<Category*>* getCurrentCategories() const;
 
         protected:
         CategoryMap _categoryMap;

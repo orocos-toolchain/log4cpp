@@ -8,7 +8,8 @@
  */
 
 #include <unistd.h>
-#include <strstream>
+
+#include "log4cpp/Hints.hh"
 #include "log4cpp/Category.hh"
 #include "log4cpp/HierarchyMaintainer.hh"
 #include "log4cpp/NDC.hh"
@@ -57,7 +58,7 @@ namespace log4cpp {
         return HierarchyMaintainer::getDefaultMaintainer().getInstance(name);
     }
 
-    set<Category*>* Category::getCurrentCategories() {
+    std::set<Category*>* Category::getCurrentCategories() {
         return HierarchyMaintainer::getDefaultMaintainer().
             getCurrentCategories();
     }
@@ -136,13 +137,9 @@ namespace log4cpp {
     }
 
     void Category::_logUnconditionally(int priority, const char* format, va_list arguments) {
-        std::ostrstream messageBuffer;
-#ifdef __DECCXX
-        // FIXME: vform method on DEC ??
-        messageBuffer << "format not implemented";
-#else
+        ostrstream messageBuffer;
+
         messageBuffer.vform(format, arguments);
-#endif
         messageBuffer << '\0';
         std::string message = std::string(messageBuffer.str());
         _logUnconditionally2(priority, message);

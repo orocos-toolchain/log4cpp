@@ -10,8 +10,7 @@
 #ifndef _LOG4CPP_CATEGORY_HH
 #define _LOG4CPP_CATEGORY_HH
 
-#include <string>
-#include <strstream>
+#include "log4cpp/Hints.hh"
 #include <map>
 #include <set>
 #include <stdarg.h>
@@ -162,7 +161,7 @@ namespace log4cpp {
          * <p>Unlike in log4j, the root category <em>is</em> included 
          * in the returned set.
          **/
-        static set<Category*>* getCurrentCategories();
+        static std::set<Category*>* getCurrentCategories();
 
         /**
          * Destructor for Category.
@@ -472,7 +471,6 @@ namespace log4cpp {
         bool _isAdditive;
 
     };
-
 
 }
 #endif // _LOG4CPP_CATEGORY_HH

@@ -45,6 +45,20 @@ AM_CONDITIONAL(DOC, test x$enable_doc = xyes)
 
 # CXX fine tuning
 # ----------------------------------------------------------------------------
+case "$host" in
+    *-dec-osf*)	  
+	CXXFLAGS="$CXXFLAGS -D_POSIX_PII_SOCKET -msg_disable nonfundec -std strict_ansi_errors" 
+	;;
+    *)	
+	;;
+esac
+
+if test "$GCC" = yes; then
+    case `$CXX --version` in
+	*2.97*) CXXFLAGS="$CXXFLAGS -Wall -D_ISOC99_SOURCE" ;;
+	*)      CXXFLAGS="$CXXFLAGS -Wall" ;;
+    esac
+fi
 
 # Create files
 # ----------------------------------------------------------------------------

@@ -7,7 +7,7 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include <strstream>
+#include "log4cpp/Hints.hh"
 #include "log4cpp/BasicLayout.hh"
 #include "log4cpp/Priority.hh"
 
@@ -25,7 +25,7 @@ namespace log4cpp {
         const std::string& priorityName = Priority::getPriorityName(event.priority);
         message << event.timeStamp << " " << priorityName << " " 
                 << event.categoryName << " " << event.ndc << ": " 
-                << event.message << endl << '\0';
+                << event.message << std::endl << '\0';
 
         return message.str();
     }

@@ -3,6 +3,7 @@ lib_LTLIBRARIES = liblog4cpp.la
 INCLUDES = -I../include
 
 liblog4cpp_la_SOURCES = \
+	Hints.cpp \
 	Appender.cpp \
 	FileAppender.cpp \
 	OstreamAppender.cpp \

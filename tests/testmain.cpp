@@ -18,7 +18,7 @@ int main(int argc, char** argv) {
     syslogAppender = new log4cpp::SyslogAppender("syslog", "log4cpp");
 
     if (argc < 2) {
-        appender = new log4cpp::OstreamAppender("default", &cout);
+        appender = new log4cpp::OstreamAppender("default", &std::cout);
     } else {
         appender = new log4cpp::FileAppender("default", argv[1]);
     }
@@ -31,16 +31,16 @@ int main(int argc, char** argv) {
     root.setAppender(syslogAppender);
     root.setPriority(log4cpp::Priority::ERROR);
     
-    log4cpp::Category& sub1 = log4cpp::Category::getInstance(string("sub1"));
+    log4cpp::Category& sub1 = log4cpp::Category::getInstance(std::string("sub1"));
     sub1.setAppender(appender);
 
-    log4cpp::Category& sub2 = log4cpp::Category::getInstance(string("sub1.sub2"));
+    log4cpp::Category& sub2 = log4cpp::Category::getInstance(std::string("sub1.sub2"));
 
-    log4cpp::NDC::push(string("ndc1"));
+    log4cpp::NDC::push(std::string("ndc1"));
 
-    cout << " root prio = " << root.getPriority() << endl;
-    cout << " sub1 prio = " << sub1.getPriority() << endl;
-    cout << " sub2 prio = " << sub2.getPriority() << endl;
+    std::cout << " root prio = " << root.getPriority() << std::endl;
+    std::cout << " sub1 prio = " << sub1.getPriority() << std::endl;
+    std::cout << " sub2 prio = " << sub2.getPriority() << std::endl;
     
     root.error("root error");
     root.warn("root warn");
@@ -50,11 +50,11 @@ int main(int argc, char** argv) {
     sub2.warn("sub2 warn");
     
     sub1.setPriority(log4cpp::Priority::INFO);
-    cout << " root prio = " << root.getPriority() << endl;
-    cout << " sub1 prio = " << sub1.getPriority() << endl;
-    cout << " sub2 prio = " << sub2.getPriority() << endl;
+    std::cout << " root prio = " << root.getPriority() << std::endl;
+    std::cout << " sub1 prio = " << sub1.getPriority() << std::endl;
+    std::cout << " sub2 prio = " << sub2.getPriority() << std::endl;
    
-    cout << "priority info" << endl;
+    std::cout << "priority info" << std::endl;
     root.error("root error");
     root.warn("root warn");
     sub1.error("sub1 error");

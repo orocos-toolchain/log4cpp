@@ -27,7 +27,7 @@ namespace log4cpp {
             std::string fullMessage;
         };
 
-        typedef vector<DiagnosticContext> ContextStack;
+        typedef std::vector<DiagnosticContext> ContextStack;
 
         static void clear();
         static ContextStack* cloneStack();
