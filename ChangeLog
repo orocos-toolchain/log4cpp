@@ -16,6 +16,8 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	* include/log4cpp/FixedContextCategory.hh, 
 	src/FixedContextCategory.cpp: sync methods for multiple Appender
 	support.
+
+	* NEWS: added summary for 0.2.7 release
 	
 2002-01-20 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/Category.hh, src/Category.cpp, 
