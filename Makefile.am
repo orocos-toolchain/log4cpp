@@ -29,8 +29,7 @@ dist-hook:
 	perl -pi -e 's/\n/\r\n/g' `find $(distdir) -name '*.bpg'`
 
 distclean-local:
-	$(MAKE) -C tests distclean
-	-rm -rf CONTENTS TAGS
+	$(RM) CONTENTS TAGS
 
 CONTENTS::
 	find $(top_srcdir) \( ! -type l -a -name '*.cpp' -o -name '*.hh' -o -name Makefile.am \) > $@
