@@ -1,5 +1,17 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-07-10 David Resnick <dresnick@mobilespear.com>
+	* src/PatternLayout.cpp, include/log4cpp/PatternLayout.hh, 
+	tests/testPattern.cpp, msvc6/testPattern/testPattern.dsp: added support 
+	for formatting date and testing that new support.
+	
+	* tests/testDLL.cpp, msvc6/testDLL/testDLL.dsp: added project that
+	tests log4cpp DLL (on win32 platform), including export of container
+	object.
+	
+	* msvc6/log4cpp/log4cpp.dsp, msvc6/log4cppDLL/log4cppDLL.dsp: fixed so
+	that PropertyConfigurator and attendant files are compiled in MSVC6.
+
 2002-07-09 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/StringUtil.hh, src/StringUtil.cpp: added a more generic split()
 	method taking an output_iterator instead of a vector to store the 
