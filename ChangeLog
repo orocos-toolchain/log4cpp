@@ -1,5 +1,10 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-06-18 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/NDC.cpp: fix top level context falling off, if depth > 2.
+	(reported by Hong Yang <yanghong2009@yahoo.com>)
+	* tests/testNDC.cpp: push 3 contexts to test for bug above.
+	
 2002-06-17 Aaron Ingram <ai8@yahoo.com>
 	* Fixed default port for syslog in SimpleConfigurator.cpp
 	* Added a sample configuration file: log4cpp.cfg 

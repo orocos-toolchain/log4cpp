@@ -21,7 +21,7 @@ namespace log4cpp {
     NDC::DiagnosticContext::DiagnosticContext(const std::string& message, 
             const DiagnosticContext& parent) :
         message(message),
-        fullMessage(parent.message + " " + message) {
+        fullMessage(parent.fullMessage + " " + message) {
     }
 
     namespace {
