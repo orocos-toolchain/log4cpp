@@ -11,6 +11,7 @@
 #define _LOG4CPP_PRIORITY_HH
 
 #include <string>
+#include <stdexcept>
 
 /*
  * Optionally work around rudeness in windows.h on Win32.
@@ -90,6 +91,18 @@ namespace log4cpp {
          * @returns a string representing the name of the priority.
          **/
         static const std::string& getPriorityName(int priority) throw();
+	
+	/**
+	 * Returns the value of the given priority name. 
+	 * This can be either one of EMERG ... NOTSET or a 
+	 * decimal string representation of the value, e.g. '700' for DEBUG.
+	 * @param priorityName the string containing the the of the priority
+	 * @return the value corresponding with the priority name
+	 * @throw std::invalid_argument if the priorityName does not 
+	 * correspond with a known Priority name or a number
+	 **/
+        static Value getPriorityValue(const std::string& priorityName)
+	throw(std::invalid_argument);
     };
 }
 
