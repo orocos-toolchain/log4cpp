@@ -1,17 +1,16 @@
+SUBDIRS = html
+
 man3dir = $(mandir)/man3
 docdir  = $(prefix)/doc/@PACKAGE_TARNAME@-@PACKAGE_VERSION@
 
 EXTRA_DIST = \
-	html/index.html \
-	html/default.css \
-	html/sflogo.png \
 	mainPage.txt
 
 .PHONY: dox pdf
 
 all-local: dox #pdf
 
-dox: html/api/index.html
+dox: html html/api/index.html
 html/api/index.html: Doxyfile
 	@DOXYGEN@
 
@@ -31,6 +30,10 @@ install-data-local:
 	done
 	$(mkinstalldirs) $(DESTDIR)$(docdir)
 	cp -r html $(docdir)
+	$(RM) -r -f $(docdir)/html/CVS \
+		$(docdir)/html/Makefile.am \
+		$(docdir)/html/Makefile.in \
+		$(docdir)/html/Makefile
 
 clean-local:
 	$(RM) -r latex

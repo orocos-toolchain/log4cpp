@@ -98,6 +98,7 @@ log4cpp.spec
 config/Makefile
 doc/Makefile
 doc/Doxyfile
+doc/html/Makefile
 src/Makefile
 include/Makefile
 include/log4cpp/Makefile
