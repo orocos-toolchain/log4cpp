@@ -26,7 +26,7 @@ namespace log4cpp {
     static const int ERROR = log4cpp::_tmpERRORValue;
 #define ERROR ERROR
 
-#else
+#else  // LOG4CPP_FIX_ERROR_COLLISION
 #error Naming collision for 'ERROR' detected. Please read the FAQ for a \
        workaround. 
 #endif // LOG4CPP_FIX_ERROR_COLLISION 
@@ -42,9 +42,8 @@ namespace log4cpp {
 
 #undef DEBUG
 #define DEBUG DEBUG
-#endif
 
-#else 
+#else  // LOG4CPP_FIX_ERROR_COLLISION
 #error Naming collision for 'DEBUG' detected. Please read the FAQ for a \
        workaround. 
 #endif // LOG4CPP_FIX_ERROR_COLLISION 
