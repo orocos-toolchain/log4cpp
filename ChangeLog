@@ -1,5 +1,9 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-07-04 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/BasicConfigurator.hh, src/BasicConfigurator.cpp:
+	added.
+	
 2002-07-03 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/SyslogAppender.cpp (SysLogAppender()): accept '-1' for facility and portNumber, 
 	implying the 'default value'.
