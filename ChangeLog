@@ -1,5 +1,16 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-11-26 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/TimeStamp.hh, include/log4cpp/Makefile.am,
+	src/TimeStamp.cpp, src/Makefile.am: added micro second
+	precise time stamp.
+	* configure.in: added test for 'ftime()' function.
+	* include/log4cpp/LoggingEvent.hh, include/log4cpp/PatternLayout.hh,
+	src/LoggingEvent.cpp, src/BasicLayout.cpp, src/PatternLayout.cpp:
+	Use new TimeStamp class.
+
+	* tests/testPattern.cpp: included '%r' in test pattern.
+	
 2001-11-23 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* tests/testConfig.cpp, tests/log4cpp.init: added test for
 	SimpleConfigurator.
