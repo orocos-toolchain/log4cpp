@@ -1,1 +1,1 @@
-EXTRA_DIST = testCategory.bpf testCategory.bpr
+EXTRA_DIST = testCategory.bpf testCategory.bpr testCategory.mak

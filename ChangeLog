@@ -1,5 +1,15 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-07-16 Uwe Jäger <jaeger@varial.de>
+	* bcb5/log4cpp.bpf, bcb5/log4cpp.bpr:
+	Adjusted project files to compile CategoryStream.cpp.
+	* bcb5/bcb5.mak, bcb5/log4cpp/log4cpp.mak, 
+	bcb5/log4cpp/testCategory/testCategory.mak,
+	bcb5/log4cpp/testFixedContextCategory/testFixedContextCategory.mak,
+	bcb5/log4cpp/testmain/testmain.mak,
+	bcb5/log4cpp/testNDC/testNDC.mak:
+	Added makefiles for Borland make to build without IDE.
+
 2001-06-17 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/Category.hh, include/log4cpp/CategoryStream.hh,
 	include/log4cpp/Makefile.am, 

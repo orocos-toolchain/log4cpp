@@ -1,1 +1,1 @@
-EXTRA_DIST = testmain.bpf testmain.bpr
+EXTRA_DIST = testmain.bpf testmain.bpr testmain.mak
