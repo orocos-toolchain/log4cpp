@@ -21,5 +21,8 @@ liblog4cppinclude_HEADERS =  \
 	OstringStream.hh \
 	Log4cppCleanup.hh \
 	Filter.hh \
+	Export.hh \
 	Config.hh \
-	config.h
+	config.h \
+	config-win32.h
+

@@ -1,5 +1,11 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-06-05 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/Config.hh, include/log4cpp/config-win32.h: Added
+	* include/log4cpp/Makefile.am: added Export.hh and config-win32.h to
+	liblog4cppinclude_HEADERS.
+	* include/log4cpp/Config-win32.hh: removed
+
 2001-06-04 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* Makefile.am: removed config.h copy from dist-hook
 
