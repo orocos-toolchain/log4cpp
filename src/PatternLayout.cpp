@@ -1,3 +1,4 @@
+
 /*
  * PatternLayout.cpp
  *
@@ -128,7 +129,7 @@ namespace log4cpp {
                                 // replace milli-second format (%l)
                                 std::ostringstream strFtimeFormat;
                                 std::string strFormat(szFtimeFormat);
-                                int pos = 0, prevPos = 0;
+                                std::string::size_type pos = 0, prevPos = 0;
                                 while ((pos = strFormat.find("%l", prevPos)) != std::string::npos) {
                                     strFtimeFormat << strFormat.substr(prevPos, pos);
                                     strFtimeFormat << std::setw(3) << std::setfill('0') << event.timeStamp.getMilliSeconds();

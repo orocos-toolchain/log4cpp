@@ -1,5 +1,8 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-07-11 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/PatternLayout.cpp: use std::string::size_type instead of int.
+	
 2002-07-10 David Resnick <dresnick@mobilespear.com>
 	* src/PatternLayout.cpp, include/log4cpp/PatternLayout.hh, 
 	tests/testPattern.cpp, msvc6/testPattern/testPattern.dsp: added support 
