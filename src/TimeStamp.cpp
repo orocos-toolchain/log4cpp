@@ -9,7 +9,7 @@
 
 #include <log4cpp/TimeStamp.hh>
 
-#include <string.h>
+#include <cstring>
 
 #ifdef LOG4CPP_HAVE_GETTIMEOFDAY
 #include <sys/time.h>
