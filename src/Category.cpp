@@ -53,15 +53,11 @@ namespace log4cpp {
         _name(name),
         _parent(parent),
         _priority(priority),
-        _appender(NULL),
-        _ownsAppender(false),
         _isAdditive(true) {
     }
 
     Category::~Category() {
-        if ((_appender != NULL) && ownsAppender()) {
-            delete _appender;
-        }
+        removeAllAppenders();
     }
 
     const std::string& Category::getName() const throw() {
@@ -94,45 +90,101 @@ namespace log4cpp {
         return c->getPriority();
     }
     
-    void Category::setAppender(Appender* appender) {
-        if (appender != _appender) {
-            if (ownsAppender())
-                delete _appender;
-            
-            _appender = appender;
-            _ownsAppender = (_appender != NULL);    
+    void Category::addAppender(Appender* appender) {
+        if (appender) {
+            AppenderSet::iterator i = _appender.find(appender);
+            if (_appender.end() == i) {
+                // not found
+                _appender.insert(appender);
+                _ownsAppender[appender] = true;
+            }
         }
     }
     
-    void Category::setAppender(Appender& appender) {
-        if (&appender != _appender) {
-            if (ownsAppender())
-                delete _appender;
-            
-            _appender = &appender;
-            _ownsAppender = false;    
+    void Category::addAppender(Appender& appender) {
+        AppenderSet::iterator i = _appender.find(&appender);
+        if (_appender.end() == i) {
+            _appender.insert(&appender);
+            _ownsAppender[&appender] = false;
         }
     }
     
     Appender* Category::getAppender() const {
-        return _appender;
-    }
-    
-    void Category::removeAllAppenders() {
-         if (ownsAppender())
-            delete _appender;
-       
-         _appender = NULL;
-	 _ownsAppender = false;    	 
+        AppenderSet::const_iterator i = _appender.begin();
+        return (_appender.end() == i) ? NULL : *i;
     }
 
-    bool Category::ownsAppender() const throw() {
-        return _ownsAppender;
+    Appender* Category::getAppender(const std::string& name) const {
+        AppenderSet::const_iterator i = _appender.begin();
+        if (_appender.end() != i) {
+            // found
+            return((*i)->getAppender(name));
+        }
+		else {
+			return(NULL);
+		}
     }
-    
+
+    void Category::removeAllAppenders() {
+        AppenderSet::iterator i2, i = _appender.begin();
+        while (i != _appender.end()) {
+            // found
+            OwnsAppenderMap::iterator i3;
+            if (ownsAppender(*i, i3)) {
+                _ownsAppender.erase(i3);
+                delete (*i);
+            }
+
+            i2 = i++;
+            _appender.erase(i2);
+        }
+    }
+
+    void Category::removeAppender(Appender* appender) {
+        AppenderSet::iterator i = _appender.find(appender);
+        if (_appender.end() != i) {            
+            OwnsAppenderMap::iterator i2;
+            if (ownsAppender(*i, i2)) {
+                _ownsAppender.erase(i2);
+                delete (*i);
+            }
+            _appender.erase(i);
+        } else {
+            // appender not found 
+        }
+    }
+
+    bool Category::ownsAppender(Appender* appender) const throw() {
+        bool found = false;
+
+        if (NULL != appender) {            
+            OwnsAppenderMap::const_iterator i = _ownsAppender.find(appender);
+            found = (_ownsAppender.end() != i);
+        }
+
+        return found;
+    }
+
+    bool Category::ownsAppender(Appender* appender, 
+                                Category::OwnsAppenderMap::iterator& i2) throw() {
+        bool found = false;
+
+        if (NULL != appender) {
+            OwnsAppenderMap::iterator i = _ownsAppender.find(appender);
+            if (_ownsAppender.end() != i) {
+                found = true;
+                i2 = i;
+            }
+        }
+
+        return found;
+    }
+
     void Category::callAppenders(const LoggingEvent& event) throw() {
-        if (_appender) {
-            _appender->doAppend(event);
+        if (!_appender.empty()) {
+            for(AppenderSet::const_iterator i = _appender.begin(); i != _appender.end(); i++) {
+                (*i)->doAppend(event);
+            }
         }
 
         if (getAdditivity() && (getParent() != NULL)) {
@@ -184,13 +236,21 @@ namespace log4cpp {
             va_end(va);
         }
     }
-    
+
     void Category::log(Priority::Value priority, 
                        const std::string& message) throw() { 
         if (isPriorityEnabled(priority))
             _logUnconditionally2(priority, message);
     }
     
+    void Category::logva(Priority::Value priority, 
+                         const char* stringFormat,
+                         va_list va) throw() { 
+        if (isPriorityEnabled(priority)) {
+            _logUnconditionally(priority, stringFormat, va);
+        }
+    }
+
     void Category::debug(const char* stringFormat, ...) throw() { 
         if (isPriorityEnabled(Priority::DEBUG)) {
             va_list va;

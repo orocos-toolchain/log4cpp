@@ -10,9 +10,6 @@
 #ifndef _LOG4CPP_CATEGORY_HH
 #define _LOG4CPP_CATEGORY_HH
 
-#include <map>
-#include <set>
-#include <stdarg.h>
 #include "log4cpp/Portability.hh"
 #include "log4cpp/Export.hh"
 #include "log4cpp/OstringStream.hh"
@@ -20,6 +17,10 @@
 #include "log4cpp/LoggingEvent.hh"
 #include "log4cpp/Priority.hh"
 #include "log4cpp/CategoryStream.hh"
+
+#include <map>
+#include <set>
+#include <stdarg.h>
 
 namespace log4cpp {
 
@@ -32,7 +33,7 @@ namespace log4cpp {
         friend class HierarchyMaintainer;
 
         public:
-        
+
         /**
          * Return the root of the Category hierarchy.
          * 
@@ -134,38 +135,88 @@ namespace log4cpp {
         virtual bool isPriorityEnabled(Priority::Value priority) const throw();
         
         /**
-         * Sets an Appender for this Category.
+         * Adds an Appender to this Category.
          * This method passes ownership from the caller to the Category.
+         * @since 0.2.7
          * @param appender The Appender this category has to log to or NULL
-	 * to unset the current Appender.
+         * to unset the current Appender.
          **/
-        virtual void setAppender(Appender* appender);
+        virtual void addAppender(Appender* appender);
 
         /**
-         * Sets an Appender for this Category.
+         * Adds an Appender for this Category.
+         * This method does not pass ownership from the caller to the Category.
+         * @since 0.2.7
+         * @param appender The Appender this category has to log to.
+         **/
+        virtual void addAppender(Appender& appender);
+
+        /**
+         * Adds an Appender to this Category.
+         * This method passes ownership from the caller to the Category.
+         * @param appender The Appender this category has to log to or NULL
+         * to unset the current Appender.
+         **/
+        inline void setAppender(Appender* appender) {
+            if (appender) {
+                addAppender(appender);
+            } else {
+                removeAllAppenders();
+            }
+        };
+
+        /**
+         * Adds an Appender for this Category.
          * This method does not pass ownership from the caller to the Category.
          * @param appender The Appender this category has to log to.
          **/
-        virtual void setAppender(Appender& appender);
+        inline void setAppender(Appender& appender) {
+            addAppender(appender);
+        };
 
         /**
-         * Returns the Appender for this Category, or NULL if no Appender has
-         * been set.
+         * Returns the first Appender for this Category, or NULL if no
+         * Appender has been set.
+         * @deprecated use getAppender(const std::string&)
          * @returns The Appender.
          **/
         virtual Appender* getAppender() const;
 
         /**
-         * Removes all appenders set for this Category. Currently a Category
-         * can have only one appender, but this may change in the future.
+         * Returns the specified Appender for this Category, or NULL if no
+         * Appender has been set.
+         * @since 0.2.7
+         * @returns The Appender.
+         **/
+        virtual Appender* getAppender(const std::string& name) const;
+
+        /**
+         * Removes all appenders for this Category.
          **/
         virtual void removeAllAppenders();
 
         /**
+         * Removes specified appender for this Category.
+         * @since 0.2.7
+         **/
+        virtual void removeAppender(Appender* appender);
+
+        /**
+         * Returns true if the Category owns the first Appender in its
+         * Appender set. In that case the Category destructor will delete
+         * the Appender.
+         * @deprecated use ownsAppender(Appender*)
+         **/
+        inline bool ownsAppender() const throw() {
+            return ownsAppender(getAppender());
+        };
+
+        /**
          * Returns true if the Category owns the Appender. In that case the
          * Category destructor will delete the Appender.
+         * @since 0.2.7
          **/
-        virtual bool ownsAppender() const throw();
+        virtual bool ownsAppender(Appender* appender) const throw();
 
         /**
          * Call the appenders in the hierarchy starting at
@@ -223,6 +274,16 @@ namespace log4cpp {
                          const std::string& message) throw();
         
         /** 
+         * Log a message with the specified priority.
+         * @since 0.2.7
+         * @param priority The priority of this log message.
+         * @param va The arguments for stringFormat.
+         **/  
+        virtual void logva(Priority::Value priority, 
+                           const char* stringFormat,
+                           va_list va) throw();
+        
+        /** 
          * Log a message with debug priority.
          * @param stringFormat Format specifier for the string to write 
          * in the log file.
@@ -241,15 +302,15 @@ namespace log4cpp {
          * @returns Whether the Category will log.
          **/ 
         inline bool isDebugEnabled() const throw() { 
-                       return isPriorityEnabled(Priority::DEBUG);
+            return isPriorityEnabled(Priority::DEBUG);
         };
-
+        
         /**
          * Return a CategoryStream with priority DEBUG.
          * @returns The CategoryStream.
          **/
         inline CategoryStream debugStream() {
-                       return getStream(Priority::DEBUG);
+            return getStream(Priority::DEBUG);
         }
 
         /** 
@@ -271,7 +332,7 @@ namespace log4cpp {
          * @returns Whether the Category will log.
          **/ 
         inline bool isInfoEnabled() const throw() { 
-                       return isPriorityEnabled(Priority::INFO);
+            return isPriorityEnabled(Priority::INFO);
         };
 
         /**
@@ -279,7 +340,7 @@ namespace log4cpp {
          * @returns The CategoryStream.
          **/
         inline CategoryStream infoStream() {
-                       return getStream(Priority::INFO);
+            return getStream(Priority::INFO);
         }
         
         /** 
@@ -301,7 +362,7 @@ namespace log4cpp {
          * @returns Whether the Category will log.
          **/ 
         inline bool isNoticeEnabled() const throw() { 
-                       return isPriorityEnabled(Priority::NOTICE);
+            return isPriorityEnabled(Priority::NOTICE);
         };
 
         /**
@@ -309,7 +370,7 @@ namespace log4cpp {
          * @returns The CategoryStream.
          **/
         inline CategoryStream noticeStream() {
-                       return getStream(Priority::NOTICE);
+            return getStream(Priority::NOTICE);
         }
         
         /** 
@@ -331,7 +392,7 @@ namespace log4cpp {
          * @returns Whether the Category will log.
          **/ 
         inline bool isWarnEnabled() const throw() { 
-                       return isPriorityEnabled(Priority::WARN);
+            return isPriorityEnabled(Priority::WARN);
         };
 
         /**
@@ -339,8 +400,8 @@ namespace log4cpp {
          * @returns The CategoryStream.
          **/
         inline CategoryStream warnStream() {
-                       return getStream(Priority::WARN);
-        }
+            return getStream(Priority::WARN);
+        };
         
         /** 
          * Log a message with error priority.
@@ -361,7 +422,7 @@ namespace log4cpp {
          * @returns Whether the Category will log.
          **/ 
         inline bool isErrorEnabled() const throw() { 
-                       return isPriorityEnabled(Priority::ERROR);
+            return isPriorityEnabled(Priority::ERROR);
         };
         
         /**
@@ -369,8 +430,8 @@ namespace log4cpp {
          * @returns The CategoryStream.
          **/
         inline CategoryStream errorStream() {
-                       return getStream(Priority::ERROR);
-        }
+            return getStream(Priority::ERROR);
+        };
 
         /** 
          * Log a message with crit priority.
@@ -391,7 +452,7 @@ namespace log4cpp {
          * @returns Whether the Category will log.
          **/ 
         inline bool isCritEnabled() const throw() { 
-                       return isPriorityEnabled(Priority::CRIT);
+            return isPriorityEnabled(Priority::CRIT);
         };
         
         /**
@@ -399,9 +460,9 @@ namespace log4cpp {
          * @returns The CategoryStream.
          **/
         inline CategoryStream critStream() {
-                       return getStream(Priority::CRIT);
-        }
-
+            return getStream(Priority::CRIT);
+        };
+        
         /** 
          * Log a message with alert priority.
          * @param stringFormat Format specifier for the string to write 
@@ -421,7 +482,7 @@ namespace log4cpp {
          * @returns Whether the Category will log.
          **/ 
         inline bool isAlertEnabled() const throw() { 
-                       return isPriorityEnabled(Priority::ALERT);
+            return isPriorityEnabled(Priority::ALERT);
         };
         
         /**
@@ -429,8 +490,8 @@ namespace log4cpp {
          * @returns The CategoryStream.
          **/
         inline CategoryStream alertStream() throw() {
-                       return getStream(Priority::ALERT);
-        }
+            return getStream(Priority::ALERT);
+        };
 
         /** 
          * Log a message with emerg priority.
@@ -451,7 +512,7 @@ namespace log4cpp {
          * @returns Whether the Category will log.
          **/ 
         inline bool isEmergEnabled() const throw() { 
-                       return isPriorityEnabled(Priority::EMERG);
+            return isPriorityEnabled(Priority::EMERG);
         };
         
         /**
@@ -460,7 +521,7 @@ namespace log4cpp {
          **/
         inline CategoryStream emergStream() {
             return getStream(Priority::EMERG);
-        }
+        };
 
         /** 
          * Log a message with fatal priority. 
@@ -487,7 +548,7 @@ namespace log4cpp {
          * @returns Whether the Category will log.
          **/ 
         inline bool isFatalEnabled() const throw() { 
-                       return isPriorityEnabled(Priority::FATAL);
+            return isPriorityEnabled(Priority::FATAL);
         };
         
         /**
@@ -498,7 +559,7 @@ namespace log4cpp {
          **/
         inline CategoryStream fatalStream() {
             return getStream(Priority::FATAL);
-        }
+        };
 
         /**
          * Return a CategoryStream with given Priority.
@@ -541,9 +602,9 @@ namespace log4cpp {
 
         private:
 
-	/* prevent copying and assignment */
-	Category(const Category& other);
-	Category& operator=(const Category& other);
+        /* prevent copying and assignment */
+        Category(const Category& other);
+        Category& operator=(const Category& other);
 
         /** The name of this category. */
         const std::string _name;
@@ -559,24 +620,32 @@ namespace log4cpp {
          **/
         Priority::Value _priority;
 
+        typedef std::set<Appender *> AppenderSet;
+        typedef std::map<Appender *, bool> OwnsAppenderMap;
+
         /**
-         * The appender of this category. Unlike log4j, log4cpp does not
-         * support multiple appenders per category, yet.
-         * The value of this variable may be <code>null</code>. 
+         * Returns the iterator to the Appender if the Category owns the
+         * Appender. In that case the Category destructor will delete the
+         * Appender.
          **/
-        Appender* _appender;
+
+        virtual bool ownsAppender(Appender* appender, 
+                                  OwnsAppenderMap::iterator& i2) throw();
+
+        AppenderSet _appender;
 
         /**
          * Whether the category holds the ownership of the appender. If so,
          * it deletes the appender in its destructor.
          **/
-        bool _ownsAppender;
+
+         OwnsAppenderMap _ownsAppender;
 
         /** 
          * Additivity is set to true by default, i.e. a child inherits its
          * ancestor's appenders by default. 
          */
-        bool _isAdditive;
+         bool _isAdditive;
 
     };
 
