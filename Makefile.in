@@ -1,4 +1,3 @@
-# Generated automatically from Makefile.in by configure.
 # Makefile.in generated automatically by automake 1.4 from Makefile.am
 
 # Copyright (C) 1994, 1995-8, 1999 Free Software Foundation, Inc.
@@ -12,44 +11,45 @@
 # PARTICULAR PURPOSE.
 
 
-SHELL = /bin/sh
+SHELL = @SHELL@
 
-srcdir = .
-top_srcdir = .
-prefix = /home/bastiaan/tmp/log4cpp
-exec_prefix = ${prefix}
+srcdir = @srcdir@
+top_srcdir = @top_srcdir@
+VPATH = @srcdir@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
 
-bindir = ${exec_prefix}/bin
-sbindir = ${exec_prefix}/sbin
-libexecdir = ${exec_prefix}/libexec
-datadir = ${prefix}/share
-sysconfdir = ${prefix}/etc
-sharedstatedir = ${prefix}/com
-localstatedir = ${prefix}/var
-libdir = ${exec_prefix}/lib
-infodir = ${prefix}/info
-mandir = ${prefix}/man
-includedir = ${prefix}/include
+bindir = @bindir@
+sbindir = @sbindir@
+libexecdir = @libexecdir@
+datadir = @datadir@
+sysconfdir = @sysconfdir@
+sharedstatedir = @sharedstatedir@
+localstatedir = @localstatedir@
+libdir = @libdir@
+infodir = @infodir@
+mandir = @mandir@
+includedir = @includedir@
 oldincludedir = /usr/include
 
 DESTDIR =
 
-pkgdatadir = $(datadir)/log4cpp
-pkglibdir = $(libdir)/log4cpp
-pkgincludedir = $(includedir)/log4cpp
+pkgdatadir = $(datadir)/@PACKAGE@
+pkglibdir = $(libdir)/@PACKAGE@
+pkgincludedir = $(includedir)/@PACKAGE@
 
 top_builddir = .
 
-ACLOCAL = aclocal
-AUTOCONF = autoconf
-AUTOMAKE = automake
-AUTOHEADER = autoheader
+ACLOCAL = @ACLOCAL@
+AUTOCONF = @AUTOCONF@
+AUTOMAKE = @AUTOMAKE@
+AUTOHEADER = @AUTOHEADER@
 
-INSTALL = /usr/bin/install -c
-INSTALL_PROGRAM = ${INSTALL} $(AM_INSTALL_PROGRAM_FLAGS)
-INSTALL_DATA = ${INSTALL} -m 644
-INSTALL_SCRIPT = ${INSTALL_PROGRAM}
-transform = s,x,x,
+INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@ $(AM_INSTALL_PROGRAM_FLAGS)
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+transform = @program_transform_name@
 
 NORMAL_INSTALL = :
 PRE_INSTALL = :
@@ -57,26 +57,26 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-host_alias = i686-pc-linux-gnu
-host_triplet = i686-pc-linux-gnu
+host_alias = @host_alias@
+host_triplet = @host@
 AS = @AS@
-CC = gcc
-CXX = c++
-CXXCPP = c++ -E
+CC = @CC@
+CXX = @CXX@
+CXXCPP = @CXXCPP@
 DLLTOOL = @DLLTOOL@
-DOXYGEN = /usr/bin/doxygen
-LIBTOOL = $(SHELL) $(top_builddir)/libtool
-LN_S = ln -s
-LOG4CPP_MAJOR_VERSION = 0
-LOG4CPP_MINOR_VERSION = 2
-LT_VERSION = 1:0:0
-MAKEINFO = makeinfo
+DOXYGEN = @DOXYGEN@
+LIBTOOL = @LIBTOOL@
+LN_S = @LN_S@
+LOG4CPP_MAJOR_VERSION = @LOG4CPP_MAJOR_VERSION@
+LOG4CPP_MINOR_VERSION = @LOG4CPP_MINOR_VERSION@
+LT_VERSION = @LT_VERSION@
+MAKEINFO = @MAKEINFO@
 OBJDUMP = @OBJDUMP@
-PACKAGE = log4cpp
-RANLIB = ranlib
-VERSION = 0.2.0
-SUBDIRS = config src include doc 
-#SUBDIRS = config src include
+PACKAGE = @PACKAGE@
+RANLIB = @RANLIB@
+VERSION = @VERSION@
+@DOC_TRUE@SUBDIRS = config src include doc 
+@DOC_FALSE@SUBDIRS = config src include
 
 DIST_SUBDIRS = config src include doc tests
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -144,7 +144,7 @@ maintainer-clean-hdr:
 #     (which will cause the Makefiles to be regenerated when you run `make');
 # (2) otherwise, pass the desired values on the `make' command line.
 
-
+@SET_MAKE@
 
 all-recursive install-data-recursive install-exec-recursive \
 installdirs-recursive install-recursive uninstall-recursive  \
