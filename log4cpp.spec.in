@@ -62,6 +62,12 @@ rm -rf $RPM_BUILD_ROOT
 %post
 /sbin/ldconfig
 
+%post devel
+if test "x$RPM_INSTALL_PREFIX0" != "x" ; then
+    perl -pi -e "s|^libdir='[^\']*'|libdir='$RPM_INSTALL_PREFIX0/lib'|" $RPM_INSTALL_PREFIX0/lib/liblog4cpp.la
+    perl -pi -e "s|^prefix=\"[^\"]*\"|prefix=\"$RPM_INSTALL_PREFIX0\"|" $RPM_INSTALL_PREFIX0/bin/log4cpp-config
+fi
+ 
 %postun
 /sbin/ldconfig
 

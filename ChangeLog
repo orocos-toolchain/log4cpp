@@ -1,6 +1,13 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-09-17 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* log4cpp.spec.in: fix relocatability of log4cpp-devel by patching
+	lib/liblog4cpp.la and bin/log4cpp-config in %post. Unfortunately
+	this results in 'rpm --verify' reporting these files as modified. 
+	
 2002-09-15 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* release as 0.3.25rc5
+	
 	* include/threading/DummyThreads.hh, include/threading/MSThreads.hh,
 	include/threading/OmniThreads.hh, include/threading/Pthreads.hh,
 	src/DummyThreads.cpp, src/MSThreads.cpp, src/OmniThreads.cpp, 
