@@ -64,15 +64,6 @@ namespace log4cpp {
         static void getCategories(std::vector<std::string>& catlist) throw (ConfigureFailure);
 
         /**
-         * If the parameter "name" is a priority, this will set the priority for the category
-         * and return true, otherwise it will return false.
-         * @param	name	Name of the priority to which the category should be set.
-         * @param	category	Category on which we are setting the priority.
-         * @return	True if the name is a priority, otherwise false.
-         */
-        static bool setPriority(std::string& name, Category& category);
-
-        /**
          * Configure the appender referred to by the given name.  This method searches the
          * map to find all configuration parameters for the appender, and adds the appender
          * to the given category.  This isn't very general in the sense that it will need to

@@ -1,5 +1,16 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-07-03 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/SyslogAppender.cpp (SysLogAppender()): accept '-1' for facility and portNumber, 
+	implying the 'default value'.
+
+	* src/ConfiguratorSkeleton.cpp: changed property names to JavaBeans/log4j style. 
+	Use the appender name as name (duh) instead of the 'name' property.
+	Don't set a layout if none have been specified. 
+	Use std::string::size_type where applicable.
+	Made some exception messages clearer.
+	Compacted the code a bit.	
+
 2002-07-02 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/HierarchyMaintainer.hh, include/log4cpp/Category.hh,
 	src/HierarchyMaintainer.cpp, src/Category.cpp:
