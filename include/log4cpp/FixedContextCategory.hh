@@ -36,8 +36,6 @@ namespace log4cpp {
          * Category.
          * @param context the context to fill the NDC field of LoggingEvents
          * with.
-         * @param priority the priority for this Category. Defaults to
-         * Priority::NOTSET
          **/
         FixedContextCategory(const std::string& name, 
                              const std::string& context = "");
@@ -136,7 +134,7 @@ namespace log4cpp {
          * hierracy circumventing any evaluation of whether to log or not to
          * log the particular log request.
          * 
-         * @param LoggingEvent the event to log.
+         * @param event The LoggingEvent to log.
          **/
         virtual void callAppenders(const LoggingEvent& event) throw();
         

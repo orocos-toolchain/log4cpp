@@ -243,7 +243,7 @@ namespace log4cpp {
          * hierracy circumventing any evaluation of whether to log or not to
          * log the particular log request.
          * 
-         * @param LoggingEvent the event to log.
+         * @param event the LogginEvent to log.
          **/
         virtual void callAppenders(const LoggingEvent& event) throw();
         
@@ -293,6 +293,8 @@ namespace log4cpp {
          * Log a message with the specified priority.
          * @since 0.2.7
          * @param priority The priority of this log message.
+         * @param stringFormat Format specifier for the string to write
+         * in the log file.
          * @param va The arguments for stringFormat.
          **/  
         virtual void logva(Priority::Value priority, 

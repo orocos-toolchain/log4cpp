@@ -36,6 +36,9 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 
 	* src/PropertyConfiguratorImpl.cpp: use getString(), etc. to get
 	properties.
+
+	* include/log4cpp/Category.hh, include/log4cpp/FixedContextCategory.hh,
+	include/log4cpp/CategoryStream.hh: fixed documentation buglets.
 	
 2002-07-02 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/HierarchyMaintainer.hh, include/log4cpp/Category.hh,

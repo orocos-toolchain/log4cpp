@@ -64,7 +64,7 @@ namespace log4cpp {
          * Streams in a Separator. If the separator equals 
          * CategoryStream::ENDLINE it sends the contents of the stream buffer
          * to the Category with set priority and empties the buffer.
-         * @param Separator The Separator
+         * @param separator The Separator
          * @returns A reference to itself.
          **/
         CategoryStream& operator<<(Separator separator);
