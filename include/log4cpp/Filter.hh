@@ -22,11 +22,11 @@ namespace log4cpp {
        to write your own custom filters.
 
        <p>This abstract class assumes and also imposes that filters be
-       organized in a linear chain. The {@link #decide
-       decide(LoggingEvent)} method of each filter is called sequentially,
-       in the order of their addition to the chain.
+       organized in a linear chain. The <code>decide(LoggingEvent)</code> 
+       method of each filter is called sequentially, in the order of their 
+       addition to the chain.
        
-       <p>The {@link #decide decide(LoggingEvent)} method must return a
+       <p>The <code>decide(LoggingEvent)</code> method must return a
        Decision value, either DENY, NEUTRAL or ACCCEPT.
 
        <p>If the value DENY is returned, then the log event is
@@ -41,7 +41,7 @@ namespace log4cpp {
        <p>If the value ACCEPT is returned, then the log
        event is logged without consulting the remaining filters. 
        
-       <p>The philosophy of log4j filters is largely inspired from the
+       <p>The philosophy of log4cpp filters is largely inspired from the
        Linux ipchains. 
     **/
 
