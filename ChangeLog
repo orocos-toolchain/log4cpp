@@ -1,5 +1,12 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-06-19 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/Makefile.am: added NTEventlog.cpp and DllMain.cpp to sources.
+	* src/DllMan.cpp: enclosed in #ifdef LOG4CPP_SUPPLY_DLLMAIN
+	* include/log4cpp/config-win32.h: #define LOG4CPP_SUPPLY_DLLMAIN
+	* include/log4cpp/Makefile.am: added NTEventLog.hh
+	* msvc6/Makefile.am: added NTEventLogCategories.
+	
 2002-06-18 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/NDC.cpp: fix top level context falling off, if depth > 2.
 	(reported by Hong Yang <yanghong2009@yahoo.com>)

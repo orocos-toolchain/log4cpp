@@ -31,7 +31,7 @@ liblog4cpp_la_SOURCES = \
 	Log4cppCleanup.cpp \
 	TimeStamp.cpp \
 	Win32DebugAppender.cpp \
-	NTEventLogAppender.cpp
+	NTEventLogAppender.cpp \
 	DllMain.cpp
 
 liblog4cpp_la_LDFLAGS = -version-info @LT_VERSION@
