@@ -10,6 +10,8 @@
 #include <unistd.h>
 #endif
 
+#include <stdlib.h>
+
 #include "log4cpp/Category.hh"
 #include "log4cpp/Appender.hh"
 #include "log4cpp/OstreamAppender.hh"
@@ -40,7 +42,14 @@ double calcPi()
 int main(int argc, char* argv[])
 {
     try {
-	log4cpp::SimpleConfigurator::configure("log4cpp.init");
+        /* looking for the init file in $srcdir is a requirement of
+           automake's distcheck target.
+        */
+        char* srcdir = ::getenv("srcdir");
+        std::string initFileName((srcdir == NULL) ?
+                                 "./log4cpp.init" : 
+                                 std::string(srcdir) + "/log4cpp.init");
+	log4cpp::SimpleConfigurator::configure(initFileName);
     } catch(log4cpp::ConfigureFailure& f) {
         std::cout << "Configure Problem " << f.what() << std::endl;
         return -1;
