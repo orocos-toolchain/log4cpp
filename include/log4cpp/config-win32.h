@@ -23,7 +23,9 @@
 #ifndef LOG4CPP_HAVE_IN_ADDR_T 
 #define LOG4CPP_HAVE_IN_ADDR_T
 
-#include <winsock2.h>
+#ifndef u_long 
+typedef unsigned long u_long;
+#endif
 
 /* u_long is the type of in_addr.s_addr */
 typedef u_long in_addr_t;
