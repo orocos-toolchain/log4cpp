@@ -7,9 +7,9 @@ ordered by importance or urgence.
 Add provisional category nodes. Maybe work it out a bit differently than
 LOG4J. First actually document what the exact behaviour should be.
 
-Add a simple configurator of type 'keyword=value'.
+Add a simple configurator of type 'keyword=value'. Done: 0.2.6
 
-Port PatternLayout.
+Port PatternLayout. Done: 0.2.6
 
 Document multithreading policy and behaviour (i.e. all log calls are thread 
 safe, others are 'mulithread prepared').
