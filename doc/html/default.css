@@ -10,6 +10,11 @@ H2
  font-family: arial,helvetica,sanserif;
 }
 
+H3
+{
+ text-decoration: underline;
+}
+
 DT
 {
  font-weight: bold;

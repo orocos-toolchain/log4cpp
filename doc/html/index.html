@@ -22,6 +22,8 @@ make
 make check
 make install
 </pre>
+<p>This will install log4cpp under /usr/local. To install in another localation specify --prefix=&lt;location&gt; when running configure.
+</p>
 
 <h3>Options for ./configure</h3>
 
@@ -38,7 +40,7 @@ configure expects the omnithread header files to reside in &lt;path-to-omniORB&g
 &lt;path-to-omniORB&lt;/lib, i.e. not in a platform specific subdirectory. Create symlinks where necessary.<br>
 NB. omniORB4 is required: omniORB3 will not suffice as it lacks sufficient support for thread specific data.
 At the moment (August 2002) omniORB4 is in beta, however most parts and specifically the threading
-library appear quite stable.
+library appear to be quite stable.
 </dd>
 </dl>
 
@@ -71,6 +73,88 @@ search path.</dd>
 </dl>
 
 </p>
+
+<h3>Build notes for specific platforms</h3>
+
+<dl>
+<dt>*nix - g++ compiler</dt>
+<dd>Log4cpp should build whitout modification on any decent *nix system with g++ and GNU make. The primary development platform is
+RedHat Linux 7.3, which has g++ 2.96-rh, but the aim is to be compatible with from g++ 2.95 and up. When g++ 3.x has been widely
+adopted we may drop support for older g++ versions.</dd>
+</dl>
+<dl>
+<dt>Solaris - Sun CC compiler</dt>
+<dd>Compilation with Suns CC compiler requires setting some enviroment variables.
+Also static libraries appear not to work. In short do:
+<pre>
+CC=CC CXX=CC LD="CC -KPIC" ./configure --disable-static
+</pre>
+</dd>
+</dl>
+
+<dl>
+<dt>Win32 - MSVC++ 6</dt>
+<dd>Use the workspace and project files in subdirectory msvc6.
+You may need to adjust include/log4cpp/config-win32.h and the project files to your particular needs.</dd>
+
+<dl>
+<dt>Win32 - MSVC++ 5</dt>
+<dd>Building log4cpp with MSVC++ 5 is not supported and will not be,
+unless someone can find a way to do so without mutilating the source code.</dd>
+</dl>
+
+<dl>
+<dt>Win32 - Borland C++ Builder 5</dt>
+<dd>Use the project and make files in subdirectory bcb5.</dd>
+</dl>
+
+<dl>
+<dt>Win32 - Cygwin</dt>
+<dd>Use './configure; make; make install'.<br>
+Be warned that there have been very few success or failure reports for this platform,
+so either it works very smoothly or noone actively uses log4cpp with Cygwin :-)
+</dd>
+</dl>
+
+<dl>
+<dt>OpenVMS<dt>
+<dd>Edit include/log4cpp/config-openvms.h if you need different settings.<br>
+
+This has been tested on OpenVMS Alpha v7.3 and Compaq C++ V6.3-020 only.
+</dd>
+<dd>1) Copy the src and include directory (including all its contents and subdirectories) onto your OpenVMS system.</dd>
+<dd>2) Compile each source file (*.CPP and *.C in the src directory) one by one by the following command,
+<pre>
+cxx /include=("/a1\$dkb0/user/tony/project/log4cpp/include") /define=(__USE_STD_IOSTREAM,__OPENVMS__) /repository=a1$dkb0:[user.tony.project.log4cpp.repository] APPENDER.CPP
+cxx /include=("/a1\$dkb0/user/tony/project/log4cpp/include") /define=(__USE_STD_IOSTREAM,__OPENVMS__) /repository=a1$dkb0:[user.tony.project.log4cpp.repository] APPENDERSKELETON.CPP
+</pre>
+...etc<br>
+
+Please substitute a correct path for your include directory. A unix-style directory name is requied in the /include parameter.
+In this example, the pathis A1$DKBO:[USER.TONY.PROJECT.LOG4CPP.INCLUDE]<br>
+
+A repository directory is also specified here as A1$DKB0:[USER.TONY.PROJECT.LOG4CPP.REPOSITORY].<br>
+<dd>3) Create a static library, LOG4CPP.OLB
+<pre>
+lib/create log4cpp
+</pre>
+</dd>
+<dd>4) Put all compiled OBJ files into the LOG4CPP.OLB
+<pre>
+lib/insert log4cpp appender
+lib/insert log4cpp appenderskeleton
+</pre>
+...etc<br>
+</dd>
+<dd>5) Link a program with log4cpp.olb. e.g:
+<pre>
+cxx /include=("/a1\$dkb0/user/tony/project/log4cpp/include") /define=(__USE_STD_IOSTREAM,__OPENVMS__) testlog4cpp.cxx
+
+cxxlink /repository=a1$dkb0:[user.tony.project.log4cpp.repository] testlog4cpp,log4cpp/library
+</pre>
+</dd>
+</dl>
+
 <h2>Releases</h2>
 <p>
 WARNING: releases from the development branch are a 'work in progress' and may fail to build, crash or redecorate your desktop.
@@ -174,7 +258,13 @@ In short, configure with:<br>
      should strictly honour the 'string size' parameter to avoid potential buffer overflow problems.
      log4cpp falls back to an <a href="http://www.ijs.si/software/snprintf/">alternative snprintf() implementation</a> if the OS does not provide a correct one.
 </p>
+
 <h2>Status</h2>
+<p>As of version 0.3.0 log4cpp has a separate 'stable' and 'development' branches.
+Releases x.y.z where y is even are considered stable and those where y is odd are experimental
+(which means that some or all features may be broken).</p>
+<p>The latest stable release 0.2.7. New releases of 0.2.x are for bug fixes only, new features will go into 0.3.x and eventually 0.4.x.</p>
+
 <h2>People</h2>
 <p>Coding on Log4cpp was initiated by me (Bastiaan Bakker) late 2000. Since then other people have joined the project or contributed code:
 <table>
@@ -196,6 +286,7 @@ In short, configure with:<br>
 <tr><td>Emiliano Martin &lt;emilianomc(at)terra.es&gt;</td><td>PThreads support</td></tr>
 </table>
 </p>
+
 <h2>Project Pages</h2>
 <p>Log4cpp is hosted on SourceForge at <a href="http://sourceforge.net/projects/log4cpp/">http://sourceforge.net/projects/log4cpp/</a>.</p>
 <h2>Related Projects</h2>
@@ -205,5 +296,33 @@ In short, configure with:<br>
      <tr><td><a href="http://log4cplus.sourceforge.net/"><b>log4cplus</b></a></td><td>An indepent C++ implementation by Tad Smith.
      Worth checking out if you don't like Log4cpp for some reason.</td></tr>
    </table></p>
+</body>
+</html>
+
+<h2>License</h2>
+<p>As of version 0.2.1 this library is licensed under the Lesser General Public License instead of the General Public License.
+No further license changes are planned :-). </p>
+
+<pre>
+Log for C++ (short name: log4cpp), a C++ library for flexible logging.
+Copyright (C) 2000-2002 LifeLine Networks bv
+Copyright (C) 2000-2002 Bastiaan Bakker
+Portions Copyright others, see file THANKS and source code.
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+</pre>
+
 </body>
 </html>
