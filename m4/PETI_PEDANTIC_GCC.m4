@@ -17,6 +17,9 @@ AC_DEFUN([PETI_PEDANTIC_GCC],
             *2.97*) CFLAGS="$CFLAGS -Wall -Wno-unused -pedantic -D_ISOC99_SOURCE"
                     CXXFLAGS="$CXXFLAGS -Wall -Wno-unused -pedantic -D_ISOC99_SOURCE" 
                     ;;
+            *2.96*) CFLAGS="$CFLAGS -Wall -Wno-unused"
+                    CXXFLAGS="$CXXFLAGS -Wall -Wno-unused" 
+                    ;;
 	    *)      CFLAGS="$CFLAGS -Wall -Wno-unused -pedantic"
                     CXXFLAGS="$CXXFLAGS -Wall -Wno-unused -pedantic"
                     ;;
