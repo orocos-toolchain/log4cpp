@@ -36,7 +36,9 @@
 #include <log4cpp/SyslogAppender.hh>
 #endif
 #include <log4cpp/RemoteSyslogAppender.hh>
+#ifdef WIN32
 #include <log4cpp/NTEventLogAppender.hh>
+#endif
 
 namespace log4cpp {
 

@@ -25,8 +25,10 @@
 #include <log4cpp/OstreamAppender.hh>
 #include <log4cpp/FileAppender.hh>
 #include <log4cpp/RollingFileAppender.hh>
+#ifdef WIN32
 #include <log4cpp/Win32DebugAppender.hh>
 #include <log4cpp/NTEventLogAppender.hh>
+#endif
 #include <log4cpp/RemoteSyslogAppender.hh>
 #ifdef LOG4CPP_HAVE_LIBIDSA
 #include <log4cpp/IdsaAppender.hh>
