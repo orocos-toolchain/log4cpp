@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
         new log4cpp::OstreamAppender("default", &std::cout);
 
     log4cpp::Layout* layout = new log4cpp::PatternLayout();
-	bool success = ((log4cpp::PatternLayout *)layout)->setConversionPattern("%% %r %c:%d (%R) [%p] %x %m %% (%u) %n");
+	bool success = ((log4cpp::PatternLayout *)layout)->setConversionPattern("%% %r %c:%d (%R / %r) [%p] %x %m %% (%u) %n");
 	if (!success)
 	{
 		std::cout << "Problem" << std::endl;
