@@ -10,6 +10,7 @@
 #ifndef _LOG4CPP_PRIORITY_HH
 #define _LOG4CPP_PRIORITY_HH
 
+#include <log4cpp/Portability.hh>
 #include <string>
 #include <stdexcept>
 

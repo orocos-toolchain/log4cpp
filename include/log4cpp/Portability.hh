@@ -20,6 +20,8 @@
 #endif
 #endif
 
+#include <log4cpp/Export.hh>
+
 #if defined(_MSC_VER)
 #    pragma warning( disable : 4786 )
 #endif

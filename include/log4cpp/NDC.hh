@@ -10,9 +10,9 @@
 #ifndef _LOG4CPP_NDC_HH
 #define _LOG4CPP_NDC_HH
 
+#include <log4cpp/Portability.hh>
 #include <string>
 #include <vector>
-#include "log4cpp/Export.hh"
 
 namespace log4cpp {
     /**

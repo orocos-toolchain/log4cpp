@@ -13,13 +13,13 @@
 #include <string>
 #include <map>
 #include <stdarg.h>
-#include "log4cpp/Export.hh"
-#include "log4cpp/OstringStream.hh"
-#include "log4cpp/Priority.hh"
-#include "log4cpp/Layout.hh"
-#include "log4cpp/LoggingEvent.hh"
-#include "log4cpp/Filter.hh"
-#include "log4cpp/Log4cppCleanup.hh"
+#include <log4cpp/Portability.hh>
+#include <log4cpp/OstringStream.hh>
+#include <log4cpp/Priority.hh>
+#include <log4cpp/Layout.hh>
+#include <log4cpp/LoggingEvent.hh>
+#include <log4cpp/Filter.hh>
+#include <log4cpp/Log4cppCleanup.hh>
 
 namespace log4cpp {
     class LOG4CPP_EXPORT Category;

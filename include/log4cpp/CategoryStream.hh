@@ -10,10 +10,9 @@
 #ifndef _LOG4CPP_CATEGORYSTREAM_HH
 #define _LOG4CPP_CATEGORYSTREAM_HH
 
-#include "log4cpp/Portability.hh"
-#include "log4cpp/Export.hh"
-#include "log4cpp/OstringStream.hh"
-#include "log4cpp/Priority.hh"
+#include <log4cpp/Portability.hh>
+#include <log4cpp/OstringStream.hh>
+#include <log4cpp/Priority.hh>
 
 namespace log4cpp {
 

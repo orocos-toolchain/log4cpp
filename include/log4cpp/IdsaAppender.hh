@@ -9,10 +9,11 @@
 #ifndef _LOG4CPP_IDSAAPPENDER_HH
 #define _LOG4CPP_IDSAAPPENDER_HH
 
+#include <log4cpp/Portability.hh>
 #include <string>
 #include <stdarg.h>
 #include <idsa.h>
-#include "log4cpp/AppenderSkeleton.hh"
+#include <log4cpp/AppenderSkeleton.hh>
 
 namespace log4cpp {
 

@@ -10,11 +10,11 @@
 #ifndef _LOG4CPP_REMOTESYSLOGAPPENDER_HH
 #define _LOG4CPP_REMOTESYSLOGAPPENDER_HH
 
+#include <log4cpp/Portability.hh>
 #include <string>
 #include <stdarg.h>
-#include "log4cpp/Export.hh"
-#include "log4cpp/LayoutAppender.hh"
-#include "log4cpp/Priority.hh"
+#include <log4cpp/LayoutAppender.hh>
+#include <log4cpp/Priority.hh>
 
 #ifdef LOG4CPP_HAVE_SYSLOG
 #include <syslog.h>

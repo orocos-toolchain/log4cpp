@@ -10,10 +10,9 @@
 #ifndef _LOG4CPP_OSTRINGSTREAM_HH
 #define _LOG4CPP_OSTRINGSTREAM_HH
 
+#include <log4cpp/Portability.hh>
 #include <string>
 #include <stdarg.h>
-#include "log4cpp/Export.hh"
-#include "log4cpp/Portability.hh"
 
 #ifdef LOG4CPP_HAVE_SSTREAM
 #    include <sstream>
