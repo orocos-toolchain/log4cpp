@@ -20,6 +20,7 @@
 #include <log4cpp/LoggingEvent.hh>
 #include <log4cpp/Filter.hh>
 #include <log4cpp/Log4cppCleanup.hh>
+#include <log4cpp/threading/Threading.hh>
 
 namespace log4cpp {
     class LOG4CPP_EXPORT Category;
@@ -134,6 +135,8 @@ namespace log4cpp {
         typedef std::map<std::string, Appender*> AppenderMap;
         
         static AppenderMap* _allAppenders;
+        static threading::Mutex _appenderMapMutex;
+
         static AppenderMap& _getAllAppenders();
         static void _deleteAllAppenders();
         static void _addAppender(Appender* appender);

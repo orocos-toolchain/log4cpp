@@ -17,6 +17,7 @@ namespace log4cpp {
 
     Appender::AppenderMap* Appender::_allAppenders;
 
+    /* assume _appenderMapMutex locked */
     Appender::AppenderMap& Appender::_getAllAppenders() {
         if (!_allAppenders) 
             _allAppenders = new Appender::AppenderMap();
@@ -25,6 +26,7 @@ namespace log4cpp {
     }
 
     Appender* Appender::getAppender(const std::string& name) {
+        threading::ScopedLock lock(_appenderMapMutex);
         AppenderMap& allAppenders = Appender::_getAllAppenders();
         AppenderMap::iterator i = allAppenders.find(name);
         return (allAppenders.end() == i) ? NULL : ((*i).second);
@@ -32,14 +34,17 @@ namespace log4cpp {
     
     void Appender::_addAppender(Appender* appender) {
         //REQUIRE(_allAppenders.find(appender->getName()) == _getAllAppenders().end())
+        threading::ScopedLock lock(_appenderMapMutex);
         _getAllAppenders()[appender->getName()] = appender;
     }
 
     void Appender::_removeAppender(Appender* appender) {
+        threading::ScopedLock lock(_appenderMapMutex);
         _getAllAppenders().erase(appender->getName());
     }
     
     bool Appender::reopenAll() {
+        threading::ScopedLock lock(_appenderMapMutex);
         bool result = true;
         AppenderMap& allAppenders = _getAllAppenders();
         for(AppenderMap::iterator i = allAppenders.begin(); i != allAppenders.end(); i++) {
@@ -50,6 +55,7 @@ namespace log4cpp {
     }
     
     void Appender::closeAll() {
+        threading::ScopedLock lock(_appenderMapMutex);
         AppenderMap& allAppenders = _getAllAppenders();
         for(AppenderMap::iterator i = allAppenders.begin(); i != allAppenders.end(); i++) {
             ((*i).second)->close();
@@ -57,6 +63,7 @@ namespace log4cpp {
     }
     
     void Appender::_deleteAllAppenders() {
+        threading::ScopedLock lock(_appenderMapMutex);
         AppenderMap& allAppenders = _getAllAppenders();
         for(AppenderMap::iterator i = allAppenders.begin(); i != allAppenders.end(); ) {
             Appender *app = (*i).second;
