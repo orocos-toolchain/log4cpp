@@ -9,6 +9,10 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 
 	* configure.in: increment version to 0.3.1.
 
+	* msvc6/log4cpp/log4cpp.dsp: Added RollingFileAppender and threading
+	files.
+	* bcb5/log4cpp/log4cpp.bpf, bcb5/log4cpp/log4cpp.bpr,
+	bcb5/log4cpp/log4cpp.mak: Added RollingFileAppender
 	
 2002-03-31 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/Portability.hh: Disable exception specifier

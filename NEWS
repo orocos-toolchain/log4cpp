@@ -1,8 +1,16 @@
 This file records noteworthy changes.
 
+WARNING: releases from the development branch are a 'work in progress' and
+may fail to build, crash or redecorate your desktop.
+
+0.3.1 - development branch (4 April 2002)
+Added RollingFileAppender class. 
+Fixed bug #572467: invalidated iterator usage.
+Fixed bug #527475: format string bug.
+Fixed bug #530332: missing 'std::' specifiers.
+Handled feature requests #536668, #527760, #527381.
+
 0.3.0 - development branch (18 Februari 2002)
-WARNING: this release is a 'work in progress' and may fail to build, crash or
-redecorate your desktop.
 Added experimental support for multi threaded applications. This 
 implementation uses omniORB4s threading library. Other threading libraries,
 such as Boosts, may be used as well, but this has not been implemented yet. 
