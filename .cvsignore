@@ -1,6 +1,7 @@
 .cvsignore
 config.log
 config.cache
+configure
 libtool
 config.status
 Makefile
