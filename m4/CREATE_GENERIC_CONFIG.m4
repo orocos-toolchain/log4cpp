@@ -12,7 +12,7 @@ dnl
 dnl oh, btw, if the first arg looks like "mylib -lwhat' then it
 dnl will go to be added to the --libs, and mylib is extracted.
 dnl
-dnl the defaults: $1 = $PACKAGE $LIBS  $2 = $VERSION
+dnl the defaults: $1 = $PACKAGE_TARNAME $LIBS  $2 = $VERSION
 dnl there is also an AC_SUBST(GENERIC_CONFIG) that will be set to 
 dnl the name of the file that we did output in this macro. Use as:
 dnl
@@ -25,7 +25,7 @@ dnl @version $Id$
 dnl @author Guido Draheim <guidod@gmx.de>
 
 AC_DEFUN([AC_CREATE_GENERIC_CONFIG],[# create a generic PACKAGE-config file
-L=`echo ifelse($1, , $PACKAGE $LIBS, $1)`
+L=`echo ifelse($1, , $PACKAGE_TARNAME $LIBS, $1)`
 P=`echo $L | sed -e 's/ -.*//'`
 P=`echo $P`
 V=`echo ifelse($1, , $VERSION, $1)`
@@ -126,7 +126,7 @@ echo '  --prefix)         \$prefix        $prefix' >>$F
 echo '  --package)        \$package       $package' >>$F
 echo '  --version)        \$version       $version' >>$F
 echo '  --cflags)         -I\$includedir    unless it is /usr/include' >>$F
-echo '  --libs)           -L\$libdir -l\$PACKAGE \$LIBS' >>$F
+echo '  --libs)           -L\$libdir -l\$PACKAGE_TARNAME \$LIBS' >>$F
 echo '  --exec_prefix) or... ' >>$F
 echo '  --eprefix)        \$exec_prefix   $exec_prefix' >>$F
 echo '  --bindir)         \$bindir        $bindir' >>$F

@@ -6,6 +6,9 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 
 	* NEWS, README, INSTALL, doc/html/index.html: converted most 
 	documentation to HTML.
+
+	* m4/CREATE_GENERIC_CONFIG.m4: fix log4cpp-config creation (use
+	PACKAGE_TARNAME instead of PACKAGE).
 	
 2002-08-06 David Resnick <dresnick@mobilespear.com>
     * msvc6/log4cppDLL/log4cppDLL.rc: Cleanup.
