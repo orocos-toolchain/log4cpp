@@ -21,6 +21,5 @@ liblog4cppinclude_HEADERS =  \
 	OstringStream.hh \
 	Log4cppCleanup.hh \
 	Filter.hh \
-	Config.hh
-
-EXTRA_DIST = Config.hh.in
+	Config.hh \
+	config.h
