@@ -12,7 +12,7 @@ LIBRARIES =
 
 .PHONY: default all clean
 
-testmain: testmain.o Appender.o FileAppender.o OstreamAppender.o Category.o HierarchyMaintainer.o BasicLayout.o LoggingEvent.o Priority.o NDC.o
+testmain: testmain.o Appender.o FileAppender.o OstreamAppender.o SyslogAppender.o Category.o HierarchyMaintainer.o BasicLayout.o LoggingEvent.o Priority.o NDC.o
 
 testNDC: testNDC.o NDC.o
 

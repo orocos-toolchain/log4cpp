@@ -76,20 +76,4 @@ namespace log4cpp {
         _layout = layout;
     }
 
-    /*    
-    void FileAppender::log(const Category* category, int priority, const char* format, va_list args) {
-        char buffer[1024];
-        int length = snprintf(buffer, 1024, "%ld %s %s: ", time(NULL), (category->getPriorityName(priority)).c_str(), (category->getName()).c_str());
-        if (length < 1024) {
-            length += vsnprintf(buffer + length, 1024 - length, format, args);
-        }
-        write(_fd, buffer, length);
-    }
-    
-    void FileAppender::log2(const Category* category, int priority, const string& message) {
-        char buffer[1024];
-        int length = snprintf(buffer, 1024, "%ld %s %s: %s", time(NULL), (category->getPriorityName(priority)).c_str(), (category->getName()).c_str(), message.c_str());
-        write(_fd, buffer, length);    
-    }
-    */
 }

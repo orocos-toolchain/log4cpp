@@ -119,7 +119,7 @@ namespace log4cpp {
     
     void Category::_logUnconditionally2(int priority, const string& message) {
         LoggingEvent event(getName(), message, NDC::get(), priority);
-        _appender->doAppend(event);
+        callAppenders(event);
     }
     
     bool Category::isPriorityEnabled(int priority) const {

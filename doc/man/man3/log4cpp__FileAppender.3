@@ -1,4 +1,4 @@
-.TH log4cpp::FileAppender 3 "5 Dec 2000" "log4cpp" \" -*- nroff -*-
+.TH log4cpp::FileAppender 3 "7 Dec 2000" "log4cpp" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -25,18 +25,23 @@ Inherits \fBlog4cpp::Appender\fR.
 .ti -1c
 .RI "virtual void \fBdoAppend\fR (const \fBLoggingEvent\fR& event)"
 .br
+.RI "\fILog in \fBAppender\fR specific way.\fR"
 .ti -1c
 .RI "virtual bool \fBreopen\fR ()"
 .br
+.RI "\fIReopens the output destination of this \fBAppender\fR, e.g.\fR"
 .ti -1c
 .RI "virtual void \fBclose\fR ()"
 .br
+.RI "\fIRelease any resources allocated within the appender such as file handles, network connections, etc.\fR"
 .ti -1c
 .RI "virtual bool \fBrequiresLayout\fR () const"
 .br
+.RI "\fICheck if the appender uses a layout.\fR"
 .ti -1c
 .RI "virtual void \fBsetLayout\fR (\fBLayout\fR* layout)"
 .br
+.RI "\fISet the \fBLayout\fR for this appender.\fR"
 .in -1c
 .SS Protected Attributes
 
@@ -63,17 +68,46 @@ Inherits \fBlog4cpp::Appender\fR.
 .PP 
 .SS virtual void log4cpp::FileAppender::close ()\fC [virtual]\fR
 .PP
+Release any resources allocated within the appender such as file handles, network connections, etc.
+.PP
 Reimplemented from \fBlog4cpp::Appender\fR.
 .SS virtual void log4cpp::FileAppender::doAppend (const \fBLoggingEvent\fR & event)\fC [virtual]\fR
+.PP
+Log in \fBAppender\fR specific way.
+.PP
+\fBParameters: \fR
+.in +1c
+.TP
+\fB\fIevent\fR\fR The \fBLoggingEvent\fR to log. 
 .PP
 Reimplemented from \fBlog4cpp::Appender\fR.
 .SS virtual bool log4cpp::FileAppender::reopen ()\fC [virtual]\fR
 .PP
+Reopens the output destination of this \fBAppender\fR, e.g.
+.PP
+the logfile  or TCP socket. 
+.PP
+\fBReturns: \fR
+.in +1c
+ false if an error occured during reopening, true otherwise. 
+.PP
 Reimplemented from \fBlog4cpp::Appender\fR.
 .SS virtual bool log4cpp::FileAppender::requiresLayout () const\fC [virtual]\fR
 .PP
+Check if the appender uses a layout.
+.PP
+.PP
+If the appender implementation admits a layout but can also work without it, then it should return \fCtrue\fR. 
+.PP
 Reimplemented from \fBlog4cpp::Appender\fR.
 .SS virtual void log4cpp::FileAppender::setLayout (\fBLayout\fR * layout)\fC [virtual]\fR
+.PP
+Set the \fBLayout\fR for this appender.
+.PP
+\fBParameters: \fR
+.in +1c
+.TP
+\fB\fIlayout\fR\fR The layout to use. 
 .PP
 Reimplemented from \fBlog4cpp::Appender\fR.
 .SH MEMBER DATA DOCUMENTATION

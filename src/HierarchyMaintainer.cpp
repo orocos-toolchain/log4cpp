@@ -43,7 +43,6 @@ namespace log4cpp {
                 }
                 Category& parent = getInstance(parentName);
                 result = new Category(name, &parent, Priority::NOTSET);
-                result->setAppender(parent.getAppender());
             }	  
             _categoryMap[name] = result; 
             return *result;
