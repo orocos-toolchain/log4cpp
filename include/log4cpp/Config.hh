@@ -1,3 +1,4 @@
+/* include/log4cpp/Config.hh.  Generated automatically by configure.  */
 //
 // Config.hh
 //
@@ -11,5 +12,5 @@
 #endif
 
 /* define if you have new iostreams */
-#define LOG4CPP_HAVE_STDIOSTREAM 1
+/* #undef LOG4CPP_HAVE_SSTREAM */
 #endif

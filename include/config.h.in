@@ -12,3 +12,15 @@
 /* Version number of package */
 #undef VERSION
 
+/* define if the compiler implements namespaces */
+#undef HAVE_NAMESPACES
+
+/* define if the compiler has stringstream */
+#undef HAVE_SSTREAM
+
+/* define if the compiler has stringstream */
+#undef LOG4CPP_HAVE_SSTREAM
+
+/* define if the C library has snprintf */
+#undef HAVE_SNPRINTF
+

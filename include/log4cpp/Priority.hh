@@ -17,6 +17,7 @@ namespace log4cpp {
     class Priority {
         public:
         typedef enum {EMERG  = 0, 
+		      FATAL  = 0,
                       ALERT  = 100,
                       CRIT   = 200,
                       ERROR  = 300, 
