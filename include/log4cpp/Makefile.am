@@ -26,3 +26,5 @@ liblog4cppinclude_HEADERS =  \
 	config.h \
 	config-win32.h
 
+dist-hook:
+	rm -f $(distdir)/config.h
