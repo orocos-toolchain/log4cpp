@@ -4,7 +4,7 @@ echo "Adding libtools."
 libtoolize --automake
 
 echo "Building macros."
-aclocal $ACLOCAL_FLAGS
+aclocal -I m4 $ACLOCAL_FLAGS
 
 echo "Building config header."
 autoheader
