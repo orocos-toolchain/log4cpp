@@ -36,6 +36,14 @@
 /* Define if you have the idsa library (-lidsa).  */
 /* #undef LOG4CPP_HAVE_LIBIDSA */
 
+/* Define if you have the `strcasecmp' function. */
+/* #undef LOG4CPP_HAVE_STRCASECMP */
+
+/* Define if you have the `stricmp' function. */
+#ifndef LOG4CPP_HAVE_STRICMP
+#define LOG4CPP_HAVE_STRICMP 1 
+#endif
+
 /* Name of package */
 #ifndef LOG4CPP_PACKAGE
 #define LOG4CPP_PACKAGE  "log4cpp"
