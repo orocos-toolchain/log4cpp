@@ -1,5 +1,13 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2003-03-26 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/StringUtil.cpp: added \r and \n to whitespace characters.
+	* src/Properties.cpp: trim property keys and values. Fixes
+	bug #710164.
+	
+2003-03-23 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* doc/html/index.html: added link to SuSE RPMS built by Pascal Bleser.
+	
 2003-03-10 David Resnick <dresnick@mobilespear.com>
     * include/log4cpp/NTEventLogAppender.hh, include/log4cpp/Portability.hh,
     include/log4cpp/threading/BoostThreads.hh, 
