@@ -6,8 +6,8 @@ PROJECT_NUMBER       = @VERSION@
 QUIET                = YES
 WARNINGS             = YES
 
-GENERATE_LATEX       = NO
-GENERATE_HTML        = YES
+GENERATE_LATEX       = @enable_latex_docs@
+GENERATE_HTML        = @enable_html_docs@
 GENERATE_MAN         = YES
 GENERATE_RTF         = NO
 
@@ -28,9 +28,7 @@ REPEAT_BRIEF         = YES
 JAVADOC_AUTOBRIEF    = YES
 INHERIT_DOCS         = YES
 FULL_PATH_NAMES      = NO
-HAVE_DOT             = NO
 CLASS_DIAGRAMS       = YES
-COLLABORATION_GRAPH  = YES
 
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
@@ -56,3 +54,13 @@ GENERATE_TAGFILE =
 ALLEXTERNALS     = NO
 PERL_PATH        = /usr/bin/perl
 
+# Configuration options related to the dot tool   
+#---------------------------------------------------------------------------
+HAVE_DOT             = @enable_dot@
+COLLABORATION_GRAPH  = YES
+INCLUDE_GRAPH        = YES
+INCLUDED_BY_GRAPH    = YES
+GRAPHICAL_HIERARCHY  = YES
+MAX_DOT_GRAPH_WIDTH    = 1024
+MAX_DOT_GRAPH_HEIGHT   = 1024
+GENERATE_LEGEND        = YES

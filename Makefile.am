@@ -28,8 +28,7 @@ rpm: dist
 	mv -f /usr/src/redhat/RPMS/i386/log4cpp-devel-$(VERSION)-*.rpm .
 
 docs:
-	cd doc
-	$(MAKE)
+	$(MAKE) -C doc
 
 doc-dist: docs
 	tar -zcf log4cpp-docs-$(VERSION).tar.gz -C doc/html .

@@ -12,11 +12,11 @@
 
 #include <string>
 #include <iostream>
-#include "log4cpp/Appender.hh"
+#include "log4cpp/LayoutAppender.hh"
 
 namespace log4cpp {
 
-    class OstreamAppender : public Appender {
+    class OstreamAppender : public LayoutAppender {
         public:
         OstreamAppender(const std::string& name, std::ostream* stream);
         virtual ~OstreamAppender();
@@ -24,12 +24,9 @@ namespace log4cpp {
         virtual void doAppend(const LoggingEvent& event);
         virtual bool reopen();
         virtual void close();
-        virtual bool requiresLayout() const;
-        virtual void setLayout(Layout* layout);
 
         protected:
         std::ostream* _stream;
-        Layout* _layout;
     };
 }
 

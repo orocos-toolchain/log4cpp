@@ -18,9 +18,8 @@
 namespace log4cpp {
 
     OstreamAppender::OstreamAppender(const std::string& name, std::ostream* stream) : 
-        Appender(name),
-        _stream(stream),
-        _layout(&_defaultLayout) {
+        LayoutAppender(name),
+        _stream(stream) {
     }
     
     OstreamAppender::~OstreamAppender() {
@@ -32,7 +31,7 @@ namespace log4cpp {
     }
 
     void OstreamAppender::doAppend(const LoggingEvent& event) {
-        (*_stream) << _layout->format(event);
+        (*_stream) << _getLayout().format(event);
         if (!_stream->good()) {
             // XXX help! help!
         }
@@ -41,13 +40,4 @@ namespace log4cpp {
     bool OstreamAppender::reopen() {
         return true;
     }      
-
-    bool OstreamAppender::requiresLayout() const {
-        return true;
-    }
-
-    void OstreamAppender::setLayout(Layout* layout) {
-        _layout = (layout == NULL) ? &_defaultLayout : layout;
-    }
-
 }

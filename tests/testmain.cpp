@@ -23,9 +23,8 @@ int main(int argc, char** argv) {
         appender = new log4cpp::FileAppender("default", argv[1]);
     }
 
-    log4cpp::Layout* layout = new log4cpp::BasicLayout();
-    syslogAppender->setLayout(layout);
-    appender->setLayout(layout);
+    syslogAppender->setLayout(new log4cpp::BasicLayout());
+    appender->setLayout(new log4cpp::BasicLayout());
 
     log4cpp::Category& root = log4cpp::Category::getRoot();
     root.setAppender(syslogAppender);

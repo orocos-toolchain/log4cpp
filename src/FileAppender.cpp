@@ -27,17 +27,15 @@ namespace log4cpp {
 
     FileAppender::FileAppender(const std::string& name, 
                                const std::string& fileName) : 
-            Appender(name),
-            _fileName(fileName),
-            _layout(&_defaultLayout) {
+            LayoutAppender(name),
+            _fileName(fileName) {
         _fd = ::open(_fileName.c_str(), O_CREAT | O_APPEND | O_WRONLY, 00644);
     }
     
     FileAppender::FileAppender(const std::string& name, int fd) :
-        Appender(name),
+        LayoutAppender(name),
         _fileName(""),
-        _fd(fd),
-        _layout(&_defaultLayout) {
+        _fd(fd) {
     }
     
     FileAppender::~FileAppender() {
@@ -49,7 +47,7 @@ namespace log4cpp {
     }
 
     void FileAppender::doAppend(const LoggingEvent& event) {
-        const char* message = _layout->format(event).c_str();
+        const char* message = _getLayout().format(event).c_str();
         if (!::write(_fd, message, strlen(message))) {
             // XXX help! help!
         }
@@ -70,13 +68,4 @@ namespace log4cpp {
             return true;
         }      
     }
-
-    bool FileAppender::requiresLayout() const {
-        return true;
-    }
-
-    void FileAppender::setLayout(Layout* layout) {
-        _layout = (layout == NULL) ? &_defaultLayout : layout;
-    }
-
 }

@@ -61,4 +61,6 @@ int main(int argc, char** argv) {
     sub2 << log4cpp::Priority::WARN << "warn2" << " warn3" << 
         log4cpp::CategoryStream::ENDLINE << " warn4";
 #endif
+
+    delete appender;
 }

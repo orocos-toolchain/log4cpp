@@ -5,6 +5,7 @@ INCLUDES = -I../include
 liblog4cpp_la_SOURCES = \
 	Hints.cpp \
 	Appender.cpp \
+	LayoutAppender.cpp \
 	FileAppender.cpp \
 	IdsaAppender.cpp \
 	OstreamAppender.cpp \

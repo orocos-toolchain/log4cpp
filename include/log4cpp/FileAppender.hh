@@ -12,11 +12,11 @@
 
 #include <string>
 #include <stdarg.h>
-#include "log4cpp/Appender.hh"
+#include "log4cpp/LayoutAppender.hh"
 
 namespace log4cpp {
 
-    class FileAppender : public Appender {
+    class FileAppender : public LayoutAppender {
         public:
         FileAppender(const std::string& name, const std::string& fileName);
         FileAppender(const std::string& name, int fd);
@@ -25,13 +25,10 @@ namespace log4cpp {
         virtual void doAppend(const LoggingEvent& event);
         virtual bool reopen();
         virtual void close();
-        virtual bool requiresLayout() const;
-        virtual void setLayout(Layout* layout);
 
         protected:
         const std::string _fileName;
         int _fd;
-        Layout* _layout;
     };
 }
 
