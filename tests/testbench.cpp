@@ -20,13 +20,12 @@ int main(int argc, char* argv[])
 	      << std::endl;
 
     log4cpp::Category&	root	 = log4cpp::Category::getRoot();
-    log4cpp::Layout*	layout	 = new log4cpp::BasicLayout();
     log4cpp::Appender*	appender = 
         new log4cpp::OstreamAppender("cerr", &std::cerr);
     log4cpp::Appender*	fileAppender = 
         new log4cpp::FileAppender("stderr", fileno(stderr));
-    appender->setLayout(layout);
-    fileAppender->setLayout(layout);
+    appender->setLayout(new log4cpp::BasicLayout());
+    fileAppender->setLayout(new log4cpp::BasicLayout());
     root.setAppender(appender);
     root.setPriority(log4cpp::Priority::ERROR);    
 
