@@ -44,7 +44,7 @@ usec_t Clock::time(void)
 	}
 #else
 	{
-	    std::cerr << "CPU clock not implemented for this architecture" << endl;
+	    std::cerr << "CPU clock not implemented for this architecture" << std::endl;
 	    UsingCPU = false;
 	    return Clock::time();
 	}
