@@ -213,7 +213,7 @@ namespace log4cpp {
         else if (appenderType == "SyslogAppender") {
             std::string syslogName = _properties.getString(appenderPrefix + ".syslogName", "syslog");
             std::string syslogHost = _properties.getString(appenderPrefix + ".syslogHost", "localhost");
-            int facility = _properties.getInt(appenderPrefix + ".facility", -1);
+            int facility = _properties.getInt(appenderPrefix + ".facility", -1) * 8; // * 8 to get LOG_KERN, etc. compatible values. 
             int portNumber = _properties.getInt(appenderPrefix + ".portNumber", -1);
             appender = new RemoteSyslogAppender(appenderName, syslogName, 
                                                 syslogHost, facility, portNumber);

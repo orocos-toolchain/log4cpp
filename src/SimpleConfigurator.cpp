@@ -121,6 +121,9 @@ namespace log4cpp {
                         }
                         if (!(initFile >> facility)) {
                             facility = LOG_USER;
+                        } else {
+                            // * 8
+                            facility *= 8;
                         }
                         appender =
                             new log4cpp::SyslogAppender(categoryName, syslogName, facility);
