@@ -14,19 +14,19 @@
 
 namespace log4cpp {
 
+    /**
+     * This Category subclass replaces the NDC field in LoggingEvents with
+     * a fixed context string. All handling of Appenders, etc. is delgated
+     * to the 'normal' Category with the same name. Its intended use is 
+     * for object instances that serve a single client: they contruct a 
+     * FixedContextCategory with the client identifier as context. 
+     * Unlike with regular Category instances one has to explicitly create
+     * FixedContextCategory instances using the constructor. This also 
+     * implies one has to take cake of destruction of the instance as well.
+     * @since 0.2.4
+     **/
     class FixedContextCategory : public Category {
 
-        /**
-         * This Category subclass replaces the NDC field in LoggingEvents with
-         * a fixed context string. All handling of Appenders, etc. is delgated
-         * to the 'normal' Category with the same name. Its intended use is 
-         * for object instances that serve a single client: they contruct a 
-         * FixedContextCategory with the client identifier as context. 
-         * Unlike with regular Category instances one has to explicitly create
-         * FixedContextCategory instances using the constructor. This also 
-         * implies one has to take cake of destruction of the instance as well.
-         * @since 0.2.4
-         **/
         public:
 
         /**
