@@ -38,7 +38,7 @@ namespace log4cpp {
        
        log4j.appender.A2=org.apache.log4j.ConsoleAppender
        log4j.appender.A2.layout=org.apache.log4j.PatternLayout
-       log4j.appender.A2.layout.pattern=The message %%m at time %%d%%n
+       log4j.appender.A2.layout.ConversionPattern=The message %%m at time %%d%%n
        </PRE>
        
        @since 0.3.2
