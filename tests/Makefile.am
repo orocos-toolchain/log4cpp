@@ -3,9 +3,11 @@ TESTS = testCategory testFixedContextCategory testNDC testPattern \
 	testConfig testPropertyConfig
 
 check_PROGRAMS = $(TESTS)
-check_DATA = log4cpp.init
+check_DATA = log4cpp.init log4cpp.properties testProperties.properties \
+	testConfig.log4cpp.properties
 
-EXTRA_DIST = log4cpp.init
+EXTRA_DIST = log4cpp.init log4cpp.properties testProperties.properties \
+	testConfig.log4cpp.properties
 
 noinst_PROGRAMS = testmain testbench
 
