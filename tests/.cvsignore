@@ -6,3 +6,5 @@ Makefile.in
 testmain
 testNDC
 testbench
+testCategory
+
