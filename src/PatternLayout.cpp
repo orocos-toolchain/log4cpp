@@ -17,7 +17,7 @@
 #ifdef LOG4CPP_HAVE_SSTREAM
 #include <sstream>
 #else
-#error not backported to strstream yet.
+#include <strstream>
 #endif
 
 #include <iomanip>
@@ -61,7 +61,11 @@ namespace log4cpp {
     std::string PatternLayout::doFormat(const LoggingEvent& event, std::string conversionPattern, bool *success) {
         *success = true;
         
+#ifdef LOG4CPP_HAVE_SSTREAM 
         std::istringstream conversionStream(conversionPattern);
+#else
+        std::istrstream conversionStream(conversionPattern.c_str());
+#endif
         
         OstringStream message;
         
