@@ -103,6 +103,10 @@ SOURCE=..\..\src\Category.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\CategoryStream.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\FileAppender.cpp
 # End Source File
 # Begin Source File
@@ -151,6 +155,10 @@ SOURCE=..\..\src\Priority.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\RemoteSyslogAppender.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\SimpleLayout.cpp
 # End Source File
 # Begin Source File
@@ -179,11 +187,11 @@ SOURCE=..\..\include\log4cpp\Category.hh
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\include\config.h
+SOURCE="..\..\include\log4cpp\config-win32.h"
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\include\log4cpp\Portability.hh
+SOURCE=..\..\include\config.h
 # End Source File
 # Begin Source File
 
@@ -235,7 +243,15 @@ SOURCE=..\..\include\log4cpp\OstringStream.hh
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\include\log4cpp\Portability.hh
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\include\log4cpp\Priority.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\RemoteSyslogAppender.hh
 # End Source File
 # Begin Source File
 

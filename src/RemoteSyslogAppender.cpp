@@ -133,8 +133,9 @@ namespace log4cpp {
             // XXX help! help!
             return;
         }
-
-        const char* message = _layout->format(event).c_str();
+	
+	std::string msgStr = _layout->format(event);
+        const char* message = msgStr.c_str();
 	int len = strlen (message) + 16;
 	char *buf = new char [len];
         int priority = toSyslogPriority(event.priority);
