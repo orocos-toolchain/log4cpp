@@ -171,6 +171,10 @@ SOURCE=..\..\src\StringQueueAppender.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\Win32DebugAppender.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\TimeStamp.cpp
 # End Source File
 # Begin Source File
@@ -280,6 +284,10 @@ SOURCE=..\..\include\log4cpp\SimpleLayout.hh
 # Begin Source File
 
 SOURCE=..\..\include\log4cpp\StringQueueAppender.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\Win32DebugAppender.hh
 # End Source File
 # Begin Source File
 

@@ -31,6 +31,7 @@ liblog4cppinclude_HEADERS =  \
 	Filter.hh \
 	Export.hh \
 	Portability.hh \
+	Win32DebugAppender.hh \
 	config.h \
 	config-win32.h \
 	config-openvms.h

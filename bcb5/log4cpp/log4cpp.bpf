@@ -18,6 +18,7 @@ USEUNIT("..\..\src\OstringStream.cpp");
 USEUNIT("..\..\src\Priority.cpp");
 USEUNIT("..\..\src\SimpleLayout.cpp");
 USEUNIT("..\..\src\StringQueueAppender.cpp");
+USEUNIT("..\..\src\Win32DebugAppender.cpp");
 USEUNIT("..\..\src\Appender.cpp");
 USEUNIT("..\..\src\CategoryStream.cpp");
 USEUNIT("..\..\src\TimeStamp.cpp");

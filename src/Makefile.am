@@ -29,6 +29,7 @@ liblog4cpp_la_SOURCES = \
 	OstringStream.cpp \
 	Filter.cpp \
 	Log4cppCleanup.cpp \
-	TimeStamp.cpp
+	TimeStamp.cpp \
+	Win32DebugAppender.cpp
 
 liblog4cpp_la_LDFLAGS = -version-info @LT_VERSION@

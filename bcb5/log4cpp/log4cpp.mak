@@ -38,6 +38,7 @@ OBJFILES = \
     SimpleConfigurator.obj \
     SimpleLayout.obj \
     StringQueueAppender.obj \
+    Win32DebugAppender.obj \
     SyslogAppender.obj \
     TimeStamp.obj 
 RESFILES = 
