@@ -2,6 +2,16 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 
 2003-05-09 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* log4cpp.pc.in, configure.in, Makefile.am: added pkgconfig file.
+
+	* include/log4cpp/PropertyConfigurator.hh: ConversionPattern instead 
+	of pattern (patch #692193).
+
+	* src/PatternLayout.cpp: fix bounds problem on logging messages 
+	(bug #688715)
+	* tests/testPattern.cpp: added test for bug #688715.	
+
+	* tests/Makefile.am: added testNTEventLog.cpp to EXTRA_DIST 
+	(bug #718941)
 	
 2003-04-07 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* log4cpp.spec.in: added log4cpp.m4 to -devel package.
@@ -10,6 +20,9 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	* src/StringUtil.cpp: added \r and \n to whitespace characters.
 	* src/Properties.cpp: trim property keys and values. Fixes
 	bug #710164.
+
+	* src/HierarchyMaintainer.cpp: don't create a default appender for
+	the root category. (bug #648341)
 	
 2003-03-23 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* doc/html/index.html: added link to SuSE RPMS built by Pascal Bleser.
