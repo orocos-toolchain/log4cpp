@@ -10,7 +10,7 @@
       LayoutAppender.obj Log4cppCleanup.obj LoggingEvent.obj NDC.obj 
       OstreamAppender.obj OstringStream.obj Priority.obj SimpleLayout.obj 
       StringQueueAppender.obj Appender.obj CategoryStream.obj PatternLayout.obj 
-      SimpleConfigurator.obj"/>
+      SimpleConfigurator.obj TimeStamp.obj"/>
     <RESFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
