@@ -8,7 +8,7 @@ Version: @VERSION@
 Release: %rel
 
 Summary: Log for C++
-Copyright: GPL
+Copyright: LGPL
 Group: Development/Libraries
 Vendor:  Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 Packager: Cedric Le Goater <cedric@legoater.com>
