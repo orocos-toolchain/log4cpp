@@ -1,2 +1,4 @@
 .cvsignore
 Makefile
+Makefile.in
+

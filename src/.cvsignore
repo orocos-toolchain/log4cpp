@@ -1,6 +1,7 @@
 .cvsignore
 stamp-h
 Makefile
+Makefile.in
 .libs
 .deps
 liblog4cpp.la

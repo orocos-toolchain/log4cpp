@@ -1798,7 +1798,7 @@ echo "configure:1798: checking for std::stringstream" >&5
 cat > conftest.$ac_ext <<EOF
 #line 1800 "configure"
 #include "confdefs.h"
-#include <ssstream>
+#include <sstream>
 int main() {
 std::stringstream s;
 ; return 0; }
