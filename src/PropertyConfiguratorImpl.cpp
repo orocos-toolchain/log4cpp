@@ -141,13 +141,13 @@ namespace log4cpp {
         
         std::list<std::string> tokens;
         std::back_insert_iterator<std::list<std::string> > tokIt(tokens);
-        StringUtil::split(tokIt, (*iter).second, '.');
+        StringUtil::split(tokIt, (*iter).second, ',');
         std::list<std::string>::const_iterator i = tokens.begin();
         std::list<std::string>::const_iterator iEnd = tokens.end();
 
         Priority::Value priority = Priority::NOTSET;
         if (i != iEnd) {
-            std::string priorityName = StringUtil::trim(*i);
+            std::string priorityName = StringUtil::trim(*i++);
             try {
                 if (priorityName != "") {
                     priority = Priority::getPriorityValue(priorityName);

@@ -11,6 +11,8 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	appenders.
 	replaced find(property, '.') with StringUtil::split() in several
 	places.
+
+	* src/PropertyConfiguratorImpl.cpp: fixed configureCategory() fix.
 	
 2002-07-05 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/StringUtil.hh, src/StringUtil.cpp: added split() method.
