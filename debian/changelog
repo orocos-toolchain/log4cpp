@@ -1,0 +1,16 @@
+log4cpp (0.2.3b-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Marcel Harkema <marcel@debian.org>  Wed, 11 April 2001 15:59:32 +0100
+
+log4cpp (0.2.2-1) unstable; urgency=low
+
+  * Initial release. (Closes: #88439)
+
+ -- Marcel Harkema <marcel@debian.org>  Sat, 7 April 2001 19:24:11 +0100
+
+Local variables:
+mode: debian-changelog
+add-log-mailing-address: "marcel@debian.org"
+End:

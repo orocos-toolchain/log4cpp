@@ -1,5 +1,8 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-04-12 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	Merged Marcel Harkema's patch for Debian package support.
+
 2001-04-11 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	Added StringQueueAppender class.
 	Separated API docs from devel RPM, into a doc RPM.
