@@ -183,7 +183,7 @@ SOURCE=..\..\include\config.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\include\log4cpp\Config.hh
+SOURCE=..\..\include\log4cpp\Portability.hh
 # End Source File
 # Begin Source File
 

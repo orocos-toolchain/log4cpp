@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "log4cpp/Config.hh"
+#include "log4cpp/Portability.hh"
 #ifdef LOG4CPP_HAVE_UNISTD_H
 #include <unistd.h>
 #endif

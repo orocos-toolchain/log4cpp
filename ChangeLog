@@ -22,7 +22,8 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	src/LoggingEvent.cpp, src/Log4cppCleanup.cpp, src/LoggingEvent.cpp,
 	src/NDC.cpp, src/OstreamAppender.cpp, src/OstringStream.cpp,
 	src/Priority.cpp, src/SimpleLayout.cpp, src/StringQueueAppender.cpp,
-	src/SyslogAppender.cpp: renamed Config.hh to Portability.hh
+	src/SyslogAppender.cpp, msvc6/log4cpp/log4cpp.dsp,
+	tests/testmain.cpp: renamed Config.hh to Portability.hh
 	
 2001-06-06 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/AppenderSkeleton.hh, include/log4cpp/BasicLayout.hh,
