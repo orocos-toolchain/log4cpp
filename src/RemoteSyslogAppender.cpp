@@ -133,7 +133,7 @@ namespace log4cpp {
 	std::string message(_getLayout().format(event));
 	int len = message.length() + 16;
 	char *buf = new char [len];
-        int priority = toSyslogPriority(event.priority);
+        int priority = _facility + toSyslogPriority(event.priority);
 	int len2 = sprintf (buf, "<%d>", priority);
 	memcpy (buf + len2, message.data(), len - 16);
 	sockaddr_in sain;

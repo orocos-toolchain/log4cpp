@@ -1,5 +1,9 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-09-18 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/RemoteSyslogAppender.cpp: fixed log facility in _append(), as
+	reported by Derek Atkins.
+
 2002-09-17 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* log4cpp.spec.in: fix relocatability of log4cpp-devel by patching
 	lib/liblog4cpp.la and bin/log4cpp-config in %post. Unfortunately
