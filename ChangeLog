@@ -1,6 +1,8 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
 2002-08-14 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* Release as 0.3.2rc2
+
 	* Makefile.am, include/log4cpp/Makefile.am, tests/Makefile.am:
 	added distclean-local targets.
 
