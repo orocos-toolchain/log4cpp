@@ -59,17 +59,19 @@ namespace log4cpp {
     }
 
     std::string StringUtil::trim(const std::string& s) {
+        static const char* whiteSpace = " \t\r\n";
+
         // test for null string
         if(s.empty())
             return s;
 
         // find first non-space character
-        std::string::size_type b = s.find_first_not_of(" \t");
+        std::string::size_type b = s.find_first_not_of(whiteSpace);
         if(b == std::string::npos) // No non-spaces
             return "";
 
         // find last non-space character
-        std::string::size_type e = s.find_last_not_of(" \t");
+        std::string::size_type e = s.find_last_not_of(whiteSpace);
 
         // return the remaining characters
         return std::string(s, b, e - b + 1);
