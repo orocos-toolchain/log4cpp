@@ -34,7 +34,6 @@ namespace log4cpp {
         friend class HierarchyMaintainer;
 
         public:
-
         /**
          * Return the root of the Category hierarchy.
          * 
@@ -197,6 +196,13 @@ namespace log4cpp {
          * @returns The Appender.
          **/
         virtual Appender* getAppender(const std::string& name) const;
+
+        /**
+         * Returns the set of Appenders currently attached to this Catogory.
+         * @since 0.3.1
+         * @returns The set of attached Appenders.
+         **/
+        virtual AppenderSet getAllAppenders() const;
 
         /**
          * Removes all appenders for this Category.
@@ -628,7 +634,6 @@ namespace log4cpp {
          **/
         volatile Priority::Value _priority;
 
-        typedef std::set<Appender *> AppenderSet;
         typedef std::map<Appender *, bool> OwnsAppenderMap;
 
         /**

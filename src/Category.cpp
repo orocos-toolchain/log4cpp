@@ -141,6 +141,10 @@ namespace log4cpp {
         }
     }
 
+    AppenderSet Category::getAllAppenders() const {
+        return _appender;
+    }
+
     void Category::removeAllAppenders() {
         threading::ScopedLock lock(_appenderSetMutex);
         {

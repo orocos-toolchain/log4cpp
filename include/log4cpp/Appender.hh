@@ -12,6 +12,7 @@
 
 #include <string>
 #include <map>
+#include <set>
 #include <stdarg.h>
 #include <log4cpp/Portability.hh>
 #include <log4cpp/OstringStream.hh>
@@ -147,6 +148,8 @@ namespace log4cpp {
 #endif        
         const std::string _name;
     };
+
+    typedef std::set<Appender *> AppenderSet;
 }
 
 #endif // _LOG4CPP_APPENDER_HH

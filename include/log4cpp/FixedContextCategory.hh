@@ -102,6 +102,13 @@ namespace log4cpp {
         virtual Appender* getAppender(const std::string& name) const;
 
         /**
+         * Returns the set of Appenders currently attached to this Catogory.
+         * @since 0.3.1
+         * @returns The set of attached Appenders.
+         **/
+        virtual AppenderSet getAllAppenders() const;
+
+         /**
          * Removes all appenders set for this Category. Currently a Category
          * can have only one appender, but this may change in the future.
          **/
