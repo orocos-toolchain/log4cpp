@@ -1,3 +1,11 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2000/12/07 0.1: 
+Added Doxygen generated API documentation. Most of it has been copied verbatim from LOG4J.
+Added NDC (Nested Diagnostic Context) class.
+Added OstreamAppender.
+Added SyslogAppender.
+Fixed bug in HierarchyMaintainer: getInstance should NOT set the Appender of a
+newly instantiated Category.                
+                
 2000/12/03 0.0: first CVS import 
