@@ -1,5 +1,5 @@
 /*
- * Category.hh
+ * OmniThreads.hh
  *
  * Copyright 2002, LifeLine Networks BV (www.lifeline.nl). All rights reserved.
  * Copyright 2002, Bastiaan Bakker. All rights reserved.
@@ -17,7 +17,7 @@
 
 namespace log4cpp {
     namespace threading {
-        std::string getThreadId() {
+        static std::string getThreadId() {
             char buffer[16];
             sprintf(buffer, "%d", ::omni_thread::self()->id());
             return std::string(buffer);
