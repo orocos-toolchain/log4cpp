@@ -59,7 +59,7 @@ namespace log4cpp {
      * The Priority class provides importance levels with which one
      * can categorize log messages.
      **/
-    class Priority {
+    class LOG4CPP_EXPORT Priority {
         public:
 
         /**
