@@ -32,7 +32,7 @@ namespace log4cpp {
          * @returns a pointer to an existing Appender, or NULL if no appender
          * with the specfied name exists.
          **/
-        static Appender* getAppender(const string& name);
+        static Appender* getAppender(const std::string& name);
 
         /**
          * Call reopen() on all existing Appenders.
@@ -46,7 +46,7 @@ namespace log4cpp {
          * in derived classes of course).
          * @param name The name of this Appender.
          **/
-        Appender(const string& name);
+        Appender(const std::string& name);
 
         public:
         /**
@@ -91,17 +91,17 @@ namespace log4cpp {
          * Get the name of this appender. The name identifies the appender.
          * @returns the name of the appender.
          **/
-        inline const string& getName() const { return _name; };
+        inline const std::string& getName() const { return _name; };
         
         
         private:
-        typedef map<string, Appender*> AppenderMap;
+        typedef map<std::string, Appender*> AppenderMap;
 
         static AppenderMap _allAppenders;
         static void _addAppender(Appender* appender);
         static void _removeAppender(Appender* appender);
         
-        const string _name;
+        const std::string _name;
     };
 }
 

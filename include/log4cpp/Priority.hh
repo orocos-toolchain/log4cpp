@@ -27,7 +27,7 @@ namespace log4cpp {
                       NOTSET = 800
         } PriorityLevel;
 
-        static const string& getPriorityName(int priority);        
+        static const std::string& getPriorityName(int priority);        
     };
 }
 

@@ -12,7 +12,7 @@
 namespace log4cpp {
     Appender::AppenderMap Appender::_allAppenders;
 
-    Appender* Appender::getAppender(const string& name) {
+    Appender* Appender::getAppender(const std::string& name) {
         AppenderMap::iterator i = _allAppenders.find(name);
         return (_allAppenders.end() == i) ? NULL : ((*i).second);
     }
@@ -35,7 +35,7 @@ namespace log4cpp {
         return result;
     }
     
-    Appender::Appender(const string& name) :
+    Appender::Appender(const std::string& name) :
         _name(name) {
         _addAppender(this);
     }
@@ -49,7 +49,7 @@ namespace log4cpp {
     }
 
     /*
-    const string& Appender::getName() const {
+    const std::string& Appender::getName() const {
         return _name;
     }
     */

@@ -19,23 +19,23 @@ namespace log4cpp {
         public:
 
         struct DiagnosticContext {
-            DiagnosticContext(const string& message);
-            DiagnosticContext(const string& message, 
+            DiagnosticContext(const std::string& message);
+            DiagnosticContext(const std::string& message, 
                               const DiagnosticContext& parent);
 
-            string message;
-            string fullMessage;
+            std::string message;
+            std::string fullMessage;
         };
 
         typedef vector<DiagnosticContext> ContextStack;
 
         static void clear();
         static ContextStack* cloneStack();
-        static const string& get();
+        static const std::string& get();
         static int getDepth();
         static void inherit(ContextStack* stack);
-        static string pop();
-        static void push(const string& message);
+        static std::string pop();
+        static void push(const std::string& message);
         static void setMaxDepth(int maxDepth);
         static NDC& getNDC();
 
@@ -52,11 +52,11 @@ namespace log4cpp {
         protected:
         virtual void _clear();
         virtual ContextStack* _cloneStack();
-        virtual const string& _get() const;
+        virtual const std::string& _get() const;
         virtual int _getDepth() const;
         virtual void _inherit(ContextStack* stack);
-        virtual string _pop();
-        virtual void _push(const string& message);
+        virtual std::string _pop();
+        virtual void _push(const std::string& message);
         virtual void _setMaxDepth(int maxDepth);
 
         ContextStack _stack;

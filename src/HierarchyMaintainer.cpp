@@ -25,8 +25,8 @@ namespace log4cpp {
     HierarchyMaintainer::~HierarchyMaintainer() {
     }
 
-    Category& HierarchyMaintainer::getInstance(const string& name) {
-        CategoryMap::const_iterator i = _categoryMap.find(name);
+    Category& HierarchyMaintainer::getInstance(const std::string& name) {
+        CategoryMap::iterator i = _categoryMap.find(name);
         if (_categoryMap.end() == i) {
             Category* result;
             
@@ -34,7 +34,7 @@ namespace log4cpp {
                 result = new Category(name, NULL, Priority::INFO);
                 result->setAppender(new FileAppender("_", ::dup(STDERR_FILENO)));
             } else {
-                string parentName;
+                std::string parentName;
                 size_t dotIndex = name.find_last_of('.');
                 if (name.length() <= dotIndex) {
                     parentName = "";

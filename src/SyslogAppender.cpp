@@ -36,8 +36,8 @@ namespace log4cpp {
     }
         
 
-    SyslogAppender::SyslogAppender(const string& name, 
-                                   const string& syslogName, 
+    SyslogAppender::SyslogAppender(const std::string& name, 
+                                   const std::string& syslogName, 
                                    int facility) : 
         Appender(name),
         _syslogName(syslogName),

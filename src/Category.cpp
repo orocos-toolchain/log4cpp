@@ -35,7 +35,7 @@ namespace log4cpp {
     void CategoryStream::flush() {
         if (_buffer) {
             (*_buffer) << '\0';
-            getCategory().log(getPriority(), string(_buffer->str()));
+            getCategory().log(getPriority(), std::string(_buffer->str()));
             delete _buffer;
             _buffer = NULL;
         }
@@ -53,7 +53,7 @@ namespace log4cpp {
         return getRoot().getPriority();
     }
 
-    Category& Category::getInstance(const string& name) {
+    Category& Category::getInstance(const std::string& name) {
         return HierarchyMaintainer::getDefaultMaintainer().getInstance(name);
     }
 
@@ -62,7 +62,7 @@ namespace log4cpp {
             getCurrentCategories();
     }
 
-    Category::Category(const string& name, Category* parent, int priority) : 
+    Category::Category(const std::string& name, Category* parent, int priority) : 
         _name(name),
         _parent(parent),
         _priority(priority),
@@ -136,14 +136,19 @@ namespace log4cpp {
     }
 
     void Category::_logUnconditionally(int priority, const char* format, va_list arguments) {
-        ostrstream messageBuffer;
+        std::ostrstream messageBuffer;
+#ifdef __DECCXX
+        // FIXME: vform method on DEC ??
+        messageBuffer << "format not implemented";
+#else
         messageBuffer.vform(format, arguments);
+#endif
         messageBuffer << '\0';
-        string message = string(messageBuffer.str());
+        std::string message = std::string(messageBuffer.str());
         _logUnconditionally2(priority, message);
     }
     
-    void Category::_logUnconditionally2(int priority, const string& message) {
+    void Category::_logUnconditionally2(int priority, const std::string& message) {
         LoggingEvent event(getName(), message, NDC::get(), priority);
         callAppenders(event);
     }
@@ -155,13 +160,13 @@ namespace log4cpp {
     void Category::log(int priority, const char* stringFormat, ...) { 
         if (isPriorityEnabled(priority)) {
             va_list va;
-            va_start(va,stringFormat);
+            va_start(va, stringFormat);
             _logUnconditionally(priority, stringFormat, va);
             va_end(va);
         }
     }
     
-    void Category::log(int priority, const string& message) { 
+    void Category::log(int priority, const std::string& message) { 
         if (isPriorityEnabled(priority))
             _logUnconditionally2(priority, message);
     }
@@ -175,7 +180,7 @@ namespace log4cpp {
         }
     }
     
-    void Category::debug(const string& message) { 
+    void Category::debug(const std::string& message) { 
         if (isPriorityEnabled(Priority::DEBUG))
             _logUnconditionally2(Priority::DEBUG, message);
     }
@@ -189,7 +194,7 @@ namespace log4cpp {
         }
     }
     
-    void Category::info(const string& message) { 
+    void Category::info(const std::string& message) { 
         if (isPriorityEnabled(Priority::INFO))
             _logUnconditionally2(Priority::INFO, message);
     }
@@ -203,7 +208,7 @@ namespace log4cpp {
         }
     }
     
-    void Category::warn(const string& message) { 
+    void Category::warn(const std::string& message) { 
         if (isPriorityEnabled(Priority::WARN))
             _logUnconditionally2(Priority::WARN, message);
     }
@@ -217,7 +222,7 @@ namespace log4cpp {
         }
     }
     
-    void Category::error(const string& message) { 
+    void Category::error(const std::string& message) { 
         if (isPriorityEnabled(Priority::ERROR))
             _logUnconditionally2(Priority::ERROR, message);
     }

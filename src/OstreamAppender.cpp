@@ -15,7 +15,7 @@
 
 namespace log4cpp {
 
-    OstreamAppender::OstreamAppender(const string& name, ostream* stream) : 
+    OstreamAppender::OstreamAppender(const std::string& name, ostream* stream) : 
         Appender(name),
         _stream(stream) {
     }

@@ -24,10 +24,10 @@ namespace log4cpp {
          **/
         virtual ~Layout() { };
         /**
-         * Formats the LoggingEvent data to a string that appenders can log.
+         * Formats the LoggingEvent data to a std::string that appenders can log.
          * Implement this method to create your own layout format.
          * @param event The LoggingEvent.
-         * @returns an appendable string.
+         * @returns an appendable std::string.
         */
         virtual char* format(const LoggingEvent& event) = 0;
     };        

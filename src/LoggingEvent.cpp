@@ -12,9 +12,9 @@
 
 namespace log4cpp {
     
-    LoggingEvent::LoggingEvent(const string& categoryName, 
-                               const string& message,
-                               const string& ndc, int priority) :
+    LoggingEvent::LoggingEvent(const std::string& categoryName, 
+                               const std::string& message,
+                               const std::string& ndc, int priority) :
         categoryName(categoryName),
         message(message),
         ndc(ndc),

@@ -39,25 +39,25 @@ namespace log4cpp {
          * @param ndc The nested diagnostic context of this event. 
          * @param priority The priority of this event.
          **/
-        LoggingEvent(const string& category, const string& message, 
-                     const string& ndc, int priority);
+        LoggingEvent(const std::string& category, const std::string& message, 
+                     const std::string& ndc, int priority);
 
 
         /** The category name. */
-        const string& categoryName;
+        const std::string& categoryName;
 
         /** The application supplied message of logging event. */
-        const string& message;
+        const std::string& message;
 
         /** The nested diagnostic context (NDC) of logging event. */
-        const string& ndc;
+        const std::string& ndc;
 
         /** Priority of logging event. */
         int priority;
 
         /** The name of thread in which this logging event was generated,
             e.g. the PID. */
-        const string& threadName;
+        const std::string& threadName;
 
         /** The number of seconds elapsed since the epoch 
             (1/1/1970 00:00:00 UTC) until logging event was created. */

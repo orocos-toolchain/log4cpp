@@ -18,13 +18,13 @@
 
 namespace log4cpp {
 
-    FileAppender::FileAppender(const string& name, const string& fileName) : 
+    FileAppender::FileAppender(const std::string& name, const std::string& fileName) : 
         Appender(name),
         _fileName(fileName) {
         _fd = ::open(_fileName.c_str(), O_CREAT | O_APPEND | O_WRONLY, 00644);  
     }
     
-    FileAppender::FileAppender(const string& name, int fd) :
+    FileAppender::FileAppender(const std::string& name, int fd) :
         Appender(name),
         _fileName(""),
         _fd(fd) {

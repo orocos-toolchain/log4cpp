@@ -16,7 +16,6 @@
 #include <set>
 #include <stdarg.h>
 #include "log4cpp/Appender.hh"
-#include "log4cpp/HierarchyMaintainer.hh"
 #include "log4cpp/LoggingEvent.hh"
 #include "log4cpp/Priority.hh"
 
@@ -88,7 +87,7 @@ namespace log4cpp {
          * @param t The value or object to stream in.
          * @returns A reference to itself.
          **/
-        template<class T> CategoryStream& operator<<(const T& t) {
+        template<typename T> CategoryStream& operator<<(const T& t) {
             if (getPriority() != Priority::NOTSET) {
                 if (!_buffer) {
                     if (!(_buffer = new ostrstream)) {
@@ -101,7 +100,7 @@ namespace log4cpp {
                 } 
             }
             return *this;
-        };
+        }
         
         private:
         Category& _category;
@@ -151,7 +150,7 @@ namespace log4cpp {
          * 
          * @param name The name of the category to retrieve.
          **/
-        static Category& getInstance(const string& name);
+        static Category& getInstance(const std::string& name);
 
         /**
          * Returns all the currently defined categories as a set of
@@ -174,7 +173,7 @@ namespace log4cpp {
          * Return the category name.
          * @returns The category name.
         */       
-        inline const string& getName() const { return _name; };
+        inline const std::string& getName() const { return _name; };
         
         /**
          * Set the priority of this Category.
@@ -271,7 +270,7 @@ namespace log4cpp {
          * @param priority The priority of this log message.
          * @param message string to write in the log file
          **/  
-        void log(int priority, const string& message);
+        void log(int priority, const std::string& message);
         
         /** 
          * Log a message with debug priority.
@@ -285,7 +284,7 @@ namespace log4cpp {
          * Log a message with debug priority.
          * @param message string to write in the log file
          **/  
-        void debug(const string& message);
+        void debug(const std::string& message);
 
         /**
          * Return true if the Category will log messages with priority DEBUG.
@@ -315,7 +314,7 @@ namespace log4cpp {
          * Log a message with info priority.
          * @param message string to write in the log file
          **/  
-        void info(const string& message);
+        void info(const std::string& message);
 
         /**
          * Return true if the Category will log messages with priority INFO.
@@ -345,7 +344,7 @@ namespace log4cpp {
          * Log a message with warn priority.
          * @param message string to write in the log file
          **/  
-        void warn(const string& message);
+        void warn(const std::string& message);
 
         /**
          * Return true if the Category will log messages with priority WARN.
@@ -375,7 +374,7 @@ namespace log4cpp {
          * Log a message with error priority.
          * @param message string to write in the log file
          **/  
-        void error(const string& message);
+        void error(const std::string& message);
 
         /**
          * Return true if the Category will log messages with priority ERROR.
@@ -431,14 +430,15 @@ namespace log4cpp {
          * @param priority The priority of this log message.
          * @param message string to write in the log file
          **/  
-        void _logUnconditionally2(int priority, const string& message);
+        void _logUnconditionally2(int priority, const std::string& message);
 
 
         private:
-        Category(const string& name, Category* parent, int priority = Priority::NOTSET);
+        Category(const std::string& name, Category* parent, 
+                 int priority = Priority::NOTSET);
         
         /** The name of this category. */
-        const string _name;
+        const std::string _name;
 
         /**
          * The parent of this category. All categories have al least one

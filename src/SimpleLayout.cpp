@@ -22,7 +22,7 @@ namespace log4cpp {
     char* SimpleLayout::format(const LoggingEvent& event) {
         ostrstream message;
 
-        const string& priorityName = Priority::getPriorityName(event.priority);
+        const std::string& priorityName = Priority::getPriorityName(event.priority);
         message << priorityName << " - " << event.message << endl << '\0';
 
         return message.str();

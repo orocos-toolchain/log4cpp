@@ -11,12 +11,12 @@
 
 namespace log4cpp {
 
-    NDC::DiagnosticContext::DiagnosticContext(const string& message) :
+    NDC::DiagnosticContext::DiagnosticContext(const std::string& message) :
         message(message),
         fullMessage(message) {
     }
 
-    NDC::DiagnosticContext::DiagnosticContext(const string& message, 
+    NDC::DiagnosticContext::DiagnosticContext(const std::string& message, 
             const DiagnosticContext& parent) :
         message(message),
         fullMessage(parent.message + " " + message) {
@@ -32,7 +32,7 @@ namespace log4cpp {
         return getNDC()._cloneStack();
     }
 
-    const string& NDC::get() {
+    const std::string& NDC::get() {
         return getNDC()._get();
     }
 
@@ -44,11 +44,11 @@ namespace log4cpp {
         getNDC()._inherit(stack);
     }
 
-    string NDC::pop() {
+    std::string NDC::pop() {
         return getNDC()._pop();
     }
 
-    void NDC::push(const string& message) {
+    void NDC::push(const std::string& message) {
         getNDC()._push(message);
     }
 
@@ -74,8 +74,8 @@ namespace log4cpp {
         return new ContextStack(_stack);
     }
 
-    const string& NDC::_get() const {
-        static string empty = "";
+    const std::string& NDC::_get() const {
+        static std::string empty = "";
 
         return _stack.empty() ?
             empty :
@@ -90,13 +90,13 @@ namespace log4cpp {
         _stack = *stack;
     }
 
-    string NDC::_pop() {
-        string result = _stack.back().message;
+    std::string NDC::_pop() {
+        std::string result = _stack.back().message;
         _stack.pop_back();
         return result;
     }
 
-    void NDC::_push(const string& message) {
+    void NDC::_push(const std::string& message) {
         if (_stack.empty()) {
             _stack.push_back(DiagnosticContext(message));
         } else {            

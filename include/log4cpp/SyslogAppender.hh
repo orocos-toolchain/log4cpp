@@ -36,7 +36,7 @@ namespace log4cpp {
          * @param syslogName The ident parameter in the openlog(3) call.
          * @param facility The syslog facility to log to. Defaults to LOG_USER.
          **/         
-        SyslogAppender(const string& name, const string& syslogName, 
+        SyslogAppender(const std::string& name, const std::string& syslogName, 
                        int facility = LOG_USER);
         virtual ~SyslogAppender();
 
@@ -71,7 +71,7 @@ namespace log4cpp {
          **/
         virtual void open();
 
-        const string _syslogName;
+        const std::string _syslogName;
         int _facility;
         Layout* _layout;
     };

@@ -18,8 +18,8 @@ namespace log4cpp {
 
     class FileAppender : public Appender {
         public:
-        FileAppender(const string& name, const string& fileName);
-        FileAppender(const string& name, int fd);
+        FileAppender(const std::string& name, const std::string& fileName);
+        FileAppender(const std::string& name, int fd);
         virtual ~FileAppender();
         
         virtual void doAppend(const LoggingEvent& event);
@@ -29,7 +29,7 @@ namespace log4cpp {
         virtual void setLayout(Layout* layout);
 
         protected:
-        const string _fileName;
+        const std::string _fileName;
         int _fd;
         Layout* _layout;
     };
