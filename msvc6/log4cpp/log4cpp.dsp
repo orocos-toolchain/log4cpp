@@ -167,11 +167,11 @@ SOURCE=..\..\src\OstreamAppender.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\src\OstringStream.cpp
+SOURCE=..\..\src\PatternLayout.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\src\PatternLayout.cpp
+SOURCE=..\..\src\PortabilityImpl.cpp
 # End Source File
 # Begin Source File
 
@@ -332,10 +332,6 @@ SOURCE=..\..\include\log4cpp\threading\OmniThreads.hh
 # Begin Source File
 
 SOURCE=..\..\include\log4cpp\OstreamAppender.hh
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\include\log4cpp\OstringStream.hh
 # End Source File
 # Begin Source File
 

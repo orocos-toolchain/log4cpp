@@ -11,8 +11,10 @@
 #define _LOG4CPP_CATEGORYSTREAM_HH
 
 #include <log4cpp/Portability.hh>
-#include <log4cpp/OstringStream.hh>
 #include <log4cpp/Priority.hh>
+#ifdef LOG4CPP_HAVE_SSTREAM
+#include <sstream>
+#endif
 
 namespace log4cpp {
 
@@ -83,7 +85,7 @@ namespace log4cpp {
         template<typename T> CategoryStream& operator<<(const T& t) {
             if (getPriority() != Priority::NOTSET) {
                 if (!_buffer) {
-                    if (!(_buffer = new OstringStream)) {
+                    if (!(_buffer = new std::ostringstream)) {
                         // XXX help help help
                     }
                 }
@@ -95,7 +97,7 @@ namespace log4cpp {
         private:
         Category& _category;
         Priority::Value _priority;
-        OstringStream* _buffer;
+        std::ostringstream* _buffer;
     };
 
 }

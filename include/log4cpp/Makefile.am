@@ -2,7 +2,6 @@ SUBDIRS = threading
 
 liblog4cppincludedir = $(includedir)/log4cpp
 liblog4cppinclude_HEADERS =  \
-	OstringStream.hh \
 	Appender.hh \
 	AppenderSkeleton.hh \
 	FixedContextCategory.hh \
@@ -28,7 +27,6 @@ liblog4cppinclude_HEADERS =  \
 	LoggingEvent.hh \
 	Priority.hh \
 	NDC.hh \
-	OstringStream.hh \
 	Log4cppCleanup.hh \
 	TimeStamp.hh \
 	Filter.hh \

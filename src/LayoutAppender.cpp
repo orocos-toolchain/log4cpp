@@ -8,7 +8,6 @@
  */
 
 #include "PortabilityImpl.hh"
-#include <log4cpp/OstringStream.hh>
 #include <log4cpp/LayoutAppender.hh>
 
 namespace log4cpp {

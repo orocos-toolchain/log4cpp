@@ -12,8 +12,10 @@
 #include <log4cpp/Portability.hh>
 #include <log4cpp/Layout.hh>
 #include <log4cpp/Configurator.hh>
-#include <log4cpp/OstringStream.hh>
 #include <vector>
+#ifdef LOG4CPP_HAVE_SSTREAM
+#include <sstream>
+#endif
 
 namespace log4cpp {
 
@@ -89,7 +91,7 @@ namespace log4cpp {
         class LOG4CPP_EXPORT PatternComponent {
             public:
             inline virtual ~PatternComponent() {};
-            virtual void append(OstringStream& out, const LoggingEvent& event) = 0;
+            virtual void append(std::ostringstream& out, const LoggingEvent& event) = 0;
         };
 
         private:

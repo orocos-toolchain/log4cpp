@@ -8,9 +8,11 @@
  */
 
 #include "PortabilityImpl.hh"
-#include <log4cpp/OstringStream.hh>
 #include <log4cpp/BasicLayout.hh>
 #include <log4cpp/Priority.hh>
+#ifdef LOG4CPP_HAVE_SSTREAM
+#include <sstream>
+#endif
 
 namespace log4cpp {
 
@@ -21,7 +23,7 @@ namespace log4cpp {
     }
 
     std::string BasicLayout::format(const LoggingEvent& event) {
-        OstringStream message;
+        std::ostringstream message;
 
         const std::string& priorityName = Priority::getPriorityName(event.priority);
         message << event.timeStamp.getSeconds() << " " << priorityName << " " 

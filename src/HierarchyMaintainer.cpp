@@ -8,7 +8,6 @@
  */
 
 #include "PortabilityImpl.hh"
-#include <log4cpp/OstringStream.hh>
 
 #ifdef LOG4CPP_HAVE_IO_H
 #    include <io.h>

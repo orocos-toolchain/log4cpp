@@ -31,7 +31,6 @@ liblog4cpp_la_SOURCES = \
 	LoggingEvent.cpp \
 	Priority.cpp \
 	NDC.cpp \
-	OstringStream.cpp \
 	Filter.cpp \
 	Log4cppCleanup.cpp \
 	TimeStamp.cpp \
@@ -46,6 +45,8 @@ liblog4cpp_la_SOURCES = \
 	MSThreads.cpp \
 	OmniThreads.cpp \
 	PThreads.cpp \
-	PortabilityImpl.hh
+	PortabilityImpl.hh \
+	PortabilityImpl.cpp
+
 
 liblog4cpp_la_LDFLAGS = -version-info @LT_VERSION@

@@ -11,7 +11,6 @@
 #define _LOG4CPP_APPENDERSKELETON_HH
 
 #include <log4cpp/Portability.hh>
-#include <log4cpp/OstringStream.hh>
 #include <log4cpp/Appender.hh>
 #include <log4cpp/Filter.hh>
 

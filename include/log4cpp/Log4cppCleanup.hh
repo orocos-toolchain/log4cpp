@@ -11,7 +11,6 @@
 #define _LOG4CPP_LOG4CPPCLEANUP_HH
 
 #include <log4cpp/Portability.hh>
-#include <log4cpp/OstringStream.hh>
 
 namespace log4cpp {
 

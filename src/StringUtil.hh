@@ -13,11 +13,21 @@
 #include <string>
 #include <vector>
 #include <climits>
+#include <stdarg.h>
 
 namespace log4cpp {
 
     class StringUtil {
         public:
+
+        /**
+           Returns a string contructed from the a format specifier
+           and a va_list of arguments, analogously to vprintf(3).
+           @param format the format specifier.
+           @param args the va_list of arguments.
+        **/
+        static std::string vform(const char* format, va_list args);
+
         /**
            Returns a string identical to the given string but without leading
            or trailing HTABs or spaces.

@@ -5,7 +5,6 @@
  */
 
 #include "PortabilityImpl.hh"
-#include <log4cpp/OstringStream.hh>
 #ifdef LOG4CPP_HAVE_IO_H
 #    include <io.h>
 #endif
@@ -18,6 +17,9 @@
 #include <fcntl.h>
 #include <log4cpp/RollingFileAppender.hh>
 #include <log4cpp/Category.hh>
+#ifdef LOG4CPP_HAVE_SSTREAM
+#include <sstream>
+#endif
 
 namespace log4cpp {
 
@@ -51,7 +53,7 @@ namespace log4cpp {
     void RollingFileAppender::rollOver() {
         ::close(_fd);
         if (_maxBackupIndex > 0) {
-            OstringStream oldName;
+            std::ostringstream oldName;
             oldName << _fileName << "." << _maxBackupIndex << std::ends;
             ::remove(oldName.str().c_str());
             size_t n = _fileName.length() + 1;

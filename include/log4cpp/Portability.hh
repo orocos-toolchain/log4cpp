@@ -28,4 +28,14 @@
 #    pragma warning( disable : 4251 ) // "class XXX should be exported"
 #endif
 
+#ifndef LOG4CPP_HAVE_SSTREAM
+#include <strstream>
+namespace std {
+    class LOG4CPP_EXPORT ostringstream : public ostrstream {
+        public:
+        std::string str();
+    };
+}
+#endif
+
 #endif

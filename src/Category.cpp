@@ -13,10 +13,10 @@
 #    include <unistd.h>
 #endif
 
-#include <log4cpp/OstringStream.hh>
 #include <log4cpp/Category.hh>
 #include <log4cpp/HierarchyMaintainer.hh>
 #include <log4cpp/NDC.hh>
+#include "StringUtil.hh"
 
 namespace log4cpp {
 
@@ -251,10 +251,7 @@ namespace log4cpp {
     void Category::_logUnconditionally(Priority::Value priority, 
                                        const char* format, 
                                        va_list arguments) throw() {
-        OstringStream messageBuffer;
-
-        messageBuffer.vform(format, arguments);
-        _logUnconditionally2(priority, messageBuffer.str());
+        _logUnconditionally2(priority, StringUtil::vform(format, arguments));
     }
     
     void Category::_logUnconditionally2(Priority::Value priority, 

@@ -10,7 +10,6 @@
 
 #include <log4cpp/PatternLayout.hh>
 #include <log4cpp/Priority.hh>
-#include <log4cpp/OstringStream.hh>
 #include <log4cpp/NDC.hh>
 #include <log4cpp/TimeStamp.hh>
 
@@ -51,7 +50,7 @@ namespace log4cpp {
             _literal(literal) {
         }
 
-        virtual void append(OstringStream& out, const LoggingEvent& event) {
+        virtual void append(std::ostringstream& out, const LoggingEvent& event) {
             out << _literal;
         }
 
@@ -73,7 +72,7 @@ namespace log4cpp {
             }
         }
 
-        virtual void append(OstringStream& out, const LoggingEvent& event) {
+        virtual void append(std::ostringstream& out, const LoggingEvent& event) {
             if (_precision == -1) {
                 out << event.categoryName;
             } else {
@@ -95,31 +94,31 @@ namespace log4cpp {
     };
 
     struct MessageComponent : public PatternLayout::PatternComponent {
-        virtual void append(OstringStream& out, const LoggingEvent& event) {
+        virtual void append(std::ostringstream& out, const LoggingEvent& event) {
             out << event.message;
         }
     };
 
     struct NDCComponent : public PatternLayout::PatternComponent {
-        virtual void append(OstringStream& out, const LoggingEvent& event) {
+        virtual void append(std::ostringstream& out, const LoggingEvent& event) {
             out << event.ndc;
         }
     };
 
     struct PriorityComponent : public PatternLayout::PatternComponent {
-        virtual void append(OstringStream& out, const LoggingEvent& event) {
+        virtual void append(std::ostringstream& out, const LoggingEvent& event) {
             out << Priority::getPriorityName(event.priority);
         }
     };
 
     struct ThreadNameComponent : public PatternLayout::PatternComponent {
-        virtual void append(OstringStream& out, const LoggingEvent& event) {
+        virtual void append(std::ostringstream& out, const LoggingEvent& event) {
             out << event.threadName;
         }
     };
 
     struct ProcessorTimeComponent : public PatternLayout::PatternComponent {
-        virtual void append(OstringStream& out, const LoggingEvent& event) {
+        virtual void append(std::ostringstream& out, const LoggingEvent& event) {
             out << ::clock();
         }
     };
@@ -148,14 +147,14 @@ namespace log4cpp {
             }
         }
 
-        virtual void append(OstringStream& out, const LoggingEvent& event) {
+        virtual void append(std::ostringstream& out, const LoggingEvent& event) {
             struct tm *currentTime;
             time_t t = event.timeStamp.getSeconds();
             currentTime = std::localtime(&t);
             char formatted[100];
             std::string timeFormat;
             if (_printMillis) {
-                OstringStream formatStream;
+                std::ostringstream formatStream;
                 formatStream << _timeFormat1 
                              << std::setw(3) << std::setfill('0')
                              << event.timeStamp.getMilliSeconds()
@@ -175,13 +174,13 @@ namespace log4cpp {
     };
 
     struct SecondsSinceEpochComponent : public PatternLayout::PatternComponent {
-        virtual void append(OstringStream& out, const LoggingEvent& event) {
+        virtual void append(std::ostringstream& out, const LoggingEvent& event) {
             out << event.timeStamp.getSeconds();
         }
     };
 
     struct MillisSinceEpochComponent : public PatternLayout::PatternComponent {
-        virtual void append(OstringStream& out, const LoggingEvent& event) {
+        virtual void append(std::ostringstream& out, const LoggingEvent& event) {
 #ifdef LOG4CPP_HAVE_INT64_T
             int64_t t = event.timeStamp.getSeconds() -
                 TimeStamp::getStartTime().getSeconds();
@@ -216,8 +215,8 @@ namespace log4cpp {
             delete _component;
         }
 
-        virtual void append(OstringStream& out, const LoggingEvent& event) {
-            log4cpp::OstringStream s;
+        virtual void append(std::ostringstream& out, const LoggingEvent& event) {
+            std::ostringstream s;
             _component->append(s, event);
             std::string msg = s.str();
             if (_maxWidth > 0) {
@@ -298,7 +297,7 @@ namespace log4cpp {
                     }                        
                 }
                 if (!conversionStream.get(ch)) {
-                    OstringStream msg;
+                    std::ostringstream msg;
                     msg << "unterminated conversion specifier in '" << conversionPattern << "' at index " << conversionStream.tellg();
                     throw ConfigureFailure(msg.str());
                 }
@@ -324,7 +323,7 @@ namespace log4cpp {
                     break;
                 case 'n':
                     {
-                        OstringStream endline;
+                        std::ostringstream endline;
                         endline << std::endl;
                         literal += endline.str();
                     }
@@ -351,7 +350,7 @@ namespace log4cpp {
                     component = new NDCComponent();
                     break;
                 default:
-                    OstringStream msg;
+                    std::ostringstream msg;
                     msg << "unknown conversion specifier '" << ch << "' in '" << conversionPattern << "' at index " << conversionStream.tellg();
                     throw ConfigureFailure(msg.str());                    
                 }
@@ -383,7 +382,7 @@ namespace log4cpp {
     }
 
     std::string PatternLayout::format(const LoggingEvent& event) {
-        OstringStream message;
+        std::ostringstream message;
 
         for(ComponentVector::const_iterator i = _components.begin();
             i != _components.end(); ++i) {

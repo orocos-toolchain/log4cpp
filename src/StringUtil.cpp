@@ -7,8 +7,56 @@
  */
 #include "StringUtil.hh"
 #include <iterator>
+#include <stdio.h>
+
+#if defined(_MSC_VER)
+    #define VSNPRINTF _vsnprintf
+#else
+#ifdef LOG4CPP_HAVE_SNPRINTF
+    #define VSNPRINTF vsnprintf
+#else
+/* use alternative snprintf() from http://www.ijs.si/software/snprintf/ */
+
+#define HAVE_SNPRINTF
+#define PREFER_PORTABLE_SNPRINTF
+
+#include <stdlib.h>
+#include <stdarg.h>
+
+extern "C" {
+#include "snprintf.c"
+}
+
+#define VSNPRINTF portable_vsnprintf
+
+#endif // LOG4CPP_HAVE_SNPRINTF
+#endif // _MSC_VER
 
 namespace log4cpp {
+
+    std::string StringUtil::vform(const char* format, va_list args) {
+	size_t size = 1024;
+	char* buffer = new char[size];
+            
+	while (1) {
+	    int n = VSNPRINTF(buffer, size, format, args);
+                
+	    // If that worked, return a string.
+	    if (n > -1 && n < size) {
+		std::string s(buffer);
+		delete [] buffer;
+		return s;
+	    }
+                
+	    // Else try again with more space.
+            size = (n > -1) ?
+                n + 1 :   // ISO/IEC 9899:1999
+                size * 2; // twice the old size
+                
+	    delete [] buffer;
+	    buffer = new char[size];
+	}
+    }
 
     std::string StringUtil::trim(const std::string& s) {
         // test for null string

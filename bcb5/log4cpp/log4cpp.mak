@@ -30,7 +30,7 @@ OBJFILES = \
     LoggingEvent.obj \
     NDC.obj \
     OstreamAppender.obj  \
-    OstringStream.obj \
+    PortabilityImpl.obj \
     PatternLayout.obj	 \
     Priority.obj \
     RemoteSyslogAppender.obj  \

@@ -14,7 +14,7 @@ USEUNIT("..\..\src\Log4cppCleanup.cpp");
 USEUNIT("..\..\src\LoggingEvent.cpp");
 USEUNIT("..\..\src\NDC.cpp");
 USEUNIT("..\..\src\OstreamAppender.cpp");
-USEUNIT("..\..\src\OstringStream.cpp");
+USEUNIT("..\..\src\PortabilityImpl.cpp");
 USEUNIT("..\..\src\Priority.cpp");
 USEUNIT("..\..\src\SimpleLayout.cpp");
 USEUNIT("..\..\src\StringQueueAppender.cpp");
