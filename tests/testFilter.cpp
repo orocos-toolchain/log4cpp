@@ -41,19 +41,19 @@ int main(int argc, char** argv) {
 
     bool resultsOK = true;
     
-    cout << "decision 1 (should be 1): " << filter.decide(log4cpp::LoggingEvent("accept", "bla", "ndc", log4cpp::Priority::INFO)) << endl;
+    std::cout << "decision 1 (should be 1): " << filter.decide(log4cpp::LoggingEvent("accept", "bla", "ndc", log4cpp::Priority::INFO)) << std::endl;
 
-    cout << "decision 2 (should be -1): " << filter.decide(log4cpp::LoggingEvent("deny", "bla", "ndc", log4cpp::Priority::INFO)) << endl;
+    std::cout << "decision 2 (should be -1): " << filter.decide(log4cpp::LoggingEvent("deny", "bla", "ndc", log4cpp::Priority::INFO)) << std::endl;
 
-    cout << "decision 3 (should be 0): " << filter.decide(log4cpp::LoggingEvent("neither", "bla", "ndc", log4cpp::Priority::INFO)) << endl;
+    std::cout << "decision 3 (should be 0): " << filter.decide(log4cpp::LoggingEvent("neither", "bla", "ndc", log4cpp::Priority::INFO)) << std::endl;
 
-    cout << "decision 4 (should be 0): " << filter.decide(log4cpp::LoggingEvent("neither", "bla", "test", log4cpp::Priority::INFO)) << endl;
+    std::cout << "decision 4 (should be 0): " << filter.decide(log4cpp::LoggingEvent("neither", "bla", "test", log4cpp::Priority::INFO)) << std::endl;
 
     filter.setChainedFilter(new TestFilter2());
     
-    cout << "decision 5 (should be 0): " << filter.decide(log4cpp::LoggingEvent("neither", "bla", "ndc", log4cpp::Priority::INFO)) << endl;
+    std::cout << "decision 5 (should be 0): " << filter.decide(log4cpp::LoggingEvent("neither", "bla", "ndc", log4cpp::Priority::INFO)) << std::endl;
 
-    cout << "decision 6 (should be -1): " << filter.decide(log4cpp::LoggingEvent("neither", "bla", "test", log4cpp::Priority::INFO)) << endl;
+    std::cout << "decision 6 (should be -1): " << filter.decide(log4cpp::LoggingEvent("neither", "bla", "test", log4cpp::Priority::INFO)) << std::endl;
 
     return 0;
 }
