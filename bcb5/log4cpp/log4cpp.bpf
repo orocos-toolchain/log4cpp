@@ -4,6 +4,7 @@ USEUNIT("..\..\src\AppenderSkeleton.cpp");
 USEUNIT("..\..\src\BasicLayout.cpp");
 USEUNIT("..\..\src\Category.cpp");
 USEUNIT("..\..\src\FileAppender.cpp");
+USEUNIT("..\..\src\RollingFileAppender.cpp");
 USEUNIT("..\..\src\Filter.cpp");
 USEUNIT("..\..\src\FixedContextCategory.cpp");
 USEUNIT("..\..\src\HierarchyMaintainer.cpp");

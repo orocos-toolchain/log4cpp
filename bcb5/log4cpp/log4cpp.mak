@@ -34,6 +34,7 @@ OBJFILES = \
     PatternLayout.obj	 \
     Priority.obj \
     RemoteSyslogAppender.obj  \
+    RollingFileAppender.obj  \
     SimpleConfigurator.obj \
     SimpleLayout.obj \
     StringQueueAppender.obj \
