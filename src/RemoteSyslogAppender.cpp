@@ -140,8 +140,17 @@ namespace log4cpp {
 	sain.sin_port   = htons (_portNumber);
 	// NO, do NOT use htonl on _ipAddr. Is already in network order.
         sain.sin_addr.s_addr = _ipAddr;
-	int r = sendto (_socket, buf, len - 16 + len2, 0, (struct sockaddr *) &sain, sizeof (sain));
-	printf ("sendto: %d\n", r);
+	len = len - 16 + len2;
+	while (len > len2) {
+	    if (len > 900) {
+    		sendto (_socket, buf, 900, 0, (struct sockaddr *) &sain, sizeof (sain));
+		memmove (buf + len2, buf + 900, len - 900 - len2);
+		len -= (900 - len2);
+		// note: we might need to sleep a bit here
+	    } else {
+		sendto (_socket, buf, len, 0, (struct sockaddr *) &sain, sizeof (sain));
+	    }
+	}
 	delete buf;
     }
 
