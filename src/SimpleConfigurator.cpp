@@ -126,11 +126,12 @@ namespace log4cpp {
                     else if (layout.compare("pattern") == 0) {
                         log4cpp::PatternLayout *layout =
                             new log4cpp::PatternLayout();
+			char spaceChar;
+			initFile.get(spaceChar);
                         char pattern[1000];
                         initFile.getline(pattern, 1000);
-			pattern++; // skip space
                         layout->setConversionPattern(std::string(pattern));
-                        appender->setLayout(layout);
+			appender->setLayout(layout);
                     }
                     else {
                         throw ConfigureFailure("Invalid layout (" + layout +

@@ -3,7 +3,10 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 2002-01-08 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/SimpleConfigurator.cpp: skip space before PatternLayout 
 	pattern (Bug #500766).
-	
+
+	* src/SimpleConfigurator.cpp: fix screwy fix for Bug #500766,
+	now using Alex' method. (Obsoletes Patch #500832).
+
 2002-01-04 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/config-openvms.h: #include <inttypes.h> for int64_t.
 
