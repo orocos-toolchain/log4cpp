@@ -1,5 +1,16 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-11-28 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/snprintf.c: added portable snprintf 2.2 from 
+	http://www.ijs.si/software/snprintf/
+
+	* src/OstringStream.cpp: replace alternative snprintf with one in
+	snprintf.c.
+
+	* src/snprintf.c: add static cast from void* to const char*.
+
+	* include/log4cpp/config-openvms.h: added.
+	
 2001-11-26 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/TimeStamp.hh, include/log4cpp/Makefile.am,
 	src/TimeStamp.cpp, src/Makefile.am: added micro second
