@@ -28,10 +28,9 @@ namespace log4cpp {
         typedef int Mutex;
 
         /**
-           To avoid 'unused variable' compiler warnings we define ScopeLock
-           as an empty function rather than an empty object.
+           Dummy type 'int' defintion of ScopedLock;
         **/
-        static inline ScopedLock(Mutex& m) {};
+        typedef int ScopedLock;
 
         template<typename T> class ThreadLocalDataHolder {
             public:
