@@ -8,9 +8,8 @@
 
 #if defined(_MSC_VER)
 #    pragma warning( disable : 4786 )
-     using namespace std;
 #endif
 
 /* define if you have new iostreams */
-#define LOG4CPP_HAVE_STDIOSTREAM 1
+/* #undef LOG4CPP_HAVE_STDIOSTREAM */
 #endif
