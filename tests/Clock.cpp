@@ -4,6 +4,7 @@ static const char rcsid[] = "$Id$";
  * See the COPYING file for the terms of usage and distribution.
  */
 
+#include <stdlib.h>
 #include <sys/time.h>			// for struct timeval
 #ifdef __osf__
 #    include <machine/builtins.h>       // for __RPCC()
