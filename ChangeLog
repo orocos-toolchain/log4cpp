@@ -7,6 +7,9 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 
 	* src/NDC.cpp: added parentheses to return statement in _get() as
 	suggested by Derrick Hastings to fix #415160.
+
+	* include/log4cpp/PattenLayout.hh, src/PatternLayout.cpp: added
+	default conversion patterns.
 	
 2002-10-19 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/PatternLayout.hh, src/PatternLayout.cpp: 

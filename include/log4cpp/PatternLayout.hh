@@ -22,6 +22,27 @@ namespace log4cpp {
      **/
     class LOG4CPP_EXPORT PatternLayout : public Layout {
         public:
+        /**
+           The default conversion pattern
+        **/
+        static const char* DEFAULT_CONVERSION_PATTERN;
+
+        /**
+           A conversion pattern equivalent to the SimpleLayout.
+        **/
+        static const char* SIMPLE_CONVERSION_PATTERN;
+
+        /**
+           A conversion pattern equivalent to the BasicLayout.
+        **/
+        static const char* BASIC_CONVERSION_PATTERN;
+
+        /**
+           A conversion pattern equivalent to the TTCCLayout.
+           Note: TTCCLayout is in log4j but not log4cpp.
+        **/           
+        static const char* TTCC_CONVERSION_PATTERN;
+
         PatternLayout();
         virtual ~PatternLayout();
         
@@ -39,7 +60,7 @@ namespace log4cpp {
          * Sets the format of log lines handled by this
          * PatternLayout. By default, set to "%%m%%n".<br>
          * Format characters are as follows:<br>
-         * <li><b>%%</b> - a single percent sign</li>
+         * <li><b>%%%%</b> - a single percent sign</li>
          * <li><b>%%c</b> - the category</li>
          * <li><b>%%d</b> - the date\n
          *  Date format: The date format character may be followed by a date format 

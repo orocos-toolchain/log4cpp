@@ -242,7 +242,16 @@ namespace log4cpp {
         bool _alignLeft;
     };
 
+    const char* PatternLayout::DEFAULT_CONVERSION_PATTERN = "%m%n";
+    const char* PatternLayout::SIMPLE_CONVERSION_PATTERN = "%p - %m%n";
+    const char* PatternLayout::BASIC_CONVERSION_PATTERN = "%R %p %c %x: %m%n";
+    const char* PatternLayout::TTCC_CONVERSION_PATTERN = "%r [%t] %p %c %x - %m%n";
+
     PatternLayout::PatternLayout() {
+        try {
+            setConversionPattern(DEFAULT_CONVERSION_PATTERN);
+        } catch(ConfigureFailure& e) {
+        }
     }
 
     PatternLayout::~PatternLayout() {
