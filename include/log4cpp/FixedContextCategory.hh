@@ -77,18 +77,14 @@ namespace log4cpp {
         virtual Priority::Value getChainedPriority() const throw();
         
         /**
-         * Sets an Appender for this Category.
-         * This method passes ownership from the caller to the Category.
-         * @param appender The Appender this category has to log to.
+         * For the moment this method does nothing.
          **/
-        virtual void setAppender(Appender* appender);
+        virtual void addAppender(Appender* appender);
 
         /**
-         * Sets an Appender for this Category.
-         * This method does not pass ownership from the caller to the Category.
-         * @param appender The Appender this category has to log to.
+         * For the moment this method does nothing.
          **/
-        virtual void setAppender(Appender& appender);
+        virtual void addAppender(Appender& appender);
 
         /**
          * Returns the Appender for this Category, or NULL if no Appender has
@@ -98,16 +94,31 @@ namespace log4cpp {
         virtual Appender* getAppender() const;
 
         /**
+         * Returns the specified Appender for this Category, or NULL if 
+         * the Appender is not attached to this Category.
+         * @since 0.2.7
+         * @returns The Appender.
+         **/
+        virtual Appender* getAppender(const std::string& name) const;
+
+        /**
          * Removes all appenders set for this Category. Currently a Category
          * can have only one appender, but this may change in the future.
          **/
         virtual void removeAllAppenders();
 
         /**
-         * Returns true if the Category owns the Appender. In that case the
-         * Category destructor will delete the Appender.
+         * FixedContextAppenders cannot own Appenders.
+         * @returns false
          **/
         virtual bool ownsAppender() const throw();
+
+        /**
+         * FixedContextAppenders cannot own Appenders.
+         * @returns false
+         **/
+        bool FixedContextCategory::ownsAppender(Appender* appender)
+            const throw();
 
         /**
          * Call the appenders in the hierarchy starting at
