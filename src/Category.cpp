@@ -118,19 +118,23 @@ namespace log4cpp {
         if (appender == NULL)
             return;
         
-        if (ownsAppender())
-            delete _appender;
-        
-        _appender = appender;
-        _ownsAppender = true;    
+        if (appender != _appender) {
+            if (ownsAppender())
+                delete _appender;
+            
+            _appender = appender;
+            _ownsAppender = true;    
+        }
     }
     
     void Category::setAppender(Appender& appender) {
-        if (ownsAppender())
-            delete _appender;
-        
-        _appender = &appender;
-        _ownsAppender = false;    
+        if (&appender != _appender) {
+            if (ownsAppender())
+                delete _appender;
+            
+            _appender = &appender;
+            _ownsAppender = false;    
+        }
     }
     
     Appender* Category::getAppender() const {
