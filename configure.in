@@ -83,18 +83,22 @@ fi
 
 # check for extensions
 # ----------------------------------------------------------------------------
-AC_PATH_PROG(DOXYGEN, doxygen, , $PATH)
-if test x$DOXYGEN = x; then
-        if test "x$enable_doxygen" = xyes; then
-                AC_MSG_ERROR([could not find doxygen])
-        fi
+if test "x$enable_doxygen" = xno; then
         enable_doc=no
-else
-        enable_doc=yes
+else 
+        AC_PATH_PROG(DOXYGEN, doxygen, , $PATH)
+        if test x$DOXYGEN = x; then
+                if test "x$enable_doxygen" = xyes; then
+                        AC_MSG_ERROR([could not find doxygen])
+                fi
+                enable_doc=no
+        else
+                enable_doc=yes
+                AC_PATH_PROG(DOT, dot, , $PATH)
+        fi
 fi
 AM_CONDITIONAL(DOC, test x$enable_doc = xyes)
 
-AC_PATH_PROG(DOT, dot, , $PATH)
 if test x$DOT = x; then
         if test "x$enable_dot" = xyes; then
                 AC_MSG_ERROR([could not find dot])
@@ -103,7 +107,6 @@ if test x$DOT = x; then
 else
         enable_dot=yes
 fi
-
 AC_SUBST(enable_dot)
 AC_SUBST(enable_html_docs)
 AC_SUBST(enable_latex_docs)
