@@ -44,21 +44,34 @@ namespace log4cpp {
     }
 
     Category* HierarchyMaintainer::getExistingInstance(const std::string& name) {
+        threading::ScopedLock lock(_categoryMutex);
+        return _getExistingInstance(name);
+    }
+
+    Category* HierarchyMaintainer::_getExistingInstance(const std::string& name) {
 	Category* result = NULL;
+
         CategoryMap::iterator i = _categoryMap.find(name);
         if (_categoryMap.end() != i) {
-	    result = (*i).second;
-	}
+            result = (*i).second;
+        }
 
 	return result;
     }
 
     Category& HierarchyMaintainer::getInstance(const std::string& name) {
-	Category* result = getExistingInstance(name);
+        threading::ScopedLock lock(_categoryMutex);
+        return _getInstance(name);
+    }
 
+    /* assume lock is held */
+    Category& HierarchyMaintainer::_getInstance(const std::string& name) {
+        Category* result;
+        result = _getExistingInstance(name);
+        
         if (NULL == result) {            
             if (name == "") {
-		result = new Category(name, NULL, Priority::INFO);
+                result = new Category(name, NULL, Priority::INFO);
                 result->addAppender(new FileAppender("_", ::dup(fileno(stderr))));
             } else {
                 std::string parentName;
@@ -68,34 +81,42 @@ namespace log4cpp {
                 } else {
                     parentName = name.substr(0, dotIndex);
                 }
-                Category& parent = getInstance(parentName);
+                Category& parent = _getInstance(parentName);
                 result = new Category(name, &parent, Priority::NOTSET);
             }	  
             _categoryMap[name] = result; 
-	}
-
-	return *result;
+        }
+        return *result;
     }
 
     std::set<Category*>* HierarchyMaintainer::getCurrentCategories() const {
         std::set<Category*>* categories = new std::set<Category*>;
 
-        for(CategoryMap::const_iterator i = _categoryMap.begin(); i != _categoryMap.end(); i++) {
-            categories->insert((*i).second);
+        threading::ScopedLock lock(_categoryMutex);
+        {
+            for(CategoryMap::const_iterator i = _categoryMap.begin(); i != _categoryMap.end(); i++) {
+                categories->insert((*i).second);
+            }
         }
 
         return categories;
     }
 
     void HierarchyMaintainer::shutdown() {
-        for(CategoryMap::const_iterator i = _categoryMap.begin(); i != _categoryMap.end(); i++) {
-            ((*i).second)->removeAllAppenders();
+        threading::ScopedLock lock(_categoryMutex);
+        {
+            for(CategoryMap::const_iterator i = _categoryMap.begin(); i != _categoryMap.end(); i++) {
+                ((*i).second)->removeAllAppenders();
+            }
         }
     }
 
     void HierarchyMaintainer::deleteAllCategories() {
-        for(CategoryMap::const_iterator i = _categoryMap.begin(); i != _categoryMap.end(); i++) {
-            delete ((*i).second);
+        threading::ScopedLock lock(_categoryMutex);
+        {
+            for(CategoryMap::const_iterator i = _categoryMap.begin(); i != _categoryMap.end(); i++) {
+                delete ((*i).second);
+            }
         }
     }
 

@@ -68,14 +68,15 @@ namespace log4cpp {
         return _priority; 
     }
 
-    void Category::setPriority(Priority::Value priority) {
-        if ((priority != Priority::NOTSET) || (getParent() != NULL)) {
+    void Category::setPriority(Priority::Value priority)
+    throw(std::invalid_argument) {
+        if ((priority < Priority::NOTSET) || (getParent() != NULL)) {
             _priority = priority;
         } else {
             /* caller tried to set NOTSET priority to root Category. 
                Bad caller!
-               Will ignore for now.
             */
+            throw std::invalid_argument("cannot set priority NOTSET on Root Category");
         }
     }
     
@@ -83,90 +84,117 @@ namespace log4cpp {
         // REQUIRE(rootCategory->getPriority() != Priority::NOTSET)
         
         const Category* c = this;
-        while(c->getPriority() == Priority::NOTSET) { 
+        while(c->getPriority() >= Priority::NOTSET) { 
             c = c->getParent();
         }
         
         return c->getPriority();
     }
     
-    void Category::addAppender(Appender* appender) {
+    void Category::addAppender(Appender* appender) 
+    throw(std::invalid_argument) {
         if (appender) {
-            AppenderSet::iterator i = _appender.find(appender);
-            if (_appender.end() == i) {
-                // not found
-                _appender.insert(appender);
-                _ownsAppender[appender] = true;
+            threading::ScopedLock lock(_appenderSetMutex);
+            {
+                AppenderSet::iterator i = _appender.find(appender);
+                if (_appender.end() == i) {
+                    // not found
+                    _appender.insert(appender);
+                    _ownsAppender[appender] = true;
+                }
             }
+        } else {
+            throw std::invalid_argument("NULL appender");
         }
     }
     
     void Category::addAppender(Appender& appender) {
-        AppenderSet::iterator i = _appender.find(&appender);
-        if (_appender.end() == i) {
-            _appender.insert(&appender);
-            _ownsAppender[&appender] = false;
+        threading::ScopedLock lock(_appenderSetMutex);
+        {
+            AppenderSet::iterator i = _appender.find(&appender);
+            if (_appender.end() == i) {
+                _appender.insert(&appender);
+                _ownsAppender[&appender] = false;
+            }
         }
     }
     
     Appender* Category::getAppender() const {
-        AppenderSet::const_iterator i = _appender.begin();
-        return (_appender.end() == i) ? NULL : *i;
+        threading::ScopedLock lock(_appenderSetMutex);
+        {
+            AppenderSet::const_iterator i = _appender.begin();
+            return (_appender.end() == i) ? NULL : *i;
+        }
     }
 
     Appender* Category::getAppender(const std::string& name) const {
-        AppenderSet::const_iterator i = _appender.begin();
-        if (_appender.end() != i) {
-            // found
-            return((*i)->getAppender(name));
+        threading::ScopedLock lock(_appenderSetMutex);
+        {
+            AppenderSet::const_iterator i = _appender.begin();
+            if (_appender.end() != i) {
+                // found
+                return((*i)->getAppender(name));
+            }
+            else {
+                return(NULL);
+            }
         }
-		else {
-			return(NULL);
-		}
     }
 
     void Category::removeAllAppenders() {
-        AppenderSet::iterator i2, i = _appender.begin();
-        while (i != _appender.end()) {
-            // found
-            OwnsAppenderMap::iterator i3;
-            if (ownsAppender(*i, i3)) {
-                _ownsAppender.erase(i3);
-                delete (*i);
+        threading::ScopedLock lock(_appenderSetMutex);
+        {
+            AppenderSet::iterator i2;
+            for (AppenderSet::iterator i = _appender.begin();
+                 i != _appender.end(); i++) {
+                // found
+                OwnsAppenderMap::iterator i3;
+                if (ownsAppender(*i, i3)) {
+                    _ownsAppender.erase(i3);
+                    delete (*i);
+                }
+                
+                i2 = i;
+                _appender.erase(i2);
             }
-
-            i2 = i++;
-            _appender.erase(i2);
         }
     }
 
     void Category::removeAppender(Appender* appender) {
-        AppenderSet::iterator i = _appender.find(appender);
-        if (_appender.end() != i) {            
-            OwnsAppenderMap::iterator i2;
-            if (ownsAppender(*i, i2)) {
-                _ownsAppender.erase(i2);
-                delete (*i);
+        threading::ScopedLock lock(_appenderSetMutex);
+        {
+            AppenderSet::iterator i = _appender.find(appender);
+            if (_appender.end() != i) {            
+                OwnsAppenderMap::iterator i2;
+                if (ownsAppender(*i, i2)) {
+                    _ownsAppender.erase(i2);
+                    delete (*i);
+                }
+                _appender.erase(i);
+            } else {
+                // appender not found 
             }
-            _appender.erase(i);
-        } else {
-            // appender not found 
         }
     }
 
     bool Category::ownsAppender(Appender* appender) const throw() {
         bool owned = false;
 
-        if (NULL != appender) {            
-            OwnsAppenderMap::const_iterator i = _ownsAppender.find(appender);
-            if (_ownsAppender.end() != i) {
-                owned = (*i).second;
+        threading::ScopedLock lock(_appenderSetMutex);
+        {
+            if (NULL != appender) {            
+                OwnsAppenderMap::const_iterator i =
+                    _ownsAppender.find(appender);
+                if (_ownsAppender.end() != i) {
+                    owned = (*i).second;
+                }
             }
         }
 
         return owned;
     }
 
+    /* assume lock is held */
     bool Category::ownsAppender(Appender* appender, 
                                 Category::OwnsAppenderMap::iterator& i2) throw() {
         bool owned = false;
@@ -185,12 +213,15 @@ namespace log4cpp {
     }
 
     void Category::callAppenders(const LoggingEvent& event) throw() {
-        if (!_appender.empty()) {
-            for(AppenderSet::const_iterator i = _appender.begin(); i != _appender.end(); i++) {
-                (*i)->doAppend(event);
+        threading::ScopedLock lock(_appenderSetMutex);
+        {
+            if (!_appender.empty()) {
+                for(AppenderSet::const_iterator i = _appender.begin();
+                    i != _appender.end(); i++) {
+                    (*i)->doAppend(event);
+                }
             }
         }
-
         if (getAdditivity() && (getParent() != NULL)) {
             getParent()->callAppenders(event);
         }

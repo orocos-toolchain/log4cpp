@@ -44,7 +44,7 @@ namespace log4cpp {
         return result;
     }
     
-    void FixedContextCategory::addAppender(Appender* appender) {
+    void FixedContextCategory::addAppender(Appender* appender) throw() {
         // XXX do nothing for now
     }
     

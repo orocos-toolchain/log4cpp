@@ -9,6 +9,7 @@
 
 #include "log4cpp/Portability.hh"
 #include "log4cpp/NDC.hh"
+#include "log4cpp/threading/Threading.hh"
 
 namespace log4cpp {
 
@@ -23,7 +24,9 @@ namespace log4cpp {
         fullMessage(parent.message + " " + message) {
     }
 
-    NDC NDC::_nDC;
+    namespace {
+        threading::ThreadLocalDataHolder<NDC> _nDC;
+    }
 
     void NDC::clear() {
         getNDC()._clear();
@@ -58,7 +61,14 @@ namespace log4cpp {
     }
 
     NDC& NDC::getNDC() {
-        return _nDC;
+        NDC* nDC = _nDC.get();
+
+        if (!nDC) {
+            nDC = new NDC();
+            _nDC.reset(nDC);
+        }
+
+        return *nDC;
     }
 
     NDC::NDC() {
