@@ -130,30 +130,34 @@ namespace log4cpp {
     }
 
     void RemoteSyslogAppender::_append(const LoggingEvent& event) {
-	std::string message(_getLayout().format(event));
-	int len = message.length() + 16;
-	char *buf = new char [len];
+	const std::string message(_getLayout().format(event));
+        int messageLength = message.length();
+	char *buf = new char [messageLength + 16];
         int priority = _facility + toSyslogPriority(event.priority);
-	int len2 = sprintf (buf, "<%d>", priority);
-	memcpy (buf + len2, message.data(), len - 16);
+	int preambleLength = sprintf (buf, "<%d>", priority);
+	memcpy (buf + preambleLength, message.data(), messageLength);
+
 	sockaddr_in sain;
 	sain.sin_family = AF_INET;
 	sain.sin_port   = htons (_portNumber);
 	// NO, do NOT use htonl on _ipAddr. Is already in network order.
         sain.sin_addr.s_addr = _ipAddr;
-	len = len - 16 + len2;
-	while (len > len2) {
-	    if (len > 900) {
+
+	while (messageLength > 0) {
+            /* if packet larger than maximum (900 bytes), split
+               into two or more syslog packets. */
+	    if (preambleLength + messageLength > 900) {
     		sendto (_socket, buf, 900, 0, (struct sockaddr *) &sain, sizeof (sain));
-		std::memmove (buf + len2, buf + 900, len - 900 - len2);
-		len -= (900 - len2);
+                messageLength -= (900 - preambleLength);
+		std::memmove (buf + preambleLength, buf + 900, messageLength);
 		// note: we might need to sleep a bit here
 	    } else {
-		sendto (_socket, buf, len, 0, (struct sockaddr *) &sain, sizeof (sain));
+		sendto (_socket, buf, preambleLength + messageLength, 0, (struct sockaddr *) &sain, sizeof (sain));
 		break;
 	    }
 	}
-	delete buf;
+
+	delete[] buf;
     }
 
     bool RemoteSyslogAppender::reopen() {
