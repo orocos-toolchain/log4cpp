@@ -40,7 +40,7 @@ namespace log4cpp {
          * Priority::NOTSET
          **/
         FixedContextCategory(const std::string& name, 
-                             const std::string& context);
+                             const std::string& context = "");
         
         
         /**
