@@ -16,6 +16,15 @@ namespace log4cpp {
 
     class Priority {
         public:
+
+        /*
+         * Work around rudeness in windows.h on Win32.
+         */
+#ifdef ERROR
+#   define _LOG4CPP_TMP_ERROR_VALUE ERROR
+#   undef ERROR
+#endif // ERROR
+
         typedef enum {EMERG  = 0, 
 		      FATAL  = 0,
                       ALERT  = 100,
@@ -27,6 +36,11 @@ namespace log4cpp {
                       DEBUG  = 700,
                       NOTSET = 800
         } PriorityLevel;
+
+#ifdef _LOG4CPP_TMP_ERROR_VALUE
+#   define ERROR _LOG4CPP_TMP_ERROR_VALUE
+#   undef _LOG4CPP_TMP_ERROR_VALUE
+#endif // _LOG4CPP_TMP_ERROR_VALUE
 
         typedef int Value;
 
