@@ -20,8 +20,6 @@ namespace log4cpp {
         
         priority++;
         priority /= 100;
-        return ((priority < 0) || (priority > 8)) ?
-            names[8] :
-            names[priority - 1];
+        return names[((priority < 0) || (priority > 8)) ? 8 : priority];
     }
 }
