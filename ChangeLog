@@ -8,6 +8,7 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	#411902 invalid AppenderMap iterator
 	#412008 memory leak in OstringStream::str()
 	#412232 _append problem
+	#414958 printf style logging kaputt
 	
 2001-04-06 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	Added class Filter, with which Appenders can filter out LoggingEvents
