@@ -21,6 +21,8 @@
 #else
 #include <netdb.h>
 #include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 #endif
 
 namespace log4cpp {
