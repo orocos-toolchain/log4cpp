@@ -39,16 +39,9 @@ namespace log4cpp {
         static void setMaxDepth(int maxDepth);
         static NDC& getNDC();
 
-        protected:
         NDC();
+        virtual ~NDC();
 
-#if defined(__GNUG__) && (__GNUC__ == 2) && (__GNUC_MINOR__ <= 95)
-        public:
-        virtual ~NDC();
-#else
-        protected: 
-        virtual ~NDC();
-#endif
         protected:
         virtual void _clear();
         virtual ContextStack* _cloneStack();
