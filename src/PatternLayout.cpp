@@ -347,7 +347,10 @@ namespace log4cpp {
                 case 'R':
                     component = new SecondsSinceEpochComponent();
                     break;
-                case 'u':
+		case 't':
+		    component = new ThreadNameComponent();
+		    break;
+		case 'u':
                     component = new ProcessorTimeComponent();
                     break;
                 case 'x':
