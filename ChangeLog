@@ -1,7 +1,21 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
 2002-02-18 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* Release as 0.3.0
+	
 	* INSTALL: added some platform specific build instructions.
+
+	* tests/Clock.hh: replaced "long long" with int64_t.
+
+	* src/OstringStream.cpp: fix typo.
+
+	* src/Appender.cpp: added missing Mutex.
+
+	* include/log4cpp/threading/OmniThreads.hh: added Doxygen comments.
+
+	* NEWS: release 0.3.0.
+	
+	* configure.in: upped release to 0.3.0 and LT version to 4.0.0
 	
 2002-02-11 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* configure.in: integrated check of omnithreads.
