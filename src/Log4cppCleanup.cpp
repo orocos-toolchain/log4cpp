@@ -29,11 +29,13 @@ namespace log4cpp {
         std::cerr << "Log4cppCleanup destruct" << std::endl;
 #endif
     
-        if (HierarchyMaintainer::_defaultMaintainer)
-            delete HierarchyMaintainer::_defaultMaintainer;
+        delete HierarchyMaintainer::_defaultMaintainer;
+        HierarchyMaintainer::_defaultMaintainer = NULL;
+
         if (Appender::_allAppenders) {
             Appender::_deleteAllAppenders();
             delete Appender::_allAppenders;
+            Appender::_allAppenders = NULL;
         }            
     }
 }
