@@ -1,7 +1,7 @@
 /*
  * PatternLayout.hh
  *
- * Copyright 2001, Glen Scott. All rights reserved.
+ * Copyright 2002, Bastiaan Bakker. All rights reserved.
  *
  * See the COPYING file for the terms of usage and distribution.
  */
@@ -11,6 +11,9 @@
 
 #include <log4cpp/Portability.hh>
 #include <log4cpp/Layout.hh>
+#include <log4cpp/Configurator.hh>
+#include <log4cpp/OstringStream.hh>
+#include <vector>
 
 namespace log4cpp {
 
@@ -45,7 +48,6 @@ namespace log4cpp {
          *  "Wed Jan 02 02:03:55 1980". The date format specifier admits the same syntax 
          *  as the ANSI C function strftime, with 1 addition. The addition is the specifier
          *  %%l for milliseconds, padded with zeros to make 3 digits.</li>
-         * <li><b>%%D</b> - seconds since 1970</li>
          * <li><b>%%m</b> - the message</li>
          * <li><b>%%n</b> - the platform specific line separator</li>
          * <li><b>%%p</b> - the priority</li>
@@ -54,27 +56,26 @@ namespace log4cpp {
          * <li><b>%%u</b> - clock ticks since process start</li>
          * <li><b>%%x</b> - the NDC</li>
          * @param conversionPattern the conversion pattern
-         * @return true if conversionPattern is a valid
-         * conversion pattern, false if it's invalid
+         * @exception ConfigureFailure if the pattern is invalid
          **/
-        bool setConversionPattern(std::string conversionPattern);
+        virtual void setConversionPattern(const std::string& conversionPattern)
+            throw(ConfigureFailure);
+
+        virtual std::string getConversionPattern() const;
+
+        virtual void clearConversionPattern();
+
+        class LOG4CPP_EXPORT PatternComponent {
+            public:
+            inline virtual ~PatternComponent() {};
+            virtual void append(OstringStream& out, const LoggingEvent& event) = 0;
+        };
 
         private:
-        std::string convPatn;	// The conversion pattern set for this layout
-        /**
-         * Method to format with current conversion pattern, success
-         * returned as false if invalid format string (and empty string
-         * returned), success returned true and string returned containing
-         * message converted according to conversion pattern.
-         * The reason for this method is to avoid having to have 
-         * "checkValidityOfConversionPattern" code and also
-         * "convertUsingConversionPattern" code. With this method,
-         * the "setConversionPattern" can call doFormat with a fake
-         * LoggingEvent to see if the conversionPattern is valid.
-         */
-        std::string doFormat(const LoggingEvent& event, 
-                             std::string conversionPattern,
-                             bool *success);        
+        typedef std::vector<PatternComponent*> ComponentVector; 
+        ComponentVector _components;
+
+        std::string _conversionPattern;
     };        
 }
 

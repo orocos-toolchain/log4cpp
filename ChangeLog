@@ -1,5 +1,12 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-10-19 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/PatternLayout.hh, src/PatternLayout.cpp: 
+	replaced PatternLayout implementation: it now preparses the message
+	format for quicker layouting and implements format specifiers, 
+	e.g. '%-5p'.
+	* tests/testPattern.cpp: added tests for format specifiers and more.
+
 2002-10-10 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/threading/MSThreads.hh: added #include<string>
 
@@ -7,6 +14,8 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	* log4cpp.spec.in: don't require log4cpp for log4cpp-doc.
 
 	* doc/Makefile.am: fix install location.	
+
+	* Makefile.am: use 'rpmbuild' instead of 'rpm'. 
 
 2002-10-05 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* release as 0.3.2

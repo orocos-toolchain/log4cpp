@@ -1,20 +1,18 @@
-
 /*
  * PatternLayout.cpp
  *
- * Copyright 2001, Glen Scott. All rights reserved.
+ * Copyright 2002, Bastiaan Bakker. All rights reserved.
  *
  * See the COPYING file for the terms of usage and distribution.
  */
 
 #include <log4cpp/Portability.hh>
 
-#ifdef LOG4CPP_HAVE_UNISTD_H
-#include <unistd.h>
-#endif
-
-#include <string>
-#include <time.h>
+#include <log4cpp/PatternLayout.hh>
+#include <log4cpp/Priority.hh>
+#include <log4cpp/OstringStream.hh>
+#include <log4cpp/NDC.hh>
+#include <log4cpp/TimeStamp.hh>
 
 #ifdef LOG4CPP_HAVE_SSTREAM
 #include <sstream>
@@ -23,14 +21,8 @@
 #endif
 
 #include <iomanip>
-//#include <ios>
-
-
-#include <log4cpp/PatternLayout.hh>
-#include <log4cpp/Priority.hh>
-#include <log4cpp/OstringStream.hh>
-#include <log4cpp/NDC.hh>
-#include <log4cpp/TimeStamp.hh>
+#include <ctime>
+#include <cmath>
 
 #ifdef LOG4CPP_HAVE_INT64_T
 #ifdef LOG4CPP_HAVE_STDINT_H
@@ -51,164 +43,344 @@ std::ostream& operator<<(std::ostream& os, int64_t i) {
 }
 #endif // LOG4CPP_MISSING_INT64_OSTREAM_OP
 #endif // LOG4CPP_HAVE_INT64_T
- 
+
 namespace log4cpp {
 
+    struct StringLiteralComponent : public PatternLayout::PatternComponent {
+        StringLiteralComponent(const std::string& literal) :
+            _literal(literal) {
+        }
+
+        virtual void append(OstringStream& out, const LoggingEvent& event) {
+            out << _literal;
+        }
+
+        private:
+        std::string _literal;
+    };
+
+    struct CategoryNameComponent : public PatternLayout::PatternComponent {
+        CategoryNameComponent(std::string specifier) {
+            if (specifier == "") {
+                _precision = -1;
+            } else {
+#ifdef LOG4CPP_HAVE_SSTREAM 
+                std::istringstream s(specifier);
+#else
+                std::istrstream s(specifier.c_str());
+#endif
+                s >> _precision;
+            }
+        }
+
+        virtual void append(OstringStream& out, const LoggingEvent& event) {
+            if (_precision == -1) {
+                out << event.categoryName;
+            } else {
+                std::string::size_type begin = std::string::npos;
+                for(int i = 0; i < _precision; i++) {
+                    begin = event.categoryName.rfind('.', begin - 2);
+                    if (begin == std::string::npos) {
+                        begin = 0;
+                        break;
+                    }
+                    begin++;
+                }
+                out << event.categoryName.substr(begin);
+            }
+        }
+
+        private:
+        int _precision;
+    };
+
+    struct MessageComponent : public PatternLayout::PatternComponent {
+        virtual void append(OstringStream& out, const LoggingEvent& event) {
+            out << event.message;
+        }
+    };
+
+    struct NDCComponent : public PatternLayout::PatternComponent {
+        virtual void append(OstringStream& out, const LoggingEvent& event) {
+            out << event.ndc;
+        }
+    };
+
+    struct PriorityComponent : public PatternLayout::PatternComponent {
+        virtual void append(OstringStream& out, const LoggingEvent& event) {
+            out << Priority::getPriorityName(event.priority);
+        }
+    };
+
+    struct ThreadNameComponent : public PatternLayout::PatternComponent {
+        virtual void append(OstringStream& out, const LoggingEvent& event) {
+            out << event.threadName;
+        }
+    };
+
+    struct ProcessorTimeComponent : public PatternLayout::PatternComponent {
+        virtual void append(OstringStream& out, const LoggingEvent& event) {
+            out << ::clock();
+        }
+    };
+
+    struct TimeStampComponent : public PatternLayout::PatternComponent {
+        static const char* const FORMAT_ISO8601 = "%Y-%m-%d %H:%M:%S,%l";
+        static const char* const FORMAT_ABSOLUTE = "%H:%M:%S,%l";
+        static const char* const FORMAT_DATE = "%d %b %Y %H:%M:%S,%l";
+
+        TimeStampComponent(std::string timeFormat) {
+            if ((timeFormat == "") || (timeFormat == "ISO8601")) {
+                timeFormat = FORMAT_ISO8601;
+            } else if (timeFormat == "ABSOLUTE") {
+                timeFormat = FORMAT_ABSOLUTE;
+            } else if (timeFormat == "DATE") {
+                timeFormat = FORMAT_DATE;
+            }
+            std::string::size_type pos = timeFormat.find("%l");
+            if (pos == std::string::npos) {
+                _printMillis = false;
+                _timeFormat1 = timeFormat; 
+            } else {
+                _printMillis = true;
+                _timeFormat1 = timeFormat.substr(0, pos);
+                _timeFormat2 = timeFormat.substr(pos + 2);
+            }
+        }
+
+        virtual void append(OstringStream& out, const LoggingEvent& event) {
+            struct tm *currentTime;
+            time_t t = event.timeStamp.getSeconds();
+            currentTime = std::localtime(&t);
+            char formatted[100];
+            std::string timeFormat;
+            if (_printMillis) {
+                OstringStream formatStream;
+                formatStream << _timeFormat1 
+                             << std::setw(3) << std::setfill('0')
+                             << event.timeStamp.getMilliSeconds()
+                             << _timeFormat2;
+                timeFormat = formatStream.str();
+            } else {
+                timeFormat = _timeFormat1;
+            }
+            std::strftime(formatted, sizeof(formatted), timeFormat.c_str(), currentTime);
+            out << formatted;
+        }
+
+        private:
+        std::string _timeFormat1;
+        std::string _timeFormat2;
+        bool _printMillis;
+    };
+
+    struct SecondsSinceEpochComponent : public PatternLayout::PatternComponent {
+        virtual void append(OstringStream& out, const LoggingEvent& event) {
+            out << event.timeStamp.getSeconds();
+        }
+    };
+
+    struct MillisSinceEpochComponent : public PatternLayout::PatternComponent {
+        virtual void append(OstringStream& out, const LoggingEvent& event) {
+#ifdef LOG4CPP_HAVE_INT64_T
+            int64_t t = event.timeStamp.getSeconds() -
+                TimeStamp::getStartTime().getSeconds();
+            t *= 1000;
+            t += event.timeStamp.getMilliSeconds() -
+                TimeStamp::getStartTime().getMilliSeconds();
+            
+            out << t;
+#else
+            double t = event.timeStamp.getSeconds() -
+                TimeStamp::getStartTime().getSeconds();
+            t *= 1000;
+            t += event.timeStamp.getMilliSeconds() -
+                TimeStamp::getStartTime().getMilliSeconds();
+            
+            out << std::setiosflags(std::ios::fixed)
+                << std::setprecision(0) << t;
+#endif
+        }
+    };
+
+    struct FormatModifierComponent : public PatternLayout::PatternComponent {
+        FormatModifierComponent(PatternLayout::PatternComponent* component,
+                                int minWidth, int maxWidth) :
+            _component(component) , 
+            _minWidth(std::abs(minWidth)),
+            _maxWidth(maxWidth),
+            _alignLeft(minWidth < 0) {
+        }
+
+        virtual ~FormatModifierComponent() {
+            delete _component;
+        }
+
+        virtual void append(OstringStream& out, const LoggingEvent& event) {
+            log4cpp::OstringStream s;
+            _component->append(s, event);
+            std::string msg = s.str();
+            if (_maxWidth > 0) {
+                msg.erase(_maxWidth);
+            }
+            int fillCount = _minWidth - msg.length();
+            if (fillCount > 0) {
+                if (_alignLeft) {
+                    out << msg << std::string(fillCount, ' ');
+                } else {
+                    out << std::string(fillCount, ' ') << msg;
+                }
+            } else {
+                out << msg;
+            }
+        }
+
+        private:
+        PatternLayout::PatternComponent* _component;
+        int _minWidth;
+        int _maxWidth;
+        bool _alignLeft;
+    };
+
     PatternLayout::PatternLayout() {
-        convPatn = "%m%n";
     }
-    
+
     PatternLayout::~PatternLayout() {
+        clearConversionPattern();
     }
 
-    std::string PatternLayout::format(const LoggingEvent& event) {
-        bool success;
-        return doFormat(event, convPatn, &success);
+    void PatternLayout::clearConversionPattern() {
+        for(ComponentVector::const_iterator i = _components.begin();
+            i != _components.end(); ++i) {
+            delete (*i);
+        }
+        _components.clear();
+        _conversionPattern = "";
     }
 
-    bool PatternLayout::setConversionPattern(std::string conversionPattern) {
-        LoggingEvent garbageEvent("", "hi", NDC::get(), Priority::INFO);
-        bool success;
-        doFormat(garbageEvent, conversionPattern, &success);
-        if (success)
-            convPatn = conversionPattern;
-        return success;
-    }
-    
-    std::string PatternLayout::doFormat(const LoggingEvent& event, std::string conversionPattern, bool *success) {
-        *success = true;
-        
+    void PatternLayout::setConversionPattern(const std::string& conversionPattern) throw(ConfigureFailure) {
 #ifdef LOG4CPP_HAVE_SSTREAM 
         std::istringstream conversionStream(conversionPattern);
 #else
         std::istrstream conversionStream(conversionPattern.c_str());
 #endif
-        
-        OstringStream message;
-        
+        std::string literal;
+
         char ch;
+        PatternLayout::PatternComponent* component = NULL;
+        int minWidth = 0;
+        int maxWidth = 0;
+        clearConversionPattern();
         while (conversionStream.get(ch)) {
-            switch (ch) {
-            case '%':
+            if (ch == '%') {
+                // readPrefix;
                 {
-                    if (!conversionStream.get(ch)) {
-                        *success = false;
-                        return "";
+                    char ch2;
+                    conversionStream.get(ch2);
+                    if ((ch2 == '-') || ((ch2 >= '0') && (ch2 <= '9'))) {
+                        conversionStream.putback(ch2);
+                        conversionStream >> minWidth;
+                        conversionStream.get(ch2);
+                    } 
+                    if (ch2 == '.') {
+                        conversionStream >> maxWidth;
+                    } else {
+                        conversionStream.putback(ch2);
+                    }                        
+                }
+                if (!conversionStream.get(ch)) {
+                    OstringStream msg;
+                    msg << "unterminated conversion specifier in '" << conversionPattern << "' at index " << conversionStream.tellg();
+                    throw ConfigureFailure(msg.str());
+                }
+                std::string specPostfix = "";
+                // read postfix
+                {
+                    char ch2;
+                    if (conversionStream.get(ch2)) {
+                        if (ch2 == '{') {
+                            while(conversionStream.get(ch2) && (ch2 != '}'))
+                                specPostfix += ch2;
+                        } else {
+                            conversionStream.putback(ch2);
+                        }
                     }
-                    switch (ch) {
-                    case '%':
-                        message << '%';
-                        break;
-                    case 'm':
-                        message << event.message;
-                        break;
-                    case 'n':
-                        message << std::endl;
-                        break;
-                    case 'c':
-                        message << event.categoryName;
-                        break;
-                    case 'd':
-                        {
-                            struct tm *currentTime;
-                            time_t t = event.timeStamp.getSeconds();
-                            currentTime = localtime(&t);
-
-                            // use this as a bool, but define as void* for performance
-                            void *moreChars = NULL;
-
-                            // try to get next char
-                            if ((moreChars = (conversionStream.get(ch))) && ch == '{') {
-                                char szFtimeFormat[40];
-                                conversionStream.get(szFtimeFormat, sizeof(szFtimeFormat), '}');
-                                // get (and discard) closing bracket
-                                if (!(conversionStream.get(ch)) || ch != '}') {
-                                    *success = false;
-                                }
-                                
-                                // replace milli-second format (%l)
-                                std::ostringstream strFtimeFormat;
-                                std::string strFormat(szFtimeFormat);
-                                std::string::size_type pos = 0, prevPos = 0;
-                                while ((pos = strFormat.find("%l", prevPos)) != std::string::npos) {
-                                    strFtimeFormat << strFormat.substr(prevPos, pos);
-                                    strFtimeFormat << std::setw(3) << std::setfill('0') << event.timeStamp.getMilliSeconds();
-                                    prevPos = pos + 2;
-                                }
-                                strFtimeFormat << strFormat.substr(prevPos);
-
-                                char formatted[100];
-                                strftime(formatted, sizeof(formatted), strFtimeFormat.str().c_str(), currentTime);
-
-                                message << formatted;
-                            } else {
-
-                                if (moreChars) {
-                                    conversionStream.putback(ch);
-                                }
-
-                                // use asctime to format date
-                            std::string currentTimeOnOneLine = asctime(currentTime);
-                            currentTimeOnOneLine = currentTimeOnOneLine.substr(0, currentTimeOnOneLine.length()-1);
-                            
-                            message << currentTimeOnOneLine;
-
-                                // if 'd' was the last format char, there will be an
-                                // extra get() from the conversionStream
-                            }
-
-                        }
-                        break;
-                    case 'R':
-                        message << event.timeStamp.getSeconds();
-                        break;
-                    case 'p':
-                        {
-                            const std::string& priorityName = 
-                                Priority::getPriorityName(event.priority);
-                            message << priorityName;
-                        }
-                        break;
-                    case 'r':
-                        {
-#ifdef LOG4CPP_HAVE_INT64_T
-                            int64_t t = event.timeStamp.getSeconds() -
-                                TimeStamp::getStartTime().getSeconds();
-                            t *= 1000;
-                            t += event.timeStamp.getMilliSeconds() -
-                                TimeStamp::getStartTime().getMilliSeconds();
-                            
-                            message << t;
-#else
-                            double t = event.timeStamp.getSeconds() -
-                                TimeStamp::getStartTime().getSeconds();
-                            t *= 1000;
-                            t += event.timeStamp.getMilliSeconds() -
-                                TimeStamp::getStartTime().getMilliSeconds();
-                            
-                            message << std::setiosflags(std::ios::fixed) << std::setprecision(0) << t;
-#endif
-                        }
-                        break;
-                    case 'u':
-                        message << clock();
-                        break;
-                    case 'x':
-                        message << event.ndc;
-                        break;
-                    default:
-                        *success = false;
-                        return "";
-                        break;
+                }
+                switch (ch) {
+                case '%':
+                    literal += ch;
+                    break;
+                case 'm':
+                    component = new MessageComponent();
+                    break;
+                case 'n':
+                    {
+                        OstringStream endline;
+                        endline << std::endl;
+                        literal += endline.str();
                     }
-                };
-                break;
-            default:
-                message << ch;
-                break;
+                    break;
+                case 'c':
+                    component = new CategoryNameComponent(specPostfix);
+                    break;
+                case 'd':
+                    component = new TimeStampComponent(specPostfix);
+                    break;
+                case 'p':
+                    component = new PriorityComponent();
+                    break;
+                case 'r':
+                    component = new MillisSinceEpochComponent();
+                    break;
+                case 'R':
+                    component = new SecondsSinceEpochComponent();
+                    break;
+                case 'u':
+                    component = new ProcessorTimeComponent();
+                    break;
+                case 'x':
+                    component = new NDCComponent();
+                    break;
+                default:
+                    OstringStream msg;
+                    msg << "unknown conversion specifier '" << ch << "' in '" << conversionPattern << "' at index " << conversionStream.tellg();
+                    throw ConfigureFailure(msg.str());                    
+                }
+                if (component) {
+                    if (!literal.empty()) {
+                        _components.push_back(new StringLiteralComponent(literal));
+                        literal = "";
+                    }
+                    if ((minWidth != 0) || (maxWidth != 0)) {
+                        component = new FormatModifierComponent(component, minWidth, maxWidth);
+                        minWidth = maxWidth = 0;
+                    }
+                    _components.push_back(component);
+                    component = NULL;
+                }
+            } else {
+                literal += ch;
             }
         }
-        
+        if (!literal.empty()) {
+            _components.push_back(new StringLiteralComponent(literal));
+        }
+
+        _conversionPattern = conversionPattern;
+    }
+
+    std::string PatternLayout::getConversionPattern() const {
+        return _conversionPattern;
+    }
+
+    std::string PatternLayout::format(const LoggingEvent& event) {
+        OstringStream message;
+
+        for(ComponentVector::const_iterator i = _components.begin();
+            i != _components.end(); ++i) {
+            (*i)->append(message, event);
+        }
+
         return message.str();
     }
 }
