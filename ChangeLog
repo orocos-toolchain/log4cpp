@@ -1,6 +1,24 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
 2002-08-09 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* Release as 0.3.2rc2
+	
+	* msvc6/log4cppDLL/log4cppDLL.rc: update version and product info.
+
+	* include/log4cpp/Portability.hh: added comments.
+
+	* src/Category.cpp: added lock to getAllAppenders().
+
+	* doc/html/index.html: more documentation updates.
+
+	* tests/testCategory.cpp, tests/testConfig.cpp, tests/testDLL.cpp,
+	tests/testFilter.cpp, tests/testPropConfig.cpp, 
+	tests/testbench.cpp: Replaced #include "log4cpp/X" with 
+	#include <log4cpp/X>
+
+	* tests/testProperties.cpp, tests/testPropertyConfig.cpp: added.
+	
+2002-08-09 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/RollingFileAppender.hh: correct constness of 
 	constructor parameters, as pointed out by James Emery.
 
