@@ -7,6 +7,8 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
+#ifdef LOG4CPP_SUPPLY_DLLMAIN
+
 #define WIN32_LEAN_AND_MEAN  // Exclude rarely-used stuff from Windows headers
 #include <windows.h>
 
@@ -26,3 +28,4 @@ BOOL APIENTRY DllMain( HANDLE hModule,
     return TRUE;
 }
 
+#endif // LOG4CPP_NEED_DLLMAIN
