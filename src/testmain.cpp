@@ -1,18 +1,20 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <iostream>
 #include "log4cpp/Category.hh"
 #include "log4cpp/Appender.hh"
 #include "log4cpp/FileAppender.hh"
+#include "log4cpp/OstreamAppender.hh"
 #include "log4cpp/Layout.hh"
 #include "log4cpp/BasicLayout.hh"
 #include "log4cpp/Priority.hh"
 #include "log4cpp/NDC.hh"
 
 int main(int argc, char** argv) {    
-    log4cpp::FileAppender* appender;
+    log4cpp::Appender* appender;
 
     if (argc < 2) {
-        appender = new log4cpp::FileAppender("default", dup(STDERR_FILENO));
+        appender = new log4cpp::OstreamAppender("default", &cout);
     } else {
         appender = new log4cpp::FileAppender("default", argv[1]);
     }
