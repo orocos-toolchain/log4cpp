@@ -12,13 +12,17 @@
 #endif
 
 /* Define if you have the `gettimeofday' function. */
-/* #undef LOG4CPP_HAVE_GETTIMEOFDAY  
+/* #undef LOG4CPP_HAVE_GETTIMEOFDAY */ 
 
 /* define if the compiler has int64_t */
 #ifndef LOG4CPP_HAVE_INT64_T 
 #define LOG4CPP_HAVE_INT64_T
 #define int64_t __int64  
+
+#if defined(_MSC_VER)
 #define LOG4CPP_MISSING_INT64_OSTREAM_OP   
+#endif
+
 #endif
 
 /* Define if you have the <io.h> header file.  */
