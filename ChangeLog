@@ -3,6 +3,9 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 2002-04-21 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/config-win32.h: added mode_t typedef.
 
+	* m4/AC_C_INT64_T.m4: added #define of HAVE_STDINT_H.
+	* src/PatternLaout.cpp: #include <stdint.h> only if available.
+
 2002-04-09 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* tests/Clock.cpp: test for i386 architecture on linux (patch #541608)
 
