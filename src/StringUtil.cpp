@@ -6,6 +6,7 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 #include "StringUtil.hh"
+#include <iterator>
 
 namespace log4cpp {
 
@@ -28,17 +29,9 @@ namespace log4cpp {
 
     void StringUtil::split(std::vector<std::string>& v, const std::string& s,
                            char delimiter, unsigned int maxSegments) {
-        v.empty();
-        std::string::size_type left = 0;
-        for(unsigned int i = 0; i < maxSegments - 1; i++) {
-            std::string::size_type right = s.find(delimiter, left);
-            if (right == std::string::npos) {
-                break;
-            }
-            v.push_back(s.substr(left, right - left));
-            left = right + 1;
-        }
-
-        v.push_back(s.substr(left));
+        v.clear();
+        std::back_insert_iterator<std::vector<std::string> > it(v);
+        split(it, s, delimiter, maxSegments);
     }
+
 }

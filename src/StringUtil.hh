@@ -36,8 +36,36 @@ namespace log4cpp {
            so v[maxSegments - 1] may contain a string containing the delimiter
            character.
         **/
-        static void split(std::vector<std::string>& v, const std::string& s,
-                          char delimiter, unsigned int maxSegments = INT_MAX);
+        static void split(std::vector<std::string>& v, 
+                          const std::string& s, char delimiter,
+                          unsigned int maxSegments = INT_MAX);
+        /**
+           splits a string into string segments based on the given delimiter
+           and assigns the segments through an output_iterator.
+           @param out The output_iterator through which to assign the string
+           segments. Typically this will be a back_insertion_iterator.
+           @param s The string to split into segments.
+           @param delimiter The delimiter character
+           @param maxSegments The maximum number of segments.
+           @return The actual number of segments (limited by maxSegments).
+        **/
+        template<typename T> static unsigned int split(T& output,
+                const std::string& s, char delimiter,
+                unsigned int maxSegments = INT_MAX) {
+            std::string::size_type left = 0;
+            unsigned int i;
+            for(i = 1; i < maxSegments; i++) {
+                std::string::size_type right = s.find(delimiter, left);
+                if (right == std::string::npos) {
+                    break;
+                }
+                *output++ = s.substr(left, right - left);
+                left = right + 1;
+            }
+            
+            *output++ = s.substr(left);
+            return i;
+        };
     };
 }
 
