@@ -1,5 +1,10 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-06-03  Cedric Le Goater  <legoater@free.fr>
+	* Makefile.am: added log4cpp.m4 installation
+	* log4cpp.m4: added aclocal support
+	* tests/Clock.cpp: fixed rdtscl() support on linux
+
 2002-05-22 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/config-win32.h: fix compilation in Visual .NET.
 	
