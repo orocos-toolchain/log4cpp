@@ -126,8 +126,7 @@ namespace log4cpp {
                     else if (layout.compare("pattern") == 0) {
                         log4cpp::PatternLayout *layout =
                             new log4cpp::PatternLayout();
-			char spaceChar;
-			initFile.get(spaceChar);
+			initFile >> std::ws; // skip whitespace
                         char pattern[1000];
                         initFile.getline(pattern, 1000);
                         layout->setConversionPattern(std::string(pattern));
