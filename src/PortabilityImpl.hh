@@ -32,4 +32,21 @@ namespace std {
 }
 #endif
 
+#ifdef LOG4CPP_CTIME_NOT_IN_STD
+#include <ctime>
+namespace std {
+    static inline size_t strftime(char *strDest, size_t maxsize, const char *format, const struct tm *timeptr ) {
+        return ::strftime(strDest,maxsize,format,timeptr);
+    }
+    static inline struct tm *localtime( const time_t *timer ) { return ::localtime(timer); }
+}
+#endif
+
+#ifdef LOG4CPP_CMATH_NOT_IN_STD
+#include <cmath>
+namespace std {
+    static inline int abs(int i) { return ::abs(i); }
+}
+#endif
+
 #endif // _LOG4CPP_PORTABILITYIMPL_HH

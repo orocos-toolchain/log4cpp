@@ -46,7 +46,7 @@
 
 /* Version number of package */
 #ifndef LOG4CPP_VERSION
-#define LOG4CPP_VERSION  "0.3.3"
+#define LOG4CPP_VERSION  "0.3.4"
 #endif
 
 /* define if the compiler implements namespaces */
@@ -103,6 +103,14 @@
 
 #ifndef LOG4CPP_CSTRING_NOT_IN_STD
 #define LOG4CPP_CSTRING_NOT_IN_STD
+#endif
+
+#ifndef LOG4CPP_CTIME_NOT_IN_STD
+#define LOG4CPP_CTIME_NOT_IN_STD
+#endif
+
+#ifndef LOG4CPP_CMATH_NOT_IN_STD
+#define LOG4CPP_CMATH_NOT_IN_STD
 #endif
 
 #endif
