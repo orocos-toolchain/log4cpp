@@ -1,5 +1,7 @@
 lib_LTLIBRARIES = liblog4cpp.la
 
+INCLUDES = -I$(top_srcdir)/include
+
 liblog4cpp_la_SOURCES = \
 	Appender.cpp \
 	AppenderSkeleton.cpp \

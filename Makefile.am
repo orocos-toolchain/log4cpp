@@ -17,32 +17,34 @@ check:
 
 dist-hook:
 	perl -pi -e 's/\n/\r\n/g' `find $(distdir) -name '*.ds?'`
-	cp -dpR include/config.h.in $(distdir)/include/config.h
+	cp -dpR $(top_srcdir)/include/config.h.in $(distdir)/include/config.h
 
 distclean-local:
 	$(MAKE) -C tests distclean
 	-rm -rf CONTENTS TAGS
 
 CONTENTS::
-	find . \( ! -type l -a -name '*.cpp' -o -name '*.hh' -o -name Makefile.am \) > $@
+	find $(top_srcdir) \( ! -type l -a -name '*.cpp' -o -name '*.hh' -o -name Makefile.am \) > $@
 
 TAGS:: CONTENTS
 	etags `cat $<`
 
 rpm: dist
 	rpm -ta $(PACKAGE)-$(VERSION).tar.gz
-	mv -f /usr/src/redhat/SRPMS/$(PACKAGE)-$(VERSION)-*.rpm .
-	mv -f /usr/src/redhat/RPMS/*/$(PACKAGE)-$(VERSION)-*.rpm .
-	mv -f /usr/src/redhat/RPMS/*/$(PACKAGE)-devel-$(VERSION)-*.rpm .
-	mv -f /usr/src/redhat/RPMS/*/$(PACKAGE)-doc-$(VERSION)-*.rpm .
+	mv -f /usr/src/redhat/SRPMS/$(PACKAGE)-$(VERSION)-*.rpm $(top_scrdir)
+	mv -f /usr/src/redhat/RPMS/*/$(PACKAGE)-$(VERSION)-*.rpm $(top_scrdir)
+	mv -f /usr/src/redhat/RPMS/*/$(PACKAGE)-devel-$(VERSION)-*.rpm \
+		$(top_scrdir)
+	mv -f /usr/src/redhat/RPMS/*/$(PACKAGE)-doc-$(VERSION)-*.rpm \
+		$(top_scrdir)
 
 debian:
-	chmod a+x debian/rules
+	chmod a+x $(top_srcdir)debian/rules
 	dpkg-buildpackage -rfakeroot -sa -us -uc -tc 
 
 docs:
 	$(MAKE) -C doc
 
 doc-dist: docs
-	tar -zcf $(PACKAGE)-docs-$(VERSION).tar.gz -C doc/html .
+	tar -zcf $(PACKAGE)-docs-$(VERSION).tar.gz -C $(top_scrdir)/doc/html .
  

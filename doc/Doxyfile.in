@@ -32,7 +32,7 @@ CLASS_DIAGRAMS       = YES
 
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT            = ../include ../src
+INPUT            = @top_srcdir@/include @top_srcdir@/src
 FILE_PATTERNS    = *.cpp *.hh
 EXAMPLE_PATH     = 
 RECURSIVE        = YES

@@ -4,7 +4,7 @@ docdir  = $(prefix)/doc/@PACKAGE@-@VERSION@
 all-local: dox #pdf
 
 dox: html/index.html
-html/index.html:
+html/index.html: Doxyfile
 	@DOXYGEN@
 
 pdf: @PACKAGE@.pdf
