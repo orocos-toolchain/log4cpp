@@ -10,7 +10,7 @@
     typedef long usec_t;    /* number of microseconds since 1970/01/01 */
 #   define INT64_CONSTANT(val)  (val##L)
 #else
-    typedef long long int usec_t;
+    typedef int64_t usec_t;
 #   define INT64_CONSTANT(val)  (val##LL)
 #endif
 
