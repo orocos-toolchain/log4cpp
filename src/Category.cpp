@@ -7,16 +7,16 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include "log4cpp/Portability.hh"
+#include <log4cpp/Portability.hh>
 
 #ifdef LOG4CPP_HAVE_UNISTD_H
 #    include <unistd.h>
 #endif
 
-#include "log4cpp/OstringStream.hh"
-#include "log4cpp/Category.hh"
-#include "log4cpp/HierarchyMaintainer.hh"
-#include "log4cpp/NDC.hh"
+#include <log4cpp/OstringStream.hh>
+#include <log4cpp/Category.hh>
+#include <log4cpp/HierarchyMaintainer.hh>
+#include <log4cpp/NDC.hh>
 
 namespace log4cpp {
 

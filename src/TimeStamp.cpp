@@ -7,7 +7,7 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include "log4cpp/TimeStamp.hh"
+#include <log4cpp/TimeStamp.hh>
 
 #include <string.h>
 

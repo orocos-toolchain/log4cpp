@@ -7,9 +7,9 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include "log4cpp/Portability.hh"
+#include <log4cpp/Portability.hh>
 #include <stdio.h>
-#include "log4cpp/OstringStream.hh"
+#include <log4cpp/OstringStream.hh>
 
 #if defined(_MSC_VER)
     #define VSNPRINTF _vsnprintf
@@ -26,7 +26,7 @@
 #include <stdarg.h>
 
 extern "C" {
-#include "snprintf.c"
+#include <snprintf.c"
 }
 
 #define VSNPRINTF portable_vsnprintf

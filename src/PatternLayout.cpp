@@ -6,7 +6,7 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include "log4cpp/Portability.hh"
+#include <log4cpp/Portability.hh>
 
 #ifdef LOG4CPP_HAVE_UNISTD_H
 #include <unistd.h>
@@ -25,11 +25,11 @@
 //#include <ios>
 
 
-#include "log4cpp/PatternLayout.hh"
-#include "log4cpp/Priority.hh"
-#include "log4cpp/OstringStream.hh"
-#include "log4cpp/NDC.hh"
-#include "log4cpp/TimeStamp.hh"
+#include <log4cpp/PatternLayout.hh>
+#include <log4cpp/Priority.hh>
+#include <log4cpp/OstringStream.hh>
+#include <log4cpp/NDC.hh>
+#include <log4cpp/TimeStamp.hh>
 
 #ifdef LOG4CPP_MISSING_INT64_OSTREAM_OP
 /* workaround suggested at:

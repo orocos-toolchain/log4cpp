@@ -7,8 +7,8 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include "log4cpp/Portability.hh"
-#include "log4cpp/Appender.hh"
+#include <log4cpp/Portability.hh>
+#include <log4cpp/Appender.hh>
 
 namespace log4cpp {
 #ifdef LOG4CPP_USE_CLEANUP

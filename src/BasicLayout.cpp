@@ -7,10 +7,10 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include "log4cpp/Portability.hh"
-#include "log4cpp/OstringStream.hh"
-#include "log4cpp/BasicLayout.hh"
-#include "log4cpp/Priority.hh"
+#include <log4cpp/Portability.hh>
+#include <log4cpp/OstringStream.hh>
+#include <log4cpp/BasicLayout.hh>
+#include <log4cpp/Priority.hh>
 
 namespace log4cpp {
 

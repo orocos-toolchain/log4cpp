@@ -7,7 +7,7 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include "log4cpp/Portability.hh"
+#include <log4cpp/Portability.hh>
 
 #ifdef LOG4CPP_HAVE_UNISTD_H
 #    include <unistd.h>
@@ -16,7 +16,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include "log4cpp/RemoteSyslogAppender.hh"
+#include <log4cpp/RemoteSyslogAppender.hh>
 #ifdef WIN32
 #include <winsock2.h>
 #else

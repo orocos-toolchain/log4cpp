@@ -5,7 +5,7 @@
  *
  * See the COPYING file for the terms of usage and distribution.
  */
-#include "log4cpp/Portability.hh"
+#include <log4cpp/Portability.hh>
 
 #ifdef LOG4CPP_HAVE_UNISTD_H
 #include <unistd.h>
@@ -20,21 +20,21 @@
 #include <fstream>
 #include <stdio.h>
 
-#include "log4cpp/Category.hh"
-#include "log4cpp/Appender.hh"
-#include "log4cpp/OstreamAppender.hh"
-#include "log4cpp/FileAppender.hh"
-#include "log4cpp/Layout.hh"
-#include "log4cpp/BasicLayout.hh"
-#include "log4cpp/SimpleLayout.hh"
-#include "log4cpp/Priority.hh"
-#include "log4cpp/NDC.hh"
-#include "log4cpp/PatternLayout.hh"
-#include "log4cpp/SimpleConfigurator.hh"
+#include <log4cpp/Category.hh>
+#include <log4cpp/Appender.hh>
+#include <log4cpp/OstreamAppender.hh>
+#include <log4cpp/FileAppender.hh>
+#include <log4cpp/Layout.hh>
+#include <log4cpp/BasicLayout.hh>
+#include <log4cpp/SimpleLayout.hh>
+#include <log4cpp/Priority.hh>
+#include <log4cpp/NDC.hh>
+#include <log4cpp/PatternLayout.hh>
+#include <log4cpp/SimpleConfigurator.hh>
 #if LOG4CPP_HAVE_SYSLOG
-#include "log4cpp/SyslogAppender.hh"
+#include <log4cpp/SyslogAppender.hh>
 #endif
-#include "log4cpp/RemoteSyslogAppender.hh"
+#include <log4cpp/RemoteSyslogAppender.hh>
 
 namespace log4cpp {
 

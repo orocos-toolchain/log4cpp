@@ -16,6 +16,7 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	added threadsafety provisions.
 
 	* include/log4cpp/*.hh: replaced #include"" with #include<>
+	* src/*.cpp: replaced #include"" with #include<>
 
 2002-02-08 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/threading/Threading.hh,

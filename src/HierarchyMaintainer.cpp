@@ -7,8 +7,8 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include "log4cpp/Portability.hh"
-#include "log4cpp/OstringStream.hh"
+#include <log4cpp/Portability.hh>
+#include <log4cpp/OstringStream.hh>
 
 #ifdef LOG4CPP_HAVE_IO_H
 #    include <io.h>
@@ -18,8 +18,8 @@
 #endif
 
 #include <stdio.h>
-#include "log4cpp/HierarchyMaintainer.hh"
-#include "log4cpp/FileAppender.hh"
+#include <log4cpp/HierarchyMaintainer.hh>
+#include <log4cpp/FileAppender.hh>
 
 namespace log4cpp {
 #ifdef LOG4CPP_USE_CLEANUP

@@ -7,10 +7,10 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include "log4cpp/Portability.hh"
-#include "log4cpp/Log4cppCleanup.hh"
-#include "log4cpp/HierarchyMaintainer.hh"
-#include "log4cpp/Appender.hh"
+#include <log4cpp/Portability.hh>
+#include <log4cpp/Log4cppCleanup.hh>
+#include <log4cpp/HierarchyMaintainer.hh>
+#include <log4cpp/Appender.hh>
 #include <iostream>
 
 namespace log4cpp {

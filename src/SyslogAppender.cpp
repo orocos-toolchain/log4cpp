@@ -7,14 +7,14 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include "log4cpp/Portability.hh"
+#include <log4cpp/Portability.hh>
 #if LOG4CPP_HAVE_SYSLOG
 
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include "log4cpp/SyslogAppender.hh"
+#include <log4cpp/SyslogAppender.hh>
 
 namespace log4cpp {
 
