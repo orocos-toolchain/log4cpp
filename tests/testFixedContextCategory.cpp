@@ -62,4 +62,6 @@ int main(int argc, char** argv) {
         log4cpp::CategoryStream::ENDLINE << "..warn4";
 
     log4cpp::Category::shutdown();
+
+    return 0;
 }

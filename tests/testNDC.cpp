@@ -17,6 +17,8 @@ int main(int argc, char** argv) {
 
     NDC::clear();
     std::cout << "6. clear: " << NDC::get() << std::endl;
+
+    return 0;
 }
     
     
