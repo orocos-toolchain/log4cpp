@@ -16,11 +16,15 @@ namespace log4cpp {
     Log4cppCleanup Log4cppCleanup::_cleanup;
 
     Log4cppCleanup::Log4cppCleanup() {
+#ifdef DEBUGCLEANUP
         std::cerr << "Log4cppCleanup construct" << std::endl;
+#endif
     }
 
     Log4cppCleanup::~Log4cppCleanup() {
+#ifdef DEBUGCLEANUP
         std::cerr << "Log4cppCleanup destruct" << std::endl;
+#endif
     
         if (HierarchyMaintainer::_defaultMaintainer)
             delete HierarchyMaintainer::_defaultMaintainer;
