@@ -1,5 +1,15 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-10-04 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/Makefile.am, src/Makefile.am, tests/Makefile.am:
+	Added PatternLayout files 
+	* configure.in, Makefile.am, m4/C_C_INT64_T: Added check for int64_t.
+	* configure.in: Added check for gettimeofday.
+	* src/PatternLayout.cpp: use LOG4CPP_HAVE_TIMEOFDAY and 
+	LOG4CPP_HAVE_INT64_T
+
+	* include/log4cpp/LoggingEvent.hh: made strings real member variables.
+
 2001-09-18 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/PatternLayout.hh, src/PatternLayout.cpp,
 	tests/testPattern.cpp: 
