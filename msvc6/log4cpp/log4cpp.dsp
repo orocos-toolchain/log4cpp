@@ -199,6 +199,10 @@ SOURCE=..\..\src\StringQueueAppender.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\StringUtil.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\TimeStamp.cpp
 # End Source File
 # Begin Source File
