@@ -11,7 +11,12 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	* openvms/Makefile.am: added empty Makefile template.
 
 	* THANKS: added Tony Cheung.
-	
+
+	* src/Makefile.am: added snprintf.c to noinst_HEADERS.
+
+	* include/log4cpp/TimeStamp.hh: moved class description to the 
+	correct location.
+		
 2001-11-28 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/snprintf.c: added portable snprintf 2.2 from 
 	http://www.ijs.si/software/snprintf/
