@@ -1,5 +1,15 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-10-24 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* configure.in:
+	Added bcb5/testPattern/Makefile to AC_OUTPUT.
+
+	* include/log4cpp/Priority.hh, src/Priority.cpp:
+	Added getPriorityValue() method.
+
+	* src/PatternLatout.cpp:
+	Added support for sstream predating c++ stream libraries.
+	
 2001-10-05 Uwe Jäger <jaeger@varial.de>
 	* bcb5/Makefile.am, bcb5/bcb5.bpg, bcb5/bcb5.mak:
 	Added testPattern.
