@@ -10,7 +10,7 @@
 #ifndef _LOG4CPP_HINTS_HH
 #define _LOG4CPP_HINTS_HH
 
-#include "log4cpp/config.h"
+#include "log4cpp/log4cpp-config.hh"
 #include <string>
 #include <stdarg.h>
 

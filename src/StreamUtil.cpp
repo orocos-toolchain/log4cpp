@@ -7,6 +7,7 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
+#include "config.h"
 #include "log4cpp/StreamUtil.hh"
 
 #ifdef __osf__

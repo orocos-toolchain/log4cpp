@@ -18,4 +18,4 @@ liblog4cppinclude_HEADERS =  \
 	NDC.hh \
 	StreamUtil.hh \
 	Log4cppCleanup.hh \
-	config.h 
+	log4cpp-config.hh

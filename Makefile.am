@@ -6,6 +6,8 @@ endif
 
 DIST_SUBDIRS = config src include doc tests
 
+bin_SCRIPTS = log4cpp-config
+
 EXTRA_DIST = log4cpp.spec.in log4cpp.spec
 
 check: 

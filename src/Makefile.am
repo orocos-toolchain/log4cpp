@@ -1,7 +1,5 @@
 lib_LTLIBRARIES = liblog4cpp.la
 
-INCLUDES = -I../include
-
 liblog4cpp_la_SOURCES = \
 	Hints.cpp \
 	Appender.cpp \
@@ -20,6 +18,4 @@ liblog4cpp_la_SOURCES = \
 	StreamUtil.cpp \
 	Log4cppCleanup.cpp
 
-
 liblog4cpp_la_LDFLAGS = -version-info @LT_VERSION@
-liblog4cppincludedir = $(includedir)/log4cpp
