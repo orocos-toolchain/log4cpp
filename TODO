@@ -16,9 +16,9 @@ safe, others are 'mulithread prepared').
 
 Add multithread support for the NDC class.
 
-Add switches to configure to tune document generation (e.g. --with-latex, etc).
+Add switches to configure to tune document generation (e.g. --with-latex, etc). Done: 0.2.3
 
-Move stuff from Hints to autconf. E.g. LOG4CPP_USE_OLD_IOSTREAM.
+Move stuff from Hints to autconf. E.g. LOG4CPP_USE_OLD_IOSTREAM. Done: 0.2.3
 
 Document all classes.
 
