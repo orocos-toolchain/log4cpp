@@ -16,6 +16,7 @@ namespace log4cpp {
 #endif
 
     Appender::AppenderMap* Appender::_allAppenders;
+    threading::Mutex Appender::_appenderMapMutex;
 
     /* assume _appenderMapMutex locked */
     Appender::AppenderMap& Appender::_getAllAppenders() {
