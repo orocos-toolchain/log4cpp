@@ -45,7 +45,7 @@ liblog4cpp_la_SOURCES = \
 	OmniThreads.cpp \
 	PThreads.cpp \
 	PortabilityImpl.hh \
-	PortabilityImpl.cpp
-
+	PortabilityImpl.cpp \
+	AbortAppender.cpp
 
 liblog4cpp_la_LDFLAGS = -version-info @LT_VERSION@

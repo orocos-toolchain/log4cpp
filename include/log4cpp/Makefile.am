@@ -33,6 +33,7 @@ liblog4cppinclude_HEADERS =  \
 	Portability.hh \
 	Win32DebugAppender.hh \
 	NTEventLogAppender.hh \
+	AbortAppender.hh \
 	config.h \
 	config-win32.h \
 	config-openvms.h
