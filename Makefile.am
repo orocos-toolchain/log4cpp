@@ -1,10 +1,10 @@
 if DOC
-SUBDIRS = config src include doc 
+SUBDIRS = debian msvc6 config src include doc 
 else
-SUBDIRS = config src include
+SUBDIRS = debian msvc6 config src include
 endif
 
-DIST_SUBDIRS = config src include doc tests
+DIST_SUBDIRS = debian msvc6 config src include doc tests
 
 bin_SCRIPTS = log4cpp-config
 

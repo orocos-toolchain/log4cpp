@@ -1,5 +1,14 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-04-18 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	Released as 0.2.4
+	Added debian and msvc6 subdirs to autoconf configuration: they were
+	missing from the dist target.
+	
+2001-04-17 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	Made Category subclassable. 
+	Added FixedContextCategory class.
+	
 2001-04-12 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	Merged Marcel Harkema's patch for Debian package support.
 
