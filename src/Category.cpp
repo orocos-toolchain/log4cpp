@@ -155,10 +155,10 @@ namespace log4cpp {
                 if (ownsAppender(*i, i2)) {
                     delete (*i);
                 }
-                
-                _ownsAppender.clear();
-                _appender.clear();
             }
+
+            _ownsAppender.clear();
+            _appender.clear();           
         }
     }
 

@@ -1,5 +1,12 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-04-04 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/Category.cpp: fix previous fix for bug #527467.
+	
+2002-03-31 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/Portability.hh: Disable exception specifier
+	warnings (issue #536668)
+
 2002-03-27 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* m4/AC_C_INT64_T.m4: #include <stdint.h> and remove $GCC check.
 	* src/PatternLayout.cpp: #include <stdint.h>
