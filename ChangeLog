@@ -1,5 +1,9 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-02-25 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	Merged in Win32 / MSVC++6.0 support patches from Lynn Owen 
+	<opl@agoby.com>
+
 2001-02-15 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	Release 0.2.1
 	Changed license to the GNU Lesser General Public License (LGPL).
