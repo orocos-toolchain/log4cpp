@@ -11,9 +11,10 @@
 
 namespace log4cpp {
 
-    const std::string& Priority::getPriorityName(int priority) {
-        static std::string names[9] = {"PANIC", "ALERT", "ERROR", "WARN", "NOTICE",
-                                  "INFO", "DEBUG", "NOTSET", "UNKOWN" };
+    const std::string& Priority::getPriorityName(int priority) throw() {
+        static std::string names[9] =  {"PANIC", "ALERT", "ERROR", "WARN",
+                                        "NOTICE", "INFO", "DEBUG", "NOTSET",
+                                        "UNKOWN" };
         
         priority++;
         priority /= 100;

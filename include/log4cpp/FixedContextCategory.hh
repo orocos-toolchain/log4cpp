@@ -63,7 +63,7 @@ namespace log4cpp {
          * Returns the assigned Priority, if any, for this Category.
          * @return Priority - the assigned Priority, can be Priority::NOTSET
          **/
-        virtual Priority::Value getPriority() const;
+        virtual Priority::Value getPriority() const throw();
 
         /**
          * Starting from this Category, search the category hierarchy for a
@@ -73,7 +73,7 @@ namespace log4cpp {
          * <p>The Category class is designed so that this method executes as
          * quickly as possible.
          **/
-        virtual Priority::Value getChainedPriority() const;
+        virtual Priority::Value getChainedPriority() const throw();
         
         /**
          * Sets an Appender for this Category.
@@ -106,7 +106,7 @@ namespace log4cpp {
          * Returns true if the Category owns the Appender. In that case the
          * Category destructor will delete the Appender.
          **/
-        virtual bool ownsAppender() const;
+        virtual bool ownsAppender() const throw();
 
         /**
          * Call the appenders in the hierarchy starting at
@@ -119,7 +119,7 @@ namespace log4cpp {
          * 
          * @param LoggingEvent the event to log.
          **/
-        virtual void callAppenders(const LoggingEvent& event);
+        virtual void callAppenders(const LoggingEvent& event) throw();
         
         /**
          * Set the additivity flag for this Category instance.
@@ -129,7 +129,7 @@ namespace log4cpp {
         /**
          * Returns the additivity flag for this Category instance.
          **/        
-        virtual bool getAdditivity() const;
+        virtual bool getAdditivity() const throw();
 
        protected:
 
@@ -139,7 +139,7 @@ namespace log4cpp {
          * @param message string to write in the log file
          **/  
         virtual void _logUnconditionally2(Priority::Value priority, 
-                                          const std::string& message);
+                                          const std::string& message) throw();
 
         private:
 

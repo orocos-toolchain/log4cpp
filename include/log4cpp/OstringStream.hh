@@ -14,7 +14,7 @@
 #include <string>
 #include <stdarg.h>
 
-#ifdef LOG4CPP_HAVE_STDIOSTREAM
+#ifdef LOG4CPP_HAVE_SSTREAM
 #    include <sstream>
 #else
 #    include <strstream>
@@ -22,14 +22,14 @@
 
 namespace log4cpp {
 
-#ifdef LOG4CPP_HAVE_STDIOSTREAM
+#ifdef LOG4CPP_HAVE_SSTREAM
     class OstringStream : public std::ostringstream
 #else
     class OstringStream : public std::ostrstream
 #endif
     {
     public:
-#ifndef LOG4CPP_HAVE_STDIOSTREAM
+#ifndef LOG4CPP_HAVE_SSTREAM
         std::string str();
 #endif
 	void vform(const char* format, va_list args);

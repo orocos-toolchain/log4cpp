@@ -30,7 +30,7 @@ namespace log4cpp {
 
         typedef int Value;
 
-        static const std::string& getPriorityName(int priority);        
+        static const std::string& getPriorityName(int priority) throw();
     };
 }
 
