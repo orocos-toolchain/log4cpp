@@ -165,6 +165,18 @@ SOURCE=..\..\src\SimpleLayout.cpp
 
 SOURCE=..\..\src\StringQueueAppender.cpp
 # End Source File
+# Begin Source File
+
+SOURCE=..\..\src\TimeStamp.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\PatternLayout.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\SimpleConfigurator.cpp
+# End Source File
 # End Group
 # Begin Group "Header Files"
 
@@ -264,6 +276,18 @@ SOURCE=..\..\include\log4cpp\StringQueueAppender.hh
 # Begin Source File
 
 SOURCE=..\..\include\log4cpp\SyslogAppender.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\TimeStamp.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\PatternLayout.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\SimpleConfigurator.hh
 # End Source File
 # End Group
 # End Target
