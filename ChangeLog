@@ -1,5 +1,9 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-08-06 David Resnick <dresnick@mobilespear.com>
+    * msvc6/log4cppDLL/log4cppDLL.rc: Cleanup.
+    * msvc6/log4cppDLL/resource.h deleted: Unnecessary.
+
 2002-08-05 David Resnick <dresnick@mobilespear.com>
     * msvc6/log4cppDLL/log4cppDLL.rc, msvc6/log4cppDLL/resource.h:
     Version property sheet added to DLL.

@@ -1,27 +1,9 @@
-//Microsoft Developer Studio generated resource script.
-//
-#include "resource.h"
+#ifdef APSTUDIO_INVOKED
+	#error This file is not editable by Microsoft Visual C++
+#endif //APSTUDIO_INVOKED
 
-#define APSTUDIO_READONLY_SYMBOLS
-/////////////////////////////////////////////////////////////////////////////
-//
-// Generated from the TEXTINCLUDE 2 resource.
-//
-#include "afxres.h"
+#include "Winver.h"
 
-/////////////////////////////////////////////////////////////////////////////
-#undef APSTUDIO_READONLY_SYMBOLS
-
-/////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
-
-#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
-LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
-#pragma code_page(1252)
-#endif //_WIN32
-
-#ifndef _MAC
 /////////////////////////////////////////////////////////////////////////////
 //
 // Version
@@ -29,7 +11,7 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 
 VS_VERSION_INFO VERSIONINFO
  FILEVERSION 0,3,1,1
- PRODUCTVERSION 0,3,1,1
+ PRODUCTVERSION 0,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -47,14 +29,18 @@ BEGIN
             VALUE "Comments", "Distributed under the terms of the GNU Library or Lesser General Public License (LGPL).\0"
             VALUE "CompanyName", "Bastiaan Bakker, LifeLine Networks BV \0"
             VALUE "FileDescription", "Log library for C++\0"
-            VALUE "FileVersion", "0, 3, 2rc, 0\0"
+            VALUE "FileVersion", "0, 3, 1, 1\0"
             VALUE "InternalName", "log4cpp\0"
             VALUE "LegalCopyright", "Copyright © 2000-2002\0"
             VALUE "LegalTrademarks", "\0"
+#ifdef _DEBUG
+            VALUE "OriginalFilename", "log4cppD.dll\0"
+#else
             VALUE "OriginalFilename", "log4cpp.dll\0"
+#endif
             VALUE "PrivateBuild", "\0"
-            VALUE "ProductName", "Log library for C++\0"
-            VALUE "ProductVersion", "0, 3, 1, 1\0"
+            VALUE "ProductName", "\0"
+            VALUE "ProductVersion", "\0"
             VALUE "SpecialBuild", "\0"
         END
     END
@@ -64,46 +50,4 @@ BEGIN
     END
 END
 
-#endif    // !_MAC
-
-
-#ifdef APSTUDIO_INVOKED
-/////////////////////////////////////////////////////////////////////////////
-//
-// TEXTINCLUDE
-//
-
-1 TEXTINCLUDE DISCARDABLE 
-BEGIN
-    "resource.h\0"
-END
-
-2 TEXTINCLUDE DISCARDABLE 
-BEGIN
-    "#include ""afxres.h""\r\n"
-    "\0"
-END
-
-3 TEXTINCLUDE DISCARDABLE 
-BEGIN
-    "\r\n"
-    "\0"
-END
-
-#endif    // APSTUDIO_INVOKED
-
-#endif    // English (U.S.) resources
-/////////////////////////////////////////////////////////////////////////////
-
-
-
-#ifndef APSTUDIO_INVOKED
-/////////////////////////////////////////////////////////////////////////////
-//
-// Generated from the TEXTINCLUDE 3 resource.
-//
-
-
-/////////////////////////////////////////////////////////////////////////////
-#endif    // not APSTUDIO_INVOKED
-
+// End of version info resource
