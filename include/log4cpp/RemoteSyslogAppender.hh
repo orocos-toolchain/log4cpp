@@ -80,9 +80,11 @@ namespace log4cpp {
          * @param name The name of the Appender
          * @param syslogName The ident parameter in the openlog(3) call.
          * @param relayer The IP address or hostname of a standard syslog host.
-         * @param facility The syslog facility to log to. Defaults to LOG_USER.
+         * @param facility The syslog facility to log to. Defaults to LOG_USER. 
+         * Value '-1' implies to use the default.         
          * @param portNumber An alternative port number. Defaults to the 
          * standard syslog port number (514).
+         * Value '-1' implies to use the default.         
          **/         
         RemoteSyslogAppender(const std::string& name, 
                              const std::string& syslogName, 

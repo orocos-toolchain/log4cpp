@@ -57,8 +57,8 @@ namespace log4cpp {
         LayoutAppender(name),
         _syslogName(syslogName),
 	_relayer(relayer),
-        _facility(facility),
-	_portNumber (portNumber),
+        _facility((facility == -1) ? LOG_USER : facility),
+	_portNumber((portNumber == -1) ? 514 : portNumber),
 	_socket (0),
 	_ipAddr (0),
 	_cludge (0)
