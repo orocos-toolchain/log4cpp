@@ -1,5 +1,17 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-01-27 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* Release as 0.2.7
+	
+	* configure.in: upped version to 0.2.7.
+	
+	* testbench.cpp: added more measurements, using crude cut&paste 
+	of code.
+
+	* NEWS: set release date for 0.2.7, added bug #506907 fixed.
+
+	* bcb5/testPattern/Makefile.am: set EXTRA_DIST.
+	
 2002-01-25 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* configure.in: added bcb5/testConfig/Makefile to AC_OUTPUT
 
