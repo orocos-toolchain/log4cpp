@@ -1,5 +1,30 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2003-03-10 David Resnick <dresnick@mobilespear.com>
+    * include/log4cpp/NTEventLogAppender.hh, include/log4cpp/Portability.hh,
+    include/log4cpp/threading/BoostThreads.hh, 
+    include/log4cpp/config-win32-stlport-boost.h, src/RollingFileAppender.cpp,
+    msvc6/log4cppDLL_stlport_boost/log4cppDLL_stlport_boost.dsp,
+    msvc6/log4cppDLL_stlport_boost/log4cppDLL_stlport_boost.rc,
+    msvc6/log4cppDLL_stlport_boost/readme.txt,
+    msvc6/msvc6.dsw: added build for MSVC that uses boost 1.28.0 and 
+    STLport 4.5.3. See msvc6/log4cppDLL_stlport_boost/readme.txt for
+    more details.
+
+    * msvc6/testMain_stlport_boost/testMain_stlport_boost.dsp,
+    msvc6/testNDC_stlport_boost/testNDC_stlport_boost.dsp,
+    msvc6/testPropertyConfig_stlport_boost/testPropertyConfig_stlport_boost.dsp,
+    msvc6/testNTEventLog_stlport_boost/testNTEventLog_stlport_boost.dsp:
+    Project files that allow testing boost/stlport dll version.
+
+    * msvc6/log4cppDLL/log4cppDLL.rc: updated version number.
+
+    * include/log4cpp/PatternLayout.hh: doc fix.
+
+    * src/PortabilityImpl.hh: added abort to std:: namespace wrapping.
+
+    * include/log4cpp/config-win32.h: added definition for in_addr_t.
+    
 2003-03-05 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/RemoteSyslogAppender.hh, 
 	src/RemoteSyslogAppender.cpp: use correct type for _ipAddr. 
