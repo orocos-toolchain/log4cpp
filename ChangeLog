@@ -1,5 +1,10 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-11-01 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/Category.cpp: in setAppender(Appender*) allow NULL Appender.
+	* include/log4cpp/Category: in setAppender(Appender*) document 
+	allowing NULL Appender parameter.
+	
 2001-10-24 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* configure.in:
 	Added bcb5/testPattern/Makefile to AC_OUTPUT.

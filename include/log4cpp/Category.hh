@@ -129,7 +129,8 @@ namespace log4cpp {
         /**
          * Sets an Appender for this Category.
          * This method passes ownership from the caller to the Category.
-         * @param appender The Appender this category has to log to.
+         * @param appender The Appender this category has to log to or NULL
+	 * to unset the current Appender.
          **/
         virtual void setAppender(Appender* appender);
 
