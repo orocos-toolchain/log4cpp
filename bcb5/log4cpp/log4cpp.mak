@@ -35,7 +35,10 @@ OBJFILES = \
     Priority.obj \
     RemoteSyslogAppender.obj  \
     RollingFileAppender.obj  \
+    Configurator.obj \
+    ConfiguratorSkeleton.obj \
     SimpleConfigurator.obj \
+    PropertyConfigurator.obj \
     SimpleLayout.obj \
     StringQueueAppender.obj \
     Win32DebugAppender.obj \

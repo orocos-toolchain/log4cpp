@@ -23,7 +23,10 @@ USEUNIT("..\..\src\Appender.cpp");
 USEUNIT("..\..\src\CategoryStream.cpp");
 USEUNIT("..\..\src\TimeStamp.cpp");
 USEUNIT("..\..\src\PatternLayout.cpp");
+USEUNIT("..\..\src\Configurator.cpp");
+USEUNIT("..\..\src\ConfiguratorSkeleton.cpp");
 USEUNIT("..\..\src\SimpleConfigurator.cpp");
+USEUNIT("..\..\src\PropertyConfigurator.cpp");
 T//---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------

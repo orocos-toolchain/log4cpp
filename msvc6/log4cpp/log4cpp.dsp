@@ -107,6 +107,14 @@ SOURCE=..\..\src\CategoryStream.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\Configurator.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\ConfiguratorSkeleton.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\FileAppender.cpp
 # End Source File
 # Begin Source File
@@ -160,6 +168,10 @@ SOURCE=..\..\src\PatternLayout.cpp
 # Begin Source File
 
 SOURCE=..\..\src\Priority.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\PropertyConfigurator.cpp
 # End Source File
 # Begin Source File
 
@@ -220,6 +232,14 @@ SOURCE=..\..\include\log4cpp\CategoryStream.hh
 # Begin Source File
 
 SOURCE="..\..\include\log4cpp\config-win32.h"
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\Configurator.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\ConfiguratorSkeleton.hh
 # End Source File
 # Begin Source File
 
@@ -300,6 +320,10 @@ SOURCE=..\..\include\log4cpp\Portability.hh
 # Begin Source File
 
 SOURCE=..\..\include\log4cpp\Priority.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\PropertyConfigurator.hh
 # End Source File
 # Begin Source File
 

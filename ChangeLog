@@ -12,6 +12,9 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	src/Configurator.cpp, src/ConfiguratorSkeleton.cpp, src/SimpleConfigurator.cpp,
 	src/PropertyConfigurator.cpp: integrated PropertyConfigurator contributed by
 	Alan Anderson <alan@rushmore.com>.
+
+	* msvc6/log4cpp/log4cpp.dsp, bcb5/log4cpp/log4cpp.bpf, bcb5/log4cpp/log4cpp.bpr,
+	 bcb5/log4cpp/log4cpp.mak: added PropertyConfigurator files.
 	
 2002-06-19 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/Makefile.am: added NTEventlog.cpp and DllMain.cpp to sources.
