@@ -18,7 +18,7 @@
 
 namespace {
 
-#ifdef __osf__
+#ifndef HAVE_SNPRINTF
 
     int vsnprintf(char* s, size_t maxlen, const char* fmt, va_list args)
     {
@@ -54,7 +54,7 @@ namespace {
 	return len;
     }
 
-#endif // __osf__
+#endif // !HAVE_SNPRINTF
 
     std::string vstrprintf(const char* format, va_list args)
     {
@@ -84,7 +84,7 @@ namespace {
 
 namespace log4cpp {
 
-#ifndef LOG4CPP_HAVE_STDIOSTREAM
+#ifndef LOG4CPP_HAVE_SSTREAM
     std::string OstringStream::str() { 
         (*this) << '\0'; 
         std::string msg(ostrstream::str()); 

@@ -64,6 +64,7 @@ fi
 # Checks local idioms
 # ----------------------------------------------------------------------------
 AC_CXX_HAVE_SSTREAM
+AC_FUNC_SNPRINTF
 
 # syslog_test
 AC_CHECK_FUNCS([syslog])
