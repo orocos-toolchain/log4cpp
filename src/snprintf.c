@@ -705,8 +705,8 @@ int portable_vsnprintf(char *str, size_t str_m, const char *fmt, va_list ap) {
           else if (precision == 0) str_arg_l = 0;
           else {
        /* memchr on HP does not like n > 2^31  !!! */
-            const char *q = memchr(str_arg, '\0',
-                             precision <= 0x7fffffff ? precision : 0x7fffffff);
+            const char *q = static_cast<const char*>(memchr(str_arg, '\0',
+                             precision <= 0x7fffffff ? precision : 0x7fffffff));
             str_arg_l = !q ? precision : (q-str_arg);
           }
           break;
