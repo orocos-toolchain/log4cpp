@@ -10,6 +10,11 @@
 #ifdef LOG4CPP_HAVE_UNISTD_H
 #include <unistd.h>
 #endif
+#ifdef LOG4CPP_HAVE_IO_H
+#    include <io.h>
+#endif
+
+#include <stdio.h>
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -82,11 +87,11 @@ namespace log4cpp {
                     }
                     else if (appenderName.compare("stdout") == 0) {
                         appender =
-                            new log4cpp::FileAppender(categoryName, dup(fileno(stdout)));
+                            new log4cpp::FileAppender(categoryName, ::dup(fileno(stdout)));
                     }
                     else if (appenderName.compare("stderr") == 0) {
                         appender =
-                            new log4cpp::FileAppender(categoryName, dup(fileno(stderr)));
+                            new log4cpp::FileAppender(categoryName, ::dup(fileno(stderr)));
                     }
 #if LOG4CPP_HAVE_SYSLOG
                     else if (appenderName.compare("syslog") == 0) {

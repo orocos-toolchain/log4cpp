@@ -22,6 +22,12 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	bcb5/testPattern/testPattern.mak, bcb5/testmain/testmain.bpr: Adjusted
 	makefiles/project files for BCB.
 
+2002-01-23 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/SimpleConfigurator.cpp: try to fix bug #506907 (MSVC++ 
+	compile failure) with ::dup(fileno(stdout))
+
+	* configure.in: upped version to 0.2.7rc2
+	
 2002-01-21 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/Category.cpp: fix ownsAppender() methods.
 
