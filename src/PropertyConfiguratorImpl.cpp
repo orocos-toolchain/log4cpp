@@ -160,6 +160,9 @@ namespace log4cpp {
 
         category.setPriority(priority);
 
+        bool additive = _properties.getBool("additivity." + categoryName, true);
+        category.setAdditivity(additive);
+
         category.removeAllAppenders();
         for(/**/; i != iEnd; ++i) {           
             std::string appenderName = StringUtil::trim(*i);
