@@ -34,6 +34,9 @@
 #ifdef LOG4CPP_HAVE_LIBIDSA
 #include <log4cpp/IdsaAppender.hh>
 #endif	// LOG4CPP_HAVE_LIBIDSA
+#ifdef LOG4CPP_HAVE_SYSLOG
+#include <log4cpp/SyslogAppender.hh>
+#endif
 
 // layouts
 #include <log4cpp/Layout.hh>
@@ -219,6 +222,13 @@ namespace log4cpp {
             appender = new RemoteSyslogAppender(appenderName, syslogName, 
                                                 syslogHost, facility, portNumber);
         }
+#ifdef LOG4CPP_HAVE_SYSLOG
+        else if (appenderType == "LocalSyslogAppender") {
+            std::string syslogName = _properties.getString(appenderPrefix + ".syslogName", "syslog");
+            int facility = _properties.getInt(appenderPrefix + ".facility", -1) * 8; // * 8 to get LOG_KERN, etc. compatible values. 
+            appender = new SyslogAppender(appenderName, syslogName, facility);
+        }
+#endif // LOG4CPP_HAVE_SYSLOG
         else if (appenderType == "AbortAppender") {
             appender = new AbortAppender(appenderName);
         }

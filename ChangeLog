@@ -1,5 +1,8 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2003-05-23 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/PropertyConfiguratorImpl.cpp: added support for configuring LocalSyslogAppenders.
+
 2003-05-09 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* log4cpp.pc.in, configure.in, Makefile.am: added pkgconfig file.
 
