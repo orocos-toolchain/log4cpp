@@ -1,6 +1,11 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
-
+2001-04-10 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	Rerelease as 0.2.3b
+	Fixed bugs:
+	#415056 Win32: log4cpp project file broken
+	#415059 Win32: problem with 'using namespace std'
+	
 2001-04-09 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	Release 0.2.3
 	Fixed and resolved Bugs:
