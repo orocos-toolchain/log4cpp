@@ -22,13 +22,13 @@ pdf: @PACKAGE_TARNAME@.pdf
 
 
 install-data-local:
-	$(mkinstalldirs) $(DESTDIR)$(man3dir)
+	$(mkinstalldirs) $(man3dir)
 	@for i in ./man/man3/log4cpp.3 ./man/man3/log4cpp_*.3; do \
-		inst=`basename $$i | sed 's/_/:/g'`; \
-		echo "$(INSTALL_DATA) $$i $(DESTDIR)$(man3dir)/$$inst"; \
-		$(INSTALL_DATA) $$i $(DESTDIR)$(man3dir)/$$inst; \
+		inst=`basename $$i | sed 's/_/::/g'`; \
+		echo "$(INSTALL_DATA) $$i$(man3dir)/$$inst"; \
+		$(INSTALL_DATA) $$i $(man3dir)/$$inst; \
 	done
-	$(mkinstalldirs) $(DESTDIR)$(docdir)
+	$(mkinstalldirs) $(docdir)
 	cp -r html $(docdir)
 	$(RM) -r -f $(docdir)/html/CVS \
 		$(docdir)/html/Makefile.am \
@@ -36,8 +36,8 @@ install-data-local:
 		$(docdir)/html/Makefile
 
 uninstall-local:
-	$(RM) $(DESTDIR)/$(man3dir)/log4cpp.3
-	$(RM) $(DESTDIR)/$(man3dir)/log4cpp_*.3
+	$(RM) $(man3dir)/log4cpp.3
+	$(RM) $(man3dir)/log4cpp::*.3
 	$(RM) -r -f $(docdir)
 
 clean-local:
