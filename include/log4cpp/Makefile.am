@@ -25,7 +25,6 @@ liblog4cppinclude_HEADERS =  \
 	OstringStream.hh \
 	Log4cppCleanup.hh \
 	TimeStamp.hh \
-	RollingFileAppender.hh \
 	Filter.hh \
 	Export.hh \
 	Portability.hh \

@@ -6,6 +6,11 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	* include/log4cpp/Category.hh, src/Category.cpp: 
 	added exists(std::string).
 
+	* include/log4cpp/RollingFileAppender.hh,
+	include/log4cpp/Makefile.am,
+	src/RollingFileAppender.cpp, src/MakeFile.am: removed 
+	RollingFileAppender, to be replaced with DailyRollingFileAppender.
+	
 2002-01-16 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/Category.hh, src/Category.cpp: fix bug #504314:
 	added missing log methods for priority 'fatal'.

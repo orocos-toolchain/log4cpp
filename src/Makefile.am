@@ -28,7 +28,6 @@ liblog4cpp_la_SOURCES = \
 	OstringStream.cpp \
 	Filter.cpp \
 	Log4cppCleanup.cpp \
-	TimeStamp.cpp \
-	RollingFileAppender.cpp
+	TimeStamp.cpp
 
 liblog4cpp_la_LDFLAGS = -version-info @LT_VERSION@
