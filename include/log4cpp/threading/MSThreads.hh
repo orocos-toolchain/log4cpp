@@ -10,6 +10,8 @@
 #ifndef _LOG4CPP_THREADING_MSTHREADS_HH
 #define _LOG4CPP_THREADING_MSTHREADS_HH
 
+#include <string>
+
 // deal with ERROR #define
 // N.B. This #includes windows.h with NOGDI and WIN32_LEAN_AND_MEAN #defined.
 //      If this is not what the user wants, #include windows.h before this file.

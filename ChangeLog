@@ -1,5 +1,8 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-10-10 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/threading/MSThreads.hh: added #include<string>
+
 2002-10-05 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* log4cpp.spec.in: don't require log4cpp for log4cpp-doc.
 
