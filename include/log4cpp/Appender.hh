@@ -10,6 +10,7 @@
 #ifndef _LOG4CPP_APPENDER_HH
 #define _LOG4CPP_APPENDER_HH
 
+#include "log4cpp/Hints.hh"
 #include <string>
 #include <map>
 #include <stdarg.h>

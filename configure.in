@@ -76,6 +76,9 @@ if test "$GCC" = yes; then
     esac
 fi
 
+# syslog_test
+AC_CHECK_FUNCS([syslog])
+
 # idsa_test
 
 if test "x$with_idsa" = xyes; then

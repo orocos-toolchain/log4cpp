@@ -59,6 +59,7 @@ namespace log4cpp {
         /** The name of thread in which this logging event was generated,
             e.g. the PID. */
         const std::string& threadName;
+        //QQQ        const std::string threadName;
 
         /** The number of seconds elapsed since the epoch 
             (1/1/1970 00:00:00 UTC) until logging event was created. */

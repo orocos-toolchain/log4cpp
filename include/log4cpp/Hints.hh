@@ -30,6 +30,14 @@
 #        define LOG4CPP_USE_OLD_IOSTREAM 1
 #    endif
 
+#elif defined(_MSC_VER)
+
+#    pragma warning( disable : 4786 )
+#    include <strstream>
+     using namespace std;
+#    define LOG4CPP_USE_OLD_IOSTREAM 1
+#    undef LOG4CPP_USE_NEW_IOSTREAM
+
 #else
 
 #    error "Unknown Compiler !!"

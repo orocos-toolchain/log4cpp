@@ -7,7 +7,15 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include <unistd.h>
+#include "log4cpp/Hints.hh"
+
+#ifdef _MSC_VER
+#    include <io.h>
+#else
+#    include <unistd.h>
+#endif // _MSC_VER
+
+#include <stdio.h>
 #include "log4cpp/HierarchyMaintainer.hh"
 #include "log4cpp/FileAppender.hh"
 
@@ -32,7 +40,7 @@ namespace log4cpp {
             
             if (name == "") {
                 result = new Category(name, NULL, Priority::INFO);
-                result->setAppender(new FileAppender("_", ::dup(STDERR_FILENO)));
+                result->setAppender(new FileAppender("_", ::dup(fileno(stderr))));
             } else {
                 std::string parentName;
                 size_t dotIndex = name.find_last_of('.');

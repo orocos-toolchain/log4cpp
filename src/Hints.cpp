@@ -16,9 +16,13 @@
 extern int snprintf(char*, size_t, const char*, ...);
 extern int vsnprintf(char*, size_t, const char*, va_list);
 
+#elif defined(_MSC_VER)
+#    include <stdio.h>
+#    include <stdarg.h>
+#    include <windows.h>
 #else
 #    include <stdio.h>
-#endif
+#endif // __osf__
 
 namespace log4cpp {
 

@@ -7,7 +7,14 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include <unistd.h>
+#include "log4cpp/Hints.hh"
+
+#ifdef _MSC_VER
+#    include <io.h>
+#else
+#    include <unistd.h>
+#endif // _MSC_VER
+
 #include <stdio.h>
 #include <time.h>
 #include <sys/types.h>
@@ -18,10 +25,11 @@
 
 namespace log4cpp {
 
-    FileAppender::FileAppender(const std::string& name, const std::string& fileName) : 
-        Appender(name),
-        _fileName(fileName) {
-        _fd = ::open(_fileName.c_str(), O_CREAT | O_APPEND | O_WRONLY, 00644);  
+    FileAppender::FileAppender(const std::string& name, 
+                               const std::string& fileName) : 
+            Appender(name),
+            _fileName(fileName) {
+        _fd = ::open(_fileName.c_str(), O_CREAT | O_APPEND | O_WRONLY, 00644);
     }
     
     FileAppender::FileAppender(const std::string& name, int fd) :

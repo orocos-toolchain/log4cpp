@@ -7,7 +7,9 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include <unistd.h>
+#ifndef _MSC_VER
+#    include <unistd.h>
+#endif
 
 #include "log4cpp/Hints.hh"
 #include "log4cpp/Category.hh"
@@ -139,7 +141,16 @@ namespace log4cpp {
     void Category::_logUnconditionally(int priority, const char* format, va_list arguments) {
         ostrstream messageBuffer;
 
+// XXX fix properly in Hints.cpp, not here 
+#ifdef _MSC_VER
+        char buffer[512];
+        int  err = _vsnprintf(buffer, sizeof(buffer), format, arguments );
+        
+        messageBuffer << (err == -1 ? "message too long" : buffer);
+#else
         messageBuffer.vform(format, arguments);
+#endif // _MSC_VER
+
         messageBuffer << '\0';
         std::string message = std::string(messageBuffer.str());
         _logUnconditionally2(priority, message);

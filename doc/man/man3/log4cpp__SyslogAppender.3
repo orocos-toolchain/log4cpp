@@ -1,4 +1,4 @@
-.TH log4cpp::SyslogAppender 3 "22 Dec 2000" "log4cpp" \" -*- nroff -*-
+.TH log4cpp::SyslogAppender 3 "24 Feb 2001" "log4cpp" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -86,7 +86,7 @@ Note that the C syslog API is process global, so  instantion of a second \fBSysl
 \fB\fIsyslogName\fR\fR The ident parameter in the openlog(3) call. 
 .TP
 \fB\fIfacility\fR\fR The syslog facility to log to. Defaults to LOG_USER. 
-.SS log4cpp::SyslogAppender::~SyslogAppender ()\fC [virtual]\fR
+.SS virtual log4cpp::SyslogAppender::~SyslogAppender ()\fC [virtual]\fR
 .PP
 .SH MEMBER FUNCTION DOCUMENTATION
 .PP 
@@ -123,7 +123,7 @@ The \fBSyslogAppender\fR requires a \fBLayout\fR.
  true 
 .PP
 Reimplemented from \fBlog4cpp::Appender\fR.
-.SS void log4cpp::SyslogAppender::setLayout (\fBLayout\fR * layout)\fC [virtual]\fR
+.SS virtual void log4cpp::SyslogAppender::setLayout (\fBLayout\fR * layout)\fC [virtual]\fR
 .PP
 Set the \fBLayout\fR for this appender.
 .PP
