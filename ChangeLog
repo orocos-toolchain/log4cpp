@@ -1,5 +1,12 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-05-19 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* Fixed distcheck target.
+	* Fixed check target. It runs testNDC, testCategory and 
+	  testFixedContextCategory as tests.
+	* Added subdir m4 with (common) autoconf macros.
+	* Started adding throw() specifiers to methods.
+	
 2001-04-21 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	Rereleased as 0.2.4b
 	MSVC++: Stripped '\r' characters from .dsp and .dsw files.
