@@ -17,6 +17,7 @@ PROJECT = log4cpp.dll
 OBJFILES = \
     Appender.obj \
     AppenderSkeleton.obj \
+    BasicConfigurator.obj \
     BasicLayout.obj \
     Category.obj \
     CategoryStream.obj \

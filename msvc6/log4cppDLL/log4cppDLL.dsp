@@ -100,6 +100,10 @@ SOURCE=..\..\src\AppenderSkeleton.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\BasicConfigurator.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\BasicLayout.cpp
 # End Source File
 # Begin Source File
@@ -249,6 +253,10 @@ SOURCE=..\..\include\log4cpp\Appender.hh
 # Begin Source File
 
 SOURCE=..\..\include\log4cpp\AppenderSkeleton.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\BasicConfigurator.hh
 # End Source File
 # Begin Source File
 
