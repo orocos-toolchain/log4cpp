@@ -63,8 +63,8 @@ LIB32=link.exe -lib
 # PROP Output_Dir "Debug"
 # PROP Intermediate_Dir "Debug"
 # PROP Target_Dir ""
-# ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /YX /FD /GZ  /c
-# ADD CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\..\include" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /YX /FD /GZ  /c
+# ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /YX /FD /GZ /c
+# ADD CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\..\include" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /YX /FD /GZ /c
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
 # ADD RSC /l 0x409 /d "_DEBUG"
 BSC32=bscmake.exe
@@ -89,6 +89,10 @@ SOURCE=..\..\src\Appender.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\AppenderSkeleton.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\BasicLayout.cpp
 # End Source File
 # Begin Source File
@@ -101,15 +105,23 @@ SOURCE=..\..\src\FileAppender.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\Filter.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\HierarchyMaintainer.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\src\Hints.cpp
+SOURCE=..\..\src\IdsaAppender.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\src\IdsaAppender.cpp
+SOURCE=..\..\src\LayoutAppender.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\Log4cppCleanup.cpp
 # End Source File
 # Begin Source File
 
@@ -125,6 +137,10 @@ SOURCE=..\..\src\OstreamAppender.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\OstringStream.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\Priority.cpp
 # End Source File
 # Begin Source File
@@ -133,15 +149,14 @@ SOURCE=..\..\src\SimpleLayout.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\src\SyslogAppender.cpp
-# End Source File
-# End Group
-# Begin Group "Header Files"
-
 # PROP Default_Filter "h;hh;hpp;hxx;hm;inl"
 # Begin Source File
 
 SOURCE=..\..\include\log4cpp\Appender.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\AppenderSkeleton.hh
 # End Source File
 # Begin Source File
 
@@ -161,11 +176,11 @@ SOURCE=..\..\include\log4cpp\FileAppender.hh
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\include\log4cpp\HierarchyMaintainer.hh
+SOURCE=..\..\include\log4cpp\Filter.hh
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\include\log4cpp\Hints.hh
+SOURCE=..\..\include\log4cpp\HierarchyMaintainer.hh
 # End Source File
 # Begin Source File
 
@@ -174,6 +189,14 @@ SOURCE=..\..\include\log4cpp\IdsaAppender.hh
 # Begin Source File
 
 SOURCE=..\..\include\log4cpp\Layout.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\LayoutAppender.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\Log4cppCleanup.hh
 # End Source File
 # Begin Source File
 
@@ -186,6 +209,10 @@ SOURCE=..\..\include\log4cpp\NDC.hh
 # Begin Source File
 
 SOURCE=..\..\include\log4cpp\OstreamAppender.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\OstringStream.hh
 # End Source File
 # Begin Source File
 
