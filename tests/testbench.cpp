@@ -1,4 +1,6 @@
-#include <stdio.h>
+#include <cstdlib>
+#include <cstring>
+#include <cstdio>
 #include <iostream>
 
 #include <log4cpp/Category.hh>
@@ -14,8 +16,8 @@
 // -----------------------------------------------------------------------------
 int main(int argc, char* argv[])
 {
-    int    count  = argc > 1 ? atoi(argv[1]) : 100;
-    size_t size   = argc > 2 ? atoi(argv[2]) : 128;    
+    int    count  = argc > 1 ? std::atoi(argv[1]) : 100;
+    size_t size   = argc > 2 ? std::atoi(argv[2]) : 128;    
 
     std::cout << "  count: " << count << std::endl
 	      << "   size: " << size  << " bytes" << std::endl
@@ -37,7 +39,7 @@ int main(int argc, char* argv[])
     Clock  clock;
     char*  buffer = new char[size + 1];
     
-    memset(buffer, 'X', size + 1);
+    std::memset(buffer, 'X', size + 1);
     buffer[size] = '\0';
 
     std::cout << "BasicLayout:" << std::endl;

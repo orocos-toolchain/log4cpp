@@ -12,7 +12,9 @@
 #ifdef LOG4CPP_HAVE_UNISTD_H
 #    include <unistd.h>
 #endif
-#include <stdio.h>
+#include <cstdlib>
+#include <cstdio>
+#include <cstring>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -86,27 +88,33 @@ namespace log4cpp {
 		    int err;
  
 		    err = WSAStartup (0x101, &wsaData );
-		    if (err) abort ();
+		    if (err) {
+                        // loglog("RemoteSyslogAppender: WSAStartup returned %d", err);
+                        return; // fail silently
+                    }
 		    pent = gethostbyname (_relayer.c_str ());
 		    _cludge = 1;
 		} else {
-		    abort ();
+		    // loglog("RemoteSyslogAppender: gethostbyname returned error");
+                    return; // fail silently
 		}
 #endif
 	    }
 	    if (pent == NULL) {
 		unsigned long ip = (unsigned long) inet_addr (_relayer.c_str ());
 		pent = gethostbyaddr ((const char *) &ip, 4, AF_INET);
-	    }
-	    if (pent == NULL) {
-		abort ();
-	    }
+                if (pent == NULL) {
+                    // loglog("RemoteSyslogAppender: failed to resolve host %s", _relayer.c_str());
+                    return; // fail silently                    
+                }
+            }
 	    _ipAddr = *((unsigned long *) pent->h_addr);
 	}
 	// Get a datagram socket.
 	
 	if ((_socket = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
-	    abort ();
+            // loglog("RemoteSyslogAppender: failed to open socket");
+            return; // fail silently                    
 	}
     }
 
@@ -137,7 +145,7 @@ namespace log4cpp {
 	while (len > len2) {
 	    if (len > 900) {
     		sendto (_socket, buf, 900, 0, (struct sockaddr *) &sain, sizeof (sain));
-		memmove (buf + len2, buf + 900, len - 900 - len2);
+		std::memmove (buf + len2, buf + 900, len - 900 - len2);
 		len -= (900 - len2);
 		// note: we might need to sleep a bit here
 	    } else {

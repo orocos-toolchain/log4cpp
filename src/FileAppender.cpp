@@ -18,9 +18,6 @@
 
 #include <stdio.h>
 #include <time.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include <log4cpp/FileAppender.hh>
 #include <log4cpp/Category.hh>
 

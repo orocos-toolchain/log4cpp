@@ -9,6 +9,7 @@
 
 #include <log4cpp/Portability.hh>
 #include <log4cpp/Priority.hh>
+#include <cstdlib>
 
 namespace log4cpp {
 
@@ -42,7 +43,7 @@ namespace log4cpp {
 		value = 0;
 	    } else {
 		char* endPointer;
-		value = strtoul(priorityName.c_str(), &endPointer, 10);
+		value = std::strtoul(priorityName.c_str(), &endPointer, 10);
 		if (*endPointer != 0) {
 		    throw std::invalid_argument(std::string("unknown priority name: '") + priorityName + "'");
 		}

@@ -10,21 +10,22 @@
 #ifndef _LOG4CPP_APPENDER_HH
 #define _LOG4CPP_APPENDER_HH
 
+#include <log4cpp/Portability.hh>
 #include <string>
 #include <map>
 #include <set>
 #include <stdarg.h>
-#include <log4cpp/Portability.hh>
-#include <log4cpp/OstringStream.hh>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include <log4cpp/Priority.hh>
 #include <log4cpp/Layout.hh>
 #include <log4cpp/LoggingEvent.hh>
-#include <log4cpp/Filter.hh>
 #include <log4cpp/Log4cppCleanup.hh>
 #include <log4cpp/threading/Threading.hh>
 
 namespace log4cpp {
-    class LOG4CPP_EXPORT Category;
+    class LOG4CPP_EXPORT Filter;
     
     /**
      *  Implement this interface for your own strategies for printing log

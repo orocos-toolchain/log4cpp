@@ -80,7 +80,7 @@ namespace log4cpp {
     
     int Properties::getInt(const std::string& property, int defaultValue) {
         const_iterator key = find(property);
-        return (key == end()) ? defaultValue : atoi((*key).second.c_str());
+        return (key == end()) ? defaultValue : std::atoi((*key).second.c_str());
     }
 
     bool Properties::getBool(const std::string& property, bool defaultValue) {
@@ -121,7 +121,7 @@ namespace log4cpp {
                 if (key == "${") {
                     result += "${";
                 } else {
-                    char* value = ::getenv(key.c_str());
+                    char* value = std::getenv(key.c_str());
                     if (value) {
                         result += value;
                     } else {

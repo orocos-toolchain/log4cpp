@@ -10,7 +10,7 @@
 #include <unistd.h>
 #endif
 
-#include <stdlib.h>
+#include <cstdlib>
 
 #include <log4cpp/Category.hh>
 #include <log4cpp/Appender.hh>
@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
         /* looking for the init file in $srcdir is a requirement of
            automake's distcheck target.
         */
-        char* srcdir = ::getenv("srcdir");
+        char* srcdir = std::getenv("srcdir");
         std::string initFileName;
         if (srcdir == NULL) {
             initFileName = "./testConfig.log4cpp.properties";

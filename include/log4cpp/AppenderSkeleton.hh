@@ -13,6 +13,7 @@
 #include <log4cpp/Portability.hh>
 #include <log4cpp/OstringStream.hh>
 #include <log4cpp/Appender.hh>
+#include <log4cpp/Filter.hh>
 
 namespace log4cpp {
 

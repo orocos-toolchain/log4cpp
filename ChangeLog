@@ -1,5 +1,26 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-09-15 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/threading/DummyThreads.hh, include/threading/MSThreads.hh,
+	include/threading/OmniThreads.hh, include/threading/Pthreads.hh,
+	src/DummyThreads.cpp, src/MSThreads.cpp, src/OmniThreads.cpp, 
+	src/Pthreads.cpp: moved bodies of getThreadId() to .cpp files.
+
+	* src/Makefile.am, msvc6/log4cpp/log4cpp.dsp,
+	msvc6/log4cppDLL/log4cppDLL.dsp, bcb5/log4cpp/log4cpp.mak,
+	bcb5/log4cpp/log4cpp.bpr, bcb5/log4cpp/log4cpp.bpf: added *Threads.cpp
+	files	
+
+	* configure.in, include/log4cpp/Appender.hh, 
+	include/log4cpp/AppenderSkeleton.hh, m4/BB_CHECK_PTHREADS.m4,
+	m4/PETI_PEDANTIC_GCC.m4, src/FileAppender.cpp, src/Priority.cpp,
+ 	src/Properties.cpp, src/PropertyConfiguratorImpl.hh, 
+	src/RemoteSyslogAppender.cpp,src/StringUtil.hh, tests/Clock.cpp,
+	tests/Clock.hh, tests/testConfig.cpp, tests/testPropertyConfig.cpp,
+	tests/testbench.cpp:
+	Merged patch #605143, contributed by Harald Wellman: support for
+	compilation in QNX Neutrino.
+	
 2002-09-05 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/PropertyConfiguratorImpl.cpp, tests/testConfig.log4cpp.properties:
 	Merged patch #604991, contributed by Richard Brodie: support for 

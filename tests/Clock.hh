@@ -6,6 +6,10 @@
 #ifndef __CLOCK_H
 #define __CLOCK_H
 
+#ifdef LOG4CPP_HAVE_STDINT_H
+#include <stdint.h>
+#endif // LOG4CPP_HAVE_STDINT_H
+
 #ifdef __osf__
     typedef long usec_t;    /* number of microseconds since 1970/01/01 */
 #   define INT64_CONSTANT(val)  (val##L)

@@ -47,7 +47,7 @@ namespace log4cpp {
         /**
          * Get a list of categories for which we should do the configuration.  This simply
          * extracts the categories from the map.
-         * @param	catlist	Reference to a list which is to receive the list of categories.
+         * @param categories Reference to a list which is to receive the list of categories.
          */
         void getCategories(std::vector<std::string>& categories) const;
 

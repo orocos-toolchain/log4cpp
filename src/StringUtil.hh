@@ -42,7 +42,7 @@ namespace log4cpp {
         /**
            splits a string into string segments based on the given delimiter
            and assigns the segments through an output_iterator.
-           @param out The output_iterator through which to assign the string
+           @param output The output_iterator through which to assign the string
            segments. Typically this will be a back_insertion_iterator.
            @param s The string to split into segments.
            @param delimiter The delimiter character

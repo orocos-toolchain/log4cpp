@@ -13,16 +13,21 @@ dnl @version $Id$
 AC_DEFUN([PETI_PEDANTIC_GCC],
     [
     if test "$GCC" = yes; then
-        case `$CXX --version` in
-            *2.97*) CFLAGS="$CFLAGS -Wall -Wno-unused -pedantic -D_ISOC99_SOURCE"
-                    CXXFLAGS="$CXXFLAGS -Wall -Wno-unused -pedantic -D_ISOC99_SOURCE" 
-                    ;;
-            *2.96*) CFLAGS="$CFLAGS -Wall -Wno-unused"
-                    CXXFLAGS="$CXXFLAGS -Wall -Wno-unused" 
-                    ;;
-	    *)      CFLAGS="$CFLAGS -Wall -Wno-unused -pedantic"
-                    CXXFLAGS="$CXXFLAGS -Wall -Wno-unused -pedantic"
-                    ;;
-        esac
+ 	if test "$host" = x86-pc-nto-qnx; then
+ 	    CFLAGS="$CXXFLAGS -Wno-unused -O0"
+ 	    CXXFLAGS="$CXXFLAGS -Wno-unused -DLOG4CPP_MISSING_INT64_OSTREAM_OP -O0"
+        else
+            case `$CXX --version` in
+                *2.97*) CFLAGS="$CFLAGS -Wall -Wno-unused -pedantic -D_ISOC99_SOURCE"
+                        CXXFLAGS="$CXXFLAGS -Wall -Wno-unused -pedantic -D_ISOC99_SOURCE" 
+                        ;;
+                *2.96*) CFLAGS="$CFLAGS -Wall -Wno-unused"
+                        CXXFLAGS="$CXXFLAGS -Wall -Wno-unused" 
+                        ;;
+	        *)      CFLAGS="$CFLAGS -Wall -Wno-unused -pedantic"
+                        CXXFLAGS="$CXXFLAGS -Wall -Wno-unused -pedantic"
+                        ;;
+            esac
+        fi
     fi
     ])
