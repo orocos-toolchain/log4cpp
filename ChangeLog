@@ -1,5 +1,13 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-01-10 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* configure.in: added check for strcasecmp() and stricmp().
+	* include/log4cpp/config-win32.h: have stricmp() but not strcasecmp().
+	* include/log4cpp/Portability.hh: use stricmp() if strcasecmp() is
+	not available.
+
+	* include/log4cpp/RemoteSyslogAppender.hh: added SyslogFacility type.
+	
 2002-01-09 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/SimpleConfigurator.cpp: skip all whitespace before PatternLayout 
 	pattern, not just one.
