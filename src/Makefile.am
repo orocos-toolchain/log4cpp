@@ -6,6 +6,7 @@ liblog4cpp_la_SOURCES = \
 	Hints.cpp \
 	Appender.cpp \
 	FileAppender.cpp \
+	IdsaAppender.cpp \
 	OstreamAppender.cpp \
 	SyslogAppender.cpp \
 	SimpleLayout.cpp \

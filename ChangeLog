@@ -1,5 +1,9 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2000-12-18 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	Added IdsaAppender contributed by Marc Welz. 
+	Merged Tru64 support patches from Cedric Le Goater.
+	
 2000-12-10 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	Release 0.2.0
 	Integrated autoconf setup contributed by Cedric Le Goater.

@@ -4,6 +4,7 @@ liblog4cppinclude_HEADERS =  \
 	Hints.hh \
 	Appender.hh \
 	FileAppender.hh \
+	IdsaAppender.hh \
 	OstreamAppender.hh \
 	SyslogAppender.hh \
 	Layout.hh \

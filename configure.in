@@ -17,6 +17,11 @@ AC_CONFIG_AUX_DIR(config)
 AM_CONFIG_HEADER(src/config.h)
 AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
 
+# General "with" options
+# ----------------------------------------------------------------------------
+AC_ARG_WITH(idsa,[  --with-idsa             include idsa support])
+
+
 # Checks for programs
 # ----------------------------------------------------------------------------
 AC_CANONICAL_HOST
@@ -28,6 +33,9 @@ AC_PROG_MAKE_SET
 AC_PROG_CXX
 AC_PROG_CXXCPP
 dnl AC_LANG_CPLUSPLUS
+
+# Checks for libraries
+# ----------------------------------------------------------------------------
 
 # Checks local idioms
 # ----------------------------------------------------------------------------
@@ -58,6 +66,15 @@ if test "$GCC" = yes; then
 	*2.97*) CXXFLAGS="$CXXFLAGS -Wall -D_ISOC99_SOURCE" ;;
 	*)      CXXFLAGS="$CXXFLAGS -Wall" ;;
     esac
+fi
+
+# idsa_test
+
+if test "x$ac_with_idsa" != xno; then
+    AC_CHECK_LIB([idsa], [idsa_open])
+    if test "$ac_cv_lib_idsa_idsa_open" = no; then
+        AC_MSG_ERROR([could not locate idsa library])
+    fi
 fi
 
 # Create files
