@@ -48,7 +48,7 @@ int main(int argc, char** argv) {
     sub1.warn("sub1 warn");
     sub2.error("sub2 error");
     sub2.warn("sub2 warn");
-
+    sub2.error("%s %s %d", "test", "vform", 123);
     sub2.warnStream() << "streamed warn";
 
     sub2 << log4cpp::Priority::WARN << "warn2.." << "..warn3..value=" << 0 << 
