@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
 	clock.start();
 	for (int i = 0; i < count; i++) log.error("%s", buffer);    
 	clock.stop();
-	std::cout << "  buffer ostream:  " << ((float)clock.elapsed()) / count << " us" << std::endl;
+	std::cout << "  charbuf printf  ostream:  " << ((float)clock.elapsed()) / count << " us" << std::endl;
     }
     
     {	
@@ -55,7 +55,7 @@ int main(int argc, char* argv[])
 	clock.start();
 	for (int i = 0; i < count; i++) log.error(std::string(buffer2));    
 	clock.stop();
-	std::cout << "  buffer ostream:  " << ((float)clock.elapsed()) / count << " us" << std::endl;
+	std::cout << "  charbuf string  ostream:  " << ((float)clock.elapsed()) / count << " us" << std::endl;
     }
 
     {
@@ -65,17 +65,35 @@ int main(int argc, char* argv[])
 	for (int i = 0; i < count; i++) 
             log << log4cpp::Priority::ERROR << str;
 	clock.stop();
-	std::cout << "  stream ostream:  " << ((float)clock.elapsed()) / count << " us" << std::endl;
+	std::cout << "  string  stream  ostream:  " << ((float)clock.elapsed()) / count << " us" << std::endl;
     }
 
     {
-	std::string str(size, 'X');
-
 	clock.start();
 	for (int i = 0; i < count; i++) 
             log << log4cpp::Priority::ERROR << buffer;
 	clock.stop();
-	std::cout << "  stream2 ostream: " << ((float)clock.elapsed()) / count << " us" << std::endl;
+	std::cout << "  charbuf stream  ostream:  " << ((float)clock.elapsed()) / count << " us" << std::endl;
+    }
+    
+    {
+	std::string str(size, 'X');
+
+	clock.start();
+        log4cpp::CategoryStream s(log << log4cpp::Priority::ERROR);
+	for (int i = 0; i < count; i++) 
+            s << str << log4cpp::CategoryStream::ENDLINE;
+	clock.stop();
+	std::cout << "  string  stream2 ostream:  " << ((float)clock.elapsed()) / count << " us" << std::endl;
+    }
+
+    {
+	clock.start();
+        log4cpp::CategoryStream s(log << log4cpp::Priority::ERROR);
+	for (int i = 0; i < count; i++) 
+            s << buffer << log4cpp::CategoryStream::ENDLINE;
+	clock.stop();
+	std::cout << "  charbuf stream2 ostream:  " << ((float)clock.elapsed()) / count << " us" << std::endl;
     }
     
     {
@@ -84,7 +102,7 @@ int main(int argc, char* argv[])
 	clock.start();
 	for (int i = 0; i < count; i++) log.error(str);
 	clock.stop();
-	std::cout << "  string ostream:  " << ((float)clock.elapsed()) / count << " us" << std::endl;
+	std::cout << "  direct  string  ostream:  " << ((float)clock.elapsed()) / count << " us" << std::endl;
     }
 
     {
@@ -95,7 +113,7 @@ int main(int argc, char* argv[])
 	clock.start();
 	for (int i = 0; i < count; i++) log.error(str);
 	clock.stop();
-	std::cout << "  string file:     " << ((float)clock.elapsed()) / count << " us" << std::endl;
+	std::cout << "  direct  string  file:     " << ((float)clock.elapsed()) / count << " us" << std::endl;
     }
 
     std::cout << "PatternLayout:" << std::endl;
@@ -117,7 +135,7 @@ int main(int argc, char* argv[])
 	clock.start();
 	for (int i = 0; i < count; i++) log.error("%s", buffer);    
 	clock.stop();
-	std::cout << "  buffer ostream:  " << ((float)clock.elapsed()) / count << " us" << std::endl;
+	std::cout << "  charbuf printf ostream:  " << ((float)clock.elapsed()) / count << " us" << std::endl;
     }
     
     {
@@ -126,7 +144,7 @@ int main(int argc, char* argv[])
 	clock.start();
 	for (int i = 0; i < count; i++) log.error(str);
 	clock.stop();
-	std::cout << "  string ostream:  " << ((float)clock.elapsed()) / count << " us" << std::endl;
+	std::cout << "  direct  string ostream:  " << ((float)clock.elapsed()) / count << " us" << std::endl;
     }
 
     {
@@ -137,7 +155,7 @@ int main(int argc, char* argv[])
 	clock.start();
 	for (int i = 0; i < count; i++) log.error(str);
 	clock.stop();
-	std::cout << "  string file:     " << ((float)clock.elapsed()) / count << " us" << std::endl;
+	std::cout << "  string  file:     " << ((float)clock.elapsed()) / count << " us" << std::endl;
     }
 
     {
