@@ -44,7 +44,7 @@ namespace log4cpp {
 		char* endPointer;
 		value = strtoul(priorityName.c_str(), &endPointer, 10);
 		if (*endPointer != 0) {
-		    throw std::invalid_argument(std::string("unknown priority name: ") + priorityName);
+		    throw std::invalid_argument(std::string("unknown priority name: '") + priorityName + "'");
 		}
 	    }
 	}
