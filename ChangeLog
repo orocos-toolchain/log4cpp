@@ -1,5 +1,9 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-09-26 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/StringUtil.hh: fix compilation problem on Sun CC 5.3 
+	(bug #614903).
+	
 2002-09-18 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/RemoteSyslogAppender.cpp: fixed log facility in _append(), as
 	reported by Derek Atkins.

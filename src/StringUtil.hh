@@ -65,7 +65,7 @@ namespace log4cpp {
             
             *output++ = s.substr(left);
             return i;
-        };
+        }
     };
 }
 
