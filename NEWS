@@ -1,6 +1,11 @@
 This file records noteworthy changes.
 
-0.2.7 (27 Januari 2002)
+0.3.0 - development branch (18 Februari 2002)
+Added experimental support for multi threaded applications. This 
+implementation uses omniORB4s threading library. Other threading libraries,
+such as Boosts, may be used as well, but this has not been implemented yet. 
+ 
+0.2.7 - stable branch (27 Januari 2002)
 Support for multiple Appenders per Category added (feature request #501360).
 Fixed variable scope bug in SyslogAppender (bug #499315)
 Fixed memory leak in SyslogAppender and RemoteSyslogAppender (bug #499524)
