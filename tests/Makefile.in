@@ -76,12 +76,15 @@ PACKAGE = @PACKAGE@
 RANLIB = @RANLIB@
 VERSION = @VERSION@
 
-bin_PROGRAMS = testmain testNDC testbench
+bin_PROGRAMS = testmain testCategory testNDC testbench
 
 INCLUDES = -I../include
 
 testmain_SOURCES = testmain.cpp
 testmain_LDADD = ../src/liblog4cpp.la
+
+testCategory_SOURCES = testCategory.cpp
+testCategory_LDADD = ../src/liblog4cpp.la
 
 testNDC_SOURCES = testNDC.cpp
 testNDC_LDADD = ../src/liblog4cpp.la
@@ -101,6 +104,9 @@ LIBS = @LIBS@
 testmain_OBJECTS =  testmain.o
 testmain_DEPENDENCIES =  ../src/liblog4cpp.la
 testmain_LDFLAGS = 
+testCategory_OBJECTS =  testCategory.o
+testCategory_DEPENDENCIES =  ../src/liblog4cpp.la
+testCategory_LDFLAGS = 
 testNDC_OBJECTS =  testNDC.o
 testNDC_DEPENDENCIES =  ../src/liblog4cpp.la
 testNDC_LDFLAGS = 
@@ -119,10 +125,10 @@ DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 
 TAR = gtar
 GZIP_ENV = --best
-DEP_FILES =  .deps/Clock.P .deps/testNDC.P .deps/testbench.P \
-.deps/testmain.P
-SOURCES = $(testmain_SOURCES) $(testNDC_SOURCES) $(testbench_SOURCES)
-OBJECTS = $(testmain_OBJECTS) $(testNDC_OBJECTS) $(testbench_OBJECTS)
+DEP_FILES =  .deps/Clock.P .deps/testCategory.P .deps/testNDC.P \
+.deps/testbench.P .deps/testmain.P
+SOURCES = $(testmain_SOURCES) $(testCategory_SOURCES) $(testNDC_SOURCES) $(testbench_SOURCES)
+OBJECTS = $(testmain_OBJECTS) $(testCategory_OBJECTS) $(testNDC_OBJECTS) $(testbench_OBJECTS)
 
 all: all-redirect
 .SUFFIXES:
@@ -195,6 +201,10 @@ maintainer-clean-libtool:
 testmain: $(testmain_OBJECTS) $(testmain_DEPENDENCIES)
 	@rm -f testmain
 	$(CXXLINK) $(testmain_LDFLAGS) $(testmain_OBJECTS) $(testmain_LDADD) $(LIBS)
+
+testCategory: $(testCategory_OBJECTS) $(testCategory_DEPENDENCIES)
+	@rm -f testCategory
+	$(CXXLINK) $(testCategory_LDFLAGS) $(testCategory_OBJECTS) $(testCategory_LDADD) $(LIBS)
 
 testNDC: $(testNDC_OBJECTS) $(testNDC_DEPENDENCIES)
 	@rm -f testNDC
