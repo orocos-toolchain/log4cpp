@@ -5,6 +5,7 @@
 #include "log4cpp/OstreamAppender.hh"
 #include "log4cpp/FileAppender.hh"
 #include "log4cpp/BasicLayout.hh"
+#include "log4cpp/TimeStamp.hh"
 
 #include "Clock.hh"
 
@@ -63,7 +64,7 @@ int main(int argc, char* argv[])
 
     {
 	clock.start();
-	for (int i = 0; i < count; i++) fprintf(stderr, "%d ERROR  : %s\n", ::time(NULL), buffer);
+	for (int i = 0; i < count; i++) fprintf(stderr, "%d ERROR  : %s\n", log4cpp::TimeStamp().getSeconds(), buffer);
 	clock.stop();
 	std::cout << "fprintf:        " << ((float)clock.elapsed()) / count << " us" << std::endl;
     }
