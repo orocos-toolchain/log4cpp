@@ -117,7 +117,7 @@ namespace log4cpp {
          * FixedContextAppenders cannot own Appenders.
          * @returns false
          **/
-        bool FixedContextCategory::ownsAppender(Appender* appender)
+        virtual bool ownsAppender(Appender* appender)
             const throw();
 
         /**
