@@ -1,5 +1,8 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-05-29 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* Priority.hh: #define ERROR workaround try 2.
+	
 2001-05-28 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* Priority.hh: included workaround for #define ERROR rudeness in 
 	  windows.h on Win32.
