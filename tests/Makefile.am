@@ -1,9 +1,10 @@
 TESTS = testCategory testFixedContextCategory testNDC testPattern \
 	testErrorCollision testConfig
 
-EXTRA_DIST = log4cpp.init
-
 check_PROGRAMS = $(TESTS)
+check_DATA = log4cpp.init
+
+EXTRA_DIST = log4cpp.init
 
 noinst_PROGRAMS = testmain testbench
 
