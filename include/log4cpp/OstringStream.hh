@@ -23,6 +23,11 @@
 
 namespace log4cpp {
 
+    /**
+     * OstringStream is a portability class used to work around the 
+     * unavailability of std::ostringstream on some platforms (most notably
+     * g++ < 2.95.3). It also provides a vform() method.
+     **/
 #ifdef LOG4CPP_HAVE_SSTREAM
     class LOG4CPP_EXPORT OstringStream : public std::ostringstream
 #else
@@ -33,6 +38,12 @@ namespace log4cpp {
 #ifndef LOG4CPP_HAVE_SSTREAM
         std::string str();
 #endif
+        /**
+         * appends a string to the stream, built from a format specifier
+         * and a va_list of arguments, analogously to vprintf(3).
+         * @param format the format specifier.
+         * @param args the va_list of arguments.
+         **/
 	void vform(const char* format, va_list args);
     };    
 

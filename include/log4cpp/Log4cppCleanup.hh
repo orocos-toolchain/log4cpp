@@ -13,6 +13,13 @@
 #include "log4cpp/OstringStream.hh"
 
 namespace log4cpp {
+
+    /**
+     * Log4cppCleanup is an internal janitor class, responsible for cleaning
+     * up log4cpp objects upon exit. The current mechanism is imperfect:
+     * it uses a static object, which seems to give problems with shared 
+     * libraries on some platforms.
+     **/
     class Log4cppCleanup {
         private:
         Log4cppCleanup();

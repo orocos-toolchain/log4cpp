@@ -20,15 +20,14 @@
  **/
 namespace log4cpp {
 
-/**
- * The internal representation of logging events. When a affirmative
- * logging decision is made a <code>LoggingEvent</code> instance is
- * created. This instance is passed around the different log4cpp
- * components.
- *
- * <p>This class is of concern to those wishing to extend log4cpp. 
- **/
-
+    /**
+     * The internal representation of logging events. When a affirmative
+     * logging decision is made a <code>LoggingEvent</code> instance is
+     * created. This instance is passed around the different log4cpp
+     * components.
+     *
+     * <p>This class is of concern to those wishing to extend log4cpp. 
+     **/
     struct LOG4CPP_EXPORT LoggingEvent {
     public:
         /**

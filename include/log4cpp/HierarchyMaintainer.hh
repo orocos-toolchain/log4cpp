@@ -15,7 +15,12 @@
 #include "log4cpp/Log4cppCleanup.hh"
 
 namespace log4cpp {
-    
+
+    /**
+     * HierarchyMaintainer is an internal log4cpp class. It is responsible
+     * for maintaining the hierarchy of Categories. Applications should
+     * not have to use this class directly.
+     **/
     class HierarchyMaintainer {
         friend class Log4cppCleanup;
 

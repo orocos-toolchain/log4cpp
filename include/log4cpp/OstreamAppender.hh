@@ -17,6 +17,9 @@
 
 namespace log4cpp {
 
+    /**
+     * OstreamAppender appends LoggingEvents to ostreams.
+     **/
     class LOG4CPP_EXPORT OstreamAppender : public LayoutAppender {
         public:
         OstreamAppender(const std::string& name, std::ostream* stream);

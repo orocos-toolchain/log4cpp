@@ -35,9 +35,17 @@ namespace log4cpp {
 
 namespace log4cpp {
 
+    /**
+     * The Priority class provides importance levels with which one
+     * can categorize log messages.
+     **/
     class Priority {
         public:
 
+        /**
+         * Predefined Levels of Priorities. These correspond to the
+         * priority levels used by syslog(3).
+         **/
         typedef enum {EMERG  = 0, 
 		      FATAL  = 0,
                       ALERT  = 100,
@@ -50,8 +58,19 @@ namespace log4cpp {
                       NOTSET = 800
         } PriorityLevel;
 
+        /**
+         * The type of Priority Values
+         **/
         typedef int Value;
 
+        /**
+         * Returns the name of the given priority value.
+         * Currently, if the value is not one of the PriorityLevel values,
+         * the method returns the name of the largest priority smaller 
+         * the given value.
+         * @param priority the numeric value of the priority.
+         * @returns a string representing the name of the priority.
+         **/
         static const std::string& getPriorityName(int priority) throw();
     };
 }

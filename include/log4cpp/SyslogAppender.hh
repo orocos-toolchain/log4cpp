@@ -18,6 +18,9 @@
 
 namespace log4cpp {
 
+    /**
+     * SyslogAppender sends LoggingEvents to the local syslog system.
+     **/
     class SyslogAppender : public AppenderSkeleton {
         public:
 

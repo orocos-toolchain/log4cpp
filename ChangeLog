@@ -1,5 +1,14 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-06-06 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/AppenderSkeleton.hh, include/log4cpp/BasicLayout.hh,
+	include/log4cpp/HierarchyMaintainer.hh, 
+	include/log4cpp/IdsaAppender.hh, include/log4cpp/Log4cppCleanup.hh,
+	include/log4cpp/LoggingEvent.hh, include/log4cpp/OstreamAppender.hh,
+	include/log4cpp/OstringStream.hh, include/log4cpp/Priority.hh,
+	include/log4cpp/SimpleLayout.hh, include/log4cpp/SyslogAppender.hh:
+	Documentation updates.
+
 2001-06-06 Uwe Jäger <jaeger@varial.de>
 	* include/log4cpp/config-win32.h: LOG4CPP_HAVE_SNPRINTF, WIN32,
 	LOG4CPP_FIX_ERROR_COLLISION are defined for win32

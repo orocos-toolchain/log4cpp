@@ -15,10 +15,18 @@
 
 namespace log4cpp {
     
+    /**
+     * BasicLayout is a simple fixed format Layout implementation. 
+     **/
     class LOG4CPP_EXPORT SimpleLayout : public Layout {
         public:
         SimpleLayout();
         virtual ~SimpleLayout();
+
+        /**
+         * Formats the LoggingEvent in SimpleLayout style:<br>
+         * "priority - message"
+         **/
         virtual std::string format(const LoggingEvent& event);
     };        
 }

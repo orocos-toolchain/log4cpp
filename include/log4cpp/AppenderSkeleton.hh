@@ -18,8 +18,9 @@
 namespace log4cpp {
 
     /**
-     *  Implement this interface for your own strategies for printing log
-     *  statements. 
+     * AppenderSkeleton is a helper class, simplifying implementation of
+     * Appenders: it already takes care of handling of Thresholds and 
+     * Filters. 
      **/
     class LOG4CPP_EXPORT AppenderSkeleton : public Appender {
         protected:
