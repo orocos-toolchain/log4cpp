@@ -4,6 +4,8 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	* Release as 0.2.5
 
 	* NEWS: inclusion of Borland C++ Builder support.
+
+	* Makefile.am: only include *.m4 files in m4/ in dist.
 	
 2001-06-07 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/LayoutAppender.hh: set SimpleLayout as 
