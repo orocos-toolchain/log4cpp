@@ -1,6 +1,8 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
 2002-10-26 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* Release as 0.3.3.
+	
 	* include/log4cpp/config-win32.h, src/PortabilityImpl.hh,
 	src/Makefile.am: worked around header definition bug in MSVC by
 	aliasing cstdlib/cstring functions in 'std::'. See #628211.
@@ -10,7 +12,9 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 
 	* include/log4cpp/PattenLayout.hh, src/PatternLayout.cpp: added
 	default conversion patterns.
-	
+
+	* msvc6/log4cppDLL/Makefile.in: removed.
+
 2002-10-19 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/PatternLayout.hh, src/PatternLayout.cpp: 
 	replaced PatternLayout implementation: it now preparses the message
