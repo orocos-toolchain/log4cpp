@@ -10,7 +10,7 @@
 #include "log4cpp/Appender.hh"
 
 namespace log4cpp {
-    Log4cppCleanup& Appender::_fuckinDummy(Log4cppCleanup::_cleanup);
+    Log4cppCleanup& Appender::_fuckinDummy = Log4cppCleanup::_cleanup;
 
     Appender::AppenderMap* Appender::_allAppenders;
 
@@ -22,7 +22,7 @@ namespace log4cpp {
     }
 
     Appender* Appender::getAppender(const std::string& name) {
-        AppenderMap& allAppenders(_getAllAppenders());
+        AppenderMap& allAppenders = Appender::_getAllAppenders();
         AppenderMap::iterator i = allAppenders.find(name);
         return (allAppenders.end() == i) ? NULL : ((*i).second);
     }
@@ -38,7 +38,7 @@ namespace log4cpp {
     
     bool Appender::reopenAll() {
         bool result = true;
-        AppenderMap& allAppenders(_getAllAppenders());
+        AppenderMap& allAppenders = _getAllAppenders();
         for(AppenderMap::iterator i = allAppenders.begin(); i != allAppenders.end(); i++) {
             result = result && ((*i).second)->reopen();
         }
@@ -47,19 +47,20 @@ namespace log4cpp {
     }
     
     void Appender::closeAll() {
-        AppenderMap& allAppenders(_getAllAppenders());
+        AppenderMap& allAppenders = _getAllAppenders();
         for(AppenderMap::iterator i = allAppenders.begin(); i != allAppenders.end(); i++) {
             ((*i).second)->close();
         }
     }
     
     void Appender::_deleteAllAppenders() {
-        AppenderMap& allAppenders(_getAllAppenders());
-        for(AppenderMap::iterator i = allAppenders.begin(); i != allAppenders.end(); i++) {
-            delete ((*i).second);
+        AppenderMap& allAppenders = _getAllAppenders();
+        for(AppenderMap::iterator i = allAppenders.begin(); i != allAppenders.end(); ) {
+            Appender *app = (*i).second;
+            i++; // increment iterator before delete or iterator will be invalid.
+            delete (app);
         }
-    }
-    
+    }    
 
     Appender::Appender(const std::string& name) :
         _name(name) {

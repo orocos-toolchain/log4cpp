@@ -25,7 +25,7 @@ namespace log4cpp {
 #ifdef LOG4CPP_HAVE_STDIOSTREAM
     class OstringStream : public std::ostringstream
 #else
-    class OstringStream : public ostrstream
+    class OstringStream : public std::ostrstream
 #endif
     {
     public:

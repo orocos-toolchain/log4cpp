@@ -20,7 +20,7 @@
 #include "log4cpp/FileAppender.hh"
 
 namespace log4cpp {
-    Log4cppCleanup& HierarchyMaintainer::_fuckinDummy(Log4cppCleanup::_cleanup);
+    Log4cppCleanup& HierarchyMaintainer::_fuckinDummy = Log4cppCleanup::_cleanup;
 
     HierarchyMaintainer* HierarchyMaintainer::_defaultMaintainer = NULL;
 

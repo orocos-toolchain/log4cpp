@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <unistd.h>
 #include <iostream>
 #include "log4cpp/Category.hh"
 #include "log4cpp/Appender.hh"

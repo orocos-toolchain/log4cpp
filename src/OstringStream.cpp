@@ -10,9 +10,10 @@
 #include <stdio.h>
 #include "log4cpp/OstringStream.hh"
 
-// FIXME: is this useful ??
 #if defined(_MSC_VER)
-#    include <windows.h>
+    #define VSNPRINTF _vsnprintf
+#else
+    #define VSNPRINTF vsnprintf
 #endif // _MSC_VER
 
 namespace {
@@ -63,7 +64,7 @@ namespace {
             
 	while (1) {
 	    va_start(ap, format);
-	    int n = vsnprintf(buffer, size, format, ap);
+	    int n = VSNPRINTF(buffer, size, format, ap);
 	    va_end(ap);
                 
 	    // If that worked, return a string.
