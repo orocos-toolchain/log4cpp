@@ -22,6 +22,8 @@
 #define HAVE_SNPRINTF
 #define PREFER_PORTABLE_SNPRINTF
 
+#include <stdlib.h>
+#include <stdarg.h>
 #include "snprintf.c"
 #define VSNPRINTF portable_snprintf
 
