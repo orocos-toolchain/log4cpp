@@ -1,9 +1,14 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-11-09 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* m4/CREATE_GENERIC_CONFIG.m4: escape $*
+	
+	* tests/testFixedContextCategory.cpp: Use contructor for 
+	FixedContextCategory instead of assignment.
+	
 2001-11-05 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* m4/CREATE_GENERIC_CONFIG.m4: fix /bin/sh incompatibility on Solaris.
 
-2001-11-05 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/Category.hh: Added private copy constructor and
 	assignment operator (pointed out by Shane Baker).
 
