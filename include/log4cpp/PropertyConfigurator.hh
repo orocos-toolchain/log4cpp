@@ -12,12 +12,7 @@
 #include <log4cpp/Export.hh>
 
 #include <string>
-#include <stdexcept>
 #include <log4cpp/Configurator.hh>	// configure exceptions
-#include <log4cpp/ConfiguratorSkeleton.hh>	// base class
-
-#include <iostream>
-#include <fstream>
 
 namespace log4cpp {
 
@@ -26,14 +21,9 @@ namespace log4cpp {
      * format to the config file used by log4j.  This file is in a standard Java
      * "properties" file format.
      */
-    class LOG4CPP_EXPORT PropertyConfigurator : ConfiguratorSkeleton {
+    class LOG4CPP_EXPORT PropertyConfigurator {
         public:
-        PropertyConfigurator();
-        ~PropertyConfigurator();
         static void configure(const std::string& initFileName) throw (ConfigureFailure);
-
-	private:
-        static void parseConfig(std::ifstream& init) throw (ConfigureFailure);
     };
 }
 
