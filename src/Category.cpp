@@ -299,6 +299,20 @@ namespace log4cpp {
             _logUnconditionally2(Priority::EMERG, message);
     }
 
+    void Category::fatal(const char* stringFormat, ...) throw() { 
+        if (isPriorityEnabled(Priority::FATAL)) {
+            va_list va;
+            va_start(va,stringFormat);
+            _logUnconditionally(Priority::FATAL, stringFormat, va);
+            va_end(va);
+        }
+    }
+    
+    void Category::fatal(const std::string& message) throw() { 
+        if (isPriorityEnabled(Priority::FATAL))
+            _logUnconditionally2(Priority::FATAL, message);
+    }
+
     CategoryStream Category::getStream(Priority::Value priority) {
         return CategoryStream(*this, isPriorityEnabled(priority) ?
                               priority : Priority::NOTSET);

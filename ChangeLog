@@ -1,5 +1,9 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-01-16 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/Category.hh, src/Category.cpp: fix bug #504314:
+	added missing log methods for priority 'fatal'.
+
 2002-01-10 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* configure.in: added check for strcasecmp() and stricmp().
 	* include/log4cpp/config-win32.h: have stricmp() but not strcasecmp().

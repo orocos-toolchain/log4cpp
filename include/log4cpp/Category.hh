@@ -455,6 +455,40 @@ namespace log4cpp {
             return getStream(Priority::EMERG);
         }
 
+        /** 
+         * Log a message with fatal priority. 
+	 * NB. priority 'fatal' is equivalent to 'emerg'.
+         * @param stringFormat Format specifier for the string to write 
+         * in the log file.
+         * @param ... The arguments for stringFormat 
+         **/  
+        void fatal(const char* stringFormat, ...) throw();
+
+        /** 
+         * Log a message with fatal priority.
+	 * NB. priority 'fatal' is equivalent to 'emerg'.
+         * @param message string to write in the log file
+         **/  
+        void fatal(const std::string& message) throw();
+
+        /**
+         * Return true if the Category will log messages with priority FATAL.
+	 * NB. priority 'fatal' is equivalent to 'emerg'.
+         * @returns Whether the Category will log.
+         **/ 
+        inline bool isFatalEnabled() const throw() { 
+                       return isPriorityEnabled(Priority::FATAL);
+        };
+        
+        /**
+         * Return a CategoryStream with priority FATAL.
+	 * NB. priority 'fatal' is equivalent to 'emerg'.
+         * @returns The CategoryStream.
+         **/
+        inline CategoryStream fatalStream() {
+            return getStream(Priority::FATAL);
+        }
+
         /**
          * Return a CategoryStream with given Priority.
          * @param priority The Priority of the CategoryStream.
