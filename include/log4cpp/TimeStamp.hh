@@ -13,11 +13,11 @@
 #include "log4cpp/Portability.hh"
 #include "log4cpp/Export.hh"
 
-/**
- * A simple TimeStamp abstraction
- **/
 namespace log4cpp {
 
+    /**
+     * A simple TimeStamp abstraction
+     **/
     class LOG4CPP_EXPORT TimeStamp {
         public:
         /**
