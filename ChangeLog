@@ -1,5 +1,16 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-12-11 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* Makefile.am: exclude CVS subdir from doc-dist tar ball.
+	
+	* include/log4cpp/config-win32.h: #define int64_t as __int64, 
+	#define LOG4CPP_MISSING_INT64_OSTREAM_OP
+
+	* src/PatternLatout.cpp: workaround missing << operator for int64_t
+	on MSVC.
+	
+	* src/TimeStamp.cpp: fix ref typo for timeb struct.
+
 2001-11-30 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* tests/testbench.cpp: use TimeStamp instead of ::time()
 
