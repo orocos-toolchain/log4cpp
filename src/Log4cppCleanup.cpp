@@ -7,6 +7,7 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
+#include "log4cpp/Config.hh"
 #include "log4cpp/Log4cppCleanup.hh"
 #include "log4cpp/HierarchyMaintainer.hh"
 #include "log4cpp/Appender.hh"
@@ -16,13 +17,13 @@ namespace log4cpp {
     Log4cppCleanup Log4cppCleanup::_cleanup;
 
     Log4cppCleanup::Log4cppCleanup() {
-#ifdef DEBUGCLEANUP
+#ifdef LOG4CPP_DEBUGCLEANUP
         std::cerr << "Log4cppCleanup construct" << std::endl;
 #endif
     }
 
     Log4cppCleanup::~Log4cppCleanup() {
-#ifdef DEBUGCLEANUP
+#ifdef LOG4CPP_DEBUGCLEANUP
         std::cerr << "Log4cppCleanup destruct" << std::endl;
 #endif
     

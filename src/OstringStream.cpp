@@ -7,7 +7,7 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include "config.h"
+#include "log4cpp/Config.hh"
 #include <stdio.h>
 #include "log4cpp/OstringStream.hh"
 
@@ -19,7 +19,7 @@
 
 namespace {
 
-#ifndef HAVE_SNPRINTF
+#ifndef LOG4CPP_HAVE_SNPRINTF
 
     int vsnprintf(char* s, size_t maxlen, const char* fmt, va_list args)
     {
@@ -55,7 +55,7 @@ namespace {
 	return len;
     }
 
-#endif // !HAVE_SNPRINTF
+#endif // !LOG4CPP_HAVE_SNPRINTF
 
     std::string vstrprintf(const char* format, va_list args)
     {

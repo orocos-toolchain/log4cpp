@@ -7,8 +7,9 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include "config.h"
-#ifdef HAVE_UNISTD_H
+#include "log4cpp/Config.hh"
+
+#ifdef LOG4CPP_HAVE_UNISTD_H
 #    include <unistd.h>
 #endif
 

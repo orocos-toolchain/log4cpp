@@ -7,6 +7,7 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
+#include "log4cpp/Config.hh"
 #include "log4cpp/LoggingEvent.hh"
 
 namespace log4cpp {

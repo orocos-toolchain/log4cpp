@@ -6,8 +6,9 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include "config.h"
-#if HAVE_LIBIDSA
+#include "log4cpp/Config.hh"
+
+#ifdef LOG4CPP_HAVE_LIBIDSA
 
 #include <unistd.h>
 #include <sys/types.h>
@@ -76,4 +77,4 @@ namespace log4cpp {
 
 }
 
-#endif // HAVE_LIBIDSA
+#endif // LOG4CPP_HAVE_LIBIDSA

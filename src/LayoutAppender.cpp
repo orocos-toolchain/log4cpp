@@ -7,6 +7,7 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
+#include "log4cpp/Config.hh"
 #include "log4cpp/OstringStream.hh"
 #include "log4cpp/LayoutAppender.hh"
 #include "log4cpp/SimpleLayout.hh"

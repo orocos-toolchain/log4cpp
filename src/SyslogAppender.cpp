@@ -7,8 +7,8 @@
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#include "config.h"
-#if HAVE_SYSLOG
+#include "log4cpp/Config.hh"
+#if LOG4CPP_HAVE_SYSLOG
 
 #include <unistd.h>
 #include <sys/types.h>
@@ -88,4 +88,4 @@ namespace log4cpp {
 
 }
 
-#endif // HAVE_SYSLOG
+#endif // LOG4CPP_HAVE_SYSLOG
