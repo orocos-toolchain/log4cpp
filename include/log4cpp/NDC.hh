@@ -145,7 +145,7 @@ namespace log4cpp {
            Set the maximum nesting depth for the current NDC. Curently NDCs 
            do not enforce a maximum depth and consequentially this method
            has no effect.
-           @param the maximum nesting depth
+           @param maxDepth the maximum nesting depth
         **/
         static void setMaxDepth(int maxDepth);
 
