@@ -89,6 +89,7 @@ fi
 # ----------------------------------------------------------------------------
 AC_OUTPUT([
 Makefile
+log4cpp.spec
 config/Makefile
 doc/Makefile
 doc/Doxyfile
