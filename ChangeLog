@@ -1,5 +1,23 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-06-03 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* configure.in: added AC_CREATE_PREFIX_CONFIG_H for creation of 
+	include/log4cpp/config.h (which has been removed from 
+	AM_CONFIG_HEADER)
+	* Config.hh.in: removed
+	* Config.hh: copied from Config.hh.in. include <log4cpp/config.h> 
+	and remove LOG4CPP_* defines.
+	* include/log4cpp/Makefile.am: added config.h, removed Config.hh.in
+	* Appender.cpp, AppenderSkeleton.cpp, BasicLayout.cpp, Category.cpp,
+	FileAppender.cpp, Filter.cpp, FixedContextCategory.cpp,
+	HierarchyMaintainer.cpp, IdsaAppender.cpp, LayoutAppender.cpp,
+	Log4cppCleanup.cpp, LoggingEvent.cpp, NDC.cpp, OstreamAppender.cpp,
+	OstringStream.cpp, Priority.cpp, SimpleLayout.cpp,
+	StringQueueAppender.cpp,SyslogAppender.cpp: added inclusion of
+	<log4cpp/Config.hh>, prefixed autoconf #ifdefs with LOG4CPP_
+	* AC_AS_DIRNAME.m4, AC_AS_MKDIR_P.m4, AC_CREATE_PREFIX_CONFIG_H.m4,
+	AC_ECHO_MKFILE.m4: added
+
 2001-06-01 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* Priority.hh: #define ERROR workaround try 3, put fix inside 
 	LOG4CPP_FIX_ERROR_COLLISION switch.

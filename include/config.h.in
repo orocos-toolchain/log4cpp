@@ -24,9 +24,6 @@
 /* define if the compiler has stringstream */
 #undef HAVE_SSTREAM
 
-/* define if the compiler has stringstream */
-#undef LOG4CPP_HAVE_SSTREAM
-
 /* define if the C library has snprintf */
 #undef HAVE_SNPRINTF
 

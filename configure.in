@@ -22,7 +22,7 @@ AC_SUBST(LOG4CPP_MINOR_VERSION)
 AC_SUBST(LT_VERSION)
 
 AC_CONFIG_AUX_DIR(config)
-AM_CONFIG_HEADER(include/config.h include/log4cpp/Config.hh)
+AM_CONFIG_HEADER(include/config.h)
 AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
 
 # General "with" options
@@ -106,3 +106,6 @@ bcb5/testFixedContextCategory/Makefile
 bcb5/testmain/Makefile
 bcb5/testNDC/Makefile
 ])
+
+AC_CREATE_PREFIX_CONFIG_H([include/log4cpp/config.h], 
+        $PACKAGE, [include/config.h])
