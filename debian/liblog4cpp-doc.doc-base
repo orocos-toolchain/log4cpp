@@ -1,0 +1,10 @@
+Document: log4cpp-doc
+Title: log4cpp API documentation
+Author: Bastiaan Bakker
+Abstract: API documention of log4cpp (a flexibile logging
+ library for C++).
+Section: Apps/Programming
+
+Format: HTML
+Index: /usr/share/doc/liblog4cpp-doc/html/index.html
+Files: /usr/share/doc/liblog4cpp-doc/html/*.html
