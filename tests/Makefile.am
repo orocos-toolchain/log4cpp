@@ -1,5 +1,8 @@
 TESTS = testCategory testFixedContextCategory testNDC testPattern \
-	testErrorCollision
+	testErrorCollision testConfig
+
+EXTRA_DIST = log4cpp.init
+
 check_PROGRAMS = $(TESTS)
 
 noinst_PROGRAMS = testmain testbench
@@ -20,6 +23,9 @@ testNDC_LDADD = $(top_builddir)/src/liblog4cpp.la
 
 testPattern_SOURCES = testPattern.cpp
 testPattern_LDADD = $(top_builddir)/src/liblog4cpp.la
+
+testConfig_SOURCES = testConfig.cpp
+testConfig_LDADD = $(top_builddir)/src/liblog4cpp.la
 
 testbench_SOURCES = Clock.cpp Clock.hh testbench.cpp 
 testbench_LDADD = $(top_builddir)/src/liblog4cpp.la
