@@ -25,6 +25,7 @@
 #include <log4cpp/OstreamAppender.hh>
 #include <log4cpp/FileAppender.hh>
 #include <log4cpp/RollingFileAppender.hh>
+#include <log4cpp/AbortAppender.hh>
 #ifdef WIN32
 #include <log4cpp/Win32DebugAppender.hh>
 #include <log4cpp/NTEventLogAppender.hh>
@@ -218,6 +219,9 @@ namespace log4cpp {
             appender = new RemoteSyslogAppender(appenderName, syslogName, 
                                                 syslogHost, facility, portNumber);
         }
+        else if (appenderType == "AbortAppender") {
+            appender = new AbortAppender(appenderName);
+        }
 #ifdef LOG4CPP_HAVE_LIBIDSA
         else if (appenderType == "IdsaAppender") {
             // default idsa name ???
@@ -320,7 +324,7 @@ namespace log4cpp {
         // then look for "category."
         std::string prefix("category");
         Properties::const_iterator from = _properties.lower_bound(prefix + '.');
-        Properties::const_iterator to = _properties.lower_bound(prefix + '/'); // '/' = '.' + 1
+        Properties::const_iterator to = _properties.lower_bound(prefix + (char)('.' + 1)); 
         for (Properties::const_iterator iter = from; iter != to; iter++) {
             categories.push_back((*iter).first.substr(prefix.size() + 1));
         }
