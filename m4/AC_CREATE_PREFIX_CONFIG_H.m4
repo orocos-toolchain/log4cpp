@@ -80,7 +80,7 @@ else
   if test -f $ac_prefix_conf_INP ; then
     AS_DIRNAME([/* automatically generated */], $ac_prefix_conf_OUT)
 changequote({, })dnl 
-    echo '#ifndef '$ac_prefix_conf_DEF >>$ac_prefix_conf_OUT
+    echo '#ifndef '$ac_prefix_conf_DEF >$ac_prefix_conf_OUT
     echo '#define '$ac_prefix_conf_DEF' 1' >>$ac_prefix_conf_OUT
     echo ' ' >>$ac_prefix_conf_OUT
     echo /'*' $ac_prefix_conf_OUT. Generated automatically at end of configure. '*'/ >>$ac_prefix_conf_OUT
