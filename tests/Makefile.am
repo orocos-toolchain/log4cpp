@@ -1,5 +1,5 @@
 TESTS = testCategory testFixedContextCategory testNDC testPattern \
-	testErrorCollision testConfig
+	testErrorCollision testConfig testPriority
 
 check_PROGRAMS = $(TESTS)
 check_DATA = log4cpp.init
@@ -24,6 +24,9 @@ testNDC_LDADD = $(top_builddir)/src/liblog4cpp.la
 
 testPattern_SOURCES = testPattern.cpp
 testPattern_LDADD = $(top_builddir)/src/liblog4cpp.la
+
+testPriority_SOURCES = testPriority.cpp
+testPriority_LDADD = $(top_builddir)/src/liblog4cpp.la
 
 testConfig_SOURCES = testConfig.cpp
 testConfig_LDADD = $(top_builddir)/src/liblog4cpp.la

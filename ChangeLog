@@ -1,5 +1,12 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-12-21 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/Priority.cpp: getPriorityValue(): fix bug in numerical input 
+	handling.
+
+	* tests/Makefile.am: added very simple test for Priority.
+	* tests/testPriority.cpp: added.
+	
 2001-12-13 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/OstringStream.cpp: use portable_vsnprintf(), not
 	portable_snprintf().
