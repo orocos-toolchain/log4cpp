@@ -19,6 +19,20 @@
 #define LOG4CPP_HAVE_INT64_T
 #define int64_t __int64  
 
+/* define if the compiler has in_addr_t */
+#ifndef LOG4CPP_HAVE_IN_ADDR_T 
+#define LOG4CPP_HAVE_IN_ADDR_T
+
+#include <winsock2.h>
+
+/* u_long is the type of in_addr.s_addr */
+typedef u_long in_addr_t;
+
+/* u_short is the type of sockaddr_in.sin_port */
+// typedef u_short		in_port_t;
+
+#endif
+
 #if defined(_MSC_VER) && _MSC_VER < 1300
 #define LOG4CPP_MISSING_INT64_OSTREAM_OP   
 #endif
