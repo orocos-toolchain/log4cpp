@@ -13,6 +13,24 @@
 Log4cpp is library of C++ classes for flexible logging to files, syslog, IDSA and other destinations.
 It is modeled after the <a href="http://jakarta.apache.org/log4j">Log4j</a> Java library, staying as close to their API as is reasonable.
 </p>
+
+<h2>Download</h2>
+<p>
+Sources are available from SourceForges <a href="http://sourceforge.net/project/showfiles.php?group_id=15190">download page</a>.<br>
+We do not supply binaries yet, because of the numerous incompatible ABIs (e.g. g++ 2.95 vs 2.96 vs 3.0 vs 3.2) and different package
+formats.<br>
+An older version of log4cpp (0.2.5) is available in Debian stable,
+see <a href="http://packages.debian.org/stable/libs/liblog4cpp0.html">http://packages.debian.org/stable/libs/liblog4cpp0.html</a>.<br>
+FreeBSD users can find log4cpp (0.2.7) in the ports collection,
+see <a href="http://www.freebsd.org/ports/devel.html#log4cpp-0.2.7">http://www.freebsd.org/ports/devel.html</a><br>
+The people of the <a href="http://datagrid.in2p3.fr/">Datagrid Project Central Repository</a> have published the source and binary RPMs
+they use theirselves. These are for RedHat Linux 6.2.<br>
+Log4cpp includes support for building RPMs, so building your own from the source tar-ball is as simple as
+<pre>
+rpm -ta log4cpp-x.y.z.tar.gz
+</pre>
+</p>
+
 <h2>Building Log4cpp</h2>
 <p>
 As of version 0.2.0 log4cpp can be build using autoconf on platforms that support it. Simply do:
@@ -160,6 +178,14 @@ cxxlink /repository=a1$dkb0:[user.tony.project.log4cpp.repository] testlog4cpp,l
 WARNING: releases from the development branch are a 'work in progress' and may fail to build, crash or redecorate your desktop.
 
 <dl>
+<dt>0.3.2rc2 - development branch (12 August 2002)</dt>
+<dd>Added support for POSIX threads.</dd>
+<dd>Added PropertyConfigurator.</dd>
+<dd>Rearranged documentation.</dd>
+<dd>Fixed various bugs.</dd>
+</dl>
+
+<dl>
 <dt>0.3.2rc1 - development branch (19 June 2002)</dt>
 <dd>Support for Win32 threads added.</dd>
 <dd>Added NTEventLogAppender.</dd>
@@ -230,17 +256,64 @@ log4cpp 0.2.x, called '<a href="http://soldc.sun.com/articles/logging.html/">Log
 Recommended reading if you trying to figure out how to use log4cpp!
 </p>
 <h2>FAQ</h2>
-<p>
-<h4>1. GENERAL</h4>
-<h4>2. COMPILATION AND INSTALLATION</h4>
-<h4>3. USAGE</h4>
-<h4>4. PROBLEMS AND ERROR MESSAGES</h4>
-<p>
-4.1) I get 'Naming collision for 'ERROR' detected. Please read the FAQ for a workaround.'
+
+<h3>1. GENERAL</h3>
+<h4>1.1. What is Log for C++?</h4>
+Log for C++ is a library of C++ classes for flexible logging to files, syslog and other destinations. It is modeled after the Log for Java
+library (http://jakarta.apache.org/log4j/), staying as close to their API as is reasonable.
+
+<h4>1.2. How is Log for C++ related to Log4j? Is it a straight port?</h4>
+Log for C++ strives to supply a similar interface for logging in C++ as Log4j provides in Java. However the implementation is not a
+translation of the Java code. So in that sense it is not a 'port' of Log4j. Of course Log for C++ does owe many of its concepts to log4j.
+
+<h4>1.3. What is the name of this project, 'Log for C++' or 'log4cpp'?</h4>
+The 'official' long name of the project is 'Log for C++', but in practice, the short name, 'log4cpp' has proven more convinient.
+
+<h4>1.4. Under which license is Log for C++ available?</h4>
+As of version 0.2.1 Log for C++ is released under the GNU Lesser General Public License (LGPL).
+Versions before that have been released under the GPL. See the license discussion on the forum at SourceForge
+for the motivations behind switching from GPL to LGPL.
+
+<h4>1.5. Our legal department doesn't like the LGPL, can you release Log for C++ under license XYZ?</h4>
+No.<br>
+Long answer: Technically it may be possible if every contributor agrees, which due to their growing number has become increasingly
+difficult. But even if that could be overcome it will not happen.<br>
+Of course the LGPL does grant you the opportunity to choose the GPL instead of the LGPL, but I bet XYZ != GPL.
+
+<h3>2. COMPILATION AND INSTALLATION</h3>
+
+<h3>3. USAGE</h3>
+<h4>3.1. I've succesfully compiled log4cpp, now how do I use this stuff?</h4>
+For some small examples using log4cpp, see the 'tests' subdirectory. Also see the documentation section for a pointer for API documentation
+and more usage information.
+
+<h4>3.2. Is log4cpp thread-safe?</h4>
+
+<h3>4. PROBLEMS AND ERROR MESSAGES</h3>
+<h4>4.1. I get 'Naming collision for 'ERROR' detected. Please read the FAQ for a workaround.'</h4>
+This is caused by the rudeness of some platforms, which mutilate the namespace with some blunt #defines. To be more precise,
+the Win32 API includes #defines of 'ERROR' and 'DEBUG'. Since the preprocessor is unaware of C++ naming scopes this results in
+reserving the words ERROR and DEBUG litterally everywhere. In particular this conflicts with log4cpp::Prioritiy::ERROR and
+log4cpp::Priority::DEBUG. These latter two names come from log4j, so they are not something we made up ourselves.<br>
+They Win32 authors should not have rudelessly claimed these generic names through the preprocessor. There are much better alternatives:
+<ol>
+<li>If they use it as an integer constant, declare it using a language construct.
+Either '<tt>enum {ERROR=1};</tt>' or '<tt>static const int ERROR=1;</tt>' would do fine.</li>
+<li>Use a less generic name like WIN32API_ERROR to make naming conflicts less likely</li>
+<li>In case they use it as a flag for conditional compilation, use '<tt>#define DEBUG DEBUG</tt>' and '<tt>#if defined(DEBUG)</tt>'.
+In that case the preprocessor would simply replace all occurrences of 'DEBUG' in the source code with 'DEBUG', in effect leaving
+everything intact.</li>
+</ol>
+<p>Of course the proper solution would be if the offending party would use one of the above methods, but we could have to wait
+some time for this to actually happen. As an alternative log4cpp can workaround these #defines. The workaround code is enabled by
+doing <tt>#define LOG4CPP_FIX_ERROR_COLLISION 1</tt> before #including any log4cpp header files and after #including all
+platform headers. For Win32 platforms this #define has already been included in log4cpp/config-win32.h.
 </p>
-<p>
-4.2) I am trying to compile/link the log4cpp package using the SunWorkshop compiler (CC) on a Solaris 7 machine.
-The library builds, but the testmain code fails to link properly.<br>
+<p>Once log4cpp has been updated to the log4j 1.2 API we can get rid of this problem by adopting the new names for log levels.
+</p>
+
+<h4>4.2. I am trying to compile/link the log4cpp package using the SunWorkshop compiler (CC) on a Solaris 7 machine.
+The library builds, but the testmain code fails to link properly.</h4>
 
 A proper solution for this problem has not been found yet (suggestions are welcome),
 but James Emery reported success with the following workaround:
@@ -250,14 +323,11 @@ but James Emery reported success with the following workaround:
 </ul>
 In short, configure with:<br>
 <pre>export LD="CC -Kpic" && ./configure --disable-static</pre>
-</p>
-<p>
-4.3) ./configure fails to detect 'snprintf()' on platform XYZ.<br>
 
-     ./configure does not just check for the presence of a snprintf() function but for C99 compliancy as well. In particular, snprintf()
-     should strictly honour the 'string size' parameter to avoid potential buffer overflow problems.
-     log4cpp falls back to an <a href="http://www.ijs.si/software/snprintf/">alternative snprintf() implementation</a> if the OS does not provide a correct one.
-</p>
+<h4>4.3. ./configure fails to detect 'snprintf()' on platform XYZ.</h4>
+./configure does not just check for the presence of a snprintf() function but for C99 compliancy as well. In particular, snprintf()
+should strictly honour the 'string size' parameter to avoid potential buffer overflow problems.
+log4cpp falls back to an <a href="http://www.ijs.si/software/snprintf/">alternative snprintf() implementation</a> if the OS does not provide a correct one.
 
 <h2>Status</h2>
 <p>As of version 0.3.0 log4cpp has a separate 'stable' and 'development' branches.
