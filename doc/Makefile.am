@@ -36,8 +36,8 @@ install-data-local:
 		$(docdir)/html/Makefile
 
 uninstall-local:
-	$(RM) $(DESTDIR)$(man3dir)/log4cpp.3
-	$(RM) $(DESTDIR)$(man3dir)/log4cpp_*.3
+	$(RM) $(DESTDIR)/$(man3dir)/log4cpp.3
+	$(RM) $(DESTDIR)/$(man3dir)/log4cpp_*.3
 	$(RM) -r -f $(docdir)
 
 clean-local:
