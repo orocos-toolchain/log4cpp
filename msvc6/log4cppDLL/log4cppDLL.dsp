@@ -148,6 +148,10 @@ SOURCE=..\..\src\Log4cppCleanup.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\log4cppDLL.rc
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\LoggingEvent.cpp
 # End Source File
 # Begin Source File
