@@ -1,6 +1,10 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
 2001-10-04 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/SimpleConfigurator, include/log4cpp/SimpleConfigurator:
+	Added simple configurator class contributed by Glenn Scott. Not
+	usable yet.
+	
 	* src/Priority.cpp: fix conversion from PriorityLevel to PriorityName.
 	
 	* include/log4cpp/Makefile.am, src/Makefile.am, tests/Makefile.am:
