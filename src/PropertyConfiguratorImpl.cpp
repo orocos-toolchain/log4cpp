@@ -24,7 +24,9 @@
 #include <log4cpp/Appender.hh>
 #include <log4cpp/OstreamAppender.hh>
 #include <log4cpp/FileAppender.hh>
+#include <log4cpp/RollingFileAppender.hh>
 #include <log4cpp/Win32DebugAppender.hh>
+#include <log4cpp/NTEventLogAppender.hh>
 #include <log4cpp/RemoteSyslogAppender.hh>
 #ifdef LOG4CPP_HAVE_LIBIDSA
 #include <log4cpp/IdsaAppender.hh>
@@ -149,8 +151,8 @@ namespace log4cpp {
                     priority = Priority::getPriorityValue(priorityName);
                 }
             } catch(std::invalid_argument& e) {
-                throw ConfigureFailure(std::string("unknown priority '") +
-                    priorityName + "' for category '" + categoryName + "'");
+                throw ConfigureFailure(std::string(e.what()) + 
+                    " for category '" + categoryName + "'");
             }
         }
 
@@ -195,6 +197,14 @@ namespace log4cpp {
             bool append = _properties.getBool(appenderPrefix + ".append", true);
             appender = new FileAppender(appenderName, fileName, append);
         }
+        else if (appenderType == "RollingFileAppender") {
+            std::string fileName = _properties.getString(appenderPrefix + ".fileName", "foobar");
+            size_t maxFileSize = _properties.getInt(appenderPrefix + ".maxFileSize", 10*1024*1024);
+            int maxBackupIndex = _properties.getInt(appenderPrefix + ".maxBackupIndex", 1);
+            bool append = _properties.getBool(appenderPrefix + ".append", true);
+            appender = new RollingFileAppender(appenderName, fileName, maxFileSize, maxBackupIndex,
+                append);
+        }
         else if (appenderType == "SyslogAppender") {
             std::string syslogName = _properties.getString(appenderPrefix + ".syslogName", "syslog");
             std::string syslogHost = _properties.getString(appenderPrefix + ".syslogHost", "localhost");
@@ -217,6 +227,11 @@ namespace log4cpp {
         else if (appenderType == "Win32DebugAppender") {
             appender = new Win32DebugAppender(appenderName);
         }
+        // win32 NT event log appender
+        else if (appenderType == "NTEventLogAppender") {
+            std::string source = _properties.getString(appenderPrefix + ".source", "foobar");
+            appender = new NTEventLogAppender(appenderName, source);
+        }
 #endif	// WIN32
         else {
             throw ConfigureFailure(std::string("Appender '") + appenderName + 
@@ -225,6 +240,17 @@ namespace log4cpp {
 
         if (appender->requiresLayout()) {
             setLayout(appender, appenderName);
+        }
+
+        // set threshold
+        std::string thresholdName = _properties.getString(appenderPrefix + ".threshold", "");
+        try {
+            if (thresholdName != "") {
+                appender->setThreshold(Priority::getPriorityValue(thresholdName));
+            }
+        } catch(std::invalid_argument& e) {
+            throw ConfigureFailure(std::string(e.what()) + 
+                " for threshold of appender '" + appenderName + "'");
         }
 
         return appender;
