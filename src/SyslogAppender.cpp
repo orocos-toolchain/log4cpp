@@ -64,7 +64,7 @@ namespace log4cpp {
     void SyslogAppender::_append(const LoggingEvent& event) {
 	std::string message(_getLayout().format(event));
         int priority = toSyslogPriority(event.priority);
-        ::syslog(priority | _facility, message.c_str());
+        ::syslog(priority | _facility, "%s", message.c_str());
     }
 
     bool SyslogAppender::reopen() {
