@@ -68,6 +68,7 @@ namespace log4cpp {
         // parse the file to get all of the configuration
         _properties.load(in);
 
+        instantiateAllAppenders();
         // get categories
         std::vector<std::string> catList;
         getCategories(catList);
@@ -76,6 +77,41 @@ namespace log4cpp {
         for(std::vector<std::string>::iterator iter = catList.begin();
             iter != catList.end(); ++iter) {
             addAppenders(*iter);
+        }
+    }
+
+    void PropertyConfiguratorImpl::instantiateAllAppenders() throw(ConfigureFailure) {
+        std::string currentAppender;
+
+        for(Properties::const_iterator i = _properties.lower_bound("appender.");i != _properties.end(); ++i) {
+            const std::string& key = (*i).first;
+            const std::string& value = (*i).second;
+            std::string::size_type dotIndex = key.find('.');
+            if (dotIndex == std::string::npos) {
+                // bogus entry, skip
+                continue;
+            }
+            if (key.substr(0, dotIndex) != "appender") {
+                // moved past appender properties
+                break;
+            }
+            const string appenderName = key.substr(dotIndex + 1);
+
+            /* WARNING, approaching lame code section:
+               skipping of the Appenders properties only to get them 
+               again in instantiateAppender.
+            */
+            if (appenderName == currentAppender) {
+                // simply skip properties for the current appender
+            } else {
+                // a new appender
+                currentAppender = appenderName;
+                if (appenderName.find('.' != std::string::npos)) {
+                    throw ConfigureFailure(std::string("partial appender definition : ") + key);
+                }
+
+                _allAppenders[currentAppender] = instantiateAppender(currentAppender);
+            }                            
         }
     }
 
@@ -123,31 +159,40 @@ namespace log4cpp {
         category->removeAllAppenders();
 
         // loop through the list and either set the priority or add the appender
+        std::vector<std::string> v;
         for(std::list<std::string>::const_iterator list_iter = tokens.begin();
             list_iter != tokens.end(); list_iter++) {
-            std::string name = StringUtil::trim(*list_iter);
-
-            try {
-                category->setPriority(Priority::getPriorityValue(name));
-            } catch(std::invalid_argument& e) {
-                // not a priority, so it must be an appender
-                configAppender(name, *category);
+            
+            StringUtil::split(v, *list_iter, ',');
+            std::vector<std::string>::const_iterator i = v.begin();
+            if (i == v.end()) {
+                // nothing there, strange
+                continue;
             }
-        }
-    }
 
-    void PropertyConfiguratorImpl::configAppender(std::string& name, Category& category) {
-        // we're given the appender name, so get the property associated with it
-        Properties::iterator key = _properties.find(std::string("appender.") + name);
+            std::string priorityName = StringUtil::trim(*i);
+            try {
+                category->setPriority(Priority::getPriorityValue(priorityName));
+            } catch(std::invalid_argument& e) {
+                throw ConfigureFailure(std::string("unknown priority '") +
+                    priorityName + "' for category '" + categoryName + "'");
+            }
 
-        if (key == _properties.end()) {
-            // XXX bb: shouldn't we complain?
-        } else {
-            // instantiate the appender
-            Appender* appender = instantiateAppender(name);
-			
-            // and set it to the category
-            category.addAppender(appender);
+            for(++i; i != v.end(); ++i) {
+                // not a priority, so it must be an appender
+                std::string appenderName = StringUtil::trim(*i);
+                AppenderMap::const_iterator appIt = 
+                    _allAppenders.find(appenderName);
+                if (appIt == _allAppenders.end()) {
+                    // appender not found;
+                    throw ConfigureFailure(std::string("Appender '") +
+                        appenderName + "' not found for category '" + categoryName + "'");
+                } else {
+                    /* pass by reference, i.e. don't transfer ownership
+                     */
+                    category->addAppender(*((*appIt).second));
+                }
+            }
         }
     }
 

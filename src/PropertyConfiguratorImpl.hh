@@ -24,6 +24,8 @@ namespace log4cpp {
     
     class PropertyConfiguratorImpl {
         public:
+        typedef std::map<std::string, Appender*> AppenderMap;
+
         PropertyConfiguratorImpl();
         virtual ~PropertyConfiguratorImpl();
         virtual void doConfigure(const std::string& initFileName)
@@ -49,8 +51,10 @@ namespace log4cpp {
          */
         void getCategories(std::vector<std::string>& catlist) throw (ConfigureFailure);
 
+        void instantiateAllAppenders() throw(ConfigureFailure);
+
         /**
-         * Configure the appender referred to by the given name.  This method searches the
+         * Intantiate and configure the appender referred to by the given name. This method searches the
          * map to find all configuration parameters for the appender, and adds the appender
          * to the given category.  This isn't very general in the sense that it will need to
          * be modified for each type of appender and layout.  A more general solution would 
@@ -60,14 +64,6 @@ namespace log4cpp {
          * object for which we have no knowledge.  An "AppenderFactory" could be used which
          * maps the given type to an actual object class registered with the factory (?? is this
          * possible?).
-         * @param	name	Name of the appender which is to be added to the given category.
-         * @param	category	Category on which we are adding the appender.
-         */
-        void configAppender(std::string& name, Category& category);
-
-        /**
-         * Method for instantiating appender.  This should be one of two places to be
-         * modified when new appenders are added.
          * @param name	String containing the name of the type of appender to be instantiated.
          */
         Appender* instantiateAppender(const std::string& name);
@@ -81,6 +77,7 @@ namespace log4cpp {
         void setLayout(Appender* appender, const std::string& name);
 
         Properties _properties;
+        AppenderMap _allAppenders;
     };
 }
 

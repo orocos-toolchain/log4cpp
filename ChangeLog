@@ -1,5 +1,17 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-07-05 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/StringUtil.hh, src/StringUtil.cpp: added split() method.
+
+	* src/PropertyConfiguratorImpl.hh, src/PropertyConfiguratorImpl.hh:
+	changed the way configuration is done: first instantatiate all
+	Appenders defined in the config, then add them to Categories where
+	necessary. Multiple Appenders per Category are now supported. 
+	Currently doConfigure() leaks all Appenders, as they will be not be
+	owned by any Categories. This will be fixed in the future by having
+	the LoggerRepository maintain ownership of all Categories, Appenders,
+	etc.
+
 2002-07-04 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/BasicConfigurator.hh, src/BasicConfigurator.cpp:
 	added.
