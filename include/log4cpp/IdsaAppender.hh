@@ -25,7 +25,7 @@ namespace log4cpp {
          * @param name The name of the Appender
          * @param idsaName The service parameter of idsa
          **/         
-        IdsaAppender(const string& name, const string& idsaName);
+        IdsaAppender(const std::string& name, const std::string& idsaName);
         virtual ~IdsaAppender();
 
         /**
@@ -59,7 +59,7 @@ namespace log4cpp {
          **/
         virtual void _append(const LoggingEvent& event);
 
-        const string _idsaName;
+        const std::string _idsaName;
 
         IDSA_CONNECTION *_idsaConnection;
 

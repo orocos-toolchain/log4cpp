@@ -17,8 +17,8 @@
 
 namespace log4cpp {
 
-    IdsaAppender::IdsaAppender(const string& name, 
-                               const string& idsaName) :
+    IdsaAppender::IdsaAppender(const std::string& name, 
+                               const std::string& idsaName) :
         AppenderSkeleton(name),
         _idsaName(idsaName)
     {
