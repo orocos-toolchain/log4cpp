@@ -159,6 +159,10 @@ SOURCE=..\..\src\RemoteSyslogAppender.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\RollingFileAppender.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\SimpleLayout.cpp
 # End Source File
 # Begin Source File
@@ -267,6 +271,10 @@ SOURCE=..\..\include\log4cpp\RemoteSyslogAppender.hh
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\include\log4cpp\RollingFileAppender.hh
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\include\log4cpp\SimpleLayout.hh
 # End Source File
 # Begin Source File
@@ -288,6 +296,22 @@ SOURCE=..\..\include\log4cpp\PatternLayout.hh
 # Begin Source File
 
 SOURCE=..\..\include\log4cpp\SimpleConfigurator.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\threading\BoostThreads.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\threading\DummyThreads.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\threading\OmniThreads.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\threading\Threading.hh
 # End Source File
 # End Group
 # End Target
