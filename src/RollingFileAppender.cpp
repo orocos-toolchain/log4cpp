@@ -52,19 +52,16 @@ namespace log4cpp {
         ::close(_fd);
         if (_maxBackupIndex > 0) {
             OstringStream oldName;
-            OstringStream newName;
-            oldName << _fileName << ".";
-            newName << _fileName << ".";
+            oldName << _fileName << "." << _maxBackupIndex << std::ends;
+            ::remove(oldName.str().c_str());
             size_t n = _fileName.length() + 1;
             for(unsigned int i = _maxBackupIndex; i > 1; i--) {
-                oldName << i-1 << std::ends;
-                newName << i << std::ends;
-                ::rename(oldName.str().c_str(), newName.str().c_str());
+            	std::string newName = oldName.str();
                 oldName.seekp(n, std::ios::beg);
-                newName.seekp(n, std::ios::beg);
+                oldName << i-1 << std::ends;
+                ::rename(oldName.str().c_str(), newName.c_str());
             }
-            newName << "1" << std::ends;
-            ::rename(_fileName.c_str(), newName.str().c_str());
+            ::rename(_fileName.c_str(), oldName.str().c_str());
         }
         _fd = ::open(_fileName.c_str(), _flags, _mode);
     }
