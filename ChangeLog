@@ -1,0 +1,22 @@
+This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
+
+2000-12-10 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	Release 0.2.0
+	Integrated autoconf setup contributed by Cedric Le Goater.
+	Fixed compilation problem in NDC on platforms with g++-2 library 
+	(instead of g++-3). (Reported by Louis Bayle <lbayle@fairesuivre.fr>.)
+	Added CategoryStream.
+	
+2000-12-07 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	Release 0.1	
+	Added Doxygen generated API documentation. Most of it has been 
+	copied verbatim from LOG4J.
+	Added NDC (Nested Diagnostic Context) class.
+	Added OstreamAppender.
+	Added SyslogAppender.
+	Fixed bug in HierarchyMaintainer: getInstance should NOT set 
+	the Appender of a newly instantiated Category.                
+                
+2000-12-03 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	Release 0.0 
+	First CVS import at SourceForge. 
