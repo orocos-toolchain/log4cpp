@@ -97,7 +97,7 @@ namespace log4cpp {
          * @param event The LoggingEvent to decide on.
          * @return The Decision
          **/
-        virtual Decision decide(const LoggingEvent& event) = 0;
+        virtual Decision decide(const LoggingEvent& event);
 
         protected:
         /**
