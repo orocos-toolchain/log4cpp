@@ -7,7 +7,8 @@ check_DATA = log4cpp.init log4cpp.properties testProperties.properties \
 	testConfig.log4cpp.properties
 
 EXTRA_DIST = log4cpp.init log4cpp.properties testProperties.properties \
-	testConfig.log4cpp.properties
+	testConfig.log4cpp.properties \
+	testNTEventLog.cpp
 
 noinst_PROGRAMS = testmain testbench
 
