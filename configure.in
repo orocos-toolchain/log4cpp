@@ -22,7 +22,7 @@ AC_SUBST(LOG4CPP_MINOR_VERSION)
 AC_SUBST(LT_VERSION)
 
 AC_CONFIG_AUX_DIR(config)
-AM_CONFIG_HEADER(include/config.h)
+AM_CONFIG_HEADER(include/config.h include/log4cpp/Config.hh)
 AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
 
 # General "with" options
@@ -63,15 +63,7 @@ fi
 
 # Checks local idioms
 # ----------------------------------------------------------------------------
-AC_MSG_CHECKING([for std::stringstream])
-AC_TRY_COMPILE([#include <sstream>], [std::stringstream s;], 
-               HAVE_STDIOSTREAM=yes, HAVE_STDIOSTREAM=no)
-
-if test "$HAVE_STDIOSTREAM" = "yes" ; then
-        AC_MSG_RESULT(yes)
-else
-        AC_MSG_RESULT(no)
-fi
+AC_CXX_HAVE_SSTREAM
 
 # syslog_test
 AC_CHECK_FUNCS([syslog])
@@ -119,47 +111,6 @@ AC_SUBST(enable_latex_docs)
 
 # Create files
 # ----------------------------------------------------------------------------
-AC_OUTPUT_COMMANDS([
-
-hintfile=include/log4cpp/Config.hh
-outfile=${hintfile}-tmp
-echo creating $hintfile
-
-cat > $outfile <<\_______EOF
-//
-// Config.hh
-//
-// This is a generated file.  Please modify `configure.in'
-
-#ifndef _LOG4CPP_CONFIG_HH
-#define _LOG4CPP_CONFIG_HH
-
-#if defined(_MSC_VER)
-#    pragma warning( disable : 4786 )
-#endif
-
-_______EOF
-
-echo "/* define if you have new iostreams */" >> $outfile 
-if test "$HAVE_STDIOSTREAM" = "yes" ; then
-	echo "#define LOG4CPP_HAVE_STDIOSTREAM 1" >> $outfile 
-else
-	echo "/* #undef LOG4CPP_HAVE_STDIOSTREAM */" >> $outfile 
-fi
-
-echo "#endif" >> $outfile 
-
-	if cmp -s $outfile $hintfile; then
-	  echo $hintfile is unchanged
-	  rm -f $outfile
-	else
-	  mv $outfile $hintfile
-	fi
-],[
-
-HAVE_STDIOSTREAM=$HAVE_STDIOSTREAM
-
-])
 
 AC_OUTPUT([
 Makefile
