@@ -30,18 +30,34 @@ namespace log4cpp {
         **/
         TimeStamp(unsigned int seconds, unsigned int microSeconds = 0);
 
+        /**
+           Returns the 'seconds' part of the TimeStamp.
+        **/
         inline int getSeconds() const {
             return _seconds;
         };
 
+        /** 
+           Returns the 'subseconds' part of the TimeStamp in milliseconds,
+           getMilliSeconds() == getMicroSeconds() / 1000. 
+        **/
         inline int getMilliSeconds() const {
             return _microSeconds / 1000;
         };
 
+        /**
+           Returns the subsecond part of the TimeStamp in microseconds.
+           The actual precision of this value depends on the platform and
+           may be in the order of milliseconds rather than microseconds.
+         **/
         inline int getMicroSeconds() const {
             return _microSeconds;
         };
 
+        /**
+           Returns a TimeStamp representing the time at which the application
+           started.
+        **/
         static inline const TimeStamp& getStartTime() {
             return _startStamp;
         };
