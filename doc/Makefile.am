@@ -1,5 +1,5 @@
 man3dir = $(mandir)/man3
-docdir  = $(prefix)/doc/log4cpp-@VERSION@
+docdir  = $(prefix)/doc/@PACKAGE@-@VERSION@
 
 all-local: dox #pdf
 
@@ -7,11 +7,11 @@ dox: html/index.html
 html/index.html:
 	@DOXYGEN@
 
-pdf: log4cpp.pdf
-log4cpp.pdf:
+pdf: @PACKAGE@.pdf
+@PACKAGE@.pdf:
 	$(MAKE) -C ./latex pdf
-	ln -s ./latex/refman.ps	 log4cpp.ps
-	ln -s ./latex/refman.pdf log4cpp.pdf
+	ln -s ./latex/refman.ps	 @PACKAGE@.ps
+	ln -s ./latex/refman.pdf @PACKAGE@.pdf
 
 
 install-data-local:
@@ -22,7 +22,7 @@ install-data-local:
 		$(INSTALL_DATA) $$i $(DESTDIR)$(man3dir)/$$inst; \
 	done
 	$(mkinstalldirs) $(DESTDIR)$(docdir)
-#	@for i in ../README ../ChangeLog log4cpp.ps log4cpp.pdf; do \
+#	@for i in ../README ../ChangeLog @PACKAGE@.ps @PACKAGE@.pdf; do \
 #		echo "$(INSTALL_DATA) $$i $(DESTDIR)$(docdir)"; \
 #		$(INSTALL_DATA) $$i $(DESTDIR)$(docdir); \
 #	done
@@ -30,4 +30,4 @@ install-data-local:
 
 clean-local:
 	$(RM) -r latex
-	$(RM) -r html man log4cpp.ps log4cpp.pdf
+	$(RM) -r html man @PACKAGE@.ps @PACKAGE@.pdf
