@@ -56,16 +56,13 @@ namespace {
 
 #endif // __osf__
 
-    std::string strprintf(const char* format, ...)
+    std::string vstrprintf(const char* format, va_list args)
     {
-	va_list     ap;
 	int         size   = 1024;
 	char*       buffer = new char[size];
             
 	while (1) {
-	    va_start(ap, format);
-	    int n = VSNPRINTF(buffer, size, format, ap);
-	    va_end(ap);
+	    int n = VSNPRINTF(buffer, size, format, args);
                 
 	    // If that worked, return a string.
 	    if (n > -1 && n < size) {
@@ -98,7 +95,7 @@ namespace log4cpp {
 #endif
 
     void OstringStream::vform(const char* format, va_list args) {
-	*this << strprintf(format, args);
+	*this << vstrprintf(format, args);
     }
 
 }
