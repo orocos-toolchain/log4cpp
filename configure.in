@@ -96,6 +96,7 @@ AC_CREATE_GENERIC_CONFIG
 AC_CONFIG_FILES([
 Makefile
 log4cpp.spec
+log4cpp.pc
 config/Makefile
 doc/Makefile
 doc/Doxyfile

@@ -9,7 +9,7 @@ libdir=@libdir@
 usage()
 {
 	cat <<EOF
-Usage: glib-config [OPTIONS]
+Usage: log4cpp-config [OPTIONS]
 Options:
 	[--prefix[=DIR]]	change log4cpp prefix [default $prefix]
 	[--exec-prefix[=DIR]]	change log4cpp executable prefix [default $exec_prefix]

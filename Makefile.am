@@ -11,8 +11,11 @@ bin_SCRIPTS = log4cpp-config
 m4datadir = $(datadir)/aclocal
 m4data_DATA = log4cpp.m4
 
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = log4cpp.pc
+
 EXTRA_DIST = \
-	log4cpp.spec.in log4cpp.spec log4cpp.m4 \
+	log4cpp.spec.in log4cpp.spec log4cpp.m4 log4cpp.pc \
 	m4/AC_CREATE_PREFIX_CONFIG_H.m4 \
 	m4/BB_ENABLE_DOXYGEN.m4 \
 	m4/AC_CXX_HAVE_SSTREAM.m4 \
