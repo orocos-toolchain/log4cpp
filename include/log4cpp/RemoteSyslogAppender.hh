@@ -17,24 +17,22 @@
 #include "log4cpp/AppenderSkeleton.hh"
 #include "log4cpp/Priority.hh"
 
+#ifdef LOG4CPP_HAVE_SYSLOG
+#include <syslog.h>
+#else
 /// from syslog.h
-#define LOG_EMERG       0       /* system is unusable */
-/// from syslog.h
-#define LOG_ALERT       1       /* action must be taken immediately */
-/// from syslog.h
-#define LOG_CRIT        2       /* critical conditions */
-/// from syslog.h
-#define LOG_ERR         3       /* error conditions */
-/// from syslog.h
-#define LOG_WARNING     4       /* warning conditions */
-/// from syslog.h
-#define LOG_NOTICE      5       /* normal but significant condition */
-/// from syslog.h
-#define LOG_INFO        6       /* informational */
-/// from syslog.h
-#define LOG_DEBUG       7       /* debug-level messages */
-/// from syslog.h
-#define LOG_USER        (1<<3)  /* random user-level messages */
+typedef enum {
+    LOG_EMERG   = 0,       ///< system is unusable
+    LOG_ALERT   = 1,       ///< action must be taken immediately
+    LOG_CRIT    = 2,       ///< critical conditions 
+    LOG_ERR     = 3,       ///< error conditions
+    LOG_WARNING = 4,       ///< warning conditions
+    LOG_NOTICE  = 5,       ///< normal but significant condition
+    LOG_INFO    = 6,       ///< informational
+    LOG_DEBUG   = 7,       ///< debug-level messages
+    LOG_USER    = (1<<3)     ///< random user-level messages
+} SyslogLevel;
+#endif
 
 namespace log4cpp {
 
@@ -54,17 +52,20 @@ namespace log4cpp {
         static int toSyslogPriority(Priority::Value priority);
 
         /**
-         * Instantiate a RemoteSyslogAppender with given name and name and facility
-         * for syslog.
+         * Instantiate a RemoteSyslogAppender with given name and name and
+         * facility for syslog.
          * @param name The name of the Appender
          * @param syslogName The ident parameter in the openlog(3) call.
          * @param relayer The IP address or hostname of a standard syslog host.
          * @param facility The syslog facility to log to. Defaults to LOG_USER.
-         * @param portNumber An alternative port number. Defaults to the standard syslog
-         * port number (514).
+         * @param portNumber An alternative port number. Defaults to the 
+         * standard syslog port number (514).
          **/         
-        RemoteSyslogAppender(const std::string& name, const std::string& syslogName, 
-                       const std::string& relayer, int facility = LOG_USER, int portNumber = 514);
+        RemoteSyslogAppender(const std::string& name, 
+                             const std::string& syslogName, 
+                             const std::string& relayer, 
+                             int facility = LOG_USER,
+                             int portNumber = 514);
         virtual ~RemoteSyslogAppender();
 
         /**
