@@ -23,9 +23,9 @@
 #include <log4cpp/Export.hh>
 
 #if defined(_MSC_VER)
-#    pragma warning( disable : 4786 )
-#    pragma warning( disable : 4290 )
-#    pragma warning( disable : 4251 )
+#    pragma warning( disable : 4786 ) // 255 char debug symbol limit
+#    pragma warning( disable : 4290 ) // throw specifier not implemented
+#    pragma warning( disable : 4251 ) // "class XXX should be exported"
 #endif
 
 #endif
