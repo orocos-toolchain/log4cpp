@@ -8,7 +8,7 @@ static const char rcsid[] = "$Id$";
 #include <sys/time.h>			// for struct timeval
 #ifdef __osf__
 #    include <machine/builtins.h>       // for __RPCC()
-#elif __linux__
+#elif __linux__ && __i386__
 #    include <asm/msr.h>		// for rdtscl()
 #endif
 #include <iostream>
@@ -35,7 +35,7 @@ usec_t Clock::time(void)
 
 #ifdef __osf__
 	return (usec_t) __RPCC();
-#elif __linux__
+#elif __linux__ && __i386__
 	{
 	    unsigned long tsc;
 			
