@@ -42,6 +42,21 @@ Package=<4>
 
 ###############################################################################
 
+Project: "testDLL"=.\testDLL\testDLL.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name log4cppDLL
+    End Project Dependency
+}}}
+
+###############################################################################
+
 Project: "testMain"=.\testMain\testMain.dsp - Package Owner=<4>
 
 Package=<5>
@@ -73,6 +88,21 @@ Package=<4>
 ###############################################################################
 
 Project: "testNTEventLog"=.\testNTEventLog\testNTEventLog.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name log4cpp
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "testPattern"=.\testPattern\testPattern.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
