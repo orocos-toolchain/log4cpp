@@ -10,7 +10,7 @@
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 0,3,1,1
+ FILEVERSION 0,3,2,1
  PRODUCTVERSION 0,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
@@ -26,12 +26,13 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "Comments", "Distributed under the terms of the GNU Library or Lesser General Public License (LGPL).\0"
-            VALUE "CompanyName", "Bastiaan Bakker, LifeLine Networks BV \0"
-            VALUE "FileDescription", "Log library for C++\0"
-            VALUE "FileVersion", "0, 3, 1, 1\0"
+            VALUE "Comments", "Distributed under the terms of the GNU Lesser General Public License (LGPL) version 2.1. See COPYING for details.\0"
+            VALUE "CompanyName", "Bastiaan Bakker, LifeLine Networks bv \0"
+            VALUE "ContributingAuthors", "Cedric Le Goater, Marc Welz, others. See documentation for complete list\0"     
+            VALUE "FileDescription", "Log library for C++ DLL\0"
+            VALUE "FileVersion", "0.3.2rc2\0"
             VALUE "InternalName", "log4cpp\0"
-            VALUE "LegalCopyright", "Copyright © 2000-2002\0"
+            VALUE "LegalCopyright", "Copyright © 2000-2002 the Log4cpp Project, others\0"
             VALUE "LegalTrademarks", "\0"
 #ifdef _DEBUG
             VALUE "OriginalFilename", "log4cppD.dll\0"
@@ -39,8 +40,8 @@ BEGIN
             VALUE "OriginalFilename", "log4cpp.dll\0"
 #endif
             VALUE "PrivateBuild", "\0"
-            VALUE "ProductName", "\0"
-            VALUE "ProductVersion", "\0"
+            VALUE "ProductName", "Log library for C++\0"
+            VALUE "ProductVersion", "0.3.2rc2\0"
             VALUE "SpecialBuild", "\0"
         END
     END
