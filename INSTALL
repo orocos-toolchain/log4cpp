@@ -93,6 +93,39 @@ with Cygwin :-)
 
 OpenVMS
 -------
-Do the usual (I presume you know better what that is than I do). Edit 
-include/log4cpp/config-openvms.h if you need different settings.
-[Tony may want to add some wise words here]
+Edit include/log4cpp/config-openvms.h if you need different settings.
+
+This has been tested on OpenVMS Alpha v7.3 and Compaq C++ V6.3-020 only.
+
+1) Copy the src and include directory (including all its contents and 
+subdirectories) onto your OpenVMS system.
+
+2) Compile each source file (*.CPP and *.C in the src directory)
+one by one by the following command,
+
+cxx /include=("/a1\$dkb0/user/tony/project/log4cpp/include") /define=(__USE_STD_IOSTREAM,__OPENVMS__) /repository=a1$dkb0:[user.tony.project.log4cpp.repository] APPENDER.CPP
+cxx /include=("/a1\$dkb0/user/tony/project/log4cpp/include") /define=(__USE_STD_IOSTREAM,__OPENVMS__) /repository=a1$dkb0:[user.tony.project.log4cpp.repository] APPENDERSKELETON.CPP
+...etc
+
+Please substitute a correct path for your include directory. A unix-style
+directory name is requied in the /include parameter. In this example, the path
+is A1$DKBO:[USER.TONY.PROJECT.LOG4CPP.INCLUDE]
+
+A repository directory is also specified here as A1$DKB0:[USER.TONY.PROJECT.LOG4CPP.REPOSITORY]. 
+
+3) Create a static library, LOG4CPP.OLB
+
+lib/create log4cpp
+
+4) Put all compiled OBJ files into the LOG4CPP.OLB
+
+lib/insert log4cpp appender
+lib/insert log4cpp appenderskeleton
+...etc
+
+5) Link a program with log4cpp.olb
+
+e.g. 
+cxx /include=("/a1\$dkb0/user/tony/project/log4cpp/include") /define=(__USE_STD_IOSTREAM,__OPENVMS__) testlog4cpp.cxx
+
+cxxlink /repository=a1$dkb0:[user.tony.project.log4cpp.repository] testlog4cpp,log4cpp/library
