@@ -1,5 +1,8 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-03-17 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* tests/testbench.cpp: added missing 'std::' specifiers. (bug #530332)
+
 2002-02-18 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* Release as 0.3.0
 	

@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
     memset(buffer, 'X', size + 1);
     buffer[size] = '\0';
 
-    std::cout << "BasicLayout:" << endl;
+    std::cout << "BasicLayout:" << std::endl;
     {	
 	clock.start();
 	for (int i = 0; i < count; i++) log.error("%s", buffer);    
@@ -96,7 +96,7 @@ int main(int argc, char* argv[])
 	std::cout << "  string file:     " << ((float)clock.elapsed()) / count << " us" << std::endl;
     }
 
-    std::cout << "PatternLayout:" << endl;
+    std::cout << "PatternLayout:" << std::endl;
     {
         log4cpp::PatternLayout* patternLayout = new log4cpp::PatternLayout();
         patternLayout->setConversionPattern("%R %p %c %x: %m\n");
@@ -142,7 +142,7 @@ int main(int argc, char* argv[])
 	clock.start();
 	for (int i = 0; i < count; i++) fprintf(stderr, "%d ERROR someCategory : %s\n", log4cpp::TimeStamp().getSeconds(), buffer);
 	clock.stop();
-	std::cout << endl << "  fprintf:        " << ((float)clock.elapsed()) / count << " us" << std::endl;
+	std::cout << std::endl << "  fprintf:        " << ((float)clock.elapsed()) / count << " us" << std::endl;
     }
 
     log4cpp::Category::shutdown();
