@@ -24,7 +24,16 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	src/Priority.cpp, src/SimpleLayout.cpp, src/StringQueueAppender.cpp,
 	src/SyslogAppender.cpp, msvc6/log4cpp/log4cpp.dsp,
 	tests/testmain.cpp: renamed Config.hh to Portability.hh
-	
+
+	* m4/AC_AS_DIRNAME.m4, m4/AC_AS_MKDIR_P.m4, m4/AC_ECHO_MKFILE.m4:
+	removed
+	* m4/AC_CREATE_PREFIX_CONFIG_H.m4: replaced AC_ECHO_MKFILE with
+	AS_DIRNAME. This means autoconf >= 2.4 required.
+
+	* configure.in, include/log4cpp/config-win32.h: upped version number
+	to 0.2.5.
+	* configure.in: upped LT_VERSION to 1:0:0.
+
 2001-06-06 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/AppenderSkeleton.hh, include/log4cpp/BasicLayout.hh,
 	include/log4cpp/HierarchyMaintainer.hh, 

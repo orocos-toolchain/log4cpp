@@ -24,7 +24,7 @@
 
 /* Version number of package */
 #ifndef LOG4CPP_VERSION
-#define LOG4CPP_VERSION  "0.2.4"
+#define LOG4CPP_VERSION  "0.2.5"
 #endif
 
 /* define if the compiler implements namespaces */
