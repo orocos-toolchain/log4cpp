@@ -12,10 +12,13 @@ LIBRARIES =
 
 .PHONY: default all clean
 
-testmain: testmain.o Appender.o FileAppender.o Category.o HierarchyMaintainer.o SimpleLayout.o LoggingEvent.o Priority.o
+testmain: testmain.o Appender.o FileAppender.o Category.o HierarchyMaintainer.o BasicLayout.o LoggingEvent.o Priority.o NDC.o
+
+testNDC: testNDC.o NDC.o
 
 clean:
 	rm *.o
 	rm testmain
+	rm testNDC
 
 

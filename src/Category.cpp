@@ -7,10 +7,11 @@
  * See the LICENSE file for the terms of usage and distribution.
  */
 
-#include "log4cpp/Category.hh"
-#include "log4cpp/HierarchyMaintainer.hh"
 #include <unistd.h>
 #include <strstream>
+#include "log4cpp/Category.hh"
+#include "log4cpp/HierarchyMaintainer.hh"
+#include "log4cpp/NDC.hh"
 
 namespace log4cpp {
 
@@ -117,8 +118,7 @@ namespace log4cpp {
     }
     
     void Category::logUnconditionally2(int priority, const string& message) {
-        string ndc = string("NDC");
-        LoggingEvent event(getName(), message, ndc, priority);
+        LoggingEvent event(getName(), message, NDC::get(), priority);
         _appender->doAppend(event);
     }
     

@@ -4,8 +4,9 @@
 #include "log4cpp/Appender.hh"
 #include "log4cpp/FileAppender.hh"
 #include "log4cpp/Layout.hh"
-#include "log4cpp/SimpleLayout.hh"
+#include "log4cpp/BasicLayout.hh"
 #include "log4cpp/Priority.hh"
+#include "log4cpp/NDC.hh"
 
 int main(int argc, char** argv) {    
     log4cpp::FileAppender* appender;
@@ -15,7 +16,7 @@ int main(int argc, char** argv) {
     } else {
         appender = new log4cpp::FileAppender("default", argv[1]);
     }
-    log4cpp::Layout* layout = new log4cpp::SimpleLayout();
+    log4cpp::Layout* layout = new log4cpp::BasicLayout();
     appender->setLayout(layout);
 
     log4cpp::Category& root = log4cpp::Category::getRoot();
@@ -24,7 +25,9 @@ int main(int argc, char** argv) {
     
     log4cpp::Category& sub1 = log4cpp::Category::getInstance("sub1");
     log4cpp::Category& sub2 = log4cpp::Category::getInstance("sub1.sub2");
-    
+
+    log4cpp::NDC::push("ndc1");
+
     cout << " root prio = " << root.getPriority() << endl;
     cout << " sub1 prio = " << sub1.getPriority() << endl;
     cout << " sub2 prio = " << sub2.getPriority() << endl;
@@ -51,6 +54,9 @@ int main(int argc, char** argv) {
     
     {
         for(int i = 0; i < 10000; i++) {
+            char ndc2[20];
+            sprintf(ndc2, "i=%d", i);
+            log4cpp::NDC::push(ndc2);
             sub1.info("%s%d", "i = ", i);
             if ((i % 10) == 0) {
                 sub1.log(log4cpp::Priority::NOTICE, "reopen log");
@@ -61,6 +67,7 @@ int main(int argc, char** argv) {
                 }
             }
             sleep(1);
+            log4cpp::NDC::pop();
         }
     }
 }
