@@ -10,6 +10,8 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	* configure.in, Makefile.am: added openvms subdirectory.
 	* openvms/Makefile.am: added empty Makefile template.
 
+	* THANKS: added Tony Cheung.
+	
 2001-11-28 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/snprintf.c: added portable snprintf 2.2 from 
 	http://www.ijs.si/software/snprintf/
