@@ -13,7 +13,8 @@ namespace log4cpp {
     
     LoggingEvent::LoggingEvent(const std::string& categoryName, 
                                const std::string& message,
-                               const std::string& ndc, int priority) :
+                               const std::string& ndc, 
+                               Priority::Value priority) :
         categoryName(categoryName),
         message(message),
         ndc(ndc),
