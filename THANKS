@@ -19,3 +19,5 @@ Alex Tapaccos <ATapaccos@redfig.com> (DailyRollingFileAppender)
 Brendan B. Boerner <bboerner@texas.net> (Multiple Appender support for
          Categories)
 Paulo Pizarro <paulo.pizarro@digitro.com.br> (RollingFileAppender)
+David Resnick <dresnick@mobilespear.com> (NTEventAppender, integration work)
+Aaron Ingram <ai8@yahoo.com> (MSThreads support)
