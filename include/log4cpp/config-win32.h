@@ -95,6 +95,11 @@ typedef int mode_t;
 #define LOG4CPP_USE_MSTHREADS
 #endif
 
+/* supply DLL main */
+#ifndef LOG4CPP_SUPPLY_DLLMAIN
+#define LOG4CPP_SUPPLY_DLLMAIN
+#endif
+
 /* define mode_t. Move to Portability.hh if more platforms need it */
 typedef int mode_t;
 
