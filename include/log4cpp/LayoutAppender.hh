@@ -13,6 +13,7 @@
 #include <string>
 #include "log4cpp/Export.hh"
 #include "log4cpp/AppenderSkeleton.hh"
+#include "log4cpp/SimpleLayout.hh"
 
 namespace log4cpp {
 
@@ -22,6 +23,9 @@ namespace log4cpp {
      **/
     class LOG4CPP_EXPORT LayoutAppender : public AppenderSkeleton {
         public:
+
+        typedef SimpleLayout DefaultLayoutType;
+
         LayoutAppender(const std::string& name);
         virtual ~LayoutAppender();
         
@@ -32,7 +36,7 @@ namespace log4cpp {
          * @returns true.
          **/
         virtual bool requiresLayout() const;
-        virtual void setLayout(Layout* layout);
+        virtual void setLayout(Layout* layout = NULL);
 
         protected:
         /**
