@@ -4,6 +4,8 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	* src/RollingFileAppender.cpp: explicitly remove oldest file in 
 	rollOver() because win98 cannot rename() to existing files. 
 	(Paulo Pizarro)
+
+	* Makefile.am: convert *.bpg files to CRLF in dist.(Paulo Pizarro)
 	
 2002-04-21 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/config-win32.h: added mode_t typedef.

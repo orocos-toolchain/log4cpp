@@ -23,6 +23,7 @@ EXTRA_DIST = \
 
 dist-hook:
 	perl -pi -e 's/\n/\r\n/g' `find $(distdir) -name '*.ds?'`
+	perl -pi -e 's/\n/\r\n/g' `find $(distdir) -name '*.bpg'`
 
 distclean-local:
 	$(MAKE) -C tests distclean
