@@ -29,7 +29,8 @@ liblog4cppinclude_HEADERS =  \
 	Export.hh \
 	Portability.hh \
 	config.h \
-	config-win32.h
+	config-win32.h \
+	config-openvms.h
 
 dist-hook:
 	rm -f $(distdir)/config.h
