@@ -8,7 +8,15 @@ DIST_SUBDIRS = debian msvc6 bcb5 config src include doc tests
 
 bin_SCRIPTS = log4cpp-config
 
-EXTRA_DIST = log4cpp.spec.in log4cpp.spec m4/*.m4
+EXTRA_DIST = \
+	log4cpp.spec.in log4cpp.spec \
+	m4/AC_CREATE_PREFIX_CONFIG_H.m4 \
+	m4/BB_ENABLE_DOXYGEN.m4 \
+	m4/AC_CXX_HAVE_SSTREAM.m4 \
+	m4/CREATE_GENERIC_CONFIG.m4 \
+	m4/AC_CXX_NAMESPACES.m4 \
+	m4/PETI_PEDANTIC_GCC.m4 \
+	m4/AC_FUNC_SNPRINTF.m4 
 
 .PHONY: check rpm docs doc-dist
 
