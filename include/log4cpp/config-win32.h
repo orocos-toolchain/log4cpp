@@ -6,6 +6,19 @@
 /* Define if you have the syslog function.  */
 /* #undef LOG4CPP_HAVE_SYSLOG */
 
+/* Define if you have the `ftime' function. */
+#ifndef LOG4CPP_HAVE_FTIME 
+#define LOG4CPP_HAVE_FTIME  1 
+#endif
+
+/* Define if you have the `gettimeofday' function. */
+/* #undef LOG4CPP_HAVE_GETTIMEOFDAY  
+
+/* define if the compiler has int64_t */
+#ifndef LOG4CPP_HAVE_INT64_T 
+#define LOG4CPP_HAVE_INT64_T   
+#endif
+
 /* Define if you have the <io.h> header file.  */
 #ifndef LOG4CPP_HAVE_IO_H
 #define LOG4CPP_HAVE_IO_H 1
@@ -24,7 +37,7 @@
 
 /* Version number of package */
 #ifndef LOG4CPP_VERSION
-#define LOG4CPP_VERSION  "0.2.5"
+#define LOG4CPP_VERSION  "0.2.6"
 #endif
 
 /* define if the compiler implements namespaces */
@@ -46,12 +59,6 @@
 #ifndef LOG4CPP_FIX_ERROR_COLLISION
 #define LOG4CPP_FIX_ERROR_COLLISION 1
 #endif
-
-/* define to compile PatternLayout */
-#ifndef HAVE_PATTERN_LAYOUT
-#define HAVE_PATTERN_LAYOUT 1
-#endif
-
 
 /* define WIN32 for Borland */
 #ifndef WIN32
