@@ -1,5 +1,28 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-02-11 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* configure.in: integrated check of omnithreads.
+	* m4/BB_CHECK_OMNITHREADS.m4: added
+
+	* include/log4cpp/threading/DummyThreads.hh: scoped lock is now
+	an integer.
+
+	* include/log4cpp/Category.hh, 
+	include/log4cpp/FixedContextCategory.hh,
+	include/log4cpp/HierarchyMaintainer.hh,
+	include/log4cpp/NDC.hh,
+	src/Category.cpp, src/FixedContextCategory.cpp,
+	src/HierarchyMaintainer.cpp, src/NDC.cpp:
+	added threadsafety provisions.
+	
+
+2002-02-08 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/threading/Threading.hh,
+	include/log4cpp/threading/OmniThreads.hh,
+	include/log4cpp/threading/DummyThreads.hh,
+	include/log4cpp/threading/BoostThreads.hh,
+	include/log4cpp/threading/Makefile.am: added
+	
 2002-02-05 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/AppenderSkeleton.cpp: doAppend(): correct comparison of 
 	_threshold against event priority (bug #513481).
