@@ -27,6 +27,10 @@ USEUNIT("..\..\src\Configurator.cpp");
 USEUNIT("..\..\src\ConfiguratorSkeleton.cpp");
 USEUNIT("..\..\src\SimpleConfigurator.cpp");
 USEUNIT("..\..\src\PropertyConfigurator.cpp");
+USEUNIT("..\..\src\DummyThreads.cpp");
+USEUNIT("..\..\src\MSThreads.cpp");
+USEUNIT("..\..\src\OmniThreads.cpp");
+USEUNIT("..\..\src\PThreads.cpp");
 T//---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------

@@ -11,7 +11,8 @@
       OstreamAppender.obj OstringStream.obj Priority.obj SimpleLayout.obj 
       StringQueueAppender.obj Appender.obj CategoryStream.obj TimeStamp.obj 
       Win32DebugAppender.obj PatternLayout.obj Configurator.obj ConfiguratorSkeleton.obj
-      SimpleConfigurator.obj PropertyConfiguratorConfigurator.obj"/>
+      SimpleConfigurator.obj PropertyConfigurator.obj
+      DummyThreads.obj MSThreads.obj OmniThreads.obj PThreads.obj"/>
     <RESFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>

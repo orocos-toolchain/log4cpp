@@ -43,7 +43,11 @@ OBJFILES = \
     StringQueueAppender.obj \
     Win32DebugAppender.obj \
     SyslogAppender.obj \
-    TimeStamp.obj 
+    TimeStamp.obj \
+    DummyThreads.obj \
+    MSThreads.obj \
+    OmniThreads.obj \
+    PThreads.obj
 RESFILES = 
 MAINSOURCE = log4cpp.bpf
 RESDEPEN = $(RESFILES)

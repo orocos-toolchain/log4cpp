@@ -41,6 +41,10 @@ liblog4cpp_la_SOURCES = \
 	Properties.cpp \
 	Win32DebugAppender.cpp \
 	NTEventLogAppender.cpp \
-	DllMain.cpp
+	DllMain.cpp \
+	DummyThreads.cpp \
+	MSThreads.cpp \
+	OmniThreads.cpp \
+	PThreads.cpp
 
 liblog4cpp_la_LDFLAGS = -version-info @LT_VERSION@

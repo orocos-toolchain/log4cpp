@@ -120,6 +120,10 @@ SOURCE=..\..\src\DllMain.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\DummyThreads.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\FileAppender.cpp
 # End Source File
 # Begin Source File
@@ -156,11 +160,19 @@ SOURCE=..\..\src\LoggingEvent.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\MSThreads.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\NDC.cpp
 # End Source File
 # Begin Source File
 
 SOURCE=..\..\src\NTEventLogAppender.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\OmniThreads.cpp
 # End Source File
 # Begin Source File
 
@@ -189,6 +201,10 @@ SOURCE=..\..\src\PropertyConfigurator.cpp
 # Begin Source File
 
 SOURCE=..\..\src\PropertyConfiguratorImpl.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\PThreads.cpp
 # End Source File
 # Begin Source File
 
