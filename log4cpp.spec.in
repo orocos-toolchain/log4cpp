@@ -2,6 +2,7 @@
 %define  rel     %{?CUSTOM_RELEASE} %{!?CUSTOM_RELEASE:%RELEASE}
 
 %define lib_name log4cpp
+%define manualdir       /var/www/html/manual/%{name}
 
 Name: @PACKAGE_TARNAME@
 Version: @PACKAGE_VERSION@
@@ -55,8 +56,7 @@ make
 %install
 rm -rf $RPM_BUILD_ROOT
 
-make prefix=$RPM_BUILD_ROOT%{prefix} install
-
+make prefix=$RPM_BUILD_ROOT%{prefix} docdir=$RPM_BUILD_ROOT/%{manualdir} install
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -86,5 +86,7 @@ fi
 %attr(644,root,root) %prefix/lib/*.*a
 
 %files doc
-%doc %prefix/doc/*
+%defattr(-,root,root)
+%doc %{manualdir}
+
 

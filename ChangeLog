@@ -1,5 +1,9 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-11-29 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* log4cpp.spec.in: install HTML documentation in
+	/var/www/html/manual/log4cpp.
+	
 2002-11-28 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/threading/PThreads.hh:
 	Fix Mutex copy bug (#645270) as suggested by Robert Ballarin.
