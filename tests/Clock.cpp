@@ -9,7 +9,8 @@ static const char rcsid[] = "$Id$";
 #ifdef __osf__
 #    include <machine/builtins.h>       // for __RPCC()
 #elif __linux__ && __i386__
-#    include <asm/msr.h>		// for rdtscl()
+#    define rdtscl(low) \
+     __asm__ __volatile__("rdtsc" : "=a" (low) : : "edx")
 #endif
 #include <iostream>
 
