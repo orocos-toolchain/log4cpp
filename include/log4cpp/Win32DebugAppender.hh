@@ -50,6 +50,8 @@ namespace log4cpp {
     };
 }
 
+#else // WIN32
+#error NTEventLoggAppender is not available on on Win32 platforms
 #endif	// WIN32
 
 #endif // _LOG4CPP_WIN32DEBUGAPPENDER_HH
