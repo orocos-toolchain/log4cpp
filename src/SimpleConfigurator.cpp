@@ -128,6 +128,7 @@ namespace log4cpp {
                             new log4cpp::PatternLayout();
                         char pattern[1000];
                         initFile.getline(pattern, 1000);
+			pattern++; // skip space
                         layout->setConversionPattern(std::string(pattern));
                         appender->setLayout(layout);
                     }
