@@ -21,6 +21,7 @@
 
 #if defined(_MSC_VER) && _MSC_VER < 1300
 #define LOG4CPP_MISSING_INT64_OSTREAM_OP   
+typedef int mode_t;
 #endif
 
 #endif
@@ -51,7 +52,7 @@
 
 /* Version number of package */
 #ifndef LOG4CPP_VERSION
-#define LOG4CPP_VERSION  "0.2.6"
+#define LOG4CPP_VERSION  "0.3.1"
 #endif
 
 /* define if the compiler implements namespaces */
@@ -82,6 +83,16 @@
 /* use Log4cppCleanup class */
 #ifndef LOG4CPP_USE_CLEANUP
 #define LOG4CPP_USE_CLEANUP
+#endif
+
+/* use threads */
+#ifndef LOG4CPP_HAVE_THREADING
+#define LOG4CPP_HAVE_THREADING
+#endif
+
+/* use ms threads */
+#ifndef LOG4CPP_USE_MSTHREADS
+#define LOG4CPP_USE_MSTHREADS
 #endif
 
 /* define mode_t. Move to Portability.hh if more platforms need it */

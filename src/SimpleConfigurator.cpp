@@ -36,6 +36,7 @@
 #include <log4cpp/SyslogAppender.hh>
 #endif
 #include <log4cpp/RemoteSyslogAppender.hh>
+#include <log4cpp/NTEventLogAppender.hh>
 
 namespace log4cpp {
 
@@ -125,6 +126,16 @@ namespace log4cpp {
                         }
                         appender =
                             new log4cpp::SyslogAppender(categoryName, syslogName, facility);
+                    } 
+#endif
+#if WIN32
+                    else if (appenderName.compare("nteventlog") == 0) {
+                        std::string source;
+                        if (!(initFile >> source)) {
+                            throw ConfigureFailure("Missing source for NTEventLogAppender for category: " + categoryName);
+                        }
+                        appender =
+                            new log4cpp::NTEventLogAppender(categoryName, source);
                     } 
 #endif
                     else if (appenderName.compare("remotesyslog") == 0) {

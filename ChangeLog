@@ -1,5 +1,23 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-06-17 David Resnick <dresnick@mobilespear.com>
+    * Merge of MS Threads & DLL Build support patch by Aaron Ingram <ai8@yahoo.com>
+    with these changes:
+    * src/main.cpp renamed to src/DllMain.cpp
+    * Run-time library used for log4cppDLL changed to
+    Multithreaded DLL (fixed need for #pragma warning(disable:4275))
+    * pragma directives moved from various headers to 
+    include/log4cpp/Portability.hh.
+    * include/log4cpp/threading/MSThreads.hh: reset(): TlsSetValue
+    uses parameter value instead of deleted one.
+    
+    * include/log4cpp/NTEventLogAppender.hh,
+    src/NTEventLogAppender.cpp, msvc/NTEventLogAppender.mc,
+    tests/testNTEventLog.cpp: added NTEventLogAppender.
+    
+    * msvc/testMain/testMain.dsp, msvc/testNTEventLog/testNTEventLog.dsp 
+    added.
+    
 2002-06-03  Cedric Le Goater  <legoater@free.fr>
 	* Makefile.am: added log4cpp.m4 installation
 	* log4cpp.m4: added aclocal support
