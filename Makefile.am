@@ -6,6 +6,8 @@ endif
 
 DIST_SUBDIRS = config src include doc tests
 
+EXTRA_DIST = log4cpp.spec.in log4cpp.spec
+
 check: 
 	$(MAKE) -C tests
 
@@ -14,8 +16,13 @@ distclean-local:
 	-rm -rf CONTENTS TAGS
 
 CONTENTS::
-	find . \( ! -type l -a -name '*.[cCh]' -o -name Makefile.am \) > $@
+	find . \( ! -type l -a -name '*.cpp' -o -name '*.hh' -o -name Makefile.am \) > $@
 
 TAGS:: CONTENTS
 	etags `cat $<`
 
+rpm: dist
+	rpm -ta log4cpp-$(VERSION).tar.gz
+	mv -f /usr/src/redhat/SRPMS/log4cpp-$(VERSION)-*.rpm .
+	mv -f /usr/src/redhat/RPMS/i386/log4cpp-$(VERSION)-*.rpm .
+	mv -f /usr/src/redhat/RPMS/i386/log4cpp-devel-$(VERSION)-*.rpm .

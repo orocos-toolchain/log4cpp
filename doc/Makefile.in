@@ -212,7 +212,8 @@ install-data-local:
 	cp -r html $(docdir)
 
 clean-local:
-	$(RM) -r latex man html log4cpp.ps log4cpp.pdf
+	$(RM) -r latex
+	$(RM) -f html/*.html html/*.gif html/*.css man/man3/*.3 log4cpp.ps log4cpp.pdf
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

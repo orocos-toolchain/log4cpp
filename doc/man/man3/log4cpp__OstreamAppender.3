@@ -1,0 +1,115 @@
+.TH log4cpp::OstreamAppender 3 "22 Dec 2000" "log4cpp" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4cpp::OstreamAppender \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <OstreamAppender.hh>\fR
+.PP
+Inherits \fBlog4cpp::Appender\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBOstreamAppender\fR (const std::string& name, std::ostream* stream)"
+.br
+.ti -1c
+.RI "virtual \fB~OstreamAppender\fR ()"
+.br
+.ti -1c
+.RI "virtual void \fBdoAppend\fR (const \fBLoggingEvent\fR& event)"
+.br
+.RI "\fILog in \fBAppender\fR specific way.\fR"
+.ti -1c
+.RI "virtual bool \fBreopen\fR ()"
+.br
+.RI "\fIReopens the output destination of this \fBAppender\fR, e.g.\fR"
+.ti -1c
+.RI "virtual void \fBclose\fR ()"
+.br
+.RI "\fIRelease any resources allocated within the appender such as file handles, network connections, etc.\fR"
+.ti -1c
+.RI "virtual bool \fBrequiresLayout\fR () const"
+.br
+.RI "\fICheck if the appender uses a layout.\fR"
+.ti -1c
+.RI "virtual void \fBsetLayout\fR (\fBLayout\fR* layout)"
+.br
+.RI "\fISet the \fBLayout\fR for this appender.\fR"
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "std::ostream* \fB_stream\fR"
+.br
+.ti -1c
+.RI "\fBLayout\fR* \fB_layout\fR"
+.br
+.in -1c
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS log4cpp::OstreamAppender::OstreamAppender (const std::string & name, std::ostream * stream)
+.PP
+.SS log4cpp::OstreamAppender::~OstreamAppender ()\fC [virtual]\fR
+.PP
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS void log4cpp::OstreamAppender::close ()\fC [virtual]\fR
+.PP
+Release any resources allocated within the appender such as file handles, network connections, etc.
+.PP
+Reimplemented from \fBlog4cpp::Appender\fR.
+.SS void log4cpp::OstreamAppender::doAppend (const \fBLoggingEvent\fR & event)\fC [virtual]\fR
+.PP
+Log in \fBAppender\fR specific way.
+.PP
+\fBParameters: \fR
+.in +1c
+.TP
+\fB\fIevent\fR\fR The \fBLoggingEvent\fR to log. 
+.PP
+Reimplemented from \fBlog4cpp::Appender\fR.
+.SS bool log4cpp::OstreamAppender::reopen ()\fC [virtual]\fR
+.PP
+Reopens the output destination of this \fBAppender\fR, e.g.
+.PP
+the logfile  or TCP socket. 
+.PP
+\fBReturns: \fR
+.in +1c
+ false if an error occured during reopening, true otherwise. 
+.PP
+Reimplemented from \fBlog4cpp::Appender\fR.
+.SS bool log4cpp::OstreamAppender::requiresLayout () const\fC [virtual]\fR
+.PP
+Check if the appender uses a layout.
+.PP
+.PP
+If the appender implementation admits a layout but can also work without it, then it should return \fCtrue\fR. 
+.PP
+Reimplemented from \fBlog4cpp::Appender\fR.
+.SS void log4cpp::OstreamAppender::setLayout (\fBLayout\fR * layout)\fC [virtual]\fR
+.PP
+Set the \fBLayout\fR for this appender.
+.PP
+\fBParameters: \fR
+.in +1c
+.TP
+\fB\fIlayout\fR\fR The layout to use. 
+.PP
+Reimplemented from \fBlog4cpp::Appender\fR.
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS \fBLayout\fR * log4cpp::OstreamAppender::_layout\fC [protected]\fR
+.PP
+.SS std::ostream * log4cpp::OstreamAppender::_stream\fC [protected]\fR
+.PP
+
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for log4cpp from the source code.

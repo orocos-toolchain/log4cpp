@@ -1,0 +1,160 @@
+.TH log4cpp::SyslogAppender 3 "22 Dec 2000" "log4cpp" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4cpp::SyslogAppender \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <SyslogAppender.hh>\fR
+.PP
+Inherits \fBlog4cpp::Appender\fR.
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBSyslogAppender\fR (const std::string& name, const std::string& syslogName, int facility = LOG_USER)"
+.br
+.RI "\fIInstantiate a \fBSyslogAppender\fR with given name and name and facility for syslog.\fR"
+.ti -1c
+.RI "virtual \fB~SyslogAppender\fR ()"
+.br
+.ti -1c
+.RI "virtual void \fBdoAppend\fR (const \fBLoggingEvent\fR& event)"
+.br
+.RI "\fISends a \fBLoggingEvent\fR to syslog.\fR"
+.ti -1c
+.RI "virtual bool \fBreopen\fR ()"
+.br
+.RI "\fICalls closelog(3) and openlog(3).\fR"
+.ti -1c
+.RI "virtual void \fBclose\fR ()"
+.br
+.RI "\fICalls closelog(3) to close the syslog file descriptor.\fR"
+.ti -1c
+.RI "virtual bool \fBrequiresLayout\fR () const"
+.br
+.RI "\fIThe \fBSyslogAppender\fR requires a \fBLayout\fR.\fR"
+.ti -1c
+.RI "virtual void \fBsetLayout\fR (\fBLayout\fR* layout)"
+.br
+.RI "\fISet the \fBLayout\fR for this appender.\fR"
+.in -1c
+.SS Static Public Methods
+
+.in +1c
+.ti -1c
+.RI "int \fBtoSyslogPriority\fR (int priority)"
+.br
+.RI "\fITranslates a \fBlog4cpp\fR priority to a syslog priority.\fR"
+.in -1c
+.SS Protected Methods
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBopen\fR ()"
+.br
+.RI "\fICalls openlog(3).\fR"
+.in -1c
+.SS Protected Attributes
+
+.in +1c
+.ti -1c
+.RI "const std::string \fB_syslogName\fR"
+.br
+.ti -1c
+.RI "int \fB_facility\fR"
+.br
+.ti -1c
+.RI "\fBLayout\fR* \fB_layout\fR"
+.br
+.in -1c
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS log4cpp::SyslogAppender::SyslogAppender (const std::string & name, const std::string & syslogName, int facility = LOG_USER)
+.PP
+Instantiate a \fBSyslogAppender\fR with given name and name and facility for syslog.
+.PP
+Note that the C syslog API is process global, so  instantion of a second \fBSyslogAppender\fR will 'overwrite' the  syslog name of the first. 
+.PP
+\fBParameters: \fR
+.in +1c
+.TP
+\fB\fIname\fR\fR The name of the \fBAppender\fR 
+.TP
+\fB\fIsyslogName\fR\fR The ident parameter in the openlog(3) call. 
+.TP
+\fB\fIfacility\fR\fR The syslog facility to log to. Defaults to LOG_USER. 
+.SS log4cpp::SyslogAppender::~SyslogAppender ()\fC [virtual]\fR
+.PP
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS void log4cpp::SyslogAppender::close ()\fC [virtual]\fR
+.PP
+Calls closelog(3) to close the syslog file descriptor.
+.PP
+Reimplemented from \fBlog4cpp::Appender\fR.
+.SS void log4cpp::SyslogAppender::doAppend (const \fBLoggingEvent\fR & event)\fC [virtual]\fR
+.PP
+Sends a \fBLoggingEvent\fR to syslog.
+.PP
+\fBParameters: \fR
+.in +1c
+.TP
+\fB\fIevent\fR\fR the \fBLoggingEvent\fR to log. 
+.PP
+Reimplemented from \fBlog4cpp::Appender\fR.
+.SS void log4cpp::SyslogAppender::open ()\fC [protected, virtual]\fR
+.PP
+Calls openlog(3).
+.PP
+.SS bool log4cpp::SyslogAppender::reopen ()\fC [virtual]\fR
+.PP
+Calls closelog(3) and openlog(3).
+.PP
+Reimplemented from \fBlog4cpp::Appender\fR.
+.SS bool log4cpp::SyslogAppender::requiresLayout () const\fC [virtual]\fR
+.PP
+The \fBSyslogAppender\fR requires a \fBLayout\fR.
+.PP
+\fBReturns: \fR
+.in +1c
+ true 
+.PP
+Reimplemented from \fBlog4cpp::Appender\fR.
+.SS void log4cpp::SyslogAppender::setLayout (\fBLayout\fR * layout)\fC [virtual]\fR
+.PP
+Set the \fBLayout\fR for this appender.
+.PP
+\fBParameters: \fR
+.in +1c
+.TP
+\fB\fIlayout\fR\fR The layout to use. 
+.PP
+Reimplemented from \fBlog4cpp::Appender\fR.
+.SS int log4cpp::SyslogAppender::toSyslogPriority (int priority)\fC [static]\fR
+.PP
+Translates a \fBlog4cpp\fR priority to a syslog priority.
+.PP
+\fBParameters: \fR
+.in +1c
+.TP
+\fB\fIpriority\fR\fR The \fBlog4cpp\fR priority. 
+.PP
+\fBReturns: \fR
+.in +1c
+ the syslog priority. 
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS int log4cpp::SyslogAppender::_facility\fC [protected]\fR
+.PP
+.SS \fBLayout\fR * log4cpp::SyslogAppender::_layout\fC [protected]\fR
+.PP
+.SS const std::string log4cpp::SyslogAppender::_syslogName\fC [protected]\fR
+.PP
+
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for log4cpp from the source code.

@@ -30,6 +30,7 @@ namespace log4cpp {
 
 
     void ostrstream::vform(const char* format, va_list args) {
+	// FIXME: max message size is 512
 	char buffer[512];
 	int  err = vsnprintf(buffer, sizeof(buffer), format, args);
 	

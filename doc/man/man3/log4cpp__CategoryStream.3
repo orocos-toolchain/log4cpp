@@ -1,0 +1,129 @@
+.TH log4cpp::CategoryStream 3 "22 Dec 2000" "log4cpp" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4cpp::CategoryStream \- This class enables streaming simple types and objects to a category. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <Category.hh>\fR
+.PP
+.SS Public Methods
+
+.in +1c
+.ti -1c
+.RI "\fBCategoryStream\fR (\fBCategory\fR& category, int priority)"
+.br
+.RI "\fIConstruct a \fBCategoryStream\fR for given \fBCategory\fR with given priority.\fR"
+.ti -1c
+.RI "\fB~CategoryStream\fR ()"
+.br
+.RI "\fIDestructor for \fBCategoryStream\fR.\fR"
+.ti -1c
+.RI "\fBCategory\fR& \fBgetCategory\fR () const"
+.br
+.RI "\fIReturns the destination \fBCategory\fR for this stream.\fR"
+.ti -1c
+.RI "int \fBgetPriority\fR () const"
+.br
+.RI "\fIReturns the priority for this stream.\fR"
+.ti -1c
+.RI "CategoryStream& \fBoperator<<\fR (const \fBSeparator\fR& separator)"
+.br
+.RI "\fIStreams in a \fBSeparator\fR.\fR"
+.ti -1c
+.RI "void \fBflush\fR ()"
+.br
+.RI "\fIFlush the contents of the stream buffer to the \fBCategory\fR and empties the buffer.\fR"
+.ti -1c
+.RI "template<typenameT> CategoryStream& \fBoperator<<\fR (const T& t)"
+.br
+.RI "\fIStream in arbitrary types and objects.\fR"
+.in -1c
+.SS Static Public Attributes
+
+.in +1c
+.ti -1c
+.RI "\fBSeparator\fR \fBENDLINE\fR"
+.br
+.RI "\fIThis \fBSeparator\fR separates two log messages in a \fBCategoryStream\fR.\fR"
+.in -1c
+.SH DETAILED DESCRIPTION
+.PP 
+This class enables streaming simple types and objects to a category.
+.PP
+Use category.errorStream(), etc. to obtain a \fBCategoryStream\fR class. 
+.PP
+.SH CONSTRUCTOR & DESTRUCTOR DOCUMENTATION
+.PP 
+.SS log4cpp::CategoryStream::CategoryStream (\fBCategory\fR & category, int priority)
+.PP
+Construct a \fBCategoryStream\fR for given \fBCategory\fR with given priority.
+.PP
+\fBParameters: \fR
+.in +1c
+.TP
+\fB\fIcategory\fR\fR The category this stream will send log messages to. 
+.TP
+\fB\fIpriority\fR\fR The priority the log messages will get or  \fBPriority::NOTSET\fR to silently discard any streamed in messages. 
+.SS log4cpp::CategoryStream::~CategoryStream ()
+.PP
+Destructor for \fBCategoryStream\fR.
+.PP
+.SH MEMBER FUNCTION DOCUMENTATION
+.PP 
+.SS void log4cpp::CategoryStream::flush ()
+.PP
+Flush the contents of the stream buffer to the \fBCategory\fR and empties the buffer.
+.PP
+.SS \fBCategory\fR & log4cpp::CategoryStream::getCategory () const\fC [inline]\fR
+.PP
+Returns the destination \fBCategory\fR for this stream.
+.PP
+\fBReturns: \fR
+.in +1c
+ The \fBCategory\fR. 
+.SS int log4cpp::CategoryStream::getPriority () const\fC [inline]\fR
+.PP
+Returns the priority for this stream.
+.PP
+\fBReturns: \fR
+.in +1c
+ The priority. 
+.SS template<typenameT> CategoryStream & log4cpp::CategoryStream::operator<< (const T & t)\fC [inline]\fR
+.PP
+Stream in arbitrary types and objects.
+.PP
+\fBParameters: \fR
+.in +1c
+.TP
+\fB\fIt\fR\fR The value or object to stream in. 
+.PP
+\fBReturns: \fR
+.in +1c
+ A reference to itself. 
+.SS CategoryStream & log4cpp::CategoryStream::operator<< (const \fBSeparator\fR & separator)
+.PP
+Streams in a \fBSeparator\fR.
+.PP
+If the separator equals  \fBCategoryStream::ENDLINE\fR it sends the contents of the stream buffer to the \fBCategory\fR with set priority and empties the buffer. 
+.PP
+\fBParameters: \fR
+.in +1c
+.TP
+\fB\fISeparator\fR\fR The \fBSeparator\fR 
+.PP
+\fBReturns: \fR
+.in +1c
+ A reference to itself. 
+.SH MEMBER DATA DOCUMENTATION
+.PP 
+.SS \fBCategoryStream::Separator\fR log4cpp::CategoryStream::ENDLINE\fC [static]\fR
+.PP
+This \fBSeparator\fR separates two log messages in a \fBCategoryStream\fR.
+.PP
+
+
+.SH AUTHOR
+.PP 
+Generated automatically by Doxygen for log4cpp from the source code.

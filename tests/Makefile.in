@@ -76,7 +76,7 @@ PACKAGE = @PACKAGE@
 RANLIB = @RANLIB@
 VERSION = @VERSION@
 
-bin_PROGRAMS = testmain testNDC
+bin_PROGRAMS = testmain testNDC testbench
 
 INCLUDES = -I../include
 
@@ -85,6 +85,9 @@ testmain_LDADD = ../src/liblog4cpp.la
 
 testNDC_SOURCES = testNDC.cpp
 testNDC_LDADD = ../src/liblog4cpp.la
+
+testbench_SOURCES = Clock.cpp testbench.cpp 
+testbench_LDADD = ../src/liblog4cpp.la
 mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
 CONFIG_HEADER = ../src/config.h
 CONFIG_CLEAN_FILES = 
@@ -101,6 +104,9 @@ testmain_LDFLAGS =
 testNDC_OBJECTS =  testNDC.o
 testNDC_DEPENDENCIES =  ../src/liblog4cpp.la
 testNDC_LDFLAGS = 
+testbench_OBJECTS =  Clock.o testbench.o
+testbench_DEPENDENCIES =  ../src/liblog4cpp.la
+testbench_LDFLAGS = 
 CXXFLAGS = @CXXFLAGS@
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 LTCXXCOMPILE = $(LIBTOOL) --mode=compile $(CXX) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
@@ -113,9 +119,10 @@ DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 
 TAR = gtar
 GZIP_ENV = --best
-DEP_FILES =  .deps/testNDC.P .deps/testmain.P
-SOURCES = $(testmain_SOURCES) $(testNDC_SOURCES)
-OBJECTS = $(testmain_OBJECTS) $(testNDC_OBJECTS)
+DEP_FILES =  .deps/Clock.P .deps/testNDC.P .deps/testbench.P \
+.deps/testmain.P
+SOURCES = $(testmain_SOURCES) $(testNDC_SOURCES) $(testbench_SOURCES)
+OBJECTS = $(testmain_OBJECTS) $(testNDC_OBJECTS) $(testbench_OBJECTS)
 
 all: all-redirect
 .SUFFIXES:
@@ -192,6 +199,10 @@ testmain: $(testmain_OBJECTS) $(testmain_DEPENDENCIES)
 testNDC: $(testNDC_OBJECTS) $(testNDC_DEPENDENCIES)
 	@rm -f testNDC
 	$(CXXLINK) $(testNDC_LDFLAGS) $(testNDC_OBJECTS) $(testNDC_LDADD) $(LIBS)
+
+testbench: $(testbench_OBJECTS) $(testbench_DEPENDENCIES)
+	@rm -f testbench
+	$(CXXLINK) $(testbench_LDFLAGS) $(testbench_OBJECTS) $(testbench_LDADD) $(LIBS)
 .cpp.o:
 	$(CXXCOMPILE) -c $<
 .cpp.lo:

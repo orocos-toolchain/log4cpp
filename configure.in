@@ -7,6 +7,14 @@ LOG4CPP_MICRO_VERSION=0
 PACKAGE=log4cpp
 VERSION=$LOG4CPP_MAJOR_VERSION.$LOG4CPP_MINOR_VERSION.$LOG4CPP_MICRO_VERSION
 RELEASE=$LOG4CPP_MAJOR_VERSION.$LOG4CPP_MINOR_VERSION
+
+#
+# +1 : ? : +1  == new interface that does not break old one
+# +1 : ? : 0   == new interface that breaks old one
+#  ? : ? : 0   == no new interfaces, but breaks apps
+#  ? :+1 : ?   == just some internal changes, nothing breaks but might work 
+#                 better
+# CURRENT : REVISION : AGE
 LT_VERSION=0:2:0
 
 AC_SUBST(LOG4CPP_MAJOR_VERSION)
@@ -55,7 +63,7 @@ AM_CONDITIONAL(DOC, test x$enable_doc = xyes)
 # ----------------------------------------------------------------------------
 case "$host" in
     *-dec-osf*)	  
-	CXXFLAGS="$CXXFLAGS -D_POSIX_PII_SOCKET -msg_disable nonfundec -std strict_ansi_errors" 
+	CXXFLAGS="$CXXFLAGS -std strict_ansi_errors" 
 	;;
     *)	
 	;;
@@ -70,7 +78,7 @@ fi
 
 # idsa_test
 
-if test "x$ac_with_idsa" != xno; then
+if test "x$with_idsa" = xyes; then
     AC_CHECK_LIB([idsa], [idsa_open])
     if test "$ac_cv_lib_idsa_idsa_open" = no; then
         AC_MSG_ERROR([could not locate idsa library])
