@@ -19,6 +19,7 @@ liblog4cpp_la_SOURCES = \
 	Category.cpp \
 	CategoryStream.cpp \
 	HierarchyMaintainer.cpp \
+	SimpleConfigurator.cpp \
 	LoggingEvent.cpp \
 	Priority.cpp \
 	NDC.cpp \

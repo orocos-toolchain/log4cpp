@@ -18,6 +18,7 @@ liblog4cppinclude_HEADERS =  \
 	Category.hh \
 	CategoryStream.hh \
 	HierarchyMaintainer.hh \
+	SimpleConfigurator.hh \
 	LoggingEvent.hh \
 	Priority.hh \
 	NDC.hh \

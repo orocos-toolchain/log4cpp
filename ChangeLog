@@ -1,5 +1,16 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-11-23 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* tests/testConfig.cpp, tests/log4cpp.init: added test for
+	SimpleConfigurator.
+
+	* include/log4cpp/Makefile.am, src/Makefile.am, tests/Makefile.am:
+	integrated SimpleConfigurator in autoconf.
+
+	* src/SimpleConfigurator.cpp: added support for comments in config
+	file (starting with a '#'). added support for SyslogAppender. use 
+	Priority::getPriorityValue() to convert priorities.
+	
 2001-11-09 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* m4/CREATE_GENERIC_CONFIG.m4: escape $*
 	
@@ -47,7 +58,7 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	Port to Borland C++.
 
 2001-10-04 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
-	* src/SimpleConfigurator, include/log4cpp/SimpleConfigurator:
+	* src/SimpleConfigurator.cpp, include/log4cpp/SimpleConfigurator.hh:
 	Added simple configurator class contributed by Glenn Scott. Not
 	usable yet.
 	
