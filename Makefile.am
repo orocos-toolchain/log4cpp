@@ -14,7 +14,6 @@ EXTRA_DIST = log4cpp.spec.in log4cpp.spec m4
 
 dist-hook:
 	perl -pi -e 's/\n/\r\n/g' `find $(distdir) -name '*.ds?'`
-	cp -dpR $(top_srcdir)/include/config.h.in $(distdir)/include/config.h
 
 distclean-local:
 	$(MAKE) -C tests distclean
