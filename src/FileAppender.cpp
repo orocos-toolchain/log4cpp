@@ -60,9 +60,8 @@ namespace log4cpp {
             if (fd < 0)
                 return false;
             else {
-                int oldfd = _fd;
+                ::close(_fd);
                 _fd = fd;
-                ::close(oldfd);
                 return true;
             }
         } else {
