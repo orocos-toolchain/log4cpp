@@ -112,10 +112,50 @@ namespace log4cpp {
                             struct tm *currentTime;
                             time_t t = event.timeStamp.getSeconds();
                             currentTime = localtime(&t);
+
+                            // use this as a bool, but define as void* for performance
+                            void *moreChars = NULL;
+
+                            // try to get next char
+                            if ((moreChars = (conversionStream.get(ch))) && ch == '{') {
+                                char szFtimeFormat[40];
+                                conversionStream.get(szFtimeFormat, sizeof(szFtimeFormat), '}');
+                                // get (and discard) closing bracket
+                                if (!(conversionStream.get(ch)) || ch != '}') {
+                                    *success = false;
+                                }
+                                
+                                // replace milli-second format (%l)
+                                std::ostringstream strFtimeFormat;
+                                std::string strFormat(szFtimeFormat);
+                                int pos = 0, prevPos = 0;
+                                while ((pos = strFormat.find("%l", prevPos)) != std::string::npos) {
+                                    strFtimeFormat << strFormat.substr(prevPos, pos);
+                                    strFtimeFormat << std::setw(3) << std::setfill('0') << event.timeStamp.getMilliSeconds();
+                                    prevPos = pos + 2;
+                                }
+                                strFtimeFormat << strFormat.substr(prevPos);
+
+                                char formatted[100];
+                                strftime(formatted, sizeof(formatted), strFtimeFormat.str().c_str(), currentTime);
+
+                                message << formatted;
+                            } else {
+
+                                if (moreChars) {
+                                    conversionStream.putback(ch);
+                                }
+
+                                // use asctime to format date
                             std::string currentTimeOnOneLine = asctime(currentTime);
                             currentTimeOnOneLine = currentTimeOnOneLine.substr(0, currentTimeOnOneLine.length()-1);
                             
                             message << currentTimeOnOneLine;
+
+                                // if 'd' was the last format char, there will be an
+                                // extra get() from the conversionStream
+                            }
+
                         }
                         break;
                     case 'R':
