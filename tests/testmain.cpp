@@ -97,4 +97,6 @@ int main(int argc, char** argv) {
 			log4cpp::NDC::pop();
 		}
 	}
+
+	return 0;
 }
