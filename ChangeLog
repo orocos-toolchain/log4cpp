@@ -1,11 +1,22 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+
+2001-04-09 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	Release 0.2.3
+	Fixed and resolved Bugs:
+	#411711 missing Clock.hh
+	#411902 invalid AppenderMap iterator
+	#412008 memory leak in OstringStream::str()
+	#412232 _append problem
 	
 2001-04-06 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	Added class Filter, with which Appenders can filter out LoggingEvents
 	Added class AppenderSkeleton, base class for Appender implementations
 	Modified the Layout interface: it now returns a std::string instead of
 	a char*.
+
+2001-03-?? Cedric Le Goater <cedric@legoater.com>
+	Cleanup of Hints and StreamUtil to OstringStream.
 	
 2001-03-11 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	Added LayoutAppender. Changed Layout ownership for Appenders: they
