@@ -46,6 +46,7 @@ MACRO_EXPANSION      = YES
 SEARCH_INCLUDES      = YES
 INCLUDE_PATH         = 
 EXPAND_ONLY_PREDEF   = NO
+PREDEFINED           = "WIN32"
 
 # Configuration options related to external references 
 #---------------------------------------------------------------------------
