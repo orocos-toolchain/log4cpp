@@ -67,7 +67,8 @@ namespace log4cpp {
             return;
         }
 
-        const char* message = _layout->format(event).c_str();
+	std::string msgStr = _layout->format(event);
+        const char* message = msgStr.c_str();
         int priority = toSyslogPriority(event.priority);
         ::syslog(priority | _facility, message);
     }
