@@ -101,10 +101,10 @@ namespace log4cpp {
         const std::string _syslogName;
         const std::string _relayer;
         int _facility;
-        Layout* _layout;
+        int _portNumber;
         int _socket;
         unsigned long _ipAddr;
-        int _portNumber;
+        Layout* _layout;
         private:
         int _cludge;
     };

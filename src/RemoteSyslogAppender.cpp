@@ -18,6 +18,9 @@
 #include "log4cpp/RemoteSyslogAppender.hh"
 #ifdef WIN32
 #include <winsock2.h>
+#else
+#include <netdb.h>
+#include <sys/socket.h>
 #endif
 
 namespace log4cpp {
