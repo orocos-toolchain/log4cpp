@@ -19,7 +19,9 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 
 	* src/PropertyConfgiruratorImpl.cpp: added 'append' property for 
 	FileAppender.
-	
+
+	* src/LoggingEvent.cpp: fill in the thread Id. 
+
 2002-07-22 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* configure.in, configure.ac: renamed configure.in to configure.ac.
 

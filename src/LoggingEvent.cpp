@@ -9,6 +9,7 @@
 
 #include <log4cpp/Portability.hh>
 #include <log4cpp/LoggingEvent.hh>
+#include <log4cpp/threading/Threading.hh>
 
 namespace log4cpp {
     
@@ -20,6 +21,6 @@ namespace log4cpp {
         message(message),
         ndc(ndc),
         priority(priority),
-        threadName("thread1") {
+        threadName(threading::getThreadId()) {
     }
 }
