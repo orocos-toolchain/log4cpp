@@ -1,9 +1,14 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
-2002-03-20 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+2002-03-22 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/FileAppender.hh, src/FileAppender.cpp:
 	added 'append' and 'mode' options. 
 
+	* include/log4cpp/RollingFileAppender.hh, include/log4cpp/Makefile.am,
+	src/RollingFileAppender.cpp, src/SimpleConfigurator.cpp,
+	src/Makefile.am: added RollingFileAppender contributed by
+	Paulo Pizarro <paulo.pizarro@digitro.com.br>
+	
 2002-03-20 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/SimpleConfigurator.hh, src/SimpleConfigurator.cpp:
 	added configure(std::istream&) method. (feature request #527760)

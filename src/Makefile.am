@@ -9,6 +9,7 @@ liblog4cpp_la_SOURCES = \
 	AppenderSkeleton.cpp \
 	LayoutAppender.cpp \
 	FileAppender.cpp \
+	RollingFileAppender.cpp \
 	FixedContextCategory.cpp \
 	IdsaAppender.cpp \
 	OstreamAppender.cpp \

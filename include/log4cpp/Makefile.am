@@ -8,6 +8,7 @@ liblog4cppinclude_HEADERS =  \
 	FixedContextCategory.hh \
 	LayoutAppender.hh \
 	FileAppender.hh \
+	RollingFileAppender.hh \
 	IdsaAppender.hh \
 	OstreamAppender.hh \
 	StringQueueAppender.hh \

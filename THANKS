@@ -15,6 +15,7 @@ Uwe Jäger <jaeger@varial.de> (Borland support)
 Walter Stroebel <walter.stroebel@lifeline.nl> (RemoteSyslogAppender)
 Glen Scott <glen_s@yahoo.com> (PatternLayout, SimpleConfigurator)
 Tony Cheung <dragonman@asiayeah.com> (OpenVMS support)
-Alex Tapaccos <ATapaccos@redfig.com> (RollingFileAppender)
+Alex Tapaccos <ATapaccos@redfig.com> (DailyRollingFileAppender)
 Brendan B. Boerner <bboerner@texas.net> (Multiple Appender support for
          Categories)
+Paulo Pizarro <paulo.pizarro@digitro.com.br> (RollingFileAppender)
