@@ -17,8 +17,8 @@ namespace log4cpp {
 
     /**
        Users should extend this class to implement customized logging
-       event filtering. Note that {@link log4cpp::Category} and {@link
-       log4cpp::Appender} have built-in filtering rules. It is suggested 
+       event filtering. Note that log4cpp::Category and
+       lof4cpp::Appender have built-in filtering rules. It is suggested 
        that you first use and understand the built-in rules before rushing 
        to write your own custom filters.
 

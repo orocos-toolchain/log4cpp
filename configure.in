@@ -1,4 +1,4 @@
-AC_INIT(log4cpp, 0.3.4b)
+AC_INIT(log4cpp, 0.3.5rc1)
 
 # autoconf 2.50 or higher to rebuild aclocal.m4, because the
 # AC_CREATE_PREFIX_CONFIG_H macro needs the AS_DIRNAME macro.
@@ -11,7 +11,7 @@ AC_PREREQ(2.50)
 #  ? :+1 : ?   == just some internal changes, nothing breaks but might work 
 #                 better
 # CURRENT : REVISION : AGE
-LT_VERSION=4:4:0
+LT_VERSION=4:5:0
 
 AC_SUBST(LT_VERSION)
 
@@ -37,17 +37,6 @@ AC_PROG_CXX([g++ c++ gpp aCC CC cxx cc++ cl FCC KCC RCC xlC_r xlC QCC])
 
 AC_PROG_CXXCPP
 AC_LANG(C++)
-
-# CXX fine tuning
-case "$host" in
-    *-dec-osf*)	  
-	CXXFLAGS="$CXXFLAGS -std strict_ansi_errors" 
-	;;
-    *)	
-	;;
-esac
-
-PETI_PEDANTIC_GCC
 
 # Checks header files
 # ----------------------------------------------------------------------------
@@ -88,15 +77,33 @@ BB_ENABLE_DOXYGEN
 BB_CHECK_OMNITHREADS
 BB_CHECK_PTHREADS
 
+LOG4CPP_CFLAGS="$CXXFLAGS"
+LOG4CPP_LIBS="-llog4cpp"
+LOG4CPP_LIBDEPS="$LIBS"
+LOG4CPP_VERSION="$VERSION"
+
+# CXX fine tuning
+case "$host" in
+    *-dec-osf*)	  
+	CXXFLAGS="$CXXFLAGS -std strict_ansi_errors" 
+	;;
+    *)	
+	;;
+esac
+
+PETI_PEDANTIC_GCC
+
 # Create files
 # ----------------------------------------------------------------------------
 
-AC_CREATE_GENERIC_CONFIG
+AC_CONFIG_LIBCONFIG_IN([log4cpp])
+AC_CONFIG_PKGCONFIG_IN([log4cpp], [C++ library for flexible logging, modeled after Log4j])
 
 AC_CONFIG_FILES([
 Makefile
 log4cpp.spec
 log4cpp.pc
+log4cpp-config
 config/Makefile
 doc/Makefile
 doc/Doxyfile
