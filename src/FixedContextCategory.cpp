@@ -56,6 +56,11 @@ namespace log4cpp {
         return _delegate.getAppender();
     }
     
+    Appender* FixedContextCategory::getAppender(const std::string& name)
+    const {
+        return _delegate.getAppender(name);
+    }
+    
     void FixedContextCategory::removeAllAppenders() {
         // XXX do nothing for now
     }
