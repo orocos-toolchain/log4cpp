@@ -7,6 +7,7 @@ liblog4cpp_la_SOURCES = \
 	FileAppender.cpp \
 	IdsaAppender.cpp \
 	OstreamAppender.cpp \
+	StringQueueAppender.cpp \
 	SyslogAppender.cpp \
 	SimpleLayout.cpp \
 	BasicLayout.cpp \

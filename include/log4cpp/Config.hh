@@ -11,5 +11,5 @@
 #endif
 
 /* define if you have new iostreams */
-/* #undef LOG4CPP_HAVE_STDIOSTREAM */
+#define LOG4CPP_HAVE_STDIOSTREAM 1
 #endif

@@ -7,6 +7,7 @@ liblog4cppinclude_HEADERS =  \
 	FileAppender.hh \
 	IdsaAppender.hh \
 	OstreamAppender.hh \
+	StringQueueAppender.hh \
 	SyslogAppender.hh \
 	Layout.hh \
 	SimpleLayout.hh \
@@ -19,4 +20,4 @@ liblog4cppinclude_HEADERS =  \
 	OstringStream.hh \
 	Log4cppCleanup.hh \
 	Filter.hh \
- 	Config.hh
+	Config.hh
