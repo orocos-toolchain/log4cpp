@@ -1,27 +1,47 @@
 /*
  * SyslogAppender.hh
  *
- * Copyright 2000, LifeLine Networks BV (www.lifeline.nl). All rights reserved.
- * Copyright 2000, Bastiaan Bakker. All rights reserved.
+ * Copyright 2001, LifeLine Networks BV (www.lifeline.nl). All rights reserved.
+ * Copyright 2001, Walter Stroebel. All rights reserved.
  *
  * See the COPYING file for the terms of usage and distribution.
  */
 
-#ifndef _LOG4CPP_SYSLOGAPPENDER_HH
-#define _LOG4CPP_SYSLOGAPPENDER_HH
+#ifndef _LOG4CPP_REMOTESYSLOGAPPENDER_HH
+#define _LOG4CPP_REMOTESYSLOGAPPENDER_HH
 
 #include <string>
 #include <stdarg.h>
-#include <syslog.h>
+#include "log4cpp/Export.hh"
+#include "log4cpp/LayoutAppender.hh"
 #include "log4cpp/AppenderSkeleton.hh"
 #include "log4cpp/Priority.hh"
+
+/// from syslog.h
+#define LOG_EMERG       0       /* system is unusable */
+/// from syslog.h
+#define LOG_ALERT       1       /* action must be taken immediately */
+/// from syslog.h
+#define LOG_CRIT        2       /* critical conditions */
+/// from syslog.h
+#define LOG_ERR         3       /* error conditions */
+/// from syslog.h
+#define LOG_WARNING     4       /* warning conditions */
+/// from syslog.h
+#define LOG_NOTICE      5       /* normal but significant condition */
+/// from syslog.h
+#define LOG_INFO        6       /* informational */
+/// from syslog.h
+#define LOG_DEBUG       7       /* debug-level messages */
 
 namespace log4cpp {
 
     /**
-     * SyslogAppender sends LoggingEvents to the local syslog system.
+     * RemoteSyslogAppender sends LoggingEvents to a remote syslog system.
+     *
+     * Also see: draft-ietf-syslog-syslog-12.txt
      **/
-    class SyslogAppender : public AppenderSkeleton {
+    class LOG4CPP_EXPORT RemoteSyslogAppender : public AppenderSkeleton {
         public:
 
         /**
@@ -32,30 +52,31 @@ namespace log4cpp {
         static int toSyslogPriority(Priority::Value priority);
 
         /**
-         * Instantiate a SyslogAppender with given name and name and facility
-         * for syslog. Note that the C syslog API is process global, so 
-         * instantion of a second SyslogAppender will 'overwrite' the 
-         * syslog name of the first.
+         * Instantiate a RemoteSyslogAppender with given name and name and facility
+         * for syslog.
          * @param name The name of the Appender
          * @param syslogName The ident parameter in the openlog(3) call.
+         * @param relayer The IP address or hostname of a standard syslog host.
          * @param facility The syslog facility to log to. Defaults to LOG_USER.
+         * @param portNumber An alternative port number. Defaults to the standard syslog
+         * port number (514).
          **/         
-        SyslogAppender(const std::string& name, const std::string& syslogName, 
-                       int facility = LOG_USER);
-        virtual ~SyslogAppender();
+        RemoteSyslogAppender(const std::string& name, const std::string& syslogName, 
+                       const std:string& relayer, int facility = LOG_USER, int portNumber = 514);
+        virtual ~RemoteSyslogAppender();
 
         /**
-         * Calls closelog(3) and openlog(3).
+         * Closes and reopens the socket.
          **/
         virtual bool reopen();
 
         /**
-         * Calls closelog(3) to close the syslog file descriptor.
+         * Closes the socket
          **/
         virtual void close();
 
         /**
-         * The SyslogAppender requires a Layout.
+         * The RemoteSyslogAppender requires a Layout.
          * @returns true
          **/
         virtual bool requiresLayout() const;
@@ -65,20 +86,23 @@ namespace log4cpp {
         protected:
         
         /**
-         * Calls openlog(3).
+         * Just creates the socket.
          **/
         virtual void open();
 
         /**
-         * Sends a LoggingEvent to syslog.
+         * Sends a LoggingEvent to the remote syslog.
          * @param event the LoggingEvent to log.
          **/
         virtual void _append(const LoggingEvent& event);
 
         const std::string _syslogName;
+        const std::string _relayer;
         int _facility;
         Layout* _layout;
+        int _socket;
+        int _portNumber;
     };
 }
 
-#endif // _LOG4CPP_SYSLOGAPPENDER_HH
+#endif // _LOG4CPP_REMOTESYSLOGAPPENDER_HH

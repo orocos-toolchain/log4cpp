@@ -1,24 +1,26 @@
 /*
- * SyslogAppender.cpp
+ * RemoteSyslogAppender.cpp
  *
- * Copyright 2000, LifeLine Networks BV (www.lifeline.nl). All rights reserved.
- * Copyright 2000, Bastiaan Bakker. All rights reserved.
+ * Copyright 2001, LifeLine Networks BV (www.lifeline.nl). All rights reserved.
+ * Copyright 2001, Walter Stroebel. All rights reserved.
  *
  * See the COPYING file for the terms of usage and distribution.
  */
 
 #include "log4cpp/Portability.hh"
-#if LOG4CPP_HAVE_SYSLOG
+#include "log4cpp/OstringStream.hh"
 
-#include <unistd.h>
+#ifdef LOG4CPP_HAVE_UNISTD_H
+#    include <unistd.h>
+#endif
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include "log4cpp/SyslogAppender.hh"
+#include "log4cpp/RemoteSyslogAppender.hh"
 
 namespace log4cpp {
 
-    int SyslogAppender::toSyslogPriority(Priority::Value priority) {
+    int RemoteSyslogAppender::toSyslogPriority(Priority::Value priority) {
         static int priorities[8] = { LOG_EMERG, LOG_ALERT, LOG_CRIT, LOG_ERR,
                                      LOG_WARNING, LOG_NOTICE, LOG_INFO, 
                                      LOG_DEBUG };
@@ -39,29 +41,32 @@ namespace log4cpp {
     }
         
 
-    SyslogAppender::SyslogAppender(const std::string& name, 
+    RemoteSyslogAppender::RemoteSyslogAppender(const std::string& name, 
                                    const std::string& syslogName, 
-                                   int facility) : 
+				   const std::string& relayer,
+                                   int facility,
+				   int portNumber) : 
         AppenderSkeleton(name),
         _syslogName(syslogName),
-        _facility(facility) 
+	_relayer(relayer),
+        _facility(facility),
+	_portNumber (portNumber)
+	_socket (0);
     {
         open();
     }
     
-    SyslogAppender::~SyslogAppender() {
+    RemoteSyslogAppender::~RemoteSyslogAppender() {
         close();
     }
 
-    void SyslogAppender::open() {
-        openlog(_syslogName.c_str(), 0, _facility);
+    void RemoteSyslogAppender::open() {
     }
 
-    void SyslogAppender::close() {
-        ::closelog();
+    void RemoteSyslogAppender::close() {
     }
 
-    void SyslogAppender::_append(const LoggingEvent& event) {
+    void RemoteSyslogAppender::_append(const LoggingEvent& event) {
         if (!_layout) {
             // XXX help! help!
             return;
@@ -69,23 +74,20 @@ namespace log4cpp {
 
         const char* message = _layout->format(event).c_str();
         int priority = toSyslogPriority(event.priority);
-        ::syslog(priority | _facility, message);
     }
 
-    bool SyslogAppender::reopen() {
+    bool RemoteSyslogAppender::reopen() {
         close();
         open();
         return true;
     }      
 
-    bool SyslogAppender::requiresLayout() const {
+    bool RemoteSyslogAppender::requiresLayout() const {
         return true;
     }
 
-    void SyslogAppender::setLayout(Layout* layout) {
+    void RemoteSyslogAppender::setLayout(Layout* layout) {
         _layout = layout;
     }
 
 }
-
-#endif // LOG4CPP_HAVE_SYSLOG
