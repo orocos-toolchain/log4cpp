@@ -1,5 +1,9 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-08-23 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* include/log4cpp/Priority.hh:
+	Added workaround for #define DEBUG in EDK.h on Win32.
+	
 2001-07-16 Uwe Jäger <jaeger@varial.de>
 	* bcb5/log4cpp.bpf, bcb5/log4cpp.bpr:
 	Adjusted project files to compile CategoryStream.cpp.

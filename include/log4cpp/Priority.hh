@@ -33,6 +33,25 @@ namespace log4cpp {
 
 #endif // ERROR
 
+/*
+ * Other Win32 rudeness in EDK.h
+ */
+#ifdef DEBUG
+
+#ifdef LOG4CPP_FIX_ERROR_COLLISION
+
+#undef DEBUG
+#define DEBUG DEBUG
+#endif
+
+#else 
+#error Naming collision for 'DEBUG' detected. Please read the FAQ for a \
+       workaround. 
+#endif // LOG4CPP_FIX_ERROR_COLLISION 
+
+#endif // DEBUG
+
+
 namespace log4cpp {
 
     /**
