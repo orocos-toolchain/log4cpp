@@ -28,6 +28,7 @@ rpm: dist
 	mv -f /usr/src/redhat/SRPMS/log4cpp-$(VERSION)-*.rpm .
 	mv -f /usr/src/redhat/RPMS/i386/log4cpp-$(VERSION)-*.rpm .
 	mv -f /usr/src/redhat/RPMS/i386/log4cpp-devel-$(VERSION)-*.rpm .
+	mv -f /usr/src/redhat/RPMS/i386/log4cpp-doc-$(VERSION)-*.rpm .
 
 docs:
 	$(MAKE) -C doc
