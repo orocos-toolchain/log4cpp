@@ -7,6 +7,7 @@
  */
 
 #include "Properties.hh"
+#include <cstdlib>
 
 namespace log4cpp {
     
@@ -47,6 +48,7 @@ namespace log4cpp {
             if (length != std::string::npos) {
                 leftSide = command.substr(0, length);
                 rightSide = command.substr(length + 1, command.size() - length);
+                _substituteVariables(rightSide);
             } else {
                 continue;
             }
@@ -92,4 +94,51 @@ namespace log4cpp {
         return (key == end()) ? std::string(defaultValue) : (*key).second;
     }
 
+    void Properties::_substituteVariables(std::string& value) {
+        std::string result;
+
+        std::string::size_type left = 0;
+        std::string::size_type right = value.find("${", left);
+        if (right == std::string::npos) {
+            // bail out early for 99% of cases
+            return;
+        }
+
+        while(true) {
+            result += value.substr(left, right - left);
+            if (right == std::string::npos) {
+                break;
+            }
+
+            left = right + 2;
+            right = value.find('}', left);
+            if (right == std::string::npos) {
+                // no close tag, use string literally
+                result += value.substr(left - 2);
+                break;
+            } else {
+                const std::string key = value.substr(left, right - left);
+                if (key == "${") {
+                    result += "${";
+                } else {
+                    char* value = ::getenv(key.c_str());
+                    if (value) {
+                        result += value;
+                    } else {
+                        const_iterator it = find(key);
+                        if (it == end()) {
+                            // not found assume empty;
+                        } else {
+                            result += (*it).second;
+                        }
+                    }
+                }
+                left = right + 1;
+            }
+
+            right = value.find("${", left);
+        }
+
+        value = result;
+    }
 }

@@ -28,6 +28,9 @@ namespace log4cpp {
         virtual bool getBool(const std::string& property, bool defaultValue);
         virtual std::string getString(const std::string& property,
                                       const char* defaultValue);
+
+        protected:
+        virtual void _substituteVariables(std::string& value);
     };
 }
 

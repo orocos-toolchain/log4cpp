@@ -3,6 +3,11 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 2002-07-04 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/BasicConfigurator.hh, src/BasicConfigurator.cpp:
 	added.
+
+	* src/Properties.hh, src/Properties.cpp: added Log4j style variable
+	substitution: ${NAME} will be substituted with environment variable
+	NAME or if not found with property NAME. '${${}' denotes a literal
+	'${' sequence. 
 	
 2002-07-03 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/SyslogAppender.cpp (SysLogAppender()): accept '-1' for facility and portNumber, 
