@@ -19,7 +19,7 @@
 #define LOG4CPP_HAVE_INT64_T
 #define int64_t __int64  
 
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) && _MSC_VER < 1300
 #define LOG4CPP_MISSING_INT64_OSTREAM_OP   
 #endif
 
