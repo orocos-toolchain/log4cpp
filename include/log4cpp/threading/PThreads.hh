@@ -90,9 +90,8 @@ namespace log4cpp {
 
             inline static void freeHolder(void *p) {
                 assert(p != NULL);
-                T *data = (T *) p;
-                delete p;
-            }
+                delete reinterpret_cast<T *>(p);
+             }
 
             inline ~ThreadLocalDataHolder() {
                 T *data = get();
@@ -103,7 +102,7 @@ namespace log4cpp {
             }
             
             inline T* get() const {
-                return (T *) ::pthread_getspecific(_key); 
+                return reinterpret_cast<T *>(::pthread_getspecific(_key)); 
             }
 
             inline T* operator->() const { return get(); }
