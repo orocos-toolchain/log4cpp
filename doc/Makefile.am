@@ -1,5 +1,5 @@
 man3dir = $(mandir)/man3
-docdir  = $(prefix)/doc/@PACKAGE@-@VERSION@
+docdir  = $(prefix)/doc/@PACKAGE_TARNAME@-@PACKAGE_VERSION@
 
 all-local: dox #pdf
 
@@ -7,11 +7,11 @@ dox: html/index.html
 html/index.html: Doxyfile
 	@DOXYGEN@
 
-pdf: @PACKAGE@.pdf
+pdf: @PACKAGE_TARNAME@.pdf
 @PACKAGE@.pdf:
 	$(MAKE) -C ./latex pdf
-	ln -s ./latex/refman.ps	 @PACKAGE@.ps
-	ln -s ./latex/refman.pdf @PACKAGE@.pdf
+	ln -s ./latex/refman.ps	 @PACKAGE_TARNAME@.ps
+	ln -s ./latex/refman.pdf @PACKAGE_TARNAME@.pdf
 
 
 install-data-local:
@@ -22,7 +22,7 @@ install-data-local:
 		$(INSTALL_DATA) $$i $(DESTDIR)$(man3dir)/$$inst; \
 	done
 	$(mkinstalldirs) $(DESTDIR)$(docdir)
-#	@for i in ../README ../ChangeLog @PACKAGE@.ps @PACKAGE@.pdf; do \
+#	@for i in ../README ../ChangeLog @PACKAGE_TARNAME@.ps @PACKAGE_TARNAME@.pdf; do \
 #		echo "$(INSTALL_DATA) $$i $(DESTDIR)$(docdir)"; \
 #		$(INSTALL_DATA) $$i $(DESTDIR)$(docdir); \
 #	done
@@ -30,4 +30,4 @@ install-data-local:
 
 clean-local:
 	$(RM) -r latex
-	$(RM) -r html man @PACKAGE@.ps @PACKAGE@.pdf
+	$(RM) -r html man @PACKAGE_TARNAME@.ps @PACKAGE_TARNAME@.pdf

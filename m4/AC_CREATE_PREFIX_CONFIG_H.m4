@@ -56,9 +56,9 @@ dnl @author Guido Draheim <guidod@gmx.de>
 
 AC_DEFUN([AC_CREATE_PREFIX_CONFIG_H],
 [changequote({, })dnl 
-ac_prefix_conf_OUT=`echo ifelse($1, , $PACKAGE-config.h, $1)`
+ac_prefix_conf_OUT=`echo ifelse($1, , ${PACKAGE_TARNAME}-config.h, $1)`
 ac_prefix_conf_DEF=`echo _$ac_prefix_conf_OUT | sed -e 'y:abcdefghijklmnopqrstuvwxyz./,-:ABCDEFGHIJKLMNOPQRSTUVWXYZ____:'`
-ac_prefix_conf_PKG=`echo ifelse($2, , $PACKAGE, $2)`
+ac_prefix_conf_PKG=`echo ifelse($2, , ${PACKAGE_TARNAME}, $2)`
 ac_prefix_conf_LOW=`echo _$ac_prefix_conf_PKG | sed -e 'y:ABCDEFGHIJKLMNOPQRSTUVWXYZ-:abcdefghijklmnopqrstuvwxyz_:'`
 ac_prefix_conf_UPP=`echo $ac_prefix_conf_PKG | sed -e 'y:abcdefghijklmnopqrstuvwxyz-:ABCDEFGHIJKLMNOPQRSTUVWXYZ_:'  -e '/^[0-9]/s/^/_/'`
 ac_prefix_conf_INP=`echo ifelse($3, , _, $3)`
@@ -74,7 +74,7 @@ if test "$ac_prefix_conf_INP" = "_"; then
 fi
 changequote([, ])dnl
 if test -z "$ac_prefix_conf_PKG" ; then
-   AC_MSG_ERROR([no prefix for _PREFIX_PKG_CONFIG_H])
+   AC_MSG_ERROR([no prefix ${PACKAGE_TARNAME} for _PREFIX_PKG_CONFIG_H])
 else
   AC_MSG_RESULT(creating $ac_prefix_conf_OUT - prefix $ac_prefix_conf_UPP for $ac_prefix_conf_INP defines)
   if test -f $ac_prefix_conf_INP ; then

@@ -3,8 +3,8 @@
 
 %define lib_name log4cpp
 
-Name: @PACKAGE@
-Version: @VERSION@
+Name: @PACKAGE_TARNAME@
+Version: @PACKAGE_VERSION@
 Release: %rel
 
 Summary: Log for C++

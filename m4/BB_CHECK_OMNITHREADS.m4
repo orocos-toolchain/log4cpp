@@ -55,8 +55,7 @@ if test "x$OMNIDIR" != "xno"; then
     CXXFLAGS="$CXXCFLAGS $OMNIDEFINES -I$OMNIDIR/include"
     dnl AC_CHECK_HEADERS([omnithread.h])
 
-    AC_LANG_SAVE
-    AC_LANG_CPLUSPLUS
+    AC_LANG_PUSH(C++)
 
     LIBS="$LIBS -L$OMNIDIR/lib -lomnithread"
     AC_CACHE_CHECK([for omnithreads library],
@@ -72,5 +71,7 @@ if test "x$OMNIDIR" != "xno"; then
 
     AC_DEFINE(HAVE_THREADING,,[define if threading is enabled])
     AC_DEFINE(USE_OMNITHREADS,,[define if omnithread library is available])
+
+    AC_LANG_POP(C++)
 fi
 ])
