@@ -59,7 +59,13 @@ namespace log4cpp {
             size_t n = _fileName.length() + 1;
             for(unsigned int i = _maxBackupIndex; i > 1; i--) {
             	std::string newName = oldName.str();
+#ifndef LOG4CPP_STLPORT_AND_BOOST_BUILD
                 oldName.seekp(n, std::ios::beg);
+#else
+				// the direction parameter is broken in STLport 4.5.3, 
+				// so we don't specify it (the code works without it)
+				oldName.seekp(n);
+#endif
                 oldName << i-1 << std::ends;
                 ::rename(oldName.str().c_str(), newName.c_str());
             }

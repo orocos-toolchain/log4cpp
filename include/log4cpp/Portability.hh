@@ -11,7 +11,11 @@
 #define _LOG4CPP_PORTABILITY_HH
 
 #if defined (_MSC_VER) || defined(__BORLANDC__)
-#    include <log4cpp/config-win32.h>
+#    if defined (LOG4CPP_STLPORT_AND_BOOST_BUILD)
+#        include <log4cpp/config-win32-stlport-boost.h>
+#    else
+#        include <log4cpp/config-win32.h>
+#    endif
 #else
 #if defined(__OPENVMS__)
 #    include <log4cpp/config-openvms.h>

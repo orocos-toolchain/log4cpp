@@ -14,22 +14,42 @@
 #include <boost/thread/thread.hpp>
 #include <boost/thread/mutex.hpp>
 #include <boost/thread/tss.hpp>
-#include <stdio.h>
+#include <cstdio>
 #include <string>
 
 namespace log4cpp {
     namespace threading {
         static std::string getThreadId() {
-            char buffer[16];
-            sprintf(buffer, "not implemented");
+            char buffer[14];
+            // Boost.Threads stores the thread ID but doesn't expose it
+            sprintf(buffer, "not available");
             return std::string(buffer);
         };
         
         typedef boost::mutex Mutex;
-        typedef boost::scoped_lock<Mutex> ScopedLock;
+        typedef boost::mutex::scoped_lock ScopedLock;
 
-        typedef template<typename T> class boost::thread_specific_ptr
-            ThreadLocalDataHolder;
+        template<typename T> class ThreadLocalDataHolder {
+            public:
+            inline T* get() const {
+                return _localData.get();
+            };
+
+            inline T* operator->() const { return _localData.get(); };
+            inline T& operator*() const { return *_localData.get(); };
+
+            inline T* release() {
+                return _localData.release();
+            };
+
+            inline void reset(T* p = NULL) {
+                _localData.reset(p);
+            };
+
+            private:
+            boost::thread_specific_ptr<T> _localData;
+        };
+
     }
 }
 #endif

@@ -27,6 +27,18 @@ Package=<4>
 
 ###############################################################################
 
+Project: "log4cppDLL_stlport_boost"=.\log4cppDLL_stlport_boost\log4cppDLL_stlport_boost.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
 Project: "testCategory"=.\testCategory\testCategory.dsp - Package Owner=<4>
 
 Package=<5>
@@ -66,7 +78,22 @@ Package=<5>
 Package=<4>
 {{{
     Begin Project Dependency
-    Project_Dep_Name log4cpp
+    Project_Dep_Name log4cppDLL_stlport_boost
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "testMain_stlport_boost"=.\testMain_stlport_boost\testMain_stlport_boost.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name log4cppDLL_stlport_boost
     End Project Dependency
 }}}
 
@@ -81,7 +108,22 @@ Package=<5>
 Package=<4>
 {{{
     Begin Project Dependency
-    Project_Dep_Name log4cpp
+    Project_Dep_Name log4cppDLL_stlport_boost
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "testNDC_stlport_boost"=.\testNDC_stlport_boost\testNDC_stlport_boost.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name log4cppDLL_stlport_boost
     End Project Dependency
 }}}
 
@@ -96,7 +138,22 @@ Package=<5>
 Package=<4>
 {{{
     Begin Project Dependency
-    Project_Dep_Name log4cpp
+    Project_Dep_Name log4cppDLL_stlport_boost
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "testNTEventLog_stlport_boost"=.\testNTEventLog_stlport_boost\testNTEventLog_stlport_boost.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name log4cppDLL_stlport_boost
     End Project Dependency
 }}}
 
@@ -127,6 +184,21 @@ Package=<4>
 {{{
     Begin Project Dependency
     Project_Dep_Name log4cpp
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "testPropertyConfig_stlport_boost"=.\testPropertyConfig_stlport_boost\testPropertyConfig_stlport_boost.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name log4cppDLL_stlport_boost
     End Project Dependency
 }}}
 

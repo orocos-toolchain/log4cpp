@@ -9,6 +9,32 @@
 
 #ifdef WIN32	// only available on Win32
 
+// deal with ERROR #define
+// N.B. This #includes windows.h with NOGDI and WIN32_LEAN_AND_MEAN #defined.
+//      If this is not what the user wants, #include windows.h before this file.
+#ifndef _WINDOWS_
+#  ifndef NOGDI
+#    define NOGDI  // this will circumvent the ERROR #define in windows.h
+#    define LOG4CPP_UNDEFINE_NOGDI
+#  endif
+
+#  ifndef WIN32_LEAN_AND_MEAN
+#    define WIN32_LEAN_AND_MEAN
+#    define LOG4CPP_UNDEFINE_WIN32_LEAN_AND_MEAN
+#  endif
+
+#  include <windows.h>
+
+#  ifdef LOG4CPP_UNDEFINE_NOGDI
+#    undef NOGDI
+#  endif
+
+#  ifdef LOG4CPP_UNDEFINE_WIN32_LEAN_AND_MEAN
+#    undef WIN32_LEAN_AND_MEAN
+#  endif
+
+#endif // done dealing with ERROR #define
+
 #include <log4cpp/Portability.hh>
 #include <log4cpp/AppenderSkeleton.hh>
 
