@@ -101,8 +101,15 @@ namespace log4cpp {
 	
 	if ((_socket = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
 	    abort ();
+	} else {
+	    sockaddr_in sain;
+	    sain.sin_family = AF_INET;
+	    sain.sin_port   = htons (_portNumber);
+	    sain.sin_addr.s_addr = htonl (_ipAddr);
+	    if (connect (_socket, (struct sockaddr *) &sain, sizeof (sain)) < 0) {
+		abort ();
+	    }
 	}
-
     }
 
     void RemoteSyslogAppender::close() {
@@ -132,7 +139,8 @@ namespace log4cpp {
 	sain.sin_family = AF_INET;
 	sain.sin_port   = htons (_portNumber);
         sain.sin_addr.s_addr = htonl (_ipAddr);
-	sendto (_socket, buf, (int) len, 0, (struct sockaddr *) &sain, sizeof (sain));
+	int r = sendto (_socket, buf, (int) len, 0, (struct sockaddr *) &sain, sizeof (sain));
+	printf ("sendto: %d\n", r);
 	delete buf;
     }
 
