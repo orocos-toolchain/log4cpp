@@ -1,0 +1,7 @@
+.cvsignore
+config.log
+config.cache
+libtool
+config.status
+Makefile
+log4cpp.spec
