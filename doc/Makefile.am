@@ -4,7 +4,8 @@ docdir  = $(prefix)/doc/@PACKAGE_TARNAME@-@PACKAGE_VERSION@
 EXTRA_DIST = \
 	html/index.html \
 	html/default.css \
-	html/sflogo.png
+	html/sflogo.png \
+	mainPage.txt
 
 .PHONY: dox pdf
 
