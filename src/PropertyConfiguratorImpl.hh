@@ -34,14 +34,15 @@ namespace log4cpp {
             throw (ConfigureFailure);
 
         protected:
-         /**
-         * Add appenders to the configuration.  This simply uses the map of properties
-         * created by the child class to add and configure the appenders specified in
-         * the configuration.
-         * @param	categoryname	Name of the category for which we are adding appenders.
-         * @throw	ConfigureFailure
-         */
-        void addAppenders(std::string& categoryname) throw (ConfigureFailure);
+        /**
+           configure the given category. This includes setting its Priority
+           and adding any Appenders. 
+           @todo setting other properties like 'additivity'.
+           @param categoryname	Name of the category to configure. 
+           The name 'rootCategory' refers to the root Category.
+           throw ConfigureFailure
+         **/
+        void configureCategory(const std::string& categoryname) throw (ConfigureFailure);
 
         /**
          * Get a list of categories for which we should do the configuration.  This simply

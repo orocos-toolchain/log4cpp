@@ -1,5 +1,17 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-07-09 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* src/StringUtil.hh, src/StringUtil.cpp: added a more generic split()
+	method taking an output_iterator instead of a vector to store the 
+	result.
+
+	* src/PropertyConfiguratorImpl.hh, src/PropertyConfiguratorImpl.cpp:
+	renamed addAppenders() to configureCategory(). 
+	fixed configureCategory(): had a nested loop for priorities and 
+	appenders.
+	replaced find(property, '.') with StringUtil::split() in several
+	places.
+	
 2002-07-05 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* src/StringUtil.hh, src/StringUtil.cpp: added split() method.
 

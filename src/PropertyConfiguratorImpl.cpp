@@ -1,7 +1,7 @@
 /*
  * PropertyConfiguratorImpl.cpp
  *
- * Copyright 2001, Glen Scott. All rights reserved.
+ * Copyright 2002, Log4cpp Project. All rights reserved.
  *
  * See the COPYING file for the terms of usage and distribution.
  */
@@ -41,6 +41,7 @@
 
 #include <list>
 #include <vector>
+#include <iterator>
 
 #include "PropertyConfiguratorImpl.hh"
 #include "StringUtil.hh"
@@ -73,10 +74,10 @@ namespace log4cpp {
         std::vector<std::string> catList;
         getCategories(catList);
 
-        // add appenders for each category
-        for(std::vector<std::string>::iterator iter = catList.begin();
+        // configure each category
+        for(std::vector<std::string>::const_iterator iter = catList.begin();
             iter != catList.end(); ++iter) {
-            addAppenders(*iter);
+            configureCategory(*iter);
         }
     }
 
@@ -86,16 +87,24 @@ namespace log4cpp {
         for(Properties::const_iterator i = _properties.lower_bound("appender.");i != _properties.end(); ++i) {
             const std::string& key = (*i).first;
             const std::string& value = (*i).second;
-            std::string::size_type dotIndex = key.find('.');
-            if (dotIndex == std::string::npos) {
+            std::list<std::string> propNameParts;
+            std::back_insert_iterator<std::list<std::string> > pnpIt(propNameParts);
+            StringUtil::split(pnpIt, key, '.');
+            std::list<std::string>::const_iterator i2 = propNameParts.begin();
+            std::list<std::string>::const_iterator iEnd = propNameParts.end();
+            if (i2 == iEnd) {
                 // bogus entry, skip
                 continue;
             }
-            if (key.substr(0, dotIndex) != "appender") {
+            if (*i2++ != "appender") {
                 // moved past appender properties
                 break;
             }
-            const string appenderName = key.substr(dotIndex + 1);
+            if (i2 == iEnd) {
+                throw ConfigureFailure(std::string("missing appender name"));
+            }
+
+            const std::string appenderName = *i2++;
 
             /* WARNING, approaching lame code section:
                skipping of the Appenders properties only to get them 
@@ -106,7 +115,7 @@ namespace log4cpp {
             } else {
                 // a new appender
                 currentAppender = appenderName;
-                if (appenderName.find('.' != std::string::npos)) {
+                if (i2 != iEnd) {
                     throw ConfigureFailure(std::string("partial appender definition : ") + key);
                 }
 
@@ -115,15 +124,9 @@ namespace log4cpp {
         }
     }
 
-    void PropertyConfiguratorImpl::addAppenders(std::string& categoryName) throw (ConfigureFailure) {
-        std::string::size_type length;
-        std::string tempCatName;
-        std::string leftString, rightString, priority;
-        std::list<std::string> tokens;
-        Category* category;
-
+    void PropertyConfiguratorImpl::configureCategory(const std::string& categoryName) throw (ConfigureFailure) {
         // start by reading the "rootCategory" key
-        tempCatName = 
+        std::string tempCatName = 
             (categoryName == "rootCategory") ? categoryName : "category." + categoryName;
 
         Properties::iterator iter = _properties.find(tempCatName);
@@ -132,66 +135,44 @@ namespace log4cpp {
             throw ConfigureFailure(std::string("Unable to find category: ") + tempCatName);
 
         // need to get the root instance of the category
-        category = (categoryName == "rootCategory") ?
-            &Category::getRoot() : &Category::getInstance(categoryName);
+        Category& category = (categoryName == "rootCategory") ?
+            Category::getRoot() : Category::getInstance(categoryName);
 
-        // if string is not ", appender.." or "" then we only want to set priority ???
-        length = (*iter).second.find(",");
+        
+        std::list<std::string> tokens;
+        std::back_insert_iterator<std::list<std::string> > tokIt(tokens);
+        StringUtil::split(tokIt, (*iter).second, '.');
+        std::list<std::string>::const_iterator i = tokens.begin();
+        std::list<std::string>::const_iterator iEnd = tokens.end();
 
-        if (length == std::string::npos)
-            // something seriously wrong, so bail
-            throw ConfigureFailure(std::string("Invalid configuration file: see ") + tempCatName);
-
-        rightString = (*iter).second;
-        // store all of the tokens
-        do {
-            leftString = rightString.substr(0, length);
-            rightString = rightString.substr(length + 1);
-            tokens.push_back(leftString);
-            length = rightString.find(",");
-        } while (length != std::string::npos);
-
-        // need to save the last token
-        if (rightString.size() > 0)
-            tokens.push_back(rightString);
-
-        // made it this far, so we should delete what we have already
-        category->removeAllAppenders();
-
-        // loop through the list and either set the priority or add the appender
-        std::vector<std::string> v;
-        for(std::list<std::string>::const_iterator list_iter = tokens.begin();
-            list_iter != tokens.end(); list_iter++) {
-            
-            StringUtil::split(v, *list_iter, ',');
-            std::vector<std::string>::const_iterator i = v.begin();
-            if (i == v.end()) {
-                // nothing there, strange
-                continue;
-            }
-
+        Priority::Value priority = Priority::NOTSET;
+        if (i != iEnd) {
             std::string priorityName = StringUtil::trim(*i);
             try {
-                category->setPriority(Priority::getPriorityValue(priorityName));
+                if (priorityName != "") {
+                    priority = Priority::getPriorityValue(priorityName);
+                }
             } catch(std::invalid_argument& e) {
                 throw ConfigureFailure(std::string("unknown priority '") +
                     priorityName + "' for category '" + categoryName + "'");
             }
+        }
 
-            for(++i; i != v.end(); ++i) {
-                // not a priority, so it must be an appender
-                std::string appenderName = StringUtil::trim(*i);
-                AppenderMap::const_iterator appIt = 
-                    _allAppenders.find(appenderName);
-                if (appIt == _allAppenders.end()) {
-                    // appender not found;
-                    throw ConfigureFailure(std::string("Appender '") +
-                        appenderName + "' not found for category '" + categoryName + "'");
-                } else {
-                    /* pass by reference, i.e. don't transfer ownership
-                     */
-                    category->addAppender(*((*appIt).second));
-                }
+        category.setPriority(priority);
+
+        category.removeAllAppenders();
+        for(/**/; i != iEnd; ++i) {           
+            std::string appenderName = StringUtil::trim(*i);
+            AppenderMap::const_iterator appIt = 
+                _allAppenders.find(appenderName);
+            if (appIt == _allAppenders.end()) {
+                // appender not found;
+                throw ConfigureFailure(std::string("Appender '") +
+                    appenderName + "' not found for category '" + categoryName + "'");
+            } else {
+                /* pass by reference, i.e. don't transfer ownership
+                 */
+                category.addAppender(*((*appIt).second));
             }
         }
     }
