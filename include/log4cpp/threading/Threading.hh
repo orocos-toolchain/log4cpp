@@ -26,6 +26,10 @@
 #include <log4cpp/threading/MSThreads.hh>
 #endif
 
+#ifdef LOG4CPP_USE_PTHREADS
+#include <log4cpp/threading/PThreads.hh>
+#endif
+
 #else /* LOG4CPP_HAVE_THREADING */
 #include <log4cpp/threading/DummyThreads.hh>
 #endif /* LOG4CPP_HAVE_THREADING */
