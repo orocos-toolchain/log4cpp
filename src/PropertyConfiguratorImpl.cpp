@@ -192,8 +192,8 @@ namespace log4cpp {
         }
         else if (appenderType == "FileAppender") {
             std::string fileName = _properties.getString(appenderPrefix + ".fileName", "foobar");
-
-            appender = new FileAppender(appenderName, fileName);
+            bool append = _properties.getBool(appenderPrefix + ".append", true);
+            appender = new FileAppender(appenderName, fileName, append);
         }
         else if (appenderType == "SyslogAppender") {
             std::string syslogName = _properties.getString(appenderPrefix + ".syslogName", "syslog");
