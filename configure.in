@@ -116,6 +116,7 @@ bcb5/testCategory/Makefile
 bcb5/testFixedContextCategory/Makefile
 bcb5/testmain/Makefile
 bcb5/testNDC/Makefile
+bcb5/testPattern/Makefile
 ])
 
 AC_CREATE_PREFIX_CONFIG_H([include/log4cpp/config.h], 
