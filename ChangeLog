@@ -33,6 +33,9 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 	get rid of those iritating warnings about std IOstreams code.
 
 	* src/TimeStamp.cpp: replaced #include <string.h> with <cstring>.
+
+	* src/PropertyConfiguratorImpl.cpp: use getString(), etc. to get
+	properties.
 	
 2002-07-02 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/HierarchyMaintainer.hh, include/log4cpp/Category.hh,

@@ -153,9 +153,10 @@ namespace log4cpp {
 
     Appender* PropertyConfiguratorImpl::instantiateAppender(const std::string& appenderName) {
         Appender* appender = NULL;
+        std::string appenderPrefix = std::string("appender.") + appenderName;
 
         // determine the type by the appenderName 
-        Properties::iterator key = _properties.find(std::string("appender.") + appenderName);
+        Properties::iterator key = _properties.find(appenderPrefix);
         if (key == _properties.end())
             throw ConfigureFailure(std::string("Appender '") + appenderName + "' not defined");
 		
@@ -168,36 +169,22 @@ namespace log4cpp {
             appender = new OstreamAppender(appenderName, &std::cout);
         }
         else if (appenderType == "FileAppender") {
-            key = _properties.find(std::string("appender.") + appenderName + ".fileName");
-            std::string fileName = (key == _properties.end()) ? "foobar" : (*key).second;
+            std::string fileName = _properties.getString(appenderPrefix + ".fileName", "foobar");
 
             appender = new FileAppender(appenderName, fileName);
         }
         else if (appenderType == "SyslogAppender") {
-             // get syslog name, i.e. "ident"
-            key = _properties.find(std::string("appender.") + appenderName + ".syslogName");
-            std::string syslogName = (key == _properties.end()) ? "syslog" : (*key).second;
-
-            // get syslog host
-            key = _properties.find(std::string("appender.") + appenderName + ".syslogHost");
-            std::string syslogHost = (key == _properties.end()) ? "localhost" : (*key).second;
-
-            // get facility
-            key = _properties.find(std::string("appender.") + appenderName + ".facility");
-            int facility = (key == _properties.end()) ? -1 : atoi((*key).second.c_str());
-
-            // get port number
-            key = _properties.find(std::string("appender.") + appenderName + ".port");
-            int portNumber = (key == _properties.end()) ? -1 : atoi((*key).second.c_str());
-
+            std::string syslogName = _properties.getString(appenderPrefix + ".syslogName", "syslog");
+            std::string syslogHost = _properties.getString(appenderPrefix + ".syslogHost", "localhost");
+            int facility = _properties.getInt(appenderPrefix + ".facility", -1);
+            int portNumber = _properties.getInt(appenderPrefix + ".portNumber", -1);
             appender = new RemoteSyslogAppender(appenderName, syslogName, 
                                                 syslogHost, facility, portNumber);
         }
 #ifdef LOG4CPP_HAVE_LIBIDSA
         else if (appenderType == "IdsaAppender") {
-            key = _properties.find(std::string("appender.") + appenderName + ".idsaName");
             // default idsa name ???
-            std::string idsaName = (key == _properties.end()) ? "foobar" : (*key).second;
+            std::string idsaName = _properties.getString(appenderPrefix + ".idsaName", "foobar");
 
             appender = new IdsaAppender(appenderName, idsaname);
         }
