@@ -22,10 +22,12 @@ namespace log4cpp {
     }
 
     void Filter::setChainedFilter(Filter* filter) {
-        if (_chainedFilter)
-            delete _chainedFilter;
-
-        _chainedFilter = filter;
+        if (filter != _chainedFilter) {
+            if (_chainedFilter)
+                delete _chainedFilter;
+            
+            _chainedFilter = filter;
+        }
     }
 
     Filter* Filter::getChainedFilter() {
