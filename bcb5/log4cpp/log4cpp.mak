@@ -4,7 +4,7 @@ BCB = $(MAKEDIR)\..
 
 PROJECT = log4cpp.dll
 OBJFILES = \
-	SyslogAppender.obj AppenderSkeleton.obj BasicLayout.obj Category.obj \
+	RemoteSyslogAppender.obj SyslogAppender.obj AppenderSkeleton.obj BasicLayout.obj Category.obj \
 	CategoryStream.obj \
     FileAppender.obj Filter.obj FixedContextCategory.obj \
     HierarchyMaintainer.obj IdsaAppender.obj LayoutAppender.obj \

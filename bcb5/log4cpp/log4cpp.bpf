@@ -1,4 +1,5 @@
 USEUNIT("..\..\src\SyslogAppender.cpp");
+USEUNIT("..\..\src\RemoteSyslogAppender.cpp");
 USEUNIT("..\..\src\AppenderSkeleton.cpp");
 USEUNIT("..\..\src\BasicLayout.cpp");
 USEUNIT("..\..\src\Category.cpp");
