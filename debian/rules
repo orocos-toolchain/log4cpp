@@ -12,7 +12,7 @@ export DH_OPTIONS
 build: build-stamp
 build-stamp:
 	dh_testdir
-	./autogen.sh
+	if [ -x ./autogen.sh ] ; then ./autogen.sh ; fi
 	./configure --prefix=/usr --mandir=\$${prefix}/share/man
 	$(MAKE)
 	touch build-stamp
@@ -23,12 +23,6 @@ clean:
 	rm -f build-stamp install-stamp
 	-$(MAKE) clean
 	-$(MAKE) distclean
-	rm -f debian/Makefile.in \
-	      include/stamp-h.in \
-	      msvc6/Makefile.in \
-	      msvc6/log4cpp/Makefile.in \
-	      msvc6/testCategory/Makefile.in \
-	      msvc6/testNDC/Makefile.in
 	dh_clean
 
 install: DH_OPTIONS=
