@@ -43,7 +43,11 @@ usec_t Clock::time(void)
 	    return (usec_t) tsc;
 	}
 #else
-#    error CPU clock not implemented for this architecture
+	{
+	    std::cerr << "CPU clock not implemented for this architecture" << endl;
+	    UsingCPU = false;
+	    return Clock::time();
+	}
 #endif	
     } else {
 	struct timeval tv;
