@@ -196,6 +196,20 @@ namespace log4cpp {
             _logUnconditionally2(Priority::INFO, message);
     }
     
+    void Category::notice(const char* stringFormat, ...) { 
+        if (isPriorityEnabled(Priority::NOTICE)) {
+            va_list va;
+            va_start(va,stringFormat);
+            _logUnconditionally(Priority::NOTICE, stringFormat, va);
+            va_end(va);
+        }
+    }
+    
+    void Category::notice(const std::string& message) { 
+        if (isPriorityEnabled(Priority::NOTICE))
+            _logUnconditionally2(Priority::NOTICE, message);
+    }
+    
     void Category::warn(const char* stringFormat, ...) { 
         if (isPriorityEnabled(Priority::WARN)) {
             va_list va;
@@ -222,6 +236,48 @@ namespace log4cpp {
     void Category::error(const std::string& message) { 
         if (isPriorityEnabled(Priority::ERROR))
             _logUnconditionally2(Priority::ERROR, message);
+    }
+
+    void Category::crit(const char* stringFormat, ...) { 
+        if (isPriorityEnabled(Priority::CRIT)) {
+            va_list va;
+            va_start(va,stringFormat);
+            _logUnconditionally(Priority::CRIT, stringFormat, va);
+            va_end(va);
+        }
+    }
+    
+    void Category::crit(const std::string& message) { 
+        if (isPriorityEnabled(Priority::CRIT))
+            _logUnconditionally2(Priority::CRIT, message);
+    }
+
+    void Category::alert(const char* stringFormat, ...) { 
+        if (isPriorityEnabled(Priority::ALERT)) {
+            va_list va;
+            va_start(va,stringFormat);
+            _logUnconditionally(Priority::ALERT, stringFormat, va);
+            va_end(va);
+        }
+    }
+    
+    void Category::alert(const std::string& message) { 
+        if (isPriorityEnabled(Priority::ALERT))
+            _logUnconditionally2(Priority::ALERT, message);
+    }
+
+    void Category::emerg(const char* stringFormat, ...) { 
+        if (isPriorityEnabled(Priority::EMERG)) {
+            va_list va;
+            va_start(va,stringFormat);
+            _logUnconditionally(Priority::EMERG, stringFormat, va);
+            va_end(va);
+        }
+    }
+    
+    void Category::emerg(const std::string& message) { 
+        if (isPriorityEnabled(Priority::EMERG))
+            _logUnconditionally2(Priority::EMERG, message);
     }
 
     CategoryStream Category::getStream(int priority) {

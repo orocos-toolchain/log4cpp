@@ -332,6 +332,36 @@ namespace log4cpp {
         }
         
         /** 
+         * Log a message with notice priority.
+         * @param stringFormat Format specifier for the string to write 
+         * in the log file.
+         * @param ... The arguments for stringFormat 
+         **/  
+        void notice(const char* stringFormat, ...);
+
+        /** 
+         * Log a message with notice priority.
+         * @param message string to write in the log file
+         **/  
+        void notice(const std::string& message);
+
+        /**
+         * Return true if the Category will log messages with priority NOTICE.
+         * @returns Whether the Category will log.
+         **/ 
+        inline bool isNoticeEnabled() const { 
+            return isPriorityEnabled(Priority::NOTICE); 
+        };
+
+        /**
+         * Return a CategoryStream with priority NOTICE.
+         * @returns The CategoryStream.
+         **/
+        inline CategoryStream noticeStream() {
+            return getStream(Priority::NOTICE);
+        }
+        
+        /** 
          * Log a message with warn priority.
          * @param stringFormat Format specifier for the string to write 
          * in the log file.
@@ -389,6 +419,96 @@ namespace log4cpp {
          **/
         inline CategoryStream errorStream() {
             return getStream(Priority::ERROR);
+        }
+
+        /** 
+         * Log a message with crit priority.
+         * @param stringFormat Format specifier for the string to write 
+         * in the log file.
+         * @param ... The arguments for stringFormat 
+         **/  
+        void crit(const char* stringFormat, ...);
+
+        /** 
+         * Log a message with crit priority.
+         * @param message string to write in the log file
+         **/  
+        void crit(const std::string& message);
+
+        /**
+         * Return true if the Category will log messages with priority CRIT.
+         * @returns Whether the Category will log.
+         **/ 
+        inline bool isCritEnabled() const { 
+            return isPriorityEnabled(Priority::CRIT); 
+        };
+        
+        /**
+         * Return a CategoryStream with priority CRIT.
+         * @returns The CategoryStream.
+         **/
+        inline CategoryStream critStream() {
+            return getStream(Priority::CRIT);
+        }
+
+        /** 
+         * Log a message with alert priority.
+         * @param stringFormat Format specifier for the string to write 
+         * in the log file.
+         * @param ... The arguments for stringFormat 
+         **/  
+        void alert(const char* stringFormat, ...);
+
+        /** 
+         * Log a message with alert priority.
+         * @param message string to write in the log file
+         **/  
+        void alert(const std::string& message);
+
+        /**
+         * Return true if the Category will log messages with priority ALERT.
+         * @returns Whether the Category will log.
+         **/ 
+        inline bool isAlertEnabled() const { 
+            return isPriorityEnabled(Priority::ALERT); 
+        };
+        
+        /**
+         * Return a CategoryStream with priority ALERT.
+         * @returns The CategoryStream.
+         **/
+        inline CategoryStream alertStream() {
+            return getStream(Priority::ALERT);
+        }
+
+        /** 
+         * Log a message with emerg priority.
+         * @param stringFormat Format specifier for the string to write 
+         * in the log file.
+         * @param ... The arguments for stringFormat 
+         **/  
+        void emerg(const char* stringFormat, ...);
+
+        /** 
+         * Log a message with emerg priority.
+         * @param message string to write in the log file
+         **/  
+        void emerg(const std::string& message);
+
+        /**
+         * Return true if the Category will log messages with priority EMERG.
+         * @returns Whether the Category will log.
+         **/ 
+        inline bool isEmergEnabled() const { 
+            return isPriorityEnabled(Priority::EMERG); 
+        };
+        
+        /**
+         * Return a CategoryStream with priority EMERG.
+         * @returns The CategoryStream.
+         **/
+        inline CategoryStream emergStream() {
+            return getStream(Priority::EMERG);
         }
 
         /**
