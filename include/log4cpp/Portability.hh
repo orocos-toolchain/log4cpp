@@ -13,7 +13,11 @@
 #if defined (_MSC_VER) || defined(__BORLANDC__)
 #    include <log4cpp/config-win32.h>
 #else
+#if defined(__OPENVMS__)
+#    include <log4cpp/config-openvms.h>
+#else
 #    include <log4cpp/config.h>
+#endif
 #endif
 
 #if defined(_MSC_VER)
