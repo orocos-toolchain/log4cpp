@@ -11,5 +11,5 @@
 #define PACKAGE "log4cpp"
 
 /* Version number of package */
-#define VERSION "0.2.3"
+#define VERSION "0.2.4"
 
