@@ -17,6 +17,7 @@
 #include "log4cpp/Layout.hh"
 #include "log4cpp/SimpleLayout.hh"
 #include "log4cpp/LoggingEvent.hh"
+#include "log4cpp/Log4cppCleanup.hh"
 
 namespace log4cpp {
     class Category;
@@ -26,6 +27,8 @@ namespace log4cpp {
      *  statements. 
      **/
     class Appender {
+        friend class log4cpp::Log4cppCleanup;
+
         public:
 
         /**
@@ -41,6 +44,12 @@ namespace log4cpp {
          * @returns true if all Appenders returned true on their reopen() call.
          **/
         static bool reopenAll();
+
+        /**
+         * Call reopen() on all existing Appenders.
+         * @returns true if all Appenders returned true on their reopen() call.
+         **/
+        static void closeAll();
 
         protected:
         /**
@@ -94,16 +103,15 @@ namespace log4cpp {
          **/
         inline const std::string& getName() const { return _name; };
         
-
-        protected:
-        static SimpleLayout _defaultLayout;
-
         private:
         typedef std::map<std::string, Appender*> AppenderMap;
 
-        static AppenderMap _allAppenders;
+        static AppenderMap* _allAppenders;
+        static AppenderMap& _getAllAppenders();
+        static void _deleteAllAppenders();
         static void _addAppender(Appender* appender);
         static void _removeAppender(Appender* appender);
+        static Log4cppCleanup& _fuckinDummy;
         
         const std::string _name;
     };

@@ -68,6 +68,8 @@ int main(int argc, char* argv[])
 	clock.stop();
 	std::cout << "fprintf:        " << ((float)clock.elapsed()) / count << " us" << std::endl;
     }
-    
+
+    log4cpp::Category::shutdown();
+
     return 0;
 }

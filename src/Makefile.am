@@ -17,7 +17,8 @@ liblog4cpp_la_SOURCES = \
 	LoggingEvent.cpp \
 	Priority.cpp \
 	NDC.cpp \
-	StreamUtil.cpp
+	StreamUtil.cpp \
+	Log4cppCleanup.cpp
 
 
 liblog4cpp_la_LDFLAGS = -version-info @LT_VERSION@

@@ -162,6 +162,11 @@ namespace log4cpp {
         static std::set<Category*>* getCurrentCategories();
 
         /**
+         * This method will remove all Appenders from Categories.XXX
+         **/
+        static void shutdown();
+
+        /**
          * Destructor for Category.
          **/
         virtual ~Category();
@@ -223,6 +228,12 @@ namespace log4cpp {
          * @returns The Appender.
          **/
         Appender* getAppender() const;
+
+        /**
+         * Removes all appenders set for this Category. Currently a Category
+         * can have only one appender, but this may change in the future.
+         **/
+        void removeAllAppenders();
 
         /**
          * Returns true if the Category owns the Appender. In that case the

@@ -20,17 +20,23 @@
 #include "log4cpp/FileAppender.hh"
 
 namespace log4cpp {
+    Log4cppCleanup& HierarchyMaintainer::_fuckinDummy(Log4cppCleanup::_cleanup);
 
-    HierarchyMaintainer HierarchyMaintainer::_defaultMaintainer;
+    HierarchyMaintainer* HierarchyMaintainer::_defaultMaintainer = NULL;
 
     HierarchyMaintainer& HierarchyMaintainer::getDefaultMaintainer() {
-        return _defaultMaintainer;
+        if (!_defaultMaintainer)
+            _defaultMaintainer = new HierarchyMaintainer();
+
+        return *_defaultMaintainer;
     }
 
     HierarchyMaintainer::HierarchyMaintainer() {
     }
 
     HierarchyMaintainer::~HierarchyMaintainer() {
+        shutdown();
+        deleteAllCategories();
     }
 
     Category& HierarchyMaintainer::getInstance(const std::string& name) {
@@ -68,4 +74,17 @@ namespace log4cpp {
 
         return categories;
     }
+
+    void HierarchyMaintainer::shutdown() {
+        for(CategoryMap::const_iterator i = _categoryMap.begin(); i != _categoryMap.end(); i++) {
+            ((*i).second)->removeAllAppenders();
+        }
+    }
+
+    void HierarchyMaintainer::deleteAllCategories() {
+        for(CategoryMap::const_iterator i = _categoryMap.begin(); i != _categoryMap.end(); i++) {
+            delete ((*i).second);
+        }
+    }
+
 }

@@ -1,5 +1,9 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2001-03-11 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	Added LayoutAppender. Changed Layout ownership for Appenders: they
+	now own their Appender.
+
 2001-03-07 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	Moved to new iostreams.
 	

@@ -65,6 +65,10 @@ namespace log4cpp {
             getCurrentCategories();
     }
 
+    void Category::shutdown() {
+        HierarchyMaintainer::getDefaultMaintainer().shutdown();
+    }
+
     Category::Category(const std::string& name, Category* parent, int priority) : 
         _name(name),
         _parent(parent),
@@ -75,6 +79,9 @@ namespace log4cpp {
     }
 
     Category::~Category() {
+        if ((_appender != NULL) && ownsAppender()) {
+            delete _appender;
+        }
     }
     
     void Category::setPriority(int priority) {
@@ -120,6 +127,13 @@ namespace log4cpp {
         return _appender;
     }
     
+    void Category::removeAllAppenders() {
+         if (ownsAppender())
+            delete _appender;
+       
+         _appender = NULL;
+    }
+
     bool Category::ownsAppender() const {
         return _ownsAppender;
     }

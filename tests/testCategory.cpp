@@ -62,5 +62,5 @@ int main(int argc, char** argv) {
         log4cpp::CategoryStream::ENDLINE << " warn4";
 #endif
 
-    delete appender;
+    log4cpp::Category::shutdown();
 }

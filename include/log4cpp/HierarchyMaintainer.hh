@@ -12,10 +12,13 @@
 
 #include <string>
 #include "log4cpp/Category.hh"
+#include "log4cpp/Log4cppCleanup.hh"
 
 namespace log4cpp {
     
     class HierarchyMaintainer {
+        friend class Log4cppCleanup;
+
         public:
         typedef std::map<std::string, Category*> CategoryMap;
   
@@ -25,12 +28,15 @@ namespace log4cpp {
         virtual ~HierarchyMaintainer();
         virtual Category& getInstance(const std::string& name);
         virtual std::set<Category*>* getCurrentCategories() const;
+        virtual void shutdown();
+        virtual void deleteAllCategories();
 
         protected:
         CategoryMap _categoryMap;
         
         private:
-        static HierarchyMaintainer _defaultMaintainer;
+        static HierarchyMaintainer* _defaultMaintainer;
+        static Log4cppCleanup& _fuckinDummy;
     };        
 }
 
