@@ -22,7 +22,6 @@ liblog4cppinclude_HEADERS =  \
 	CategoryStream.hh \
 	HierarchyMaintainer.hh \
 	Configurator.hh \
-	ConfiguratorSkeleton.hh \
 	SimpleConfigurator.hh \
 	PropertyConfigurator.hh \
 	LoggingEvent.hh \
