@@ -1,6 +1,8 @@
 This file records noteworthy changes.
 
 0.3.0 - development branch (18 Februari 2002)
+WARNING: this release is a 'work in progress' and may fail to build, crash or
+redecorate your desktop.
 Added experimental support for multi threaded applications. This 
 implementation uses omniORB4s threading library. Other threading libraries,
 such as Boosts, may be used as well, but this has not been implemented yet. 
