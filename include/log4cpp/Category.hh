@@ -154,6 +154,8 @@ namespace log4cpp {
         /**
          * Adds an Appender to this Category.
          * This method passes ownership from the caller to the Category.
+         * @deprecated use addAppender(Appender*) or removeAllAppenders() 
+         * instead.
          * @param appender The Appender this category has to log to or NULL
          * to unset the current Appender.
          **/
@@ -168,6 +170,7 @@ namespace log4cpp {
         /**
          * Adds an Appender for this Category.
          * This method does not pass ownership from the caller to the Category.
+         * @deprecated use addAppender(Appender&) instead.
          * @param appender The Appender this category has to log to.
          **/
         inline void setAppender(Appender& appender) {
@@ -183,8 +186,8 @@ namespace log4cpp {
         virtual Appender* getAppender() const;
 
         /**
-         * Returns the specified Appender for this Category, or NULL if no
-         * Appender has been set.
+         * Returns the specified Appender for this Category, or NULL if 
+         * the Appender is not attached to this Category.
          * @since 0.2.7
          * @returns The Appender.
          **/
