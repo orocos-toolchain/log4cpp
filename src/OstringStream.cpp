@@ -19,18 +19,6 @@ namespace {
 
 #ifdef __osf__
 
-    int snprintf(char* s, size_t maxlen, const char* fmt, ...)
-    {
-	int         len;
-	va_list	args;
-
-	va_start(args, fmt);
-	len = vsnprintf(s, maxlen, fmt, args);
-	va_end(args);
-
-	return len;
-    }
-
     int vsnprintf(char* s, size_t maxlen, const char* fmt, va_list args)
     {
 	int  len;
@@ -49,6 +37,18 @@ namespace {
 
 	len = vfprintf(&f, fmt, args);
 	*f._ptr = '\0';
+
+	return len;
+    }
+
+    int snprintf(char* s, size_t maxlen, const char* fmt, ...)
+    {
+	int         len;
+	va_list	args;
+
+	va_start(args, fmt);
+	len = vsnprintf(s, maxlen, fmt, args);
+	va_end(args);
 
 	return len;
     }

@@ -10,7 +10,6 @@ static const char rcsid[] = "$Id$";
 #elif __linux__
 #    include <asm/msr.h>		// for rdtscl()
 #endif
-#include <cstdlib>
 #include <iostream>
 
 #include "Clock.hh"

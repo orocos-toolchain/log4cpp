@@ -10,7 +10,6 @@
 #include "log4cpp/Log4cppCleanup.hh"
 #include "log4cpp/HierarchyMaintainer.hh"
 #include "log4cpp/Appender.hh"
-#include <cassert>
 #include <iostream>
 
 namespace log4cpp {
