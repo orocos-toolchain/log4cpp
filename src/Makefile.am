@@ -23,6 +23,7 @@ liblog4cpp_la_SOURCES = \
 	CategoryStream.cpp \
 	HierarchyMaintainer.cpp \
 	Configurator.cpp \
+	BasicConfigurator.cpp \
 	SimpleConfigurator.cpp \
 	PropertyConfigurator.cpp \
 	PropertyConfiguratorImpl.hh \
