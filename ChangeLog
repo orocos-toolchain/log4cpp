@@ -1,5 +1,9 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
+2002-08-06 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* configure.ac, configure.in: renamed configure.ac back to 
+	configure.in due to bug in libtoolize 1.4.2
+	
 2002-08-06 David Resnick <dresnick@mobilespear.com>
     * msvc6/log4cppDLL/log4cppDLL.rc: Cleanup.
     * msvc6/log4cppDLL/resource.h deleted: Unnecessary.
