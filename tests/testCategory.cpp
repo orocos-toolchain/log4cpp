@@ -31,11 +31,11 @@ void testGetAppender(log4cpp::Category& category,
         (tmpAppender == appender2) ||
         (tmpAppender == &appender3))
     {
-        std::cout << "tmpAppender == appender, appender2, appender2" << std::endl;
+        std::cout << "tmpAppender == appender or appender2 or appender3" << std::endl;
     }
     else
     {
-        std::cout << "tmpAppender != appender, appender2, appender2" << std::endl;
+        std::cout << "tmpAppender != appender or appender2 or appender3" << std::endl;
     } /* end if-else */
 
     // test getAppender(const std::string& name) const
@@ -64,10 +64,10 @@ void testGetAppender(log4cpp::Category& category,
 void testMultiAppenders()
 {
     log4cpp::Appender* appender = 
-                                 new log4cpp::OstreamAppender("appender", &std::cout);
-
+        new log4cpp::OstreamAppender("appender", &std::cout);
+    
     log4cpp::Appender* appender2 = 
-                                  new log4cpp::OstreamAppender("appender2", &std::cout);
+        new log4cpp::OstreamAppender("appender2", &std::cout);
 
     log4cpp::OstreamAppender appender3("appender3", &std::cout);
 
@@ -86,9 +86,9 @@ void testMultiAppenders()
     // clear root's initial appender
     root.removeAllAppenders();
 
-    root.setAppender(appender);
-    root.setAppender(appender2);
-    root.setAppender(appender3);
+    root.addAppender(appender);
+    root.addAppender(appender2);
+    root.addAppender(appender3);
 
     // dump a message - should see three on the screen
     std::cout << "You should see three lines of \"root error #1\"" << std::endl;
@@ -102,8 +102,8 @@ void testMultiAppenders()
 
     // add appender by reference to sub1 category
     log4cpp::Category& sub1 = 
-                             log4cpp::Category::getInstance(std::string("sub1"));
-    sub1.setAppender(appender3);
+        log4cpp::Category::getInstance(std::string("sub1"));
+    sub1.addAppender(appender3);
 
     // clear all appenders
     root.removeAllAppenders();
@@ -123,9 +123,9 @@ void testMultiAppenders()
     // add three appenders to root category
     appender = new log4cpp::OstreamAppender("appender", &std::cout);
     appender2 = new log4cpp::OstreamAppender("appender2", &std::cout);
-    root.setAppender(appender);
-    root.setAppender(appender2);
-    root.setAppender(appender3);
+    root.addAppender(appender);
+    root.addAppender(appender2);
+    root.addAppender(appender3);
 
     // test removing valid and invalid
     root.removeAppender(appender);
@@ -143,21 +143,21 @@ int main(int argc, char** argv) {
         new log4cpp::OstreamAppender("default", &std::cout);
 
     log4cpp::Appender* appender2 = 
-        new log4cpp::OstreamAppender("default", &std::cout);
+        new log4cpp::OstreamAppender("default2", &std::cout);
 
     log4cpp::Layout* layout = new log4cpp::BasicLayout();
     log4cpp::Layout* layout2 = new log4cpp::BasicLayout();
     
-	appender->setLayout(layout);
+    appender->setLayout(layout);
     appender2->setLayout(layout2);
 
     log4cpp::Category& root = log4cpp::Category::getRoot();
-    root.setAppender(appender);
+    root.addAppender(appender);
     root.setPriority(log4cpp::Priority::ERROR);
     
     log4cpp::Category& sub1 = 
         log4cpp::Category::getInstance(std::string("sub1"));
-	sub1.setAppender(appender2);
+	sub1.addAppender(appender2);
 	sub1.setAdditivity(false);
 
     log4cpp::Category& sub2 = 
