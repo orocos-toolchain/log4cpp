@@ -3,6 +3,7 @@ lib_LTLIBRARIES = liblog4cpp.la
 liblog4cpp_la_SOURCES = \
 	Hints.cpp \
 	Appender.cpp \
+	AppenderSkeleton.cpp \
 	LayoutAppender.cpp \
 	FileAppender.cpp \
 	IdsaAppender.cpp \

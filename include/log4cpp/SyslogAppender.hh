@@ -13,12 +13,12 @@
 #include <string>
 #include <stdarg.h>
 #include <syslog.h>
-#include "log4cpp/Appender.hh"
+#include "log4cpp/AppenderSkeleton.hh"
 #include "log4cpp/Priority.hh"
 
 namespace log4cpp {
 
-    class SyslogAppender : public Appender {
+    class SyslogAppender : public AppenderSkeleton {
         public:
 
         /**

@@ -12,11 +12,11 @@
 #include <string>
 #include <stdarg.h>
 #include <idsa.h>
-#include "log4cpp/Appender.hh"
+#include "log4cpp/AppenderSkeleton.hh"
 
 namespace log4cpp {
 
-    class IdsaAppender : public Appender {
+    class IdsaAppender : public AppenderSkeleton {
         public:
 
         /**

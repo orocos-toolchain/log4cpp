@@ -19,7 +19,7 @@ namespace log4cpp {
 
     IdsaAppender::IdsaAppender(const string& name, 
                                const string& idsaName) :
-        Appender(name),
+        AppenderSkeleton(name),
         _idsaName(idsaName)
     {
         _idsaConnection=NULL;

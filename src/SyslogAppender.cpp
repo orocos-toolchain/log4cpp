@@ -42,7 +42,7 @@ namespace log4cpp {
     SyslogAppender::SyslogAppender(const std::string& name, 
                                    const std::string& syslogName, 
                                    int facility) : 
-        Appender(name),
+        AppenderSkeleton(name),
         _syslogName(syslogName),
         _facility(facility) 
     {

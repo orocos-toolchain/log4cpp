@@ -14,7 +14,7 @@
 namespace log4cpp {
 
     LayoutAppender::LayoutAppender(const std::string& name) : 
-            Appender(name),
+            AppenderSkeleton(name),
             _layout(new SimpleLayout()) {
     }
     

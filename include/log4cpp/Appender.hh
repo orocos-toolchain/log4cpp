@@ -69,14 +69,14 @@ namespace log4cpp {
          * Log in Appender specific way. 
          * @param event  The LoggingEvent to log. 
          **/
-        virtual void doAppend(const LoggingEvent& event);
+        virtual void doAppend(const LoggingEvent& event) = 0;
 
         /**
          * Reopens the output destination of this Appender, e.g. the logfile 
          * or TCP socket.
          * @returns false if an error occured during reopening, true otherwise.
          **/
-        virtual bool reopen();
+        virtual bool reopen() = 0;
 
         /**
          * Release any resources allocated within the appender such as file
@@ -109,19 +109,10 @@ namespace log4cpp {
          * Use Priority::NOTSET to disable treshold checking.
          * @param priority The priority to set.
          **/
-        virtual void setTreshold(Priority::Value priority);
+        virtual void setTreshold(Priority::Value priority) = 0;
 
-        virtual Priority::Value getTreshold();
+        virtual Priority::Value getTreshold() = 0;
 
-        protected:
-        /**
-         * Log in Appender specific way. Sublclasses of Appender should
-         * implement this method to perform actual logging.
-         * @param event  The LoggingEvent to log. 
-         **/
-        virtual void _append(const LoggingEvent& event) = 0;
-
-        
         private:
         typedef std::map<std::string, Appender*> AppenderMap;
 
@@ -133,7 +124,6 @@ namespace log4cpp {
         static Log4cppCleanup& _fuckinDummy;
         
         const std::string _name;
-        Priority::Value _treshold;
     };
 }
 

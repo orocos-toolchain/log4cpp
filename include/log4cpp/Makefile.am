@@ -3,6 +3,7 @@ liblog4cppincludedir = $(includedir)/log4cpp
 liblog4cppinclude_HEADERS =  \
 	Hints.hh \
 	Appender.hh \
+	AppenderSkeleton.hh \
 	LayoutAppender.hh \
 	FileAppender.hh \
 	IdsaAppender.hh \

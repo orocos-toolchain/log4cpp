@@ -11,7 +11,7 @@
 #define _LOG4CPP_LAYOUTAPPENDER_HH
 
 #include <string>
-#include "log4cpp/Appender.hh"
+#include "log4cpp/AppenderSkeleton.hh"
 
 namespace log4cpp {
 
@@ -19,7 +19,7 @@ namespace log4cpp {
      * LayoutAppender is a common superclass for all Appenders that require
      * a Layout. 
      **/
-    class LayoutAppender : public Appender {
+    class LayoutAppender : public AppenderSkeleton {
         public:
         LayoutAppender(const std::string& name);
         virtual ~LayoutAppender();
