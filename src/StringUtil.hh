@@ -45,10 +45,11 @@ namespace log4cpp {
            v.size() <= maxSegments.  The string is scanned from left to right
            so v[maxSegments - 1] may contain a string containing the delimiter
            character.
+	   @return The actual number of segments (limited by maxSegments).
         **/
-        static void split(std::vector<std::string>& v, 
-                          const std::string& s, char delimiter,
-                          unsigned int maxSegments = INT_MAX);
+        static unsigned int split(std::vector<std::string>& v, 
+				  const std::string& s, char delimiter,
+				  unsigned int maxSegments = INT_MAX);
         /**
            splits a string into string segments based on the given delimiter
            and assigns the segments through an output_iterator.

@@ -42,7 +42,7 @@ namespace log4cpp {
 	    int n = VSNPRINTF(buffer, size, format, args);
                 
 	    // If that worked, return a string.
-	    if (n > -1 && n < size) {
+	    if ((n > -1) && (static_cast<size_t>(n) < size)) {
 		std::string s(buffer);
 		delete [] buffer;
 		return s;
@@ -75,11 +75,12 @@ namespace log4cpp {
         return std::string(s, b, e - b + 1);
     }
 
-    void StringUtil::split(std::vector<std::string>& v, const std::string& s,
-                           char delimiter, unsigned int maxSegments) {
+    unsigned int StringUtil::split(std::vector<std::string>& v,
+				   const std::string& s,
+				   char delimiter, unsigned int maxSegments) {
         v.clear();
         std::back_insert_iterator<std::vector<std::string> > it(v);
-        split(it, s, delimiter, maxSegments);
+        return split(it, s, delimiter, maxSegments);
     }
 
 }
