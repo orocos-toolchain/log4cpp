@@ -1,7 +1,13 @@
 This file describes the changes to the Log for C++ library. See the CVS repository for more detailed descriptions.
 
 2002-10-28 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
+	* Release as 0.3.4.
+	
 	* tests/testPattern.cpp: added missing 'std::'.
+
+	* src/StringUtil.hh, src/StringUtil.cpp: fixed signed-vs-unsigned
+	comparison warning. Let both trim() implementations return
+	unsigned int.
 	
 2002-10-27 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* include/log4cpp/OstringStream.hh, src/OstringStream.cpp: removed
