@@ -51,7 +51,7 @@ namespace log4cpp {
          * Set the context string used as NDC.
          * @param context the context string
          **/
-        virtual void setContext(const string& context);
+        virtual void setContext(const std::string& context);
 
         /**
          * Return the context string used as NDC.

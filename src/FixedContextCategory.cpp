@@ -21,7 +21,7 @@ namespace log4cpp {
     FixedContextCategory::~FixedContextCategory() {
     }
 
-    void FixedContextCategory::setContext(const string& context) {
+    void FixedContextCategory::setContext(const std::string& context) {
         _context = context;
     }
 

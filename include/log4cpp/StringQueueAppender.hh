@@ -54,7 +54,7 @@ namespace log4cpp {
          * Pop the oldest log message from the front of the queue.
          * @returns the oldest log message
          **/
-        virtual string popMessage();
+        virtual std::string popMessage();
 
         protected:
         
