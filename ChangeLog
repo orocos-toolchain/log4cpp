@@ -3,6 +3,11 @@ This file describes the changes to the Log for C++ library. See the CVS reposito
 2002-08-14 Bastiaan Bakker <bastiaan.bakker@lifeline.nl>
 	* Makefile.am, include/log4cpp/Makefile.am, tests/Makefile.am:
 	added distclean-local targets.
+
+	* doc/Doxyfile.in: predefine 'WIN32' as suggested by David Resnick.
+	* include/log4cpp/NTEventLogAppender.hh,
+	include/log4cpp/Win32DebugAppender.hh: added warnings about platform
+	dependency.
 	
 2002-08-13 David Resnick <dresnick@mobilespear.com>
     * include/log4cpp/PatternLayout.hh: documentation fixes.

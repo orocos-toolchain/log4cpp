@@ -20,7 +20,8 @@ namespace log4cpp {
      * Building log4cpp.dsp/log4cppDLL.dsp creates the resource DLL NTEventLogAppender.dll.
      * Do not forget to place this DLL in a directory that is on the PATH 
      * of the Windows system. Otherwise, the category and message will not display 
-     * correctly in Event Viewer.
+     * correctly in Event Viewer.<BR>
+     * <B>NB:</B> This class is only available on Win32 platforms.
      **/
     class LOG4CPP_EXPORT NTEventLogAppender : public AppenderSkeleton {
     public:

@@ -19,7 +19,8 @@ namespace log4cpp {
 	/**
 	 * Win32DebugAppender simply sends the log message to the default system
 	 * debugger on Win32 systems.  This is useful for users of MSVC and Borland
-	 * because the log messages will show up in the debugger window.
+	 * because the log messages will show up in the debugger window.<BR>
+         * <B>NB:</B> This class is only available on Win32 platforms.
 	 */
     class LOG4CPP_EXPORT Win32DebugAppender : public LayoutAppender {
         public:
