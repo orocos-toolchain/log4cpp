@@ -14,48 +14,21 @@
 #if defined(_MSC_VER)
     #define VSNPRINTF _vsnprintf
 #else
+#ifdef LOG4CPP_HAVE_SNPRINTF
     #define VSNPRINTF vsnprintf
+#else
+/* use alternative snprintf() from http://www.ijs.si/software/snprintf/ */
+
+#define HAVE_SNPRINTF
+#define PREFER_PORTABLE_SNPRINTF
+
+#include "snprintf.c"
+#define VSNPRINTF portable_snprintf
+
+#endif // LOG4CPP_HAVE_SNPRINTF
 #endif // _MSC_VER
 
 namespace {
-
-#ifndef LOG4CPP_HAVE_SNPRINTF
-
-    int vsnprintf(char* s, size_t maxlen, const char* fmt, va_list args)
-    {
-	int  len;
-	FILE f;
-
-	if (maxlen == 0)
-	    return 0;
-
-	memset(&f, 0, sizeof(f));
-
-	f._flag    = _IOWRT + _IOSTRG;
-
-	f._bufsiz  = f._cnt = maxlen - 1;
-	f._base    = f._ptr = (unsigned char*) s;
-	f._bufendp = f._base + f._bufsiz;
-
-	len = vfprintf(&f, fmt, args);
-	*f._ptr = '\0';
-
-	return len;
-    }
-
-    int snprintf(char* s, size_t maxlen, const char* fmt, ...)
-    {
-	int         len;
-	va_list	args;
-
-	va_start(args, fmt);
-	len = vsnprintf(s, maxlen, fmt, args);
-	va_end(args);
-
-	return len;
-    }
-
-#endif // !LOG4CPP_HAVE_SNPRINTF
 
     std::string vstrprintf(const char* format, va_list args)
     {
