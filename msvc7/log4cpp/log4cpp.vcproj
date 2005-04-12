@@ -33,12 +33,10 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="ws2_32.lib"
-				OutputFile="$(DEV)/bin/$(ProjectName).dll"
 				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/log4cpp.pdb"
 				SubSystem="2"
-				BaseAddress="@D:/MVS/BaseAddr.ref,log4cpp"
 				ImportLibrary="$(OutDir)/log4cpp.lib"
 				TargetMachine="1"/>
 			<Tool
