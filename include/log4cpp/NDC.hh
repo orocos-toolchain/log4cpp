@@ -115,7 +115,7 @@ namespace log4cpp {
            Get the current nesting depth of this diagnostic context.
            @return the nesting depth
         **/
-        static int getDepth();
+        static size_t getDepth();
 
         static void inherit(ContextStack* stack);
 
@@ -162,7 +162,7 @@ namespace log4cpp {
         virtual void _clear();
         virtual ContextStack* _cloneStack();
         virtual const std::string& _get() const;
-        virtual int _getDepth() const;
+        virtual size_t _getDepth() const;
         virtual void _inherit(ContextStack* stack);
         virtual std::string _pop();
         virtual void _push(const std::string& message);
