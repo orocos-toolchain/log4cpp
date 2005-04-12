@@ -96,20 +96,8 @@ namespace log4cpp {
             }
             return *this;
         }
-		std::streamsize width(std::streamsize wide ) {
-            if (getPriority() != Priority::NOTSET) {
-                if (!_buffer) {
-                    if (!(_buffer = new std::ostringstream)) {
-                        // XXX help help help
-                    }
-                }
-            }
-			return _buffer->width(wide); 
-		}
-        CategoryStream& left() {
-			_buffer->setf(std::ios_base::left, std::ios_base::adjustfield);
-			return *this;
-		}
+		std::streamsize width(std::streamsize wide );
+        CategoryStream& left();
 
         private:
         Category& _category;
