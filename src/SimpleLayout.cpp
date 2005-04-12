@@ -28,9 +28,8 @@ namespace log4cpp {
         std::ostringstream message;
 
         const std::string& priorityName = Priority::getPriorityName(event.priority);
-		message.width(Priority::MESSAGE_SIZE);
-		message << priorityName << " - " << event.message << std::endl;
-
+		message.width(Priority::MESSAGE_SIZE);message.setf(std::ios::left);
+		message << priorityName << ": " << event.message << std::endl;
         return message.str();
     }
 }
