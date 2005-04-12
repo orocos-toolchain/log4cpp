@@ -226,7 +226,7 @@ namespace log4cpp {
             if (_maxWidth > 0 && _maxWidth < msg.length()) {
                 msg.erase(_maxWidth);
             }
-            int fillCount = _minWidth - msg.length();
+            size_t fillCount = _minWidth - msg.length();
             if (fillCount > 0) {
                 if (_alignLeft) {
                     out << msg << std::string(fillCount, ' ');
@@ -253,7 +253,7 @@ namespace log4cpp {
     PatternLayout::PatternLayout() {
         try {
             setConversionPattern(DEFAULT_CONVERSION_PATTERN);
-        } catch(ConfigureFailure& e) {
+        } catch(ConfigureFailure&) {
         }
     }
 

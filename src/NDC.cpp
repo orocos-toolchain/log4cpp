@@ -40,7 +40,7 @@ namespace log4cpp {
         return getNDC()._get();
     }
 
-    int NDC::getDepth() {
+    size_t NDC::getDepth() {
         return getNDC()._getDepth();
     }
 
@@ -91,7 +91,7 @@ namespace log4cpp {
         return (_stack.empty() ? empty : _stack.back().fullMessage);
     }
 
-    int NDC::_getDepth() const {
+    size_t NDC::_getDepth() const {
         return _stack.size();
     }
 

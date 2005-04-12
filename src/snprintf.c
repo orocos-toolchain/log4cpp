@@ -914,7 +914,7 @@ int portable_vsnprintf(char *str, size_t str_m, const char *fmt, va_list ap) {
         }
      /* zero padding to specified minimal field width? */
         if (!justify_left && zero_padding) {
-          int n = min_field_width - (str_arg_l+number_of_zeros_to_pad);
+          size_t n = min_field_width - (str_arg_l+number_of_zeros_to_pad);
           if (n > 0) number_of_zeros_to_pad += n;
         }
         break;
@@ -942,7 +942,7 @@ int portable_vsnprintf(char *str, size_t str_m, const char *fmt, va_list ap) {
    /* insert padding to the left as requested by min_field_width;
       this does not include the zero padding in case of numerical conversions*/
       if (!justify_left) {                /* left padding with blank or zero */
-        int n = min_field_width - (str_arg_l+number_of_zeros_to_pad);
+        size_t n = min_field_width - (str_arg_l+number_of_zeros_to_pad);
         if (n > 0) {
           if (str_l < str_m) {
             size_t avail = str_m-str_l;
@@ -959,7 +959,7 @@ int portable_vsnprintf(char *str, size_t str_m, const char *fmt, va_list ap) {
         zero_padding_insertion_ind = 0;
       } else {
      /* insert first part of numerics (sign or '0x') before zero padding */
-        int n = zero_padding_insertion_ind;
+        size_t n = zero_padding_insertion_ind;
         if (n > 0) {
           if (str_l < str_m) {
             size_t avail = str_m-str_l;
@@ -979,7 +979,7 @@ int portable_vsnprintf(char *str, size_t str_m, const char *fmt, va_list ap) {
       }
    /* insert formatted string
     * (or as-is conversion specifier for unknown conversions) */
-      { int n = str_arg_l - zero_padding_insertion_ind;
+      { size_t n = str_arg_l - zero_padding_insertion_ind;
         if (n > 0) {
           if (str_l < str_m) {
             size_t avail = str_m-str_l;
@@ -991,7 +991,7 @@ int portable_vsnprintf(char *str, size_t str_m, const char *fmt, va_list ap) {
       }
    /* insert right padding */
       if (justify_left) {          /* right blank padding to the field width */
-        int n = min_field_width - (str_arg_l+number_of_zeros_to_pad);
+        size_t n = min_field_width - (str_arg_l+number_of_zeros_to_pad);
         if (n > 0) {
           if (str_l < str_m) {
             size_t avail = str_m-str_l;

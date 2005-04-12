@@ -56,7 +56,7 @@ namespace log4cpp {
             std::ostringstream oldName;
             oldName << _fileName << "." << _maxBackupIndex << std::ends;
             ::remove(oldName.str().c_str());
-            size_t n = _fileName.length() + 1;
+			size_t n = _fileName.length() + 1;
             for(unsigned int i = _maxBackupIndex; i > 1; i--) {
             	std::string newName = oldName.str();
 #ifndef LOG4CPP_STLPORT_AND_BOOST_BUILD
