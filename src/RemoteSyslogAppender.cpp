@@ -131,7 +131,7 @@ namespace log4cpp {
 
     void RemoteSyslogAppender::_append(const LoggingEvent& event) {
 	const std::string message(_getLayout().format(event));
-        int messageLength = message.length();
+        size_t messageLength = message.length();
 	char *buf = new char [messageLength + 16];
         int priority = _facility + toSyslogPriority(event.priority);
 	int preambleLength = sprintf (buf, "<%d>", priority);
