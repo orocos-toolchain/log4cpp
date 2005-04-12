@@ -15,8 +15,16 @@ namespace log4cpp {
 
     namespace {
         const std::string names[10] = {
-            "FATAL", "ALERT", "CRIT", "ERROR", "WARN",
-            "NOTICE", "INFO", "DEBUG", "NOTSET", "UNKNOWN" 
+            "FATAL",
+			"ALERT",
+			"CRIT",
+			"ERROR",
+			"WARN",
+            "NOTICE",
+			"INFO",
+			"DEBUG",
+			"NOTSET",
+			"UNKNOWN" 
         };
     }
 
