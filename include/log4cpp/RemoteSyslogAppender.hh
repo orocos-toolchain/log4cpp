@@ -125,7 +125,11 @@ namespace log4cpp {
         const std::string _relayer;
         int _facility;
         int _portNumber;
-        int _socket;
+#ifdef	WIN32
+		SOCKET	_socket;
+#else	
+		int		_socket;
+#endif
         in_addr_t _ipAddr;
         private:
         int _cludge;
