@@ -48,13 +48,15 @@ namespace log4cpp {
 
 	if (value == -1) {
 	    if (priorityName == "EMERG") {
-		value = 0;
+		    value = 0;
 	    } else {
-		char* endPointer;
-		value = std::strtoul(priorityName.c_str(), &endPointer, 10);
-		if (*endPointer != 0) {
-		    throw std::invalid_argument(std::string("unknown priority name: '") + priorityName + "'");
-		}
+		    char* endPointer;
+		    value = std::strtoul(priorityName.c_str(), &endPointer, 10);
+		    if (*endPointer != 0) {
+		        throw std::invalid_argument(
+					std::string("unknown priority name: '") + priorityName + "'"
+				);
+		    }
 	    }
 	}
 	
