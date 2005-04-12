@@ -134,5 +134,11 @@ typedef u_long in_addr_t;
 /* define mode_t. Move to Portability.hh if more platforms need it */
 typedef int mode_t;
 
+#if defined(_MSC_VER) && _MSC_VER == 1310
+// warning C4275: interface non dll class 'std::runtime_error' utilisée comme base 
+// d'une interface dll class 'log4cpp::ConfigureFailure'
+#pragma warning(disable: 4275)
+#endif
+
 /* _INCLUDE_LOG4CPP_CONFIG_WIN32_H */
 #endif
