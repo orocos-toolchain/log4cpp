@@ -15,6 +15,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testDLL", "testDLL\testDLL.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testMain", "testMain\testMain.vcproj", "{E29FB2BB-07EA-4E2C-AE53-59E001F93924}"
 	ProjectSection(ProjectDependencies) = postProject
+		{AFA856A0-2388-4673-9277-CE4061709569} = {AFA856A0-2388-4673-9277-CE4061709569}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testNDC", "testNDC\testNDC.vcproj", "{687BF5CA-6970-437B-8A39-BFD65EEE8F11}"

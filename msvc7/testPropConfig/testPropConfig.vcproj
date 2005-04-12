@@ -138,7 +138,7 @@
 	</References>
 	<Files>
 		<File
-			RelativePath=".\log4cpp.property">
+			RelativePath=".\log4cpp.xml">
 		</File>
 		<File
 			RelativePath="..\..\tests\testPropConfig.cpp">
