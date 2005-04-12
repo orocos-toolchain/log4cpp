@@ -1,6 +1,6 @@
 # property configurator test file
 
-log4cpp.rootCategory=JDEBUG, rootAppender
+log4cpp.rootCategory=DEBUG, rootAppender
 log4cpp.category.sub1=DEBUG, A1, A2
 log4cpp.category.sub1.sub2=DEBUG, A3
 
