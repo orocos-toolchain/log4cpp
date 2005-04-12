@@ -33,6 +33,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="ws2_32.lib"
+				OutputFile="$(SystemRoot)\system32\$(ProjectName).dll"
 				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(OutDir)/log4cpp.pdb"
