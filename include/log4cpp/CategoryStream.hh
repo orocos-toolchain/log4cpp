@@ -12,6 +12,7 @@
 
 #include <log4cpp/Portability.hh>
 #include <log4cpp/Priority.hh>
+#include <ios>
 #ifdef LOG4CPP_HAVE_SSTREAM
 #include <sstream>
 #endif
@@ -32,7 +33,9 @@ namespace log4cpp {
          * 'ENDLINE' separator, which separates two log messages.
          **/
         typedef enum {
-            ENDLINE
+            ENDLINE = 0,
+			EOL		= 0,
+			eol		= 0
         } Separator;
 
         /**
@@ -93,7 +96,21 @@ namespace log4cpp {
             }
             return *this;
         }
-        
+		std::streamsize width(std::streamsize wide ) {
+            if (getPriority() != Priority::NOTSET) {
+                if (!_buffer) {
+                    if (!(_buffer = new std::ostringstream)) {
+                        // XXX help help help
+                    }
+                }
+            }
+			return _buffer->width(wide); 
+		}
+        CategoryStream& left() {
+			_buffer->setf(std::ios_base::left, std::ios_base::adjustfield);
+			return *this;
+		}
+
         private:
         Category& _category;
         Priority::Value _priority;
