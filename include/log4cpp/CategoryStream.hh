@@ -16,6 +16,7 @@
 #ifdef LOG4CPP_HAVE_SSTREAM
 #include <sstream>
 #endif
+#include <log4cpp/Manipulator.hh>
 
 namespace log4cpp {
 
@@ -35,7 +36,6 @@ namespace log4cpp {
         typedef enum {
             ENDLINE = 0,
 			EOL		= 0,
-			eol		= 0
         } Separator;
 
         /**
@@ -96,14 +96,57 @@ namespace log4cpp {
             }
             return *this;
         }
+		template<> CategoryStream& operator<<(const std::string& t) {
+            if (getPriority() != Priority::NOTSET) {
+                if (!_buffer) {
+                    if (!(_buffer = new std::ostringstream)) {
+                        // XXX help help help
+                    }
+                }
+                (*_buffer) << t;
+            }
+            return *this;
+        }
+		template<> CategoryStream& operator<<(const std::wstring& t) {
+            if (getPriority() != Priority::NOTSET) {
+                if (!_wbuffer) {
+                    if (!(_wbuffer = new std::wostringstream)) {
+                        // XXX help help help
+                    }
+                }
+                (*_wbuffer) << t;
+            }
+            return *this;
+        }
+
+        /**
+         * Set the width output on CategoryStream
+         **/
 		std::streamsize width(std::streamsize wide );
-        CategoryStream& left();
+
 
         private:
         Category& _category;
         Priority::Value _priority;
-        std::ostringstream* _buffer;
-    };
+		union {
+			std::ostringstream* _buffer;
+			std::wostringstream* _wbuffer;
+		};
 
+		public:
+		typedef CategoryStream& (*cspf) (CategoryStream&);
+
+		CategoryStream& operator<< (cspf);
+
+         /**
+         * eol manipulator
+         **/
+friend	CategoryStream& eol (CategoryStream& os);
+
+         /**
+         * left manipulator
+         **/
+friend	CategoryStream& left (CategoryStream& os);
+   };
 }
 #endif // _LOG4CPP_CATEGORYSTREAM_HH

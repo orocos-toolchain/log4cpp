@@ -39,8 +39,8 @@ namespace log4cpp {
             delete _buffer;
             _buffer = NULL;
         }
-	}
- 	std::streamsize CategoryStream::width(std::streamsize wide ) {
+    }
+     std::streamsize CategoryStream::width(std::streamsize wide ) {
         if (getPriority() != Priority::NOTSET) {
             if (!_buffer) {
                 if (!(_buffer = new std::ostringstream)) {
@@ -48,10 +48,18 @@ namespace log4cpp {
                 }
             }
         }
-		return _buffer->width(wide); 
-	}
-    CategoryStream&  CategoryStream::left() {
-		_buffer->setf(std::ios_base::left, std::ios_base::adjustfield);
-		return *this;
-	}
+        return _buffer->width(wide); 
+    }
+    CategoryStream& eol (CategoryStream& os) {
+        if  (os._buffer->good()) {
+            os._buffer->put(os._buffer->widen('\n'));os._buffer->flush();
+        }
+        return os;
+    }
+    CategoryStream& left (CategoryStream& os) {
+        if  (os._buffer->good()) {
+            os._buffer->setf(std::ios::left);
+        }
+        return os;
+    }
 }
