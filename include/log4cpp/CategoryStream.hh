@@ -138,15 +138,15 @@ namespace log4cpp {
 
 		CategoryStream& operator<< (cspf);
 
-         /**
+        /**
          * eol manipulator
          **/
-friend	CategoryStream& eol (CategoryStream& os);
+friend  LOG4CPP_EXPORT CategoryStream& eol (CategoryStream& os);
 
-         /**
+        /**
          * left manipulator
          **/
-friend	CategoryStream& left (CategoryStream& os);
+friend  LOG4CPP_EXPORT CategoryStream& left (CategoryStream& os);
    };
 }
 #endif // _LOG4CPP_CATEGORYSTREAM_HH
