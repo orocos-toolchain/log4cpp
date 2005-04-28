@@ -50,13 +50,12 @@ namespace log4cpp {
         }
         return _buffer->width(wide); 
     }
-    CategoryStream& CategoryStream::operator<< (cspf) {
-		cspf(this);
-		return *this;
+    CategoryStream& CategoryStream::operator<< (cspf pf) {
+		return (*pf)(*this);
     }
     CategoryStream& eol (CategoryStream& os) {
         if  (os._buffer->good()) {
-            os._buffer->put(os._buffer->widen('\n'));os._buffer->flush();
+			os.flush();
         }
         return os;
     }
