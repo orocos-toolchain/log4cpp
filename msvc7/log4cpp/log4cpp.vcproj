@@ -249,6 +249,12 @@
 			RelativePath="..\..\include\log4cpp\LoggingEvent.hh">
 		</File>
 		<File
+			RelativePath="..\..\src\Manipulator.cpp">
+		</File>
+		<File
+			RelativePath="..\..\include\log4cpp\Manipulator.hh">
+		</File>
+		<File
 			RelativePath="..\..\src\MSThreads.cpp">
 		</File>
 		<File
