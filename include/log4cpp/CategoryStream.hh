@@ -35,7 +35,7 @@ namespace log4cpp {
          **/
         typedef enum {
             ENDLINE = 0,
-			EOL		= 0,
+			EOL		= 0
         } Separator;
 
         /**
@@ -96,7 +96,7 @@ namespace log4cpp {
             }
             return *this;
         }
-		template<> CategoryStream& operator<<(const std::string& t) {
+		template<typename T> CategoryStream& operator<<(const std::string& t) {
             if (getPriority() != Priority::NOTSET) {
                 if (!_buffer) {
                     if (!(_buffer = new std::ostringstream)) {
@@ -107,7 +107,7 @@ namespace log4cpp {
             }
             return *this;
         }
-		template<> CategoryStream& operator<<(const std::wstring& t) {
+		template<typename T> CategoryStream& operator<<(const std::wstring& t) {
             if (getPriority() != Priority::NOTSET) {
                 if (!_wbuffer) {
                     if (!(_wbuffer = new std::wostringstream)) {
