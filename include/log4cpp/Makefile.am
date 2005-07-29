@@ -34,6 +34,7 @@ liblog4cppinclude_HEADERS =  \
 	Win32DebugAppender.hh \
 	NTEventLogAppender.hh \
 	AbortAppender.hh \
+	Manipulator.hh \
 	config.h \
 	config-win32.h \
 	config-openvms.h
