@@ -52,7 +52,6 @@ namespace log4cpp {
 
 #endif // DEBUG
 
-
 namespace log4cpp {
 
     /**
@@ -62,7 +61,7 @@ namespace log4cpp {
     class LOG4CPP_EXPORT Priority {
         public:
 
-		static const int MESSAGE_SIZE = 8;
+		static const int MESSAGE_SIZE; // = 8;
 
         /**
          * Predefined Levels of Priorities. These correspond to the

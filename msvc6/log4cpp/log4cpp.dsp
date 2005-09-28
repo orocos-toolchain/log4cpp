@@ -1,24 +1,24 @@
 # Microsoft Developer Studio Project File - Name="log4cpp" - Package Owner=<4>
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
-# ** DO NOT EDIT **
+# ** NICHT BEARBEITEN **
 
 # TARGTYPE "Win32 (x86) Static Library" 0x0104
 
 CFG=log4cpp - Win32 Debug
-!MESSAGE This is not a valid makefile. To build this project using NMAKE,
-!MESSAGE use the Export Makefile command and run
+!MESSAGE Dies ist kein gültiges Makefile. Zum Erstellen dieses Projekts mit NMAKE
+!MESSAGE verwenden Sie den Befehl "Makefile exportieren" und führen Sie den Befehl
 !MESSAGE 
 !MESSAGE NMAKE /f "log4cpp.mak".
 !MESSAGE 
-!MESSAGE You can specify a configuration when running NMAKE
-!MESSAGE by defining the macro CFG on the command line. For example:
+!MESSAGE Sie können beim Ausführen von NMAKE eine Konfiguration angeben
+!MESSAGE durch Definieren des Makros CFG in der Befehlszeile. Zum Beispiel:
 !MESSAGE 
 !MESSAGE NMAKE /f "log4cpp.mak" CFG="log4cpp - Win32 Debug"
 !MESSAGE 
-!MESSAGE Possible choices for configuration are:
+!MESSAGE Für die Konfiguration stehen zur Auswahl:
 !MESSAGE 
-!MESSAGE "log4cpp - Win32 Release" (based on "Win32 (x86) Static Library")
-!MESSAGE "log4cpp - Win32 Debug" (based on "Win32 (x86) Static Library")
+!MESSAGE "log4cpp - Win32 Release" (basierend auf  "Win32 (x86) Static Library")
+!MESSAGE "log4cpp - Win32 Debug" (basierend auf  "Win32 (x86) Static Library")
 !MESSAGE 
 
 # Begin Project
@@ -42,7 +42,7 @@ RSC=rc.exe
 # PROP Target_Dir ""
 MTL=midl.exe
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /YX /FD /c
-# ADD CPP /nologo /MD /W3 /GX /O2 /I "..\..\include" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "LOG4CPP_HAS_DLL" /D "LOG4CPP_BUILD_DLL" /FR /YX /FD /c
+# ADD CPP /nologo /MD /W3 /GR /GX /O2 /I "..\..\include" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "LOG4CPP_HAS_DLL" /D "LOG4CPP_BUILD_DLL" /FR /YX /FD /c
 # ADD BASE RSC /l 0x409 /d "NDEBUG"
 # ADD RSC /l 0x409 /d "NDEBUG"
 BSC32=bscmake.exe
@@ -66,7 +66,7 @@ LIB32=link.exe -lib
 # PROP Target_Dir ""
 MTL=midl.exe
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /YX /FD /GZ /c
-# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\..\include" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /D "LOG4CPP_HAS_DLL" /D "LOG4CPP_BUILD_DLL" /FR /YX /FD /GZ /c
+# ADD CPP /nologo /MDd /W3 /Gm /GR /GX /ZI /Od /I "..\..\include" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /D "LOG4CPP_HAS_DLL" /D "LOG4CPP_BUILD_DLL" /FR /YX /FD /GZ /c
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
 # ADD RSC /l 0x409 /d "_DEBUG"
 BSC32=bscmake.exe
@@ -231,10 +231,6 @@ SOURCE=..\..\src\Win32DebugAppender.cpp
 # PROP Default_Filter "h;hh;hpp;hxx;hm;inl"
 # Begin Source File
 
-SOURCE=..\src\PortabilityImpl.hh
-# End Source File
-# Begin Source File
-
 SOURCE=..\..\include\log4cpp\Appender.hh
 # End Source File
 # Begin Source File
@@ -340,6 +336,10 @@ SOURCE=..\..\include\log4cpp\PatternLayout.hh
 # Begin Source File
 
 SOURCE=..\..\include\log4cpp\Portability.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\PortabilityImpl.hh
 # End Source File
 # Begin Source File
 

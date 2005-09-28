@@ -26,7 +26,10 @@ namespace log4cpp {
 			"NOTSET",
 			"UNKNOWN" 
         };
-    }
+    }    
+
+    const int log4cpp::Priority::MESSAGE_SIZE = 8;
+    
 
     const std::string& Priority::getPriorityName(int priority) throw() {
          
