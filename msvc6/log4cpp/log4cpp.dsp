@@ -95,6 +95,10 @@ SOURCE=..\..\src\AppenderSkeleton.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\AbortAppender.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\BasicConfigurator.cpp
 # End Source File
 # Begin Source File
