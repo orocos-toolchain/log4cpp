@@ -276,9 +276,9 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					CommandLine="if not exist $(OutDir) md $(OutDir)
-mc.exe -h $(OutDir) -r $(OutDir) $(ProjectDir)..\$(InputName).mc
-rc.exe -r -fo $(OutDir)\$(InputName).res $(OutDir)\$(InputName).rc
-link.exe /MACHINE:IX86 -dll -noentry -out:$(OutDir)\NTEventLogAppender.dll $(OutDir)\$(InputName).res
+mc.exe -h &quot;$(OutDir)&quot; -r &quot;$(OutDir)&quot; &quot;$(ProjectDir)..\$(InputName).mc&quot;
+rc.exe -r -fo &quot;$(OutDir)\$(InputName).res&quot; &quot;$(OutDir)\$(InputName).rc&quot;
+link.exe /MACHINE:IX86 -dll -noentry -out:&quot;$(OutDir)\NTEventLogAppender.dll&quot; &quot;$(OutDir)\$(InputName).res&quot;
 "
 					Outputs="$(OutDir)\NTEventLogAppender.dll"/>
 			</FileConfiguration>
