@@ -35,7 +35,9 @@ namespace log4cpp {
          **/
         typedef enum {
             ENDLINE = 0,
-			EOL		= 0
+			EOL		= 0,
+			endline	= 0,
+			eol		= 0
         } Separator;
 
         /**
@@ -85,10 +87,10 @@ namespace log4cpp {
          * @param t The value or object to stream in.
          * @returns A reference to itself.
          **/
-        template<typename T> CategoryStream& operator<<(const T& t) {
+		template<typename T> CategoryStream& operator<<(const T& t) {
             if (getPriority() != Priority::NOTSET) {
                 if (!_buffer) {
-                    if (!(_buffer = new std::ostringstream)) {
+					if (!(_buffer = new std::ostringstream)) {
                         // XXX help help help
                     }
                 }
@@ -118,7 +120,6 @@ namespace log4cpp {
             }
             return *this;
         }
-
         /**
          * Set the width output on CategoryStream
          **/
