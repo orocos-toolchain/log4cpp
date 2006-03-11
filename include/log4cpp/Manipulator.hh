@@ -26,5 +26,5 @@ class LOG4CPP_EXPORT tab {
 inline	tab(unsigned int i) : size(i) {}
 friend LOG4CPP_EXPORT std::ostream& operator<< (std::ostream& os, const tab& w);
 	};
-};
+}
 #endif

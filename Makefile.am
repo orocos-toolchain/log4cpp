@@ -1,10 +1,10 @@
 if DOC
-SUBDIRS = debian msvc6 bcb5 config src include tests doc 
+SUBDIRS = msvc6 bcb5 config src include tests doc 
 else
-SUBDIRS = debian msvc6 bcb5 config src include tests
+SUBDIRS = msvc6 bcb5 config src include tests
 endif
 
-DIST_SUBDIRS = debian msvc6 bcb5 openvms config src include doc tests
+DIST_SUBDIRS = msvc6 bcb5 openvms config src include doc tests
 
 bin_SCRIPTS = log4cpp-config
 
@@ -51,10 +51,6 @@ rpm: dist
 		$(top_srcdir)
 	mv -f /usr/src/redhat/RPMS/*/$(PACKAGE)-doc-$(VERSION)-*.rpm \
 		$(top_srcdir)
-
-debian:
-	chmod a+x $(top_srcdir)/debian/rules
-	dpkg-buildpackage -rfakeroot -sa -us -uc -tc 
 
 docs:
 	$(MAKE) -C doc
