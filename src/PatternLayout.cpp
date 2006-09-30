@@ -12,6 +12,8 @@
 #include <log4cpp/Priority.hh>
 #include <log4cpp/NDC.hh>
 #include <log4cpp/TimeStamp.hh>
+#include <log4cpp/FactoryParams.hh>
+#include <memory>
 
 #ifdef LOG4CPP_HAVE_SSTREAM
 #include <sstream>
@@ -347,10 +349,10 @@ namespace log4cpp {
                 case 'R':
                     component = new SecondsSinceEpochComponent();
                     break;
-		case 't':
-		    component = new ThreadNameComponent();
-		    break;
-		case 'u':
+                case 't':
+                    component = new ThreadNameComponent();
+                    break;
+                case 'u':
                     component = new ProcessorTimeComponent();
                     break;
                 case 'x':
@@ -398,4 +400,35 @@ namespace log4cpp {
 
         return message.str();
     }
+
+    std::auto_ptr<Layout> create_pattern_layout(const FactoryParams& params)
+    {
+       std::string pattern;
+       params.get_for("pattern layout").optional("pattern", pattern);
+       std::auto_ptr<PatternLayout> l(new PatternLayout);
+       
+       if (pattern.empty() || pattern == "default")
+          return l;
+
+       if (pattern == "simple")
+       {
+          l->setConversionPattern(PatternLayout::SIMPLE_CONVERSION_PATTERN);
+          return l;
+       }
+
+       if (pattern == "basic")
+       {
+          l->setConversionPattern(PatternLayout::BASIC_CONVERSION_PATTERN);
+          return l;
+       }
+
+       if (pattern == "ttcc")
+       {
+          l->setConversionPattern(PatternLayout::TTCC_CONVERSION_PATTERN);
+          return l;
+       }
+       
+       l->setConversionPattern(pattern);
+       return std::auto_ptr<Layout>(l.release());
+   }
 }

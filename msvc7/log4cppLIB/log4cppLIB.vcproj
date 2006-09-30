@@ -149,6 +149,9 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\..\src\AppendersFactory.cpp">
+			</File>
+			<File
 				RelativePath="..\..\src\AppenderSkeleton.cpp">
 				<FileConfiguration
 					Name="Debug|Win32">
@@ -213,6 +216,9 @@
 						PreprocessorDefinitions=""
 						BrowseInformation="1"/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\BufferingAppender.cpp">
 			</File>
 			<File
 				RelativePath="..\..\src\Category.cpp">
@@ -301,6 +307,9 @@
 						PreprocessorDefinitions=""
 						BrowseInformation="1"/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\FactoryParams.cpp">
 			</File>
 			<File
 				RelativePath="..\..\src\FileAppender.cpp">
@@ -435,6 +444,12 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\..\src\LayoutsFactory.cpp">
+			</File>
+			<File
+				RelativePath="..\..\src\LevelEvaluator.cpp">
+			</File>
+			<File
 				RelativePath="..\..\src\LoggingEvent.cpp">
 				<FileConfiguration
 					Name="Debug|Win32">
@@ -565,6 +580,9 @@
 						PreprocessorDefinitions=""
 						BrowseInformation="1"/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\PassThroughLayout.cpp">
 			</File>
 			<File
 				RelativePath="..\..\src\PatternLayout.cpp">
@@ -875,6 +893,9 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\..\src\TriggeringEventEvaluatorFactory.cpp">
+			</File>
+			<File
 				RelativePath="..\..\src\Win32DebugAppender.cpp">
 				<FileConfiguration
 					Name="Debug|Win32">
@@ -904,6 +925,9 @@
 				RelativePath="..\..\include\log4cpp\Appender.hh">
 			</File>
 			<File
+				RelativePath="..\..\include\log4cpp\AppendersFactory.hh">
+			</File>
+			<File
 				RelativePath="..\..\include\log4cpp\AppenderSkeleton.hh">
 			</File>
 			<File
@@ -914,6 +938,9 @@
 			</File>
 			<File
 				RelativePath="..\..\include\log4cpp\threading\BoostThreads.hh">
+			</File>
+			<File
+				RelativePath="..\..\include\log4cpp\BufferingAppender.hh">
 			</File>
 			<File
 				RelativePath="..\..\include\log4cpp\Category.hh">
@@ -934,7 +961,13 @@
 				RelativePath="..\..\include\log4cpp\threading\DummyThreads.hh">
 			</File>
 			<File
+				RelativePath="..\..\include\log4cpp\Evaluator.hh">
+			</File>
+			<File
 				RelativePath="..\..\include\log4cpp\Export.hh">
+			</File>
+			<File
+				RelativePath="..\..\include\log4cpp\FactoryParams.hh">
 			</File>
 			<File
 				RelativePath="..\..\include\log4cpp\FileAppender.hh">
@@ -958,6 +991,12 @@
 				RelativePath="..\..\include\log4cpp\LayoutAppender.hh">
 			</File>
 			<File
+				RelativePath="..\..\include\log4cpp\LayoutsFactory.hh">
+			</File>
+			<File
+				RelativePath="..\..\include\log4cpp\LevelEvaluator.hh">
+			</File>
+			<File
 				RelativePath="..\..\include\log4cpp\LoggingEvent.hh">
 			</File>
 			<File
@@ -974,6 +1013,9 @@
 			</File>
 			<File
 				RelativePath="..\..\include\log4cpp\OstreamAppender.hh">
+			</File>
+			<File
+				RelativePath="..\..\include\log4cpp\PassThroughLayout.hh">
 			</File>
 			<File
 				RelativePath="..\..\include\log4cpp\PatternLayout.hh">
@@ -1016,6 +1058,12 @@
 			</File>
 			<File
 				RelativePath="..\..\include\log4cpp\TimeStamp.hh">
+			</File>
+			<File
+				RelativePath="..\..\include\log4cpp\TriggeringEventEvaluator.hh">
+			</File>
+			<File
+				RelativePath="..\..\include\log4cpp\TriggeringEventEvaluatorFactory.hh">
 			</File>
 			<File
 				RelativePath="..\..\include\log4cpp\Win32DebugAppender.hh">

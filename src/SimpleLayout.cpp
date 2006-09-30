@@ -15,6 +15,8 @@
 #include <sstream>
 #endif
 
+#include <memory>
+#include <log4cpp/FactoryParams.hh>
 
 namespace log4cpp {
 
@@ -32,4 +34,9 @@ namespace log4cpp {
 		message << priorityName << ": " << event.message << std::endl;
         return message.str();
     }
+
+   std::auto_ptr<Layout> create_simple_layout(const FactoryParams& params)
+   {
+      return std::auto_ptr<Layout>(new SimpleLayout);
+   }
 }

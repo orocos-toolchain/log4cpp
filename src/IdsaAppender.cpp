@@ -15,6 +15,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <log4cpp/IdsaAppender.hh>
+#include <log4cpp/FactoryParams.hh>
+#include <memory>
 
 namespace log4cpp {
 
@@ -75,6 +77,13 @@ namespace log4cpp {
         return;
     }
 
+    std::auto_ptr<Appender> create_idsa_appender(const FactoryParams& params)
+    {
+       std::string name, idsa_name;
+       params.get_for("idsa appender").required()("name", name)("idsa_name", idsa_name);
+
+       return std::auto_ptr<Appender>(new IdsaAppender(name, idsa_name));
+    }
 }
 
 #endif // LOG4CPP_HAVE_LIBIDSA

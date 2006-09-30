@@ -15,6 +15,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <log4cpp/SyslogAppender.hh>
+#include <log4cpp/FactoryParams.hh>
+#include <memory>
 
 namespace log4cpp {
 
@@ -62,7 +64,7 @@ namespace log4cpp {
     }
 
     void SyslogAppender::_append(const LoggingEvent& event) {
-	std::string message(_getLayout().format(event));
+        std::string message(_getLayout().format(event));
         int priority = toSyslogPriority(event.priority);
         ::syslog(priority | _facility, "%s", message.c_str());
     }
@@ -71,6 +73,15 @@ namespace log4cpp {
         close();
         open();
         return true;
+    }
+    
+    std::auto_ptr<Appender> create_syslog_appender(const FactoryParams& params)
+    {
+       std::string name, syslog_name;
+       int facility = 0;
+       params.get_for("syslog appender").required()("name", name)("syslog_name", syslog_name)
+                                        .optional()("facility", facility);
+       return std::auto_ptr<Appender>(new SyslogAppender(name, syslog_name, facility));
     }
 }
 

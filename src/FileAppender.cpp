@@ -15,10 +15,12 @@
 #    include <unistd.h>
 #endif
 
+#include <memory>
 #include <stdio.h>
 #include <time.h>
 #include <log4cpp/FileAppender.hh>
 #include <log4cpp/Category.hh>
+#include <log4cpp/FactoryParams.hh>
 
 namespace log4cpp {
 
@@ -96,4 +98,16 @@ namespace log4cpp {
             return true;
         }      
     }
+
+   std::auto_ptr<Appender> create_file_appender(const FactoryParams& params)
+   {
+      std::string name, filename;
+      bool append = true;
+      mode_t mode = 664;
+
+      params.get_for("file appender").required("name", name)("filename", filename)
+                                     .optional("append", append)("mode", mode);
+
+      return std::auto_ptr<Appender>(new FileAppender(name, filename, append, mode));
+   }
 }

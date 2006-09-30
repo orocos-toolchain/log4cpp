@@ -9,7 +9,9 @@
 
 #include "PortabilityImpl.hh"
 #include <log4cpp/AbortAppender.hh>
+#include <log4cpp/FactoryParams.hh>
 #include <cstdlib>
+#include <memory>
 
 namespace log4cpp {
 
@@ -39,5 +41,12 @@ namespace log4cpp {
 
     void AbortAppender::setLayout(Layout* layout) {
         return;
+    }
+
+    std::auto_ptr<Appender> create_abort_appender(const FactoryParams& params)
+    {
+       std::string name;
+       params.get_for("abort appender").required("name", name);
+       return std::auto_ptr<Appender>(new AbortAppender(name));
     }
 }

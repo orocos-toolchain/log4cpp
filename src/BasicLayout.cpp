@@ -10,6 +10,7 @@
 #include "PortabilityImpl.hh"
 #include <log4cpp/BasicLayout.hh>
 #include <log4cpp/Priority.hh>
+#include <log4cpp/FactoryParams.hh>
 #ifdef LOG4CPP_HAVE_SSTREAM
 #include <sstream>
 #endif
@@ -31,5 +32,10 @@ namespace log4cpp {
                 << event.message << std::endl;
 
         return message.str();
+    }
+
+    std::auto_ptr<Layout> create_basic_layout(const FactoryParams& params)
+    {
+       return std::auto_ptr<Layout>(new BasicLayout);
     }
 }
