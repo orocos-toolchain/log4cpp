@@ -405,30 +405,30 @@ namespace log4cpp {
     {
        std::string pattern;
        params.get_for("pattern layout").optional("pattern", pattern);
-       std::auto_ptr<PatternLayout> l(new PatternLayout);
-       
+       std::auto_ptr<Layout> result(new PatternLayout);
+       PatternLayout* l = static_cast<PatternLayout*>(result.get());
        if (pattern.empty() || pattern == "default")
-          return l;
+          return result;
 
        if (pattern == "simple")
        {
           l->setConversionPattern(PatternLayout::SIMPLE_CONVERSION_PATTERN);
-          return l;
+          return result;
        }
 
        if (pattern == "basic")
        {
           l->setConversionPattern(PatternLayout::BASIC_CONVERSION_PATTERN);
-          return l;
+          return result;
        }
 
        if (pattern == "ttcc")
        {
           l->setConversionPattern(PatternLayout::TTCC_CONVERSION_PATTERN);
-          return l;
+          return result;
        }
        
        l->setConversionPattern(pattern);
-       return std::auto_ptr<Layout>(l.release());
+       return result;
    }
 }

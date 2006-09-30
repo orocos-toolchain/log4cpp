@@ -80,7 +80,7 @@ namespace log4cpp {
     std::auto_ptr<Appender> create_idsa_appender(const FactoryParams& params)
     {
        std::string name, idsa_name;
-       params.get_for("idsa appender").required()("name", name)("idsa_name", idsa_name);
+       params.get_for("idsa appender").required("name", name)("idsa_name", idsa_name);
 
        return std::auto_ptr<Appender>(new IdsaAppender(name, idsa_name));
     }
