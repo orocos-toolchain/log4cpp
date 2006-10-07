@@ -13,6 +13,7 @@ namespace log4cpp
    std::auto_ptr<Appender> create_syslog_appender(const FactoryParams&);
    std::auto_ptr<Appender> create_win32_debug_appender(const FactoryParams&);
    std::auto_ptr<Appender> create_abort_appender(const FactoryParams&);
+   std::auto_ptr<Appender> create_smtp_appender(const FactoryParams&);
 
    AppendersFactory& AppendersFactory::getInstance()
    {
@@ -34,9 +35,10 @@ namespace log4cpp
 #endif
 
 #if defined(WIN32)
-         af->registerCreator("win32_debug", &create_win32_debug_appender);
-         af->registerCreator("nt_event_log", &create_nt_event_log_appender);
+         af->registerCreator("win32 debug", &create_win32_debug_appender);
+         af->registerCreator("nt event log", &create_nt_event_log_appender);
 #endif
+         af->registerCreator("smtp", &create_smtp_appender);
 
          appenders_factory_ = af.release();
       }
