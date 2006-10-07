@@ -407,6 +407,12 @@ link.exe /MACHINE:IX86 -dll -noentry -out:$(OutDir)\NTEventLogAppender.dll $(Out
 			RelativePath="..\..\include\log4cpp\SimpleLayout.hh">
 		</File>
 		<File
+			RelativePath="..\..\src\SmtpAppender.cpp">
+		</File>
+		<File
+			RelativePath="..\..\include\log4cpp\SmtpAppender.hh">
+		</File>
+		<File
 			RelativePath="..\..\src\snprintf.c">
 		</File>
 		<File

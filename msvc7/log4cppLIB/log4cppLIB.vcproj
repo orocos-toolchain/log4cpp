@@ -827,6 +827,9 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\..\src\SmtpAppender.cpp">
+			</File>
+			<File
 				RelativePath="..\..\src\StringQueueAppender.cpp">
 				<FileConfiguration
 					Name="Debug|Win32">
@@ -1046,6 +1049,9 @@
 			</File>
 			<File
 				RelativePath="..\..\include\log4cpp\SimpleLayout.hh">
+			</File>
+			<File
+				RelativePath="..\..\include\log4cpp\SmtpAppender.hh">
 			</File>
 			<File
 				RelativePath="..\..\include\log4cpp\StringQueueAppender.hh">
