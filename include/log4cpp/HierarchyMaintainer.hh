@@ -29,6 +29,7 @@ namespace log4cpp {
 
         public:
         typedef std::map<std::string, Category*> CategoryMap;
+        typedef void (*shutdown_fun_ptr)();
   
         static HierarchyMaintainer& getDefaultMaintainer();
 
@@ -38,6 +39,7 @@ namespace log4cpp {
         virtual Category& getInstance(const std::string& name);
         virtual std::vector<Category*>* getCurrentCategories() const;
         virtual void shutdown();
+        void register_shutdown_handler(shutdown_fun_ptr handler);
         virtual void deleteAllCategories();
 
         protected:
@@ -47,7 +49,10 @@ namespace log4cpp {
         mutable threading::Mutex _categoryMutex;
 
         private:
+        typedef std::vector<shutdown_fun_ptr> handlers_t;
+     
         static HierarchyMaintainer* _defaultMaintainer;
+        handlers_t handlers_;
     };        
 }
 

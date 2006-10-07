@@ -101,6 +101,21 @@ namespace log4cpp {
                 ((*i).second)->removeAllAppenders();
             }
         }
+        
+        try
+        {
+           for(handlers_t::const_iterator i = handlers_.begin(), last = handlers_.end(); i != last; ++i)
+              (**i)();
+        }
+        catch(...)
+        {
+        }
+        
+    }
+
+    void HierarchyMaintainer::register_shutdown_handler(shutdown_fun_ptr handler)
+    {
+        handlers_.push_back(handler); 
     }
 
     void HierarchyMaintainer::deleteAllCategories() {
