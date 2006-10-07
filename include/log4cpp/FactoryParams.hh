@@ -24,9 +24,20 @@ namespace log4cpp
             template<typename T>
             void assign(const std::string& param_value, T& value) const
             {
+               assign_impl(param_value, value);
+            }
+
+            template<typename T>
+            void assign_impl(const std::string& param_value, T& value) const
+            {
                std::stringstream s;
                s << param_value;
                s >> value;
+            }
+
+            void assign_impl(const std::string& param_value, std::string& value) const
+            {
+               value = param_value;
             }
 
             void throw_error(const char* param_name) const
