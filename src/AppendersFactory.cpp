@@ -38,7 +38,13 @@ namespace log4cpp
          af->registerCreator("win32 debug", &create_win32_debug_appender);
          af->registerCreator("nt event log", &create_nt_event_log_appender);
 #endif
+
+#if defined(LOG4CPP_HAVE_BOOST)
+#include <boost/version.hpp>
+#if BOOST_VERSION >= 103400
          af->registerCreator("smtp", &create_smtp_appender);
+#endif // LOG4CPP_HAVE_BOOST
+#endif // BOOST_VERSION >= 103400
 
          appenders_factory_ = af.release();
       }
