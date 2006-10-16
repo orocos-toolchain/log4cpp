@@ -112,6 +112,107 @@
 			<Tool
 				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
 		</Configuration>
+		<Configuration
+			Name="Debug with Boost|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="../../include"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_DLL;_USRDLL;LOG4CPP_HAS_DLL;LOG4CPP_BUILD_DLL;LOG4CPP_HAVE_BOOST"
+				MinimalRebuild="TRUE"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="4"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="ws2_32.lib"
+				OutputFile="$(SystemRoot)\system32\$(ProjectName).dll"
+				LinkIncremental="2"
+				GenerateDebugInformation="TRUE"
+				ProgramDatabaseFile="$(OutDir)/log4cpp.pdb"
+				SubSystem="2"
+				ImportLibrary="$(OutDir)/log4cpp.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release with Boost|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_DLL;_USRDLL;LOG4CPP_HAS_DLL;LOG4CPP_BUILD_DLL;LOG4CPP_HAVE_BOOST"
+				RuntimeLibrary="2"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="0"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				RegisterOutput="FALSE"
+				AdditionalDependencies="ws2_32.lib"
+				ShowProgress="0"
+				OutputFile="$(SystemRoot)\system32\$(ProjectName).dll"
+				LinkIncremental="1"
+				GenerateDebugInformation="TRUE"
+				SubSystem="2"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				ImportLibrary="$(OutDir)/log4cpp.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
 	</Configurations>
 	<References>
 	</References>
@@ -315,6 +416,28 @@ link.exe /MACHINE:IX86 -dll -noentry -out:&quot;$(OutDir)\NTEventLogAppender.dll
 			</FileConfiguration>
 			<FileConfiguration
 				Name="Release|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					CommandLine="if not exist $(OutDir) md $(OutDir)
+mc.exe -h $(OutDir) -r $(OutDir) $(ProjectDir)..\$(InputName).mc
+RC.exe -r -fo $(OutDir)\$(InputName).res $(OutDir)\$(InputName).rc
+link.exe /MACHINE:IX86 -dll -noentry -out:$(OutDir)\NTEventLogAppender.dll $(OutDir)\$(InputName).res
+"
+					Outputs="$(OutDir)\NTEventLogAppender.dll"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug with Boost|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					CommandLine="if not exist $(OutDir) md $(OutDir)
+mc.exe -h &quot;$(OutDir)&quot; -r &quot;$(OutDir)&quot; &quot;$(ProjectDir)..\$(InputName).mc&quot;
+rc.exe -r -fo &quot;$(OutDir)\$(InputName).res&quot; &quot;$(OutDir)\$(InputName).rc&quot;
+link.exe /MACHINE:IX86 -dll -noentry -out:&quot;$(OutDir)\NTEventLogAppender.dll&quot; &quot;$(OutDir)\$(InputName).res&quot;
+"
+					Outputs="$(OutDir)\NTEventLogAppender.dll"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release with Boost|Win32">
 				<Tool
 					Name="VCCustomBuildTool"
 					CommandLine="if not exist $(OutDir) md $(OutDir)
