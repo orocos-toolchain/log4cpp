@@ -92,6 +92,8 @@ namespace log4cpp
    class LOG4CPP_EXPORT FactoryParams
    {
          typedef std::map<std::string, std::string> storage_t;
+		 
+		 		 storage_t storage_;
       
       public:
          typedef storage_t::const_iterator const_iterator;
@@ -104,9 +106,9 @@ namespace log4cpp
          const_iterator end() const { return storage_.end(); }
 
       private:
-         typedef std::map<std::string, std::string> storage_t;
+         /*typedef std::map<std::string, std::string> storage_t;
 
-         storage_t storage_;
+         storage_t storage_; */
    };
 
    namespace details
