@@ -1,5 +1,5 @@
-#ifndef _INCLUDE_LOG4CPP_CONFIG_WIN32_H
-#define _INCLUDE_LOG4CPP_CONFIG_WIN32_H 1
+#ifndef _INCLUDE_LOG4CPP_CONFIG_MINGW32_H
+#define _INCLUDE_LOG4CPP_CONFIG_MINGW32_H 1
  
 /* manually edited from include/log4cpp/config.h */
 
@@ -17,7 +17,7 @@
 /* define if the compiler has int64_t */
 #ifndef LOG4CPP_HAVE_INT64_T 
 #define LOG4CPP_HAVE_INT64_T
-#define int64_t __int64  
+#define int64_t __int64
 
 /* define if the compiler has in_addr_t */
 #ifndef LOG4CPP_HAVE_IN_ADDR_T 
@@ -33,10 +33,6 @@ typedef u_long in_addr_t;
 /* u_short is the type of sockaddr_in.sin_port */
 // typedef u_short		in_port_t;
 
-#endif
-
-#if defined(_MSC_VER) && _MSC_VER < 1300
-#define LOG4CPP_MISSING_INT64_OSTREAM_OP   
 #endif
 
 #endif
@@ -75,7 +71,7 @@ typedef u_long in_addr_t;
 #define LOG4CPP_HAVE_SSTREAM 1
 #endif
 
-#define LOG4CPP_HAS_WCHAR_T 1
+#define LOG4CPP_HAS_WCHAR_T 0
 
 /* define if the C library has snprintf */
 #ifndef LOG4CPP_HAVE_SNPRINTF
@@ -87,62 +83,13 @@ typedef u_long in_addr_t;
 #define LOG4CPP_FIX_ERROR_COLLISION 1
 #endif
 
-/* define WIN32 for Borland */
-#ifndef WIN32
-#define WIN32
-#endif
-
 /* use threads */
 #ifndef LOG4CPP_HAVE_THREADING
 #define LOG4CPP_HAVE_THREADING
 #endif
 
-/* use ms threads */
 #ifndef LOG4CPP_USE_MSTHREADS
 #define LOG4CPP_USE_MSTHREADS
 #endif
 
-/* supply DLL main */
-#ifndef LOG4CPP_SUPPLY_DLLMAIN
-#define LOG4CPP_SUPPLY_DLLMAIN
-#endif
-
-/* MSVCs <cstdlib> and <cstring> headers are broken in the sense that they
-   put functions in the global namespace instead of std::
-   The #defines below enable a workaround for MSVC 6 and lower. If MSVC 7
-   is still broken please adjust the _MSC_VER version check and report it.
-   See also bug report #628211.
-*/
-#if defined(_MSC_VER) && _MSC_VER < 1300
-
-#ifndef LOG4CPP_CSTDLIB_NOT_IN_STD
-#define LOG4CPP_CSTDLIB_NOT_IN_STD
-#endif
-
-#ifndef LOG4CPP_CSTRING_NOT_IN_STD
-#define LOG4CPP_CSTRING_NOT_IN_STD
-#endif
-
-#ifndef LOG4CPP_CTIME_NOT_IN_STD
-#define LOG4CPP_CTIME_NOT_IN_STD
-#endif
-
-#ifndef LOG4CPP_CMATH_NOT_IN_STD
-#define LOG4CPP_CMATH_NOT_IN_STD
-#endif
-
-#endif
-
-/* define mode_t. Move to Portability.hh if more platforms need it */
-#if !defined(__BORLANDC__)
-typedef int mode_t;
-#endif
-
-#if defined(_MSC_VER) && _MSC_VER == 1310
-// warning C4275: interface non dll class 'std::runtime_error' utilisée comme base 
-// d'une interface dll class 'log4cpp::ConfigureFailure'
-#pragma warning(disable: 4275)
-#endif
-
-/* _INCLUDE_LOG4CPP_CONFIG_WIN32_H */
 #endif

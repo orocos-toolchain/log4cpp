@@ -73,6 +73,8 @@ typedef u_long in_addr_t;
 #define LOG4CPP_HAVE_SSTREAM 1
 #endif
 
+#define LOG4CPP_HAS_WCHAR_T 1
+
 /* define if the C library has snprintf */
 #ifndef LOG4CPP_HAVE_SNPRINTF
 #define LOG4CPP_HAVE_SNPRINTF 1

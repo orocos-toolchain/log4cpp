@@ -109,7 +109,8 @@ namespace log4cpp {
             }
             return *this;
         }
-		template<typename T> CategoryStream& operator<<(const std::wstring& t) {
+#if LOG4CPP_HAS_WCHAR_T != 0
+      template<typename T> CategoryStream& operator<<(const std::wstring& t) {
             if (getPriority() != Priority::NOTSET) {
                 if (!_wbuffer) {
                     if (!(_wbuffer = new std::wostringstream)) {
@@ -120,6 +121,7 @@ namespace log4cpp {
             }
             return *this;
         }
+#endif
         /**
          * Set the width output on CategoryStream
          **/
@@ -131,7 +133,9 @@ namespace log4cpp {
         Priority::Value _priority;
 		union {
 			std::ostringstream* _buffer;
-			std::wostringstream* _wbuffer;
+#if LOG4CPP_HAS_WCHAR_T != 0
+         std::wostringstream* _wbuffer;
+#endif
 		};
 
 		public:

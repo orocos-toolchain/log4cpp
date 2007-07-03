@@ -20,7 +20,11 @@
 #if defined(__OPENVMS__)
 #    include <log4cpp/config-openvms.h>
 #else
-#    include <log4cpp/config.h>
+#   if defined(__MINGW32__)
+#       include <log4cpp/config-MinGW32.h>
+#   else
+#       include <log4cpp/config.h>
+#   endif
 #endif
 #endif
 
