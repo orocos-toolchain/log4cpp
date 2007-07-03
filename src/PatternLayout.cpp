@@ -121,7 +121,7 @@ namespace log4cpp {
 
     struct ProcessorTimeComponent : public PatternLayout::PatternComponent {
         virtual void append(std::ostringstream& out, const LoggingEvent& event) {
-            out << ::clock();
+            out << std::clock();
         }
     };
 
@@ -150,8 +150,8 @@ namespace log4cpp {
         }
 
         virtual void append(std::ostringstream& out, const LoggingEvent& event) {
-            struct tm *currentTime;
-            time_t t = event.timeStamp.getSeconds();
+            struct std::tm *currentTime;
+            std::time_t t = event.timeStamp.getSeconds();
             currentTime = std::localtime(&t);
             char formatted[100];
             std::string timeFormat;

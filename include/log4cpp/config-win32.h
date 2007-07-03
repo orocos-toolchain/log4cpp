@@ -132,7 +132,9 @@ typedef u_long in_addr_t;
 #endif
 
 /* define mode_t. Move to Portability.hh if more platforms need it */
+#if !defined(__BORLANDC__)
 typedef int mode_t;
+#endif
 
 #if defined(_MSC_VER) && _MSC_VER == 1310
 // warning C4275: interface non dll class 'std::runtime_error' utilisée comme base 

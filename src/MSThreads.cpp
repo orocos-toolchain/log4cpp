@@ -1,4 +1,5 @@
 #include <log4cpp/threading/Threading.hh>
+#include <stdio.h>
 
 #if defined(LOG4CPP_HAVE_THREADING) && defined(LOG4CPP_USE_MSTHREADS)
 

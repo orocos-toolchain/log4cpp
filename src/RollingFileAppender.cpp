@@ -19,6 +19,7 @@
 #include <log4cpp/Category.hh>
 #include <log4cpp/FactoryParams.hh>
 #include <memory>
+#include <stdio.h>
 
 #ifdef LOG4CPP_HAVE_SSTREAM
 #include <sstream>

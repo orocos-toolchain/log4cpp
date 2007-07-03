@@ -129,7 +129,7 @@ namespace log4cpp {
                             new log4cpp::SyslogAppender(categoryName, syslogName, facility);
                     } 
 #endif
-#if WIN32
+#if defined(WIN32)
                     else if (appenderName.compare("nteventlog") == 0) {
                         std::string source;
                         if (!(initFile >> source)) {
