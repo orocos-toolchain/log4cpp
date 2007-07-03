@@ -1,6 +1,6 @@
 #if defined(LOG4CPP_HAVE_BOOST)
 #include <boost/version.hpp>
-#if BOOST_VERSION >= 103400
+#if BOOST_VERSION > 103400
 
 #define LOG4CPP_HAVE_INT64_T
 #include <log4cpp/SmtpAppender.hh>

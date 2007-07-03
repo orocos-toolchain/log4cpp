@@ -3,7 +3,7 @@
 
 #if defined(LOG4CPP_HAVE_BOOST)
 #include <boost/version.hpp>
-#if BOOST_VERSION >= 103400
+#if BOOST_VERSION > 103400
 
 #include "Portability.hh"
 #include "LayoutAppender.hh"
