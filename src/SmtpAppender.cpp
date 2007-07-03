@@ -1,6 +1,6 @@
 #if defined(LOG4CPP_HAVE_BOOST)
 #include <boost/version.hpp>
-#if BOOST_VERSION > 103400
+#if BOOST_VERSION >= 103500
 
 #define LOG4CPP_HAVE_INT64_T
 #include <log4cpp/SmtpAppender.hh>
@@ -176,5 +176,5 @@ namespace log4cpp
       return std::auto_ptr<Appender>(new SmptAppender(name, host, from, to, subject));
    }
 }
-#endif // BOOST_VERSION >= 103400
+#endif // BOOST_VERSION >= 103500
 #endif // LOG4CPP_HAS_BOOST

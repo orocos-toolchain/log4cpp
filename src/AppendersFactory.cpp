@@ -41,10 +41,10 @@ namespace log4cpp
 
 #if defined(LOG4CPP_HAVE_BOOST)
 #include <boost/version.hpp>
-#if BOOST_VERSION >= 103400
+#if BOOST_VERSION >= 103500
          af->registerCreator("smtp", &create_smtp_appender);
 #endif // LOG4CPP_HAVE_BOOST
-#endif // BOOST_VERSION >= 103400
+#endif // BOOST_VERSION >= 103500
 
          appenders_factory_ = af.release();
       }
