@@ -1,0 +1,15 @@
+project log4cpp/tests : requirements <source>..//log4cpp ;
+
+import testing ;
+
+test-suite log4cpp :
+#  [ run testCategory.cpp ]
+#  [ run testDLL.cpp ]
+#  [ run testNDC.cpp ]
+#  [ run testPattern.cpp ]
+#  [ run testPropertyConfig.cpp ]
+#  [ run testErrorCollision.cpp ]
+#  [ run testmain.cpp ]
+#  [ run testPropConfig.cpp ]
+  [ run test_convenience.cpp ]
+  ;
