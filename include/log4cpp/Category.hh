@@ -16,6 +16,7 @@
 #include <log4cpp/Priority.hh>
 #include <log4cpp/CategoryStream.hh>
 #include <log4cpp/threading/Threading.hh>
+#include <log4cpp/convenience.h>
 
 #include <map>
 #include <vector>
