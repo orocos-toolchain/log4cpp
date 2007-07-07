@@ -9,6 +9,7 @@ namespace log4cpp
    {
       public:
          virtual bool eval(const LoggingEvent& event) const = 0;
+         virtual ~TriggeringEventEvaluator() {}
    };
 }
 
