@@ -12,6 +12,7 @@ liblog4cpp_la_SOURCES = \
 	FactoryParams.cpp \
 	LayoutsFactory.cpp \
 	LevelEvaluator.cpp \
+	Localtime.cpp	\
 	PassThroughLayout.cpp \
 	TriggeringEventEvaluatorFactory.cpp \
 	LayoutAppender.cpp \
