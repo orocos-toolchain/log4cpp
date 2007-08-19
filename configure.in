@@ -62,6 +62,19 @@ AC_CHECK_FUNCS([localtime_r])
 AC_CHECK_LIB(socket,socket, LIBS="-lsocket $LIBS",,)
 AC_CHECK_LIB(nsl,gethostbyname, LIBS="-lnsl $LIBS",,)
 
+# checks for pthreads
+ACX_PTHREAD([enable_threads="pthread"],[enable_threads="no"])
+if test $enable_threads != "pthread"; then
+    AC_MSG_ERROR([unable to find pthreads, currently this is required])
+else
+    AC_DEFINE(HAVE_PTHREAD,1,[Define if you have POSIX threads libraries and header files.])
+    AC_DEFINE(HAVE_THREADING,1,[define if threading is enabled])
+    AC_DEFINE(USE_PTHREADS,1,[define if pthread library is available])
+    LIBS="$PTHREAD_LIBS $LIBS"
+    CFLAGS="$PTHREAD_CFLAGS $CFLAGS"
+    CXXFLAGS="$PTHREAD_CFLAGS $CXXFLAGS"
+fi
+
 # idsa_test
 if test "x$with_idsa" = xyes; then
     AC_CHECK_LIB([idsa], [idsa_open])
