@@ -29,6 +29,18 @@ AC_ARG_WITH(idsa, [  --with-idsa             include idsa support])
 # ----------------------------------------------------------------------------
 AC_CANONICAL_HOST
 
+AC_ARG_ENABLE(debug,
+    AC_HELP_STRING(--enable-debug, [Have GCC compile with symbols (Default = no)]),
+                   enable_debug=$enableval, enable_debug=no)
+
+if test "$enable_debug" = "yes" ; then
+    GCC_CFLAGS="$CFLAGS -g -D_DEBUG"
+    GCC_CXXFLAGS="$CXXFLAGS -g -D_DEBUG"
+else
+    GCC_CFLAGS="$CFLAGS -O2 -DNDEBUG"
+    GCC_CXXFLAGS="$CXXFLAGS -O2 -DNDEBUG"
+fi
+
 AM_PROG_LIBTOOL
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
