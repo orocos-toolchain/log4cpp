@@ -78,6 +78,8 @@ typedef u_long in_addr_t;
 #define LOG4CPP_HAVE_SNPRINTF 1
 #endif
 
+//#define LOG4CPP_HAVE_LOCALTIME_R 0
+
 /* define to get around problems with ERROR in windows.h */
 #ifndef LOG4CPP_FIX_ERROR_COLLISION
 #define LOG4CPP_FIX_ERROR_COLLISION 1

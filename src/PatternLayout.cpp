@@ -24,6 +24,7 @@
 #include <iomanip>
 #include <ctime>
 #include <cmath>
+#include "Localtime.hh"
 
 #ifdef LOG4CPP_HAVE_INT64_T
 #ifdef LOG4CPP_HAVE_STDINT_H
@@ -150,9 +151,9 @@ namespace log4cpp {
         }
 
         virtual void append(std::ostringstream& out, const LoggingEvent& event) {
-            struct std::tm *currentTime;
+            struct std::tm currentTime;
             std::time_t t = event.timeStamp.getSeconds();
-            currentTime = std::localtime(&t);
+            localtime(&t, &currentTime);
             char formatted[100];
             std::string timeFormat;
             if (_printMillis) {
@@ -165,7 +166,7 @@ namespace log4cpp {
             } else {
                 timeFormat = _timeFormat1;
             }
-            std::strftime(formatted, sizeof(formatted), timeFormat.c_str(), currentTime);
+            std::strftime(formatted, sizeof(formatted), timeFormat.c_str(), &currentTime);
             out << formatted;
         }
 
