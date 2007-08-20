@@ -47,8 +47,13 @@ AC_PROG_MAKE_SET
 
 AC_PROG_CXX([g++ c++ gpp aCC CC cxx cc++ cl FCC KCC RCC xlC_r xlC QCC])
 
+if test "$GCC" = "yes" ; then
+    CFLAGS="$GCC_CFLAGS"
+    CXXFLAGS="$GCC_CXXFLAGS"
+fi 
+
 AC_PROG_CXXCPP
-AC_LANG(C++)
+AC_LANG(C)
 
 # Checks header files
 # ----------------------------------------------------------------------------
@@ -58,7 +63,6 @@ AC_CHECK_HEADERS([io.h])
 # Checks local idioms
 # ----------------------------------------------------------------------------
 AC_C_INT64_T
-AC_CXX_HAVE_SSTREAM
 AC_FUNC_SNPRINTF
 
 # syslog_test
@@ -87,6 +91,9 @@ else
     CXXFLAGS="$PTHREAD_CFLAGS $CXXFLAGS"
 fi
 
+AC_LANG(C++)
+AC_CXX_HAVE_SSTREAM
+
 # idsa_test
 if test "x$with_idsa" = xyes; then
     AC_CHECK_LIB([idsa], [idsa_open])
@@ -100,8 +107,8 @@ fi
 BB_ENABLE_DOXYGEN
 
 # check for omnithreads
-BB_CHECK_OMNITHREADS
-BB_CHECK_PTHREADS
+#BB_CHECK_OMNITHREADS
+#BB_CHECK_PTHREADS
 
 LOG4CPP_CFLAGS="$CXXFLAGS"
 LOG4CPP_LIBS="-llog4cpp"
