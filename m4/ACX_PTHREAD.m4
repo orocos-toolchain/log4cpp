@@ -242,8 +242,15 @@ if test "x$acx_pthread_ok" = xyes; then
         AC_MSG_CHECKING([if more special flags are required for pthreads])
         flag=no
         case "${host_cpu}-${host_os}" in
-            *-aix* | *-freebsd* | *-darwin*) flag="-D_THREAD_SAFE";;
-            *solaris* | *-osf* | *-hpux*) flag="-D_REENTRANT";;
+                *-aix* | *-freebsd* | *-darwin-*) flag="-D_THREAD_SAFE";;
+                *-osf* | *-hpux*) flag="-D_REENTRANT";;
+                *solaris*)
+                if test "$GCC" = "yes"; then
+                    flag="-D_REENTRANT"
+                else
+                    flag="-mt -D_REENTRANT"
+                fi
+                ;;
         esac
         AC_MSG_RESULT(${flag})
         if test "x$flag" != xno; then
