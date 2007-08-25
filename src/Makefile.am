@@ -2,7 +2,7 @@ lib_LTLIBRARIES = liblog4cpp.la
 
 INCLUDES = -I$(top_srcdir)/include
 
-noinst_HEADERS = snprintf.c
+noinst_HEADERS = snprintf.c Localtime.hh
 
 liblog4cpp_la_SOURCES = \
 	Appender.cpp \

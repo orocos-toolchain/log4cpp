@@ -43,6 +43,7 @@ CONTENTS::
 TAGS:: CONTENTS
 	etags `cat $<`
 
+      convenience.h \
 rpm: dist
 	rpm -ta $(PACKAGE)-$(VERSION).tar.gz
 	mv -f /usr/src/redhat/SRPMS/$(PACKAGE)-$(VERSION)-*.rpm $(top_srcdir)
