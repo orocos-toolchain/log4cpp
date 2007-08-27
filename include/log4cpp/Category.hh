@@ -223,7 +223,7 @@ namespace log4cpp {
          * the Appender.
          * @deprecated use ownsAppender(Appender*)
          **/
-        inline bool ownsAppender() const throw() {
+        virtual bool ownsAppender() const throw() {
             return ownsAppender(getAppender());
         };
 
