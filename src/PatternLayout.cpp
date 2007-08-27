@@ -230,7 +230,7 @@ namespace log4cpp {
                 msg.erase(_maxWidth);
             }
             size_t fillCount = _minWidth - msg.length();
-            if (fillCount > 0) {
+            if (_minWidth > msg.length()) {
                 if (_alignLeft) {
                     out << msg << std::string(fillCount, ' ');
                 } else {
