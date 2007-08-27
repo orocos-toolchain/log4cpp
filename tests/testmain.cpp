@@ -74,8 +74,8 @@ int main(int argc, char** argv) {
 
 	sub2.warnStream() << "streamed warn";
 
-	sub2 << log4cpp::Priority::WARN << "warn2" << " warn3" <<
-		log4cpp::CategoryStream::ENDLINE << " warn4";
+	sub2 << log4cpp::Priority::WARN << "warn2" << " warn3" 
+             << log4cpp::eol << " warn4";
 
 	{
 		for(int i = 0; i < 10000; i++) {

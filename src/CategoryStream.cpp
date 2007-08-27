@@ -28,11 +28,6 @@ namespace log4cpp {
         flush();
     }
 
-    CategoryStream& CategoryStream::operator<<(CategoryStream::Separator separator) {
-        flush();
-        return *this;
-    }
-
     void CategoryStream::flush() {
         if (_buffer) {
             getCategory().log(getPriority(), _buffer->str());
@@ -54,13 +49,13 @@ namespace log4cpp {
 		return (*pf)(*this);
     }
     CategoryStream& eol (CategoryStream& os) {
-        if  (os._buffer->good()) {
-			os.flush();
+        if  (os._buffer) {
+		os.flush();
         }
         return os;
     }
     CategoryStream& left (CategoryStream& os) {
-        if  (os._buffer->good()) {
+        if  (os._buffer) {
             os._buffer->setf(std::ios::left);
         }
         return os;

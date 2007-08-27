@@ -21,6 +21,16 @@
 namespace log4cpp {
 
     class LOG4CPP_EXPORT Category;
+    class LOG4CPP_EXPORT CategoryStream;    
+    /**
+     * eol manipulator
+     **/
+    LOG4CPP_EXPORT CategoryStream& eol (CategoryStream& os);
+
+    /**
+     * left manipulator
+     **/
+    LOG4CPP_EXPORT CategoryStream& left (CategoryStream& os);
 
     /**
      * This class enables streaming simple types and objects to a category.
@@ -28,17 +38,6 @@ namespace log4cpp {
      **/
     class LOG4CPP_EXPORT CategoryStream {
         public:
-
-        /**
-         * Enumeration of special 'Separators'. Currently only contains the
-         * 'ENDLINE' separator, which separates two log messages.
-         **/
-        typedef enum {
-            ENDLINE = 0,
-			EOL		= 0,
-			endline	= 0,
-			eol		= 0
-        } Separator;
 
         /**
          * Construct a CategoryStream for given Category with given priority.
@@ -68,15 +67,6 @@ namespace log4cpp {
         };
 
         /**
-         * Streams in a Separator. If the separator equals 
-         * CategoryStream::ENDLINE it sends the contents of the stream buffer
-         * to the Category with set priority and empties the buffer.
-         * @param separator The Separator
-         * @returns A reference to itself.
-         **/
-        CategoryStream& operator<<(Separator separator);
-
-        /**
          * Flush the contents of the stream buffer to the Category and
          * empties the buffer.
          **/
@@ -98,7 +88,9 @@ namespace log4cpp {
             }
             return *this;
         }
-		template<typename T> CategoryStream& operator<<(const std::string& t) {
+	
+	template<typename T> 
+ 	CategoryStream& operator<<(const std::string& t) {
             if (getPriority() != Priority::NOTSET) {
                 if (!_buffer) {
                     if (!(_buffer = new std::ostringstream)) {
@@ -110,7 +102,8 @@ namespace log4cpp {
             return *this;
         }
 #if LOG4CPP_HAS_WCHAR_T != 0
-      template<typename T> CategoryStream& operator<<(const std::wstring& t) {
+        template<typename T> 
+        CategoryStream& operator<<(const std::wstring& t) {
             if (getPriority() != Priority::NOTSET) {
                 if (!_wbuffer) {
                     if (!(_wbuffer = new std::wostringstream)) {
@@ -131,27 +124,19 @@ namespace log4cpp {
         private:
         Category& _category;
         Priority::Value _priority;
-		union {
-			std::ostringstream* _buffer;
+	union {
+	    std::ostringstream* _buffer;
 #if LOG4CPP_HAS_WCHAR_T != 0
-         std::wostringstream* _wbuffer;
+            std::wostringstream* _wbuffer;
 #endif
-		};
+	};
 
-		public:
-		typedef CategoryStream& (*cspf) (CategoryStream&);
+	public:
+	typedef CategoryStream& (*cspf) (CategoryStream&);
 
-		CategoryStream& operator<< (cspf);
-
-        /**
-         * eol manipulator
-         **/
-friend  LOG4CPP_EXPORT CategoryStream& eol (CategoryStream& os);
-
-        /**
-         * left manipulator
-         **/
-friend  LOG4CPP_EXPORT CategoryStream& left (CategoryStream& os);
+	CategoryStream& operator<< (cspf);
+        LOG4CPP_EXPORT friend CategoryStream& eol (CategoryStream& os);
+        LOG4CPP_EXPORT friend CategoryStream& left (CategoryStream& os);
    };
 }
 #endif // _LOG4CPP_CATEGORYSTREAM_HH

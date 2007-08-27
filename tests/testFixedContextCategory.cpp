@@ -55,8 +55,8 @@ int main(int argc, char** argv) {
     sub2.error("%s %s %d", "test", "vform", 123);
     sub2.warnStream() << "streamed warn";
 
-    sub2 << log4cpp::Priority::WARN << "warn2.." << "..warn3..value=" << 0 << 
-        log4cpp::CategoryStream::ENDLINE << "..warn4";
+    sub2 << log4cpp::Priority::WARN << "warn2.." << "..warn3..value=" << 0 
+         << log4cpp::eol << "..warn4";
 
     log4cpp::Category::shutdown();
 
