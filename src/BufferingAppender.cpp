@@ -35,7 +35,8 @@ namespace log4cpp
    {
       Layout& layout = _getLayout();
       std::ostringstream s;
-      for(queue_t::const_reverse_iterator i = queue_.rbegin(), last = queue_.rend(); i != last; ++i)
+      //  Solaris 10 CC can't work with const_reverse_iterator
+      for(queue_t::reverse_iterator i = queue_.rbegin(), last = queue_.rend(); i != last; ++i)
          s << layout.format(*i);
 
       LoggingEvent event(EMPTY, s.str(), EMPTY, Priority::NOTSET);
