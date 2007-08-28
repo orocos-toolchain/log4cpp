@@ -82,7 +82,7 @@ int main(int argc, char* argv[])
 	clock.start();
         log4cpp::CategoryStream s(log << log4cpp::Priority::ERROR);
 	for (int i = 0; i < count; i++) 
-            s << str << log4cpp::CategoryStream::ENDLINE;
+            s << str << log4cpp::eol;
 	clock.stop();
 	std::cout << "  string  stream2 ostream:  " << ((float)clock.elapsed()) / count << " us" << std::endl;
     }
@@ -91,7 +91,7 @@ int main(int argc, char* argv[])
 	clock.start();
         log4cpp::CategoryStream s(log << log4cpp::Priority::ERROR);
 	for (int i = 0; i < count; i++) 
-            s << buffer << log4cpp::CategoryStream::ENDLINE;
+            s << buffer << log4cpp::eol;
 	clock.stop();
 	std::cout << "  charbuf stream2 ostream:  " << ((float)clock.elapsed()) / count << " us" << std::endl;
     }
