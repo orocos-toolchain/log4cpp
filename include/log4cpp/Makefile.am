@@ -45,7 +45,8 @@ liblog4cppinclude_HEADERS =  \
 	Manipulator.hh \
 	config.h \
 	config-win32.h \
-	config-openvms.h
+	config-openvms.h \
+	convenience.h
 
 dist-hook:
 	$(RM) -f $(distdir)/config.h
