@@ -1,3 +1,303 @@
+2007-09-03 12:25  waffel
+
+	* configure.in: [feature] changed version to 1.0
+
+2007-09-03 11:15  waffel
+
+	* include/log4cpp/Makefile.am: [intern] added forgotten header
+	  file. make distcheck should work now
+
+2007-08-28 18:24  dark--angel
+
+	* tests/testbench.cpp: Fix missed ENDLINE
+
+2007-08-27 21:26  dark--angel
+
+	* include/log4cpp/CategoryStream.hh, src/CategoryStream.cpp,
+	  tests/testCategory.cpp, tests/testConfig.cpp, tests/testDLL.cpp,
+	  tests/testFixedContextCategory.cpp, tests/testPropertyConfig.cpp,
+	  tests/testmain.cpp: Removed CategoryStream end of line enum Fix
+	  eol and left manipulators
+
+2007-08-27 21:03  dark--angel
+
+	* include/log4cpp/Category.hh: ownAppenders must be virtual
+
+2007-08-27 20:28  dark--angel
+
+	* tests/jamfile: Added missed test to bjam file
+
+2007-08-27 20:27  dark--angel
+
+	* src/PatternLayout.cpp: Fixed %m formater
+
+2007-08-27 18:47  dark--angel
+
+	* src/BufferingAppender.cpp: Fix for Solaris 10
+
+2007-08-25 11:42  dark--angel
+
+	* Makefile.am, log4cpp.spec.in, src/Makefile.am: Scott Cantor
+	  Solaris 10 fixes
+
+2007-08-24 07:51  dark--angel
+
+	* m4/ACX_PTHREAD.m4: Fix thread tests for Solaris
+
+2007-08-20 11:55  dark--angel
+
+	* configure.in: Scott Cantor pointed out some inconsistenst between
+	  his configure script and my previous changes. Fixed.
+
+2007-08-19 12:58  dark--angel
+
+	* m4/ACX_PTHREAD.m4, configure.in: [no log message]
+
+2007-08-19 12:36  dark--angel
+
+	* configure.in: Fixed pthread. See
+	  https://mail.internet2.edu/wws/arc/shibboleth-users/2007-08/msg00077.html
+
+2007-08-19 12:30  dark--angel
+
+	* src/Makefile.am: Added localtime.cpp
+
+2007-08-19 12:24  dark--angel
+
+	* configure.in: Added localtime_r identify macros
+
+2007-08-19 12:20  dark--angel
+
+	* include/log4cpp/config-MinGW32.h,
+	  include/log4cpp/config-win32-stlport-boost.h,
+	  include/log4cpp/config-win32.h, src/Localtime.cpp,
+	  src/Localtime.hh, src/PatternLayout.cpp: Use localtime_r instead
+	  of localtime
+
+2007-08-02 15:20  dark--angel
+
+	* src/Appender.cpp: Fix wierd static initialization bug
+
+2007-07-07 18:19  dark--angel
+
+	* include/log4cpp/: Export.hh, TriggeringEventEvaluator.hh: Fix
+	  virtual destructor problem Fix exports for gcc when
+	  LOG4CPP_HAS_DLL defined
+
+2007-07-05 20:10  dark--angel
+
+	* tests/jamfile: Enabled all tests
+
+2007-07-05 20:08  dark--angel
+
+	* jamfile, tests/jamfile: Added Boost.Build build files.
+
+2007-07-05 20:06  dark--angel
+
+	* include/log4cpp/Category.hh, include/log4cpp/convenience.h,
+	  tests/test_convenience.cpp: Added some convenience macroses
+
+2007-07-03 19:19  dark--angel
+
+	* include/log4cpp/: CategoryStream.hh, Portability.hh,
+	  config-MinGW32.h, config-win32-stlport-boost.h, config-win32.h:
+	  Added support for MinGW32
+
+2007-07-03 19:15  dark--angel
+
+	* src/AppendersFactory.cpp: asio expected in boost 1.35
+
+2007-07-03 19:12  dark--angel
+
+	* src/SmtpAppender.cpp: asio expected in boost 1.35
+
+2007-07-03 12:30  dark--angel
+
+	* include/log4cpp/SmtpAppender.hh, src/SmtpAppender.cpp: asio will
+	  be in boost 1.35
+
+2007-07-03 11:17  dark--angel
+
+	* include/log4cpp/config-win32.h, src/MSThreads.cpp,
+	  src/PatternLayout.cpp, src/RemoteSyslogAppender.cpp,
+	  src/RollingFileAppender.cpp, src/SimpleConfigurator.cpp: fixes
+	  for Borland Builder 5.6.4
+
+2007-06-27 13:00  waffel
+
+	* include/log4cpp/FactoryParams.hh: [bug] fixed build problem under
+	  linux
+
+2006-10-16 19:43  dark--angel
+
+	* msvc7/: log4cpp/log4cpp.vcproj, log4cppLIB/log4cppLIB.vcproj:
+	  added boost variants to build
+
+2006-10-07 08:06  dark--angel
+
+	* src/AppendersFactory.cpp: Fix: Ifdef SmtpAppender registration
+	  code
+
+2006-10-07 07:43  dark--angel
+
+	* msvc7/: log4cpp/log4cpp.vcproj, log4cppLIB/log4cppLIB.vcproj:
+	  Added SmtpAppender
+
+2006-10-07 07:32  dark--angel
+
+	* include/log4cpp/SmtpAppender.hh, src/SmtpAppender.cpp: Added
+	  SmtpAppender
+
+2006-10-07 07:30  dark--angel
+
+	* include/log4cpp/HierarchyMaintainer.hh,
+	  src/HierarchyMaintainer.cpp: Added shutdown hooks to support
+	  threaded appenders on application shutdown
+
+2006-10-07 07:27  dark--angel
+
+	* include/log4cpp/FactoryParams.hh: Fix std::string converter
+
+2006-10-07 07:26  dark--angel
+
+	* src/AppendersFactory.cpp: Change appender names in registration
+	  part
+
+2006-09-30 11:44  dark--angel
+
+	* include/log4cpp/Makefile.am, src/Makefile.am: [no log message]
+
+2006-09-30 10:26  dark--angel
+
+	* include/log4cpp/FactoryParams.hh: [no log message]
+
+2006-09-30 10:11  dark--angel
+
+	* include/log4cpp/Makefile.am, src/Makefile.am: [no log message]
+
+2006-09-30 10:01  dark--angel
+
+	* configure.in: Remove debian line
+
+2006-09-30 09:51  dark--angel
+
+	* src/PatternLayout.cpp: [no log message]
+
+2006-09-30 09:47  dark--angel
+
+	* src/: IdsaAppender.cpp, SyslogAppender.cpp: [no log message]
+
+2006-09-30 08:03  dark--angel
+
+	* include/log4cpp/AppendersFactory.hh,
+	  include/log4cpp/BufferingAppender.hh,
+	  include/log4cpp/FactoryParams.hh,
+	  include/log4cpp/LayoutsFactory.hh,
+	  include/log4cpp/LevelEvaluator.hh,
+	  include/log4cpp/PassThroughLayout.hh,
+	  include/log4cpp/TriggeringEventEvaluator.hh,
+	  include/log4cpp/TriggeringEventEvaluatorFactory.hh,
+	  msvc7/log4cpp/log4cpp.vcproj, msvc7/log4cppLIB/log4cppLIB.vcproj,
+	  src/AbortAppender.cpp, src/AppendersFactory.cpp,
+	  src/BasicLayout.cpp, src/BufferingAppender.cpp,
+	  src/FactoryParams.cpp, src/FileAppender.cpp,
+	  src/IdsaAppender.cpp, src/LayoutsFactory.cpp,
+	  src/LevelEvaluator.cpp, src/NTEventLogAppender.cpp,
+	  src/PassThroughLayout.cpp, src/PatternLayout.cpp,
+	  src/RemoteSyslogAppender.cpp, src/RollingFileAppender.cpp,
+	  src/SimpleLayout.cpp, src/SyslogAppender.cpp,
+	  src/TriggeringEventEvaluatorFactory.cpp,
+	  src/Win32DebugAppender.cpp: Added Factories support. Added new
+	  PassThoughtLayout and BufferingAppender. Added triggering
+	  facility for BufferingAppender
+
+2006-03-11 13:19  waffel
+
+	* Makefile.am, include/log4cpp/Manipulator.hh: [intern] some
+	  cleanups
+
+2006-01-15 14:08  francisandre
+
+	* include/log4cpp/CategoryStream.hh: Add eol & endline enum to
+	  comply more on coding style as the iostream endl
+
+2005-10-19 12:51  waffel
+
+	* msvc7/log4cpp/log4cpp.vcproj: [intern] added missing additional
+	  include directory entry
+
+2005-10-17 10:03  waffel
+
+	* include/log4cpp/Priority.hh, src/Priority.cpp: [intern] changed
+	  wron LF to unix LF back
+
+2005-10-15 19:24  francisandre
+
+	* msvc7/log4cpp/log4cpp.vcproj: Put path into " " so that path with
+	  embedded spaces could work too
+
+2005-10-15 19:10  francisandre
+
+	* msvc7/log4cpp/log4cpp.vcproj: Change RC.exe to rc.exe so that all
+	  commands are in lower case
+
+2005-10-07 09:12  waffel
+
+	* msvc6/log4cpp/log4cpp.dsp: [bug] added forgotten
+	  AbortAppender.cpp entry
+
+2005-10-05 19:11  waffel
+
+	* msvc6/: msvc6.dsw, log4cpp/log4cpp.dsp,
+	  log4cppDLL/log4cppDLL.dsp, testCategory/testCategory.dsp,
+	  testDLL/testDLL.dsp, testMain/testMain.dsp, testNDC/testNDC.dsp,
+	  testNTEventLog/testNTEventLog.dsp, testPattern/testPattern.dsp,
+	  testPropConfig/testPropConfig.dsp: [bug] changed dos2unix file
+	  content and applied patch from Amanjit Gill
+
+2005-09-28 17:27  waffel
+
+	* include/log4cpp/Priority.hh, msvc6/msvc6.dsw,
+	  msvc6/log4cpp/log4cpp.dsp, msvc6/log4cppDLL/log4cppDLL.dsp,
+	  msvc6/testCategory/testCategory.dsp, msvc6/testDLL/testDLL.dsp,
+	  msvc6/testMain/testMain.dsp, msvc6/testNDC/testNDC.dsp,
+	  msvc6/testNTEventLog/testNTEventLog.dsp,
+	  msvc6/testPattern/testPattern.dsp, src/Priority.cpp: [intern]
+	  fixed msvc6 build system
+
+2005-07-29 13:11  waffel
+
+	* include/log4cpp/Makefile.am: [bug] added missing header
+
+2005-07-29 13:11  waffel
+
+	* configure.in: [intern] new version string
+
+2005-06-05 18:34  francisandre
+
+	* msvc7/.cvsignore: [no log message]
+
+2005-06-05 18:18  francisandre
+
+	* msvc7/log4cpp/.cvsignore: [no log message]
+
+2005-06-05 18:16  francisandre
+
+	* msvc7/log4cpp/log4cpp.vcproj: Surround file.mc path by quotes for
+	  handling embedded space.
+
+2005-06-01 21:08  waffel
+
+	* include/log4cpp/CategoryStream.hh: fixed template bug on linux
+
+2005-06-01 21:07  waffel
+
+	* include/log4cpp/Manipulator.hh: added newline at end of file
+
+2005-06-01 20:34  waffel
+
+	* ChangeLog: changes for release 0.3.5rc2
+
 2005-04-28 11:29  francisandre
 
 	* src/CategoryStream.cpp: Fix CategoryStream::eol(CategoryStream&)
@@ -2513,33 +2813,6 @@
 	* ChangeLog, Makefile.am: Added 'debian' target to Makefile for
 	  building Debian packages.
 
-2001-04-21 14:55  harkema
-
-	* debian/.cvsignore: Ignore Makefile and Makefile.in.
-
-2001-04-21 14:39  harkema
-
-	* debian/rules: Check for autogen.sh so the debian scripts work
-	  with both CVS checkouts and released tarballs.  Removed a rm
-	  command that should be in debian/rules.
-
-2001-04-21 14:28  harkema
-
-	* debian/copyright: Fix a typo in the license name.
-
-2001-04-21 14:24  harkema
-
-	* debian/liblog4cpp-doc.doc-base: Add doc-base template.
-
-2001-04-21 14:23  harkema
-
-	* debian/: Makefile.am, changelog, control, liblog4cpp-dev.dirs,
-	  liblog4cpp-dev.files, liblog4cpp-doc.dirs, liblog4cpp-doc.files,
-	  liblog4cpp0-dev.dirs, liblog4cpp0-dev.files,
-	  liblog4cpp0-doc.dirs, liblog4cpp0-doc.files, rules: Clean debian
-	  packaging files.  They build un-official packages for the contrib
-	  section.
-
 2001-04-21 00:49  bastiaan
 
 	* ChangeLog: Rerelease 0.2.4b
@@ -2559,10 +2832,10 @@
 
 2001-04-19 22:12  bastiaan
 
-	* ChangeLog, debian/Makefile.am, include/config.h,
-	  msvc6/Makefile.am, msvc6/log4cpp/Makefile.am,
-	  msvc6/testCategory/Makefile.am, msvc6/testNDC/Makefile.am: Added
-	  files in debian and msvc6 subdirs to EXTRA_DIST in Makefile.am.
+	* ChangeLog, include/config.h, msvc6/Makefile.am,
+	  msvc6/log4cpp/Makefile.am, msvc6/testCategory/Makefile.am,
+	  msvc6/testNDC/Makefile.am: Added files in debian and msvc6
+	  subdirs to EXTRA_DIST in Makefile.am.
 
 2001-04-18 23:50  bastiaan
 
@@ -2571,11 +2844,10 @@
 
 2001-04-18 19:25  bastiaan
 
-	* ChangeLog, Makefile.am, configure.in, debian/Makefile.am,
-	  msvc6/Makefile.am, msvc6/log4cpp/Makefile.am,
-	  msvc6/testCategory/Makefile.am, msvc6/testNDC/Makefile.am: Added
-	  debian and msvc6 subdirs to autconf config: they were missing in
-	  the dist target.
+	* ChangeLog, Makefile.am, configure.in, msvc6/Makefile.am,
+	  msvc6/log4cpp/Makefile.am, msvc6/testCategory/Makefile.am,
+	  msvc6/testNDC/Makefile.am: Added debian and msvc6 subdirs to
+	  autconf config: they were missing in the dist target.
 
 2001-04-17 22:36  bastiaan
 
@@ -2593,11 +2865,6 @@
 	  methods virtual. Now it's possible to subclass Category, at the
 	  slightly higer cost of some virtual method invocations.
 
-2001-04-14 03:12  bastiaan
-
-	* debian/copyright: LGPL = lesser general public license, as of
-	  v2.1.
-
 2001-04-14 01:03  bastiaan
 
 	* doc/Makefile.am: Removed all explicit mentions of 'log4cpp'. Now
@@ -2609,13 +2876,8 @@
 
 2001-04-12 09:04  bastiaan
 
-	* ChangeLog, README, debian/changelog, debian/control,
-	  debian/copyright, debian/liblog4cpp0-dev.dirs,
-	  debian/liblog4cpp0-dev.files, debian/liblog4cpp0-doc.dirs,
-	  debian/liblog4cpp0-doc.files, debian/liblog4cpp0.dirs,
-	  debian/liblog4cpp0.files, debian/liblog4cpp0.postinst,
-	  debian/rules: Merged Marcel Harkema's patch for Debian package
-	  support.
+	* ChangeLog, README: Merged Marcel Harkema's patch for Debian
+	  package support.
 
 2001-04-11 22:44  bastiaan
 
