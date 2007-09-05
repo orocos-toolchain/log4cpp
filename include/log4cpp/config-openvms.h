@@ -60,7 +60,7 @@
 
 /* Version number of package */
 #ifndef LOG4CPP_VERSION 
-#define LOG4CPP_VERSION  "0.3.5" 
+#define LOG4CPP_VERSION  "1.0" 
 #endif
  
 /* _INCLUDE_LOG4CPP_CONFIG_OPENVMS_H */
