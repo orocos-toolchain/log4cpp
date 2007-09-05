@@ -76,12 +76,12 @@ namespace log4cpp
          public:
             required_params_validator(const char* tag, const FactoryParams* params) : base_validator_data(tag, params) {}
 
-#if defined(_MSC_VER) && _MSC_VER >= 1300
-            template<typename T>
-            optional_params_validator optional(const char* param, T& value) const;
-#else
+#if defined(_MSC_VER) && _MSC_VER < 1300
             template<typename T>
             optional_params_validator optional(const char* param, T& value) const { optional_params_validator v(tag_, params_); v(param, value); return v; }
+#else
+            template<typename T>
+            optional_params_validator optional(const char* param, T& value) const;
 #endif
             
             template<typename T>
@@ -130,7 +130,7 @@ namespace log4cpp
             optional_params_validator optional(const char* param, T& value) const { optional_params_validator v(tag_, params_); v(param, value); return v; }
       };
 
-#if defined(_MSC_VER) && _MSC_VER >= 1300
+#if !(defined(_MSC_VER) && _MSC_VER < 1300)
       template<typename T>
       optional_params_validator 
       required_params_validator::optional(const char* param, T& value) const 
