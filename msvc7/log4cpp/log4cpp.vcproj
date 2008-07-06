@@ -375,6 +375,12 @@
 			RelativePath="..\..\include\log4cpp\LevelEvaluator.hh">
 		</File>
 		<File
+			RelativePath="..\..\src\Localtime.cpp">
+		</File>
+		<File
+			RelativePath="..\..\src\Localtime.hh">
+		</File>
+		<File
 			RelativePath="..\..\src\LoggingEvent.cpp">
 		</File>
 		<File
