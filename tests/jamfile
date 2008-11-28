@@ -17,4 +17,5 @@ test-suite log4cpp :
   [ run testmain.cpp ]
   [ run testPropConfig.cpp ]
   [ run test_convenience.cpp ]
+  [ run testRollingFileAppender.cpp ]
   ;

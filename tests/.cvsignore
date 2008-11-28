@@ -7,4 +7,6 @@ testmain
 testNDC
 testbench
 testCategory
-
+bin
+*.log
+*.log.*

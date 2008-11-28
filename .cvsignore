@@ -8,3 +8,4 @@ Makefile
 Makefile.in
 log4cpp.spec
 aclocal.m4
+bin
