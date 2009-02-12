@@ -128,6 +128,10 @@ SOURCE=..\..\src\DllMain.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\FactoryParams.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\FileAppender.cpp
 # End Source File
 # Begin Source File
@@ -149,6 +153,10 @@ SOURCE=..\..\src\IdsaAppender.cpp
 # Begin Source File
 
 SOURCE=..\..\src\LayoutAppender.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\Localtime.cpp
 # End Source File
 # Begin Source File
 
@@ -268,6 +276,10 @@ SOURCE=..\..\include\log4cpp\Export.hh
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\include\log4cpp\FactoryParams.hh
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\include\log4cpp\FileAppender.hh
 # End Source File
 # Begin Source File
@@ -293,6 +305,10 @@ SOURCE=..\..\include\log4cpp\Layout.hh
 # Begin Source File
 
 SOURCE=..\..\include\log4cpp\LayoutAppender.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\Localtime.hh
 # End Source File
 # Begin Source File
 
