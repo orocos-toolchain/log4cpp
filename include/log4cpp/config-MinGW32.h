@@ -31,7 +31,7 @@ typedef unsigned long u_long;
 typedef u_long in_addr_t;
 
 /* u_short is the type of sockaddr_in.sin_port */
-// typedef u_short		in_port_t;
+// typedef u_short              in_port_t;
 
 #endif
 
@@ -87,7 +87,11 @@ typedef u_long in_addr_t;
 
 /* use threads */
 #ifndef LOG4CPP_HAVE_THREADING
-#define LOG4CPP_HAVE_THREADING
+#   if defined(LOG4CPP_STLPORT_AND_BOOST_BUILD)
+#      define LOG4CPP_USE_BOOSTTHREADS
+#   else
+#      define LOG4CPP_HAVE_THREADING
+#   endif
 #endif
 
 #ifndef LOG4CPP_USE_MSTHREADS
