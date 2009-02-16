@@ -1,29 +1,29 @@
 #ifndef _INCLUDE_LOG4CPP_CONFIG_MINGW32_H
 #define _INCLUDE_LOG4CPP_CONFIG_MINGW32_H 1
- 
+
 /* manually edited from include/log4cpp/config.h */
 
 /* Define if you have the syslog function.  */
 /* #undef LOG4CPP_HAVE_SYSLOG */
 
 /* Define if you have the `ftime' function. */
-#ifndef LOG4CPP_HAVE_FTIME 
-#define LOG4CPP_HAVE_FTIME  1 
+#ifndef LOG4CPP_HAVE_FTIME
+#define LOG4CPP_HAVE_FTIME  1
 #endif
 
 /* Define if you have the `gettimeofday' function. */
-/* #undef LOG4CPP_HAVE_GETTIMEOFDAY */ 
+/* #undef LOG4CPP_HAVE_GETTIMEOFDAY */
 
 /* define if the compiler has int64_t */
-#ifndef LOG4CPP_HAVE_INT64_T 
+#ifndef LOG4CPP_HAVE_INT64_T
 #define LOG4CPP_HAVE_INT64_T
 #define int64_t __int64
 
 /* define if the compiler has in_addr_t */
-#ifndef LOG4CPP_HAVE_IN_ADDR_T 
+#ifndef LOG4CPP_HAVE_IN_ADDR_T
 #define LOG4CPP_HAVE_IN_ADDR_T
 
-#ifndef u_long 
+#ifndef u_long
 typedef unsigned long u_long;
 #endif
 
@@ -87,15 +87,12 @@ typedef u_long in_addr_t;
 
 /* use threads */
 #ifndef LOG4CPP_HAVE_THREADING
+#define LOG4CPP_HAVE_THREADING
 #   if defined(LOG4CPP_STLPORT_AND_BOOST_BUILD)
 #      define LOG4CPP_USE_BOOSTTHREADS
 #   else
-#      define LOG4CPP_HAVE_THREADING
+#      define LOG4CPP_USE_MSTHREADS
 #   endif
-#endif
-
-#ifndef LOG4CPP_USE_MSTHREADS
-#define LOG4CPP_USE_MSTHREADS
 #endif
 
 #endif
