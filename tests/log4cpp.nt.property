@@ -25,3 +25,6 @@ log4cpp.appender.A3.maxBackupIndex=1
 log4cpp.appender.A3.layout=PatternLayout
 log4cpp.appender.A3.layout.ConversionPattern=The message %m at time %d{%H:%M}%n
 
+log4cpp.category.subNT=INFO, subNT
+log4cpp.appender.subNT=NTEventLogAppender
+log4cpp.appender.subNT.source=log4cpp-test
