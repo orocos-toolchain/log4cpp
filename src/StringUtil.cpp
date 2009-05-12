@@ -39,7 +39,12 @@ namespace log4cpp {
 	char* buffer = new char[size];
             
 	while (1) {
-	    int n = VSNPRINTF(buffer, size, format, args);
+            va_list args_copy;
+            va_copy(args_copy, args);
+
+            int n = VSNPRINTF(buffer, size, format, args_copy);
+
+            va_end(args_copy);
                 
 	    // If that worked, return a string.
 	    if ((n > -1) && (static_cast<size_t>(n) < size)) {
