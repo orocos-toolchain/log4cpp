@@ -46,6 +46,7 @@ liblog4cppinclude_HEADERS =  \
 	config.h \
 	config-win32.h \
 	config-openvms.h \
+  config-MinGW32.h \
 	convenience.h
 
 dist-hook:
