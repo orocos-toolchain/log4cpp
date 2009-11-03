@@ -45,6 +45,14 @@ namespace log4cpp {
         LoggingEvent(const std::string& category, const std::string& message, 
                      const std::string& ndc, Priority::Value priority);
 
+		/// create from existing logging event data
+        LoggingEvent(const std::string& category,
+					 const std::string& message,
+                     const std::string& ndc,
+					 Priority::Value priority,
+					 const std::string& threadName,
+					 TimeStamp& timeStamp);
+
 
         /** The category name. */
         const std::string categoryName;
