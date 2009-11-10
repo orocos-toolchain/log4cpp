@@ -14,6 +14,7 @@
 #include <log4cpp/TimeStamp.hh>
 #include <log4cpp/FactoryParams.hh>
 #include <memory>
+#include <stdlib.h>
 
 #ifdef LOG4CPP_HAVE_SSTREAM
 #include <sstream>
@@ -370,7 +371,7 @@ namespace log4cpp {
                         literal = "";
                     }
                     if ((minWidth != 0) || (maxWidth != 0)) {
-                        component = new FormatModifierComponent(component, std::abs(minWidth), maxWidth, minWidth < 0);
+                        component = new FormatModifierComponent(component, ::abs(minWidth), maxWidth, minWidth < 0);
                         minWidth = maxWidth = 0;
                     }
                     _components.push_back(component);
