@@ -14,6 +14,7 @@
 #ifdef LOG4CPP_HAVE_SSTREAM
 #include <sstream>
 #endif
+#include <memory>
 
 namespace log4cpp {
 
