@@ -11,6 +11,10 @@ namespace log4cpp {
             sprintf(buffer, "%lu", GetCurrentThreadId());
             return std::string(buffer);
         };
+        char* getThreadId(char* buffer) {
+            sprintf(buffer, "%lu", GetCurrentThreadId());
+            return buffer;
+        };
     }
 }
 

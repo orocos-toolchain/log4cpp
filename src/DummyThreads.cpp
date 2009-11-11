@@ -10,6 +10,12 @@ namespace log4cpp {
             return std::string("thread1");
         }
 
+        char* getThreadId(char* buffer) {
+            // more useful would be to return the PID.
+			sprintf(buffer, "thread1");
+            return buffer;
+        }
+
     }
 }
 

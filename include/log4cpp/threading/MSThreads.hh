@@ -41,12 +41,21 @@
 namespace log4cpp {
     namespace threading {
         /**
-         * Return an identifier for the current thread. What these 
-         * identifiers look like is completely up to the underlying 
+         * Return an identifier for the current thread. What these
+         * identifiers look like is completely up to the underlying
          * thread library.
          **/
         std::string getThreadId();
-        
+        /**
+         * Return an identifier for the current thread. What these
+         * identifiers look like is completely up to the underlying
+         * thread library.
+		 *
+		 * @param buffer Character buffer of at least 16 in size
+		 * @return buffer
+         **/
+        char* getThreadId(char* buffer);
+
         /**
          * A simple object wrapper around CreateMutex() and DeleteMutex()
          */

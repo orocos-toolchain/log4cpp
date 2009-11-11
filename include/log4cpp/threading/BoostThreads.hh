@@ -25,6 +25,16 @@ namespace log4cpp {
             sprintf(buffer, "not available");
             return std::string(buffer);
         };
+	    /**
+		 * returns the thread ID
+		 * @param buffer Character buffer of at least 14 in size
+		 * @return buffer
+		 */
+        static char* getThreadId(char* buffer) {
+            // Boost.Threads stores the thread ID but doesn't expose it
+            sprintf(buffer, "not available");
+            return buffer;
+        };
         
         typedef boost::mutex Mutex;
         typedef boost::mutex::scoped_lock ScopedLock;

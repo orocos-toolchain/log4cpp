@@ -24,6 +24,13 @@ namespace log4cpp {
          **/
         std::string getThreadId();
         
+	    /**
+		 * returns the thread ID
+		 * @param buffer Character buffer of at least 16 in size
+		 * @return buffer
+		 */
+	    char* getThreadId(char* buffer);
+
         /**
          **/
         class Mutex {

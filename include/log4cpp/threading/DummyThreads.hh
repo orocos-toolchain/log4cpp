@@ -17,7 +17,16 @@
 namespace log4cpp {
     namespace threading {
         std::string getThreadId();
-        
+	    /**
+         * Return an identifier for the current thread. What these
+         * identifiers look like is completely up to the underlying
+         * thread library. OmniThreads returns the POSIX thread Id.
+		 *
+		 * @param buffer Character buffer of at least 16 in size
+		 * @return buffer
+		 */
+	    char* getThreadId(char* buffer);
+
         /**
            Dummy type 'int' for Mutex. Yes, this adds a bit of overhead in
            the for of extra memory, but unfortunately 'void' is illegal.

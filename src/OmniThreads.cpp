@@ -5,6 +5,11 @@
 namespace log4cpp {
     namespace threading {
 
+        char* getThreadId(char* buffer) {
+            ::sprintf(buffer, "%d", ::omni_thread::self()->id()););
+            return buffer;
+        }
+
         std::string getThreadId() {
             char buffer[16];
             sprintf(buffer, "%d", ::omni_thread::self()->id());
