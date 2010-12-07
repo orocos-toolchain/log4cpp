@@ -78,7 +78,7 @@ if test -z "$ac_prefix_conf_PKG" ; then
 else
   AC_MSG_RESULT(creating $ac_prefix_conf_OUT - prefix $ac_prefix_conf_UPP for $ac_prefix_conf_INP defines)
   if test -f $ac_prefix_conf_INP ; then
-    AS_DIRNAME([/* automatically generated */], $ac_prefix_conf_OUT)
+    AS_DIRNAME([ "$ac_prefix_conf_OUT" ])
 changequote({, })dnl 
     echo '#ifndef '$ac_prefix_conf_DEF >$ac_prefix_conf_OUT
     echo '#define '$ac_prefix_conf_DEF' 1' >>$ac_prefix_conf_OUT
@@ -99,7 +99,7 @@ changequote({, })dnl
     echo '#endif' >>$ac_prefix_conf_OUT
 changequote([, ])dnl
   else
-    AC_MSG_ERROR([input file $ac_prefix_conf_IN does not exist, dnl
+    AC_MSG_ERROR([input file $ac_prefix_conf_INP does not exist, dnl
     skip generating $ac_prefix_conf_OUT])
   fi
   rm -f conftest.* 

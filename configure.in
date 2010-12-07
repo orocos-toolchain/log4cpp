@@ -167,5 +167,5 @@ openvms/Makefile
 ])
 AC_OUTPUT
 
-AC_CREATE_PREFIX_CONFIG_H([include/log4cpp/config.h], 
-        $PACKAGE_TARNAME, [include/config.h])
+AC_CREATE_PREFIX_CONFIG_H([$srcdir/include/log4cpp/config.h], 
+        $PACKAGE_TARNAME, [$srcdir/include/config.h.in])
