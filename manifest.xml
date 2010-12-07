@@ -1,0 +1,14 @@
+<package>
+    <description brief="Log4cpp maintained by Orocos developers">
+			This version of log4cpp deviates from the official release
+			by adding custom category factories. Orocos requires this for
+			setting up real-time logging.
+    </description>
+    <author>Stephen Roderick</author>
+    <copyright>Stephen Roderick, Bastiaan Bakker, Cedric Le Goater, Steve Ostlind, Marcel 
+		Harkema, Walter Stroebel, Glenn Scott and Tony Cheung.
+    </copyright>
+    <license>LGPL v2.1 or later</license>
+    <url>http://log4cpp.sourceforge.net/</url>
+</package>
+
