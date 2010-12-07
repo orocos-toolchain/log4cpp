@@ -99,7 +99,7 @@ changequote({, })dnl
     echo '#endif' >>$ac_prefix_conf_OUT
 changequote([, ])dnl
   else
-    AC_MSG_ERROR([input file $ac_prefix_conf_INP does not exist, dnl
+    AC_MSG_WARN([input file $ac_prefix_conf_INP does not exist, dnl
     skip generating $ac_prefix_conf_OUT])
   fi
   rm -f conftest.* 
