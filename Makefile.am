@@ -14,6 +14,8 @@ m4data_DATA = log4cpp.m4
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = log4cpp.pc
 
+ACLOCAL_AMFLAGS = -I m4
+
 EXTRA_DIST = \
 	log4cpp.spec.in log4cpp.spec log4cpp.m4 \
 	m4/ac_config_libconfig_in.m4 \
@@ -58,4 +60,4 @@ docs:
 
 doc-dist: docs
 	tar -zcf $(PACKAGE)-docs-$(VERSION).tar.gz -C $(top_srcdir)/doc/html --exclude CVS .
- 
+
