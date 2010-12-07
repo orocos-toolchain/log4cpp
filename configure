@@ -18340,7 +18340,7 @@ ac_prefix_conf_DEF=`echo _$ac_prefix_conf_OUT | sed -e 'y:abcdefghijklmnopqrstuv
 ac_prefix_conf_PKG=`echo $PACKAGE_TARNAME`
 ac_prefix_conf_LOW=`echo _$ac_prefix_conf_PKG | sed -e 'y:ABCDEFGHIJKLMNOPQRSTUVWXYZ-:abcdefghijklmnopqrstuvwxyz_:'`
 ac_prefix_conf_UPP=`echo $ac_prefix_conf_PKG | sed -e 'y:abcdefghijklmnopqrstuvwxyz-:ABCDEFGHIJKLMNOPQRSTUVWXYZ_:'  -e '/^[0-9]/s/^/_/'`
-ac_prefix_conf_INP=`echo $srcdir/include/config.h.in`
+ac_prefix_conf_INP=`echo include/config.h`
 if test "$ac_prefix_conf_INP" = "_"; then
    case $ac_prefix_conf_OUT in
       */*) ac_prefix_conf_INP=`basename $ac_prefix_conf_OUT`
@@ -18398,7 +18398,8 @@ $as_echo X "$ac_prefix_conf_OUT"  |
     echo '/*' $ac_prefix_conf_DEF '*/' >>$ac_prefix_conf_OUT
     echo '#endif' >>$ac_prefix_conf_OUT
   else
-    as_fn_error "input file $ac_prefix_conf_INP does not exist,     skip generating $ac_prefix_conf_OUT" "$LINENO" 5
+    { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: input file $ac_prefix_conf_INP does not exist,     skip generating $ac_prefix_conf_OUT" >&5
+$as_echo "$as_me: WARNING: input file $ac_prefix_conf_INP does not exist,     skip generating $ac_prefix_conf_OUT" >&2;}
   fi
   rm -f conftest.*
 fi
