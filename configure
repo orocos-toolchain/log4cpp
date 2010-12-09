@@ -15708,6 +15708,10 @@ LOG4CPP_PKGCONFIG="log4cpp-config"
 
 ac_config_files="$ac_config_files Makefile log4cpp.spec log4cpp.pc log4cpp-config config/Makefile doc/Makefile doc/Doxyfile doc/html/Makefile src/Makefile include/Makefile include/log4cpp/Makefile include/log4cpp/threading/Makefile tests/Makefile msvc6/Makefile msvc6/log4cpp/Makefile msvc6/log4cppDLL/Makefile msvc6/testCategory/Makefile msvc6/testDLL/Makefile msvc6/testMain/Makefile msvc6/testNDC/Makefile msvc6/testNTEventLog/Makefile msvc6/testPattern/Makefile bcb5/Makefile bcb5/log4cpp/Makefile bcb5/testCategory/Makefile bcb5/testConfig/Makefile bcb5/testFixedContextCategory/Makefile bcb5/testmain/Makefile bcb5/testNDC/Makefile bcb5/testPattern/Makefile openvms/Makefile"
 
+
+ac_config_commands="$ac_config_commands $srcdir/include/log4cpp/config.h"
+
+
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -16815,6 +16819,7 @@ do
     "bcb5/testNDC/Makefile") CONFIG_FILES="$CONFIG_FILES bcb5/testNDC/Makefile" ;;
     "bcb5/testPattern/Makefile") CONFIG_FILES="$CONFIG_FILES bcb5/testPattern/Makefile" ;;
     "openvms/Makefile") CONFIG_FILES="$CONFIG_FILES openvms/Makefile" ;;
+    "$srcdir/include/log4cpp/config.h") CONFIG_COMMANDS="$CONFIG_COMMANDS $srcdir/include/log4cpp/config.h" ;;
 
   *) as_fn_error "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
@@ -18296,48 +18301,9 @@ compiler_lib_search_path=$lt_compiler_lib_search_path_CXX
 _LT_EOF
 
  ;;
-
-  esac
-done # for ac_tag
-
-
-as_fn_exit 0
-_ACEOF
-ac_clean_files=$ac_clean_files_save
-
-test $ac_write_fail = 0 ||
-  as_fn_error "write failure creating $CONFIG_STATUS" "$LINENO" 5
-
-
-# configure is writing to config.log, and then calls config.status.
-# config.status does its own redirection, appending to config.log.
-# Unfortunately, on DOS this fails, as config.log is still kept open
-# by configure, so config.status won't be able to write to it; its
-# output is simply discarded.  So we exec the FD to /dev/null,
-# effectively closing config.log, so it can be properly (re)opened and
-# appended to by config.status.  When coming back to configure, we
-# need to make the FD available again.
-if test "$no_create" != yes; then
-  ac_cs_success=:
-  ac_config_status_args=
-  test "$silent" = yes &&
-    ac_config_status_args="$ac_config_status_args --quiet"
-  exec 5>/dev/null
-  $SHELL $CONFIG_STATUS $ac_config_status_args || ac_cs_success=false
-  exec 5>>config.log
-  # Use ||, not &&, to avoid exiting from the if with $? = 1, which
-  # would make configure fail if this is the last instruction.
-  $ac_cs_success || as_fn_exit $?
-fi
-if test -n "$ac_unrecognized_opts" && test "$enable_option_checking" != no; then
-  { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: unrecognized options: $ac_unrecognized_opts" >&5
-$as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
-fi
-
-
-ac_prefix_conf_OUT=`echo $srcdir/include/log4cpp/config.h`
+    "$srcdir/include/log4cpp/config.h":C) ac_prefix_conf_OUT=`echo $srcdir/include/log4cpp/config.h`
 ac_prefix_conf_DEF=`echo _$ac_prefix_conf_OUT | sed -e 'y:abcdefghijklmnopqrstuvwxyz./,-:ABCDEFGHIJKLMNOPQRSTUVWXYZ____:'`
-ac_prefix_conf_PKG=`echo $PACKAGE_TARNAME`
+ac_prefix_conf_PKG=`echo log4cpp`
 ac_prefix_conf_LOW=`echo _$ac_prefix_conf_PKG | sed -e 'y:ABCDEFGHIJKLMNOPQRSTUVWXYZ-:abcdefghijklmnopqrstuvwxyz_:'`
 ac_prefix_conf_UPP=`echo $ac_prefix_conf_PKG | sed -e 'y:abcdefghijklmnopqrstuvwxyz-:ABCDEFGHIJKLMNOPQRSTUVWXYZ_:'  -e '/^[0-9]/s/^/_/'`
 ac_prefix_conf_INP=`echo include/config.h`
@@ -18402,4 +18368,44 @@ $as_echo X "$ac_prefix_conf_OUT"  |
 $as_echo "$as_me: WARNING: input file $ac_prefix_conf_INP does not exist,     skip generating $ac_prefix_conf_OUT" >&2;}
   fi
   rm -f conftest.*
+fi ;;
+
+  esac
+done # for ac_tag
+
+
+as_fn_exit 0
+_ACEOF
+ac_clean_files=$ac_clean_files_save
+
+test $ac_write_fail = 0 ||
+  as_fn_error "write failure creating $CONFIG_STATUS" "$LINENO" 5
+
+
+# configure is writing to config.log, and then calls config.status.
+# config.status does its own redirection, appending to config.log.
+# Unfortunately, on DOS this fails, as config.log is still kept open
+# by configure, so config.status won't be able to write to it; its
+# output is simply discarded.  So we exec the FD to /dev/null,
+# effectively closing config.log, so it can be properly (re)opened and
+# appended to by config.status.  When coming back to configure, we
+# need to make the FD available again.
+if test "$no_create" != yes; then
+  ac_cs_success=:
+  ac_config_status_args=
+  test "$silent" = yes &&
+    ac_config_status_args="$ac_config_status_args --quiet"
+  exec 5>/dev/null
+  $SHELL $CONFIG_STATUS $ac_config_status_args || ac_cs_success=false
+  exec 5>>config.log
+  # Use ||, not &&, to avoid exiting from the if with $? = 1, which
+  # would make configure fail if this is the last instruction.
+  $ac_cs_success || as_fn_exit $?
 fi
+if test -n "$ac_unrecognized_opts" && test "$enable_option_checking" != no; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: unrecognized options: $ac_unrecognized_opts" >&5
+$as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
+fi
+
+
+
