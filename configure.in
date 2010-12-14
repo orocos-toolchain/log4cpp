@@ -41,7 +41,7 @@ else
     GCC_CXXFLAGS="$CXXFLAGS -O2 -DNDEBUG"
 fi
 
-AM_PROG_LIBTOOL
+AC_PROG_LIBTOOL
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
 
@@ -165,6 +165,9 @@ bcb5/testNDC/Makefile
 bcb5/testPattern/Makefile
 openvms/Makefile
 ])
+
+AC_CONFIG_COMMANDS([$srcdir/include/log4cpp/config.h],[AC_CREATE_PREFIX_CONFIG_H([$srcdir/include/log4cpp/config.h], log4cpp, [include/config.h],[_PREFIX_PKG_CONFIG_H=$_PREFIX_PKG_CONFIG_H])])
+
 AC_OUTPUT
 
-AC_CREATE_PREFIX_CONFIG_H([$srcdir/include/log4cpp/config.h], $PACKAGE_TARNAME, [include/config.h])
+
