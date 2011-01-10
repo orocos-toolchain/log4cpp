@@ -133,7 +133,7 @@ HierarchyMaintainer::creator_function_t	HierarchyMaintainer::_creator_function =
 
     void HierarchyMaintainer::set_category_factory(creator_function_t creator_function)
 	{
-		assert(!creator_function);
+		assert(0 != creator_function);
 		_creator_function = creator_function;
 	}
 
