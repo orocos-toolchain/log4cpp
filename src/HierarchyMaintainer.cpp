@@ -17,6 +17,7 @@
 #endif
 
 #include <cstdio>
+#include <cassert>
 #include <log4cpp/HierarchyMaintainer.hh>
 #include <log4cpp/FileAppender.hh>
 
