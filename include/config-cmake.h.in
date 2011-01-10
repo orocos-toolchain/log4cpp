@@ -1,0 +1,7 @@
+#ifndef _LOG4CPP_CONFIG_H
+#define _LOG4CPP_CONFIG_H
+
+/* define if the compiler has stringstream */
+#cmakedefine01 LOG4CPP_HAVE_SSTREAM
+
+#endif
