@@ -2469,7 +2469,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 #  ? :+1 : ?   == just some internal changes, nothing breaks but might work
 #                 better
 # CURRENT : REVISION : AGE
-LT_VERSION=4:0:1
+LT_VERSION=6:0:0
 
 
 
