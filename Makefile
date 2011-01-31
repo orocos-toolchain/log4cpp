@@ -3,8 +3,8 @@ ifdef ROS_ROOT
 all: build/configure.stamp
 	cd build && make install
 build/configure.stamp:
-	mkdir -p build; cd build; ../configure --prefix=$(shell pwd)/install --disable-dot --disable-doxygen --disable-html-docs
+	mkdir -p build; cd build; cmake .. -DCMAKE_INSTALL_PREFIX=$(shell pwd)/install
 	touch build/configure.stamp
 else
-$(warning This Makefile only works with ROS rosmake, without rosmake do the normal configure, make, make install)
+$(warning This Makefile only works with ROS rosmake. Without rosmake, create a build directory and run cmake ..)
 endif
