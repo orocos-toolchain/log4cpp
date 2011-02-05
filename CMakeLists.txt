@@ -15,13 +15,17 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 INCLUDE_DIRECTORIES ( ${CMAKE_SOURCE_DIR}/include )
 INCLUDE_DIRECTORIES ( ${CMAKE_SOURCE_DIR}/. )
 
+# for pkgconfig
+SET(LOG4CPP_CFLAGS)
+SET(LOG4CPP_LIBS)
+
 IF (WIN32)
-  ADD_DEFINITIONS ( -D_CRT_SECURE_NO_WARNINGS -DLOG4CPP_HAS_DLL -DLOG4CPP_BUILD_DLL )
+  LIST(APPEND LOG4CPP_CFLAGS -D_CRT_SECURE_NO_WARNINGS -DLOG4CPP_HAS_DLL -DLOG4CPP_BUILD_DLL )
 ELSE (WIN32)
   IF (APPLE)
-#    ADD_DEFINITIONS ( -DLOG4CPP_HAVE_SSTREAM )
+#	LIST(APPEND LOG4CPP_CFLAGS -DLOG4CPP_HAVE_SSTREAM)
   ELSE (APPLE)
-    ADD_DEFINITIONS ( -pthread)
+	LIST(APPEND LOG4CPP_CFLAGS -pthread)
   ENDIF (APPLE)
 ENDIF (WIN32)
 
@@ -85,6 +89,12 @@ IF (WIN32)
   SET_TARGET_PROPERTIES(${LOG4CPP_LIBRARY_NAME} PROPERTIES LINK_FLAGS /NODEFAULTLIB:msvcrt)
 ENDIF (WIN32)
 
+ADD_DEFINITIONS(${LOG4CPP_CFLAGS})
+
+###########################################################
+# CONFIGURE
+###########################################################
+
 # replicate configure step
 # - these checks are all that is required for Ubuntu Lucid and Mac OS X Snow Leopard
 FILE(WRITE "${CMAKE_CURRENT_BINARY_DIR}/test-strstream.cpp.in"
@@ -100,6 +110,24 @@ TRY_COMPILE(LOG4CPP_HAVE_SSTREAM ${CMAKE_BINARY_DIR} ${CMAKE_BINARY_DIR}/test-st
 CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/include/config-cmake.h.in ${CMAKE_BINARY_DIR}/include/log4cpp/config.h)
 # BEFORE the source dir, so as not to accidentally pick up a configure'd file
 INCLUDE_DIRECTORIES(BEFORE ${CMAKE_BINARY_DIR}/include)
+
+###########################################################
+# INSTALL TARGETS
+###########################################################
+
+STRING(TOLOWER "${PROJECT_NAME}" PACKAGE)
+SET(VERSION "6.0.0")
+SET(prefix "${CMAKE_INSTALL_PREFIX}")
+SET(exec_prefix "${prefix}")
+SET(log4cpp_cflags "${LOG4CPP_CFLAGS}")
+SET(log4cpp_libs "${LOG4CPP_LIBS}")
+SET(includedir "${prefix}/include")
+SET(libdir "${prefix}/lib")
+CONFIGURE_FILE(log4cpp.pc.in ${CMAKE_BINARY_DIR}/log4cpp.pc)
+INSTALL(
+  FILES ${CMAKE_BINARY_DIR}/log4cpp.pc
+  DESTINATION lib/pkgconfig
+  )
 
 INSTALL (
   DIRECTORY include/log4cpp
