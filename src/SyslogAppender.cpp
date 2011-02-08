@@ -8,7 +8,7 @@
  */
 
 #include "PortabilityImpl.hh"
-#if LOG4CPP_HAVE_SYSLOG
+#ifdef LOG4CPP_HAVE_SYSLOG
 
 #include <unistd.h>
 #include <sys/types.h>

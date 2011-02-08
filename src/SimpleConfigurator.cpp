@@ -32,7 +32,7 @@
 #include <log4cpp/NDC.hh>
 #include <log4cpp/PatternLayout.hh>
 #include <log4cpp/SimpleConfigurator.hh>
-#if LOG4CPP_HAVE_SYSLOG
+#ifdef LOG4CPP_HAVE_SYSLOG
 #include <log4cpp/SyslogAppender.hh>
 #endif
 #include <log4cpp/RemoteSyslogAppender.hh>
@@ -112,7 +112,7 @@ namespace log4cpp {
                         appender =
                             new log4cpp::FileAppender(categoryName, ::dup(fileno(stderr)));
                     }
-#if LOG4CPP_HAVE_SYSLOG
+#ifdef LOG4CPP_HAVE_SYSLOG
                     else if (appenderName.compare("syslog") == 0) {
                         std::string syslogName;
                         int facility;
