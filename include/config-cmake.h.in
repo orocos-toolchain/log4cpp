@@ -2,6 +2,36 @@
 #define _LOG4CPP_CONFIG_H
 
 /* define if the compiler has stringstream */
-#cmakedefine01 LOG4CPP_HAVE_SSTREAM
+#cmakedefine LOG4CPP_HAVE_SSTREAM
+
+/* Define if you have the `gettimeofday' function. */
+#cmakedefine LOG4CPP_HAVE_GETTIMEOFDAY
+
+/* Define if you have the <stdint.h> header file. */
+#cmakedefine LOG4CPP_HAVE_STDINT_H
+
+/* Define if you have the <unistd.h> header file. */
+#cmakedefine LOG4CPP_HAVE_UNISTD_H
+
+/* Define if you have the <io.h> header file. */
+#cmakedefine LOG4CPP_HAVE_IO_H
+
+/* define if the C library has snprintf */
+#cmakedefine LOG4CPP_HAVE_SNPRINTF
+
+/* Define if you have the `syslog' function. */
+#cmakedefine LOG4CPP_HAVE_SYSLOG
+
+/* define if the C library has localtime_r */
+#cmakedefine LOG4CPP_HAVE_LOCALTIME_R
+
+/* define if the C library has ftime */
+#cmakedefine LOG4CPP_HAVE_FTIME
+
+/* define if the compiler has int64_t */
+#cmakedefine LOG4CPP_HAVE_INT64_T
+
+/* define if the compiler implements namespaces */
+#cmakedefine LOG4CPP_HAVE_NAMESPACES
 
 #endif

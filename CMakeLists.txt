@@ -95,18 +95,9 @@ ADD_DEFINITIONS(${LOG4CPP_CFLAGS})
 # CONFIGURE
 ###########################################################
 
-# replicate configure step
-# - these checks are all that is required for Ubuntu Lucid and Mac OS X Snow Leopard
-FILE(WRITE "${CMAKE_CURRENT_BINARY_DIR}/test-strstream.cpp.in"
-"#include <strstream>\n"
-"int main()\n"
-"{\n"
-"	std::ostrstream	os;\n"
-"	os.str();\n"
-"	return 0;\n"
-"}")
-CONFIGURE_FILE(${CMAKE_CURRENT_BINARY_DIR}/test-strstream.cpp.in ${CMAKE_CURRENT_BINARY_DIR}/test-strstream.cpp)
-TRY_COMPILE(LOG4CPP_HAVE_SSTREAM ${CMAKE_BINARY_DIR} ${CMAKE_BINARY_DIR}/test-strstream.cpp OUTPUT_VARIABLE OUTPUT)
+# determine what system supports (equivalent of autotools' "./configure")
+INCLUDE("${CMAKE_SOURCE_DIR}/Configure.cmake")
+
 CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/include/config-cmake.h.in ${CMAKE_BINARY_DIR}/include/log4cpp/config.h)
 # BEFORE the source dir, so as not to accidentally pick up a configure'd file
 INCLUDE_DIRECTORIES(BEFORE ${CMAKE_BINARY_DIR}/include)
