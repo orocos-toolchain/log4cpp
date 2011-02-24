@@ -89,6 +89,12 @@ IF (WIN32)
   SET_TARGET_PROPERTIES(${LOG4CPP_LIBRARY_NAME} PROPERTIES LINK_FLAGS /NODEFAULTLIB:msvcrt)
 ENDIF (WIN32)
 
+# Note: this so-version is required by OCL, such that it can distinguish 'regular' log4cpp
+# from 'rtt' log4cpp.
+SET(VERSION "6.0.0")
+SET(SOVERSION "6.0")
+SET_TARGET_PROPERTIES(${LOG4CPP_LIBRARY_NAME} PROPERTIES VERSION ${VERSION} SOVERSION ${SOVERSION})
+
 ADD_DEFINITIONS(${LOG4CPP_CFLAGS})
 
 ###########################################################
@@ -107,7 +113,6 @@ INCLUDE_DIRECTORIES(BEFORE ${CMAKE_BINARY_DIR}/include)
 ###########################################################
 
 STRING(TOLOWER "${PROJECT_NAME}" PACKAGE)
-SET(VERSION "6.0.0")
 SET(prefix "${CMAKE_INSTALL_PREFIX}")
 SET(exec_prefix "\${prefix}")
 SET(log4cpp_cflags "")
@@ -115,6 +120,7 @@ SET(log4cpp_libs "${LOG4CPP_LIBS}")
 SET(includedir "\${prefix}/include")
 SET(libdir "\${prefix}/lib")
 CONFIGURE_FILE(log4cpp.pc.in ${CMAKE_BINARY_DIR}/log4cpp.pc @ONLY)
+
 INSTALL(
   FILES ${CMAKE_BINARY_DIR}/log4cpp.pc
   DESTINATION lib/pkgconfig
