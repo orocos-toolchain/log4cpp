@@ -139,7 +139,10 @@ typedef u_long in_addr_t;
 
 /* define mode_t. Move to Portability.hh if more platforms need it */
 #if !defined(__BORLANDC__)
-typedef int mode_t;
+namespace log4cpp
+{
+	typedef int mode_t;
+}
 #endif
 
 #if defined(_MSC_VER) && _MSC_VER == 1310
