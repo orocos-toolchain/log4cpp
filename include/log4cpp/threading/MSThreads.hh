@@ -45,7 +45,7 @@ namespace log4cpp {
          * identifiers look like is completely up to the underlying
          * thread library.
          **/
-        std::string getThreadId();
+        LOG4CPP_EXPORT std::string getThreadId();
         /**
          * Return an identifier for the current thread. What these
          * identifiers look like is completely up to the underlying
@@ -54,7 +54,7 @@ namespace log4cpp {
 		 * @param buffer Character buffer of at least 16 in size
 		 * @return buffer
          **/
-        char* getThreadId(char* buffer);
+        LOG4CPP_EXPORT char* getThreadId(char* buffer);
 
         /**
          * A simple object wrapper around CreateMutex() and DeleteMutex()
