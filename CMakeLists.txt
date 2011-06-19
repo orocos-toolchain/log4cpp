@@ -146,3 +146,19 @@ INSTALL(TARGETS ${LOG4CPP_LIBRARY_NAME}
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
     RUNTIME DESTINATION lib)
+
+###########################################################
+# DOCUMENTATION
+###########################################################
+
+find_package( Doxygen )
+IF ( DOXYGEN_EXECUTABLE )
+  SET(PACKAGE_NAME "${PROJECT_NAME}")
+  SET(PACKAGE_VERSION "${VERSION}")
+  SET(enable_latex_docs "NO")
+  SET(enable_html_docs "YES")
+  SET(top_srcdir "${CMAKE_SOURCE_DIR}")
+  SET(enable_dot "${DOT_EXECUTABLE}")
+  CONFIGURE_FILE(doc/Doxyfile.in Doxyfile @ONLY)
+  ADD_CUSTOM_TARGET(docs ${DOXYGEN_EXECUTABLE} "Doxyfile")
+ENDIF ( DOXYGEN_EXECUTABLE )
