@@ -161,12 +161,32 @@ FILE(WRITE "${CMAKE_CURRENT_BINARY_DIR}/configure-tryouts/namespaces.cpp.in"
 CONFIGURE_FILE(${CMAKE_CURRENT_BINARY_DIR}/configure-tryouts/namespaces.cpp.in ${CMAKE_CURRENT_BINARY_DIR}/configure-tryouts/namespaces.cpp)
 TRY_COMPILE(LOG4CPP_HAVE_NAMESPACES ${CMAKE_BINARY_DIR} ${CMAKE_BINARY_DIR}/configure-tryouts/namespaces.cpp OUTPUT_VARIABLE OUTPUT)
 
+###########################################################
+# LOG4CPP THREADING (only win32 or pthread supported)
+###########################################################
+
+find_package(Threads)
+
+IF (CMAKE_THREAD_LIBS_INIT)
+
+    IF(CMAKE_USE_WIN32_THREADS_INIT)
+        SET(LOG4CPP_HAVE_THREADING TRUE)
+        SET(LOG4CPP_USE_MSTHREADS TRUE)
+        MESSAGE(STATUS "Log4cpp threading support enabled using win32 threads")
+    ENDIF(CMAKE_USE_WIN32_THREADS_INIT)
+
+    IF(CMAKE_USE_PTHREADS_INIT)
+        SET(LOG4CPP_HAVE_THREADING TRUE)
+        SET(LOG4CPP_USE_PTHREADS TRUE)
+        MESSAGE(STATUS "Log4cpp threading support enabled using pthreads")
+    ENDIF(CMAKE_USE_PTHREADS_INIT)
+
+ENDIF (CMAKE_THREAD_LIBS_INIT)
+
 # TODO
 #LOG4CPP_HAVE_BOOST
 #LOG4CPP_HAVE_DLFCN_H 
 #LOG4CPP_HAVE_IN_ADDR_T 
 #LOG4CPP_HAVE_LIBIDSA
-#LOG4CPP_HAVE_THREADING
-#LOG4CPP_USE_MSTHREADS
 #LOG4CPP_USE_ONMITHREADS
-#LOG4CPP_USE_PTHREADS
+

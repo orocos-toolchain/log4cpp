@@ -34,4 +34,13 @@
 /* define if the compiler implements namespaces */
 #cmakedefine LOG4CPP_HAVE_NAMESPACES
 
+/* define if you have threading support */
+#cmakedefine LOG4CPP_HAVE_THREADING
+
+/* define if you use win32 thread */
+#cmakedefine LOG4CPP_USE_MSTHREADS
+
+/* define if you use pthreads */
+#cmakedefine LOG4CPP_USE_PTHREADS
+
 #endif
