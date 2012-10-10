@@ -1,3 +1,10 @@
+2012-10-10 15:12  sanchouss_
+
+	* include/log4cpp/RollingFileAppender.hh, src/RollingFileAppender.cpp: 
+	[feature] number history files so that they can be lexicographically ordered by name properly.
+	Width of file extension is made constant and depends on count of backup files (i.e., 
+	for number of 15 backup files, extensions will be .01, .02, ..., .14, .15)
+
 2007-09-03 12:25  waffel
 
 	* configure.in: [feature] changed version to 1.0
