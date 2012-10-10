@@ -1,3 +1,9 @@
+2012-10-10 16:45  sanchouss_
+
+	* include/log4cpp/NDC.hh, src/NDC.cpp: small optimization to avoid invokation of thread-specific 
+	routines each time when a string is constructed from a log event in case if NDC feature is never used.
+	Tests show slight improvement when pthread_setspecific() is not called each time event is logged.
+
 2012-10-10 15:12  sanchouss_
 
 	* include/log4cpp/RollingFileAppender.hh, src/RollingFileAppender.cpp: 
