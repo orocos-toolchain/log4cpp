@@ -84,6 +84,7 @@
     </Midl>
     <PostBuildEvent>
       <Command>copy ..\..\tests\log4cpp.property .</Command>
+      <Command>copy ..\..\tests\log4cpp.nt.property .</Command>
     </PostBuildEvent>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -127,11 +128,6 @@
       <Culture>0x0409</Culture>
     </ResourceCompile>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <None Include="..\..\tests\log4cpp.property" />
-    <None Include="ClassDiagram1.cd" />
-    <None Include="log4cpp.xml" />
-  </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\tests\testPropConfig.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
