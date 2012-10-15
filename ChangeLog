@@ -1,3 +1,9 @@
+2012-10-15 18:48  sanchouss_
+	
+	* msvc10/ Converted solution for building from MSVC 2010 with small adjustments. Output is targeted 
+	into building directory instead of system32 dir (due to windows UAC restrictions)
+	* src/RollingFileAppender.cpp - resolved ambiguity of log10
+	
 2012-10-10 16:45  sanchouss_
 
 	* include/log4cpp/NDC.hh, src/NDC.cpp: small optimization to avoid invokation of thread-specific 
