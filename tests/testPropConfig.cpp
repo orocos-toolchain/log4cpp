@@ -55,7 +55,7 @@ int main(int argc, char* argv[])
     sub2.warn("sub2 warn 6");
     sub2.warn("sub2 warn 7");
 
-#if !defined(WIN32)
+#if defined(WIN32)
     log4cpp::Category& nt = 
         log4cpp::Category::getInstance(std::string("subNT"));
     nt.error("subNT error");
