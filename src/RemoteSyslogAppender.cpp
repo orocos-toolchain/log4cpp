@@ -111,7 +111,7 @@ namespace log4cpp {
                     return; // fail silently                    
                 }
             }
-            _ipAddr = *(pent->h_addr);
+            _ipAddr = *(in_addr_t*)(pent->h_addr); // fixed bug #1579890
         }
         // Get a datagram socket.
         
