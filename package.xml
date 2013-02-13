@@ -1,0 +1,18 @@
+<package>
+  <name>log4cpp</name>
+  <version>6.0.0</version>
+  <description >
+    Log4cpp maintained by Orocos developers
+    This version of log4cpp deviates from the official release
+    by adding custom category factories. Orocos requires this for
+    setting up real-time logging.
+  </description>
+  <author>Stephen Roderick, Bastiaan Bakker, Cedric Le Goater, Steve Ostlind, Marcel Harkema, Walter Stroebel, Glenn Scott and Tony Cheung.</author>
+  <maintainer email="orocos-dev@lists.mech.kuleuven.be">Orocos Developers Team</maintainer>
+  <license>LGPL v2.1 or later</license>
+  <url>http://log4cpp.sourceforge.net/</url>
+
+  <buildtool_depend>cmake</buildtool_depend>
+
+</package>
+

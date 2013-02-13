@@ -12,8 +12,8 @@
 PROJECT ( LOG4CPP )
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
-INCLUDE_DIRECTORIES ( ${CMAKE_SOURCE_DIR}/include )
-INCLUDE_DIRECTORIES ( ${CMAKE_SOURCE_DIR}/. )
+INCLUDE_DIRECTORIES ( ${CMAKE_CURRENT_SOURCE_DIR}/include )
+INCLUDE_DIRECTORIES ( ${CMAKE_CURRENT_SOURCE_DIR}/. )
 
 # for pkgconfig
 SET(LOG4CPP_CFLAGS)
@@ -101,11 +101,11 @@ ADD_DEFINITIONS(${LOG4CPP_CFLAGS})
 ###########################################################
 
 # determine what system supports (equivalent of autotools' "./configure")
-INCLUDE("${CMAKE_SOURCE_DIR}/Configure.cmake")
+INCLUDE("${CMAKE_CURRENT_SOURCE_DIR}/Configure.cmake")
 
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/include/config-cmake.h.in ${CMAKE_BINARY_DIR}/include/log4cpp/config.h)
+CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/include/config-cmake.h.in ${CMAKE_CURRENT_BINARY_DIR}/include/log4cpp/config.h)
 # BEFORE the source dir, so as not to accidentally pick up a configure'd file
-INCLUDE_DIRECTORIES(BEFORE ${CMAKE_BINARY_DIR}/include)
+INCLUDE_DIRECTORIES(BEFORE ${CMAKE_CURRENT_BINARY_DIR}/include)
 
 ###########################################################
 # INSTALL TARGETS
@@ -118,10 +118,10 @@ SET(log4cpp_cflags "")
 SET(log4cpp_libs "${LOG4CPP_LIBS}")
 SET(includedir "\${prefix}/include")
 SET(libdir "\${prefix}/lib")
-CONFIGURE_FILE(log4cpp.pc.in ${CMAKE_BINARY_DIR}/log4cpp.pc @ONLY)
+CONFIGURE_FILE(log4cpp.pc.in ${CMAKE_CURRENT_BINARY_DIR}/log4cpp.pc @ONLY)
 
 INSTALL(
-  FILES ${CMAKE_BINARY_DIR}/log4cpp.pc
+  FILES ${CMAKE_CURRENT_BINARY_DIR}/log4cpp.pc
   DESTINATION lib/pkgconfig
   )
 
@@ -136,7 +136,7 @@ INSTALL (
   )
 
 INSTALL (
-  FILES ${CMAKE_BINARY_DIR}/include/log4cpp/config.h
+  FILES ${CMAKE_CURRENT_BINARY_DIR}/include/log4cpp/config.h
   DESTINATION include/log4cpp
   )
 
