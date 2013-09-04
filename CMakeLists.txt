@@ -145,6 +145,8 @@ INSTALL(TARGETS ${LOG4CPP_LIBRARY_NAME}
     ARCHIVE DESTINATION lib
     RUNTIME DESTINATION lib)
 
+INSTALL(FILES package.xml DESTINATION share/log4cpp)
+
 ###########################################################
 # DOCUMENTATION
 ###########################################################
