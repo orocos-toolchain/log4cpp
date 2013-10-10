@@ -13,6 +13,7 @@
   <url>http://log4cpp.sourceforge.net/</url>
 
   <buildtool_depend>cmake</buildtool_depend>
+  <run_depend>catkin</run_depend>
 
   <export>
     <build_type>
