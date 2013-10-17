@@ -4,16 +4,20 @@
   <MACROS>
     <VERSION value="BCB.05.03"/>
     <PROJECT value="log4cpp.dll"/>
-    <OBJFILES value="SyslogAppender.obj RemoteSyslogAppender.obj AppenderSkeleton.obj 
-      BasicConfigurator.obj BasicLayout.obj Category.obj FileAppender.obj RollingFileAppender.obj Filter.obj 
-      FixedContextCategory.obj HierarchyMaintainer.obj IdsaAppender.obj 
-      LayoutAppender.obj LoggingEvent.obj NDC.obj 
-      OstreamAppender.obj PortabilityImpl.obj Priority.obj SimpleLayout.obj 
-      StringQueueAppender.obj Appender.obj CategoryStream.obj TimeStamp.obj 
-      Win32DebugAppender.obj PatternLayout.obj Configurator.obj ConfiguratorSkeleton.obj
-      SimpleConfigurator.obj PropertyConfigurator.obj
-      DummyThreads.obj MSThreads.obj OmniThreads.obj PThreads.obj"/>
+    <OBJFILES value="Appender.obj AppenderSkeleton.obj BasicConfigurator.obj BasicLayout.obj 
+      Category.obj CategoryStream.obj Configurator.obj DummyThreads.obj 
+      FileAppender.obj Filter.obj FixedContextCategory.obj 
+      HierarchyMaintainer.obj IdsaAppender.obj LayoutAppender.obj 
+      LoggingEvent.obj MSThreads.obj NDC.obj NTEventLogAppender.obj 
+      OmniThreads.obj OstreamAppender.obj PatternLayout.obj PortabilityImpl.obj 
+      Priority.obj Properties.obj PropertyConfigurator.obj 
+      PropertyConfiguratorImpl.obj PThreads.obj RemoteSyslogAppender.obj 
+      RollingFileAppender.obj SimpleConfigurator.obj SimpleLayout.obj 
+      StringQueueAppender.obj StringUtil.obj SyslogAppender.obj TimeStamp.obj 
+      Win32DebugAppender.obj AbortAppender.obj Localtime.obj"/>
     <RESFILES value=""/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
     <LIBFILES value=""/>
@@ -28,7 +32,7 @@
     <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
     <RELEASELIBPATH value="$(BCB)\lib\release"/>
     <LINKER value="tlink32"/>
-    <USERDEFINES value="_DEBUG;LOG4CPP_HAS_DLL;LOG4CPP_BUILD_DLL"/>
+    <USERDEFINES value="_DEBUG;LOG4CPP_HAS_DLL;LOG4CPP_BUILD_DLL;WIN32"/>
     <SYSDEFINES value="NO_STRICT;_NO_VCL;_RTLDLL"/>
     <MAINSOURCE value="log4cpp.bpf"/>
     <INCLUDEPATH value="..\..\src;$(BCB)\include;..\..\include"/>
@@ -36,6 +40,8 @@
     <WARNINGS value="-w-par"/>
   </MACROS>
   <OPTIONS>
+    <IDLCFLAGS value="-I..\..\src -I$(BCB)\include -I..\..\include -src_suffix cpp -D_DEBUG 
+      -DLOG4CPP_HAS_DLL -DLOG4CPP_BUILD_DLL -DWIN32 -boa"/>
     <CFLAG1 value="-WD -Od -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -tWD -tWM -c"/>
     <PFLAGS value="-N2. -N0. -$YD -$W -$O- -v -JPHNE -M"/>
     <RFLAGS value=""/>
@@ -88,8 +94,9 @@ Count=1
 Item0=$(BCB)\source\vcl
 
 [HistoryLists\hlConditionals]
-Count=1
-Item0=_DEBUG;LOG4CPP_HAS_DLL;LOG4CPP_BUILD_DLL
+Count=2
+Item0=_DEBUG;LOG4CPP_HAS_DLL;LOG4CPP_BUILD_DLL;WIN32
+Item1=_DEBUG;LOG4CPP_HAS_DLL;LOG4CPP_BUILD_DLL
 
 [HistoryLists\hlIntOutputDir]
 Count=1
@@ -109,5 +116,6 @@ RemoteDebug=0
 ShowInfoMsgs=0
 LinkDebugVcl=0
 LinkCGLIB=0
+
   </IDEOPTIONS>
 </PROJECT>
