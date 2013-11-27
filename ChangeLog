@@ -1,5 +1,9 @@
 2012-10-15 18:48  sanchouss_
 	
+	* Migrated from cvs to git scm. Url is ssh://USERNAME@git.code.sf.net/p/log4cpp/codegit 
+
+	2012-10-15 18:48  sanchouss_
+	
 	* msvc10/ Converted solution for building from MSVC 2010 with small adjustments. Output is targeted 
 	into building directory instead of system32 dir (due to windows UAC restrictions)
 	* src/RollingFileAppender.cpp - resolved ambiguity of log10
