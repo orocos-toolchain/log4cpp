@@ -25,10 +25,23 @@ namespace log4cpp {
         std::string leftSide, rightSide;
         char line[256];
         std::string::size_type length;
+        bool partiallyRead(false);	// fix for bug#137, for strings longer than 256 chars
 
-        while (in.getline(line, 256)) {
-            fullLine = line;
-
+        while (in) {
+        	if (in.getline(line, 256) || !in.bad()) {
+        		// either string is read fully or only partially (logical but not read/write error)
+        		if (partiallyRead)
+        			fullLine.append(line);
+        		else
+        			fullLine = line;
+        		partiallyRead = (in.fail() && !in.bad());
+        		if (partiallyRead && !in.eof()) {
+        			in.clear(in.rdstate() & ~std::ios::failbit);
+        			continue; // to get full line
+        		}
+        	} else {
+       			break;
+        	}
             /* if the line contains a # then it is a comment
                if we find it anywhere other than the beginning, then we assume 
                there is a command on that line, and it we don't find it at all

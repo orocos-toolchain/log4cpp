@@ -67,6 +67,9 @@ int main(int argc, char* argv[])
     log4cpp::Category& sub2 = 
         log4cpp::Category::getInstance(std::string("sub1.sub2"));
 
+    log4cpp::Category& sub3 =
+        log4cpp::Category::getInstance(std::string("sub1.sub2.sub3"));
+
     root.error("root error");
     root.warn("root warn");
     sub1.error("sub1 error");
@@ -95,6 +98,8 @@ int main(int argc, char* argv[])
 
     sub2 << log4cpp::Priority::WARN << "warn2.." << "..warn3..value=" << 0 
          << log4cpp::eol << "..warn4";
+
+    sub3 << log4cpp::Priority::INFO << "Very long config string follows";
 
     log4cpp::Category::shutdown();
 
