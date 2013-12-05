@@ -1,4 +1,8 @@
-2012-10-15 18:48  sanchouss_
+2013-12-05 18:48  sanchouss_
+	
+	* Fixed bug#137. Adjusted git attributes for *.dsp files (bug #136)
+
+2013-11-27 18:48  sanchouss_
 	
 	* Migrated from cvs to git scm. Url is ssh://USERNAME@git.code.sf.net/p/log4cpp/codegit 
 
