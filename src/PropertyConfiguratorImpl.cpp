@@ -25,6 +25,7 @@
 #include <log4cpp/OstreamAppender.hh>
 #include <log4cpp/FileAppender.hh>
 #include <log4cpp/RollingFileAppender.hh>
+#include <log4cpp/GenerationalFileAppender.hh>
 #include <log4cpp/AbortAppender.hh>
 #ifdef WIN32
 #include <log4cpp/Win32DebugAppender.hh>
@@ -213,6 +214,11 @@ namespace log4cpp {
             bool append = _properties.getBool(appenderPrefix + ".append", true);
             appender = new RollingFileAppender(appenderName, fileName, maxFileSize, maxBackupIndex,
                 append);
+        }
+        else if (appenderType == "GenerationalFileAppender") {
+            std::string fileName = _properties.getString(appenderPrefix + ".fileName", "foobar");
+            bool append = _properties.getBool(appenderPrefix + ".append", true);
+            appender = new GenerationalFileAppender(appenderName, fileName, append);
         }
         else if (appenderType == "SyslogAppender") {
             std::string syslogName = _properties.getString(appenderPrefix + ".syslogName", "syslog");

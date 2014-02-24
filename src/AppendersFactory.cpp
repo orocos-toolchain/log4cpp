@@ -7,6 +7,7 @@ namespace log4cpp
 
    std::auto_ptr<Appender> create_file_appender(const FactoryParams&);
    std::auto_ptr<Appender> create_roll_file_appender(const FactoryParams&);
+   std::auto_ptr<Appender> create_generation_file_appender(const FactoryParams&);
    std::auto_ptr<Appender> create_idsa_appender(const FactoryParams&);
    std::auto_ptr<Appender> create_nt_event_log_appender(const FactoryParams&);
    std::auto_ptr<Appender> create_remote_syslog_appender(const FactoryParams&);
@@ -23,6 +24,7 @@ namespace log4cpp
          
          af->registerCreator("file", &create_file_appender);
          af->registerCreator("roll file", &create_roll_file_appender);
+         af->registerCreator("generation file", &create_generation_file_appender);
          af->registerCreator("remote syslog", &create_remote_syslog_appender);
          af->registerCreator("abort", &create_abort_appender);
 

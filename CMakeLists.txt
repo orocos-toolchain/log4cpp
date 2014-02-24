@@ -48,6 +48,7 @@ ADD_LIBRARY ( ${LOG4CPP_LIBRARY_NAME} SHARED
   src/LayoutAppender.cpp
   src/FileAppender.cpp
   src/RollingFileAppender.cpp
+  src/GenerationalFileAppender.cpp
   src/FixedContextCategory.cpp
   src/IdsaAppender.cpp
   src/OstreamAppender.cpp
