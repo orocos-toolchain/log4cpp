@@ -140,12 +140,26 @@ namespace log4cpp {
             } else if (timeFormat == "DATE") {
                 timeFormat = FORMAT_DATE;
             }
+			// want milliseconds?
             std::string::size_type pos = timeFormat.find("%l");
             if (pos == std::string::npos) {
-                _printMillis = false;
-                _timeFormat1 = timeFormat; 
+
+				// want microseconds?
+				std::string::size_type pos = timeFormat.find("%L");
+				if (pos == std::string::npos) {
+					_printMillis = false;
+					_printMicros = false;
+					_timeFormat1 = timeFormat;
+				} else {
+					_printMillis = false;
+					_printMicros = true;
+					_timeFormat1 = timeFormat.substr(0, pos);
+					_timeFormat2 = timeFormat.substr(pos + 2);
+				}
+
             } else {
                 _printMillis = true;
+				_printMicros = false;
                 _timeFormat1 = timeFormat.substr(0, pos);
                 _timeFormat2 = timeFormat.substr(pos + 2);
             }
@@ -155,13 +169,20 @@ namespace log4cpp {
             struct std::tm currentTime;
             std::time_t t = event.timeStamp.getSeconds();
             localtime(&t, &currentTime);
-            char formatted[100];
+            char formatted[103];
             std::string timeFormat;
             if (_printMillis) {
                 std::ostringstream formatStream;
                 formatStream << _timeFormat1 
                              << std::setw(3) << std::setfill('0')
                              << event.timeStamp.getMilliSeconds()
+                             << _timeFormat2;
+                timeFormat = formatStream.str();
+			} else if (_printMicros) {
+                std::ostringstream formatStream;
+                formatStream << _timeFormat1
+                             << std::setw(6) << std::setfill('0')
+                             << event.timeStamp.getMicroSeconds()
                              << _timeFormat2;
                 timeFormat = formatStream.str();
             } else {
@@ -175,6 +196,7 @@ namespace log4cpp {
         std::string _timeFormat1;
         std::string _timeFormat2;
         bool _printMillis;
+        bool _printMicros;
     };
 
     const char* const TimeStampComponent::FORMAT_ISO8601 = "%Y-%m-%d %H:%M:%S,%l";

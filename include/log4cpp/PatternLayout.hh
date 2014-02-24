@@ -69,8 +69,11 @@ namespace log4cpp {
          *  specifier enclosed between braces. For example, %%d{%%H:%%M:%%S,%%l} or %%d{%%d %%m %%Y %%H:%%M:%%S,%%l}.
          *  If no date format specifier is given then the following format is used:
          *  "Wed Jan 02 02:03:55 1980". The date format specifier admits the same syntax 
-         *  as the ANSI C function strftime, with 1 addition. The addition is the specifier
-         *  %%l for milliseconds, padded with zeros to make 3 digits.</li>
+         *  as the ANSI C function strftime, with 2 additions. The additions are the specifier
+         *  %%l for milliseconds (padded with zeros to make 3 digits), and the specifier %%L
+		 *  for microseconds (padded with zeros to make 6 digits). NB the precision of
+		 *  the microsecond additions is platform dependant, and may be no better than
+		 *  milliseconds.</li>
          * <li><b>%%m</b> - the message</li>
          * <li><b>%%n</b> - the platform specific line separator</li>
          * <li><b>%%p</b> - the priority</li>
