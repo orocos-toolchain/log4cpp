@@ -2,16 +2,9 @@
 # LOG4CPP_HAVE_SSTREAM
 ###########################################################
 
-FILE(WRITE "${CMAKE_CURRENT_BINARY_DIR}/configure-tryouts/strstream.cpp.in"
-"#include <strstream>\n"
-"int main()\n"
-"{\n"
-"	std::ostrstream	os;\n"
-"	os.str();\n"
-"	return 0;\n"
-"}")
-CONFIGURE_FILE(${CMAKE_CURRENT_BINARY_DIR}/configure-tryouts/strstream.cpp.in ${CMAKE_CURRENT_BINARY_DIR}/configure-tryouts/strstream.cpp)
-TRY_COMPILE(LOG4CPP_HAVE_SSTREAM ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_BINARY_DIR}/configure-tryouts/strstream.cpp OUTPUT_VARIABLE OUTPUT)
+INCLUDE(TestForSSTREAM)
+
+SET (LOG4CPP_HAVE_SSTREAM NOT ${CMAKE_NO_ANSI_STRING_HEADERS})
 
 ###########################################################
 # LOG4CPP_HAVE_GETTIMEOFDAY
