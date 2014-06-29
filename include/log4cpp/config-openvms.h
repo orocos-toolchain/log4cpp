@@ -1,3 +1,10 @@
+/*
+ * Copyright 2002, LifeLine Networks BV (www.lifeline.nl). All rights reserved.
+ * Copyright 2002, Bastiaan Bakker. All rights reserved.
+ *
+ * See the COPYING file for the terms of usage and distribution.
+ */
+
 #ifndef _INCLUDE_LOG4CPP_CONFIG_OPENVMS_H
 #define _INCLUDE_LOG4CPP_CONFIG_OPENVMS_H 1
  
