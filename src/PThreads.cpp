@@ -1,3 +1,9 @@
+/*
+ * Copyright 2002, Log4cpp Project. All rights reserved.
+ *
+ * See the COPYING file for the terms of usage and distribution.
+ */
+
 #include <log4cpp/threading/Threading.hh>
 
 #if defined(LOG4CPP_HAVE_THREADING) && defined(LOG4CPP_USE_PTHREADS)

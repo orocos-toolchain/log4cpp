@@ -11,3 +11,5 @@ Compiled source #
 #auto generated
 Makefile.in
 Makefile
+*.log
+

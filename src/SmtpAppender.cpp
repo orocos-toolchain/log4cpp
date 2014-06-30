@@ -1,3 +1,9 @@
+/*
+ * Copyright 2002, Log4cpp Project. All rights reserved.
+ *
+ * See the COPYING file for the terms of usage and distribution.
+ */
+
 #if defined(LOG4CPP_HAVE_BOOST)
 #include <boost/version.hpp>
 #if BOOST_VERSION >= 103500
