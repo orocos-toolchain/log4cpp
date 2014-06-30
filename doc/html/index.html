@@ -309,6 +309,29 @@ For some small examples using log4cpp, see the 'tests' subdirectory.
 Also see the documentation section for a pointer for API documentation
 and more usage information. 
 <h4>3.2. Is log4cpp thread-safe?</h4>
+The same instance of the log4cpp::Category object (a logger) can be used from different threads simultaneously without explicit synchronization. Concurrent access to the appenders will be prevented by the logger object itself. It will lock internal mutex each time when it comes to writing into appenders. So, it is safe, for example, to write from the multiple threads to the same logger which appends to the same file.
+Although, log4cpp is configured in such a way that two different loggers append to the same appender (it may be a file), then there will be no way for the logging framework to arrange proper addition and things can get mixed up. So this way of configuration is not recommended.
+<h4>3.3. What are possible format characters for the custom log message?</h4>
+PatternLayout supports following set of format characters:<br>
+<li><b>%%</b> - a single percent sign</li>
+<li><b>%c</b> - the category</li>
+<li><b>%d</b> - the date\n
+ Date format: The date format character may be followed by a date format
+ specifier enclosed between braces. For example, %d{%H:%M:%S,%l} or %d{%d %m %Y %H:%M:%S,%l}.
+ If no date format specifier is given then the following format is used:
+"Wed Jan 02 02:03:55 1980". The date format specifier admits the same syntax
+as the ANSI C function strftime, with 1 addition. The addition is the specifier
+%l for milliseconds, padded with zeros to make 3 digits.</li>
+      <li><b>%m</b> - the message</li>
+      <li><b>%n</b> - the platform specific line separator</li>
+      <li><b>%p</b> - the priority</li>
+      <li><b>%r</b> - milliseconds since this layout was created.</li>
+      <li><b>%R</b> - seconds since Jan 1, 1970</li>
+      <li><b>%u</b> - clock ticks since process start</li>
+      <li><b>%x</b> - the NDC</li>
+      <li><b>%t</b> - thread name</li>
+      
+      By default, ConversionPattern for PatternLayout is set to "%m%n".<br>
 <h3>4. PROBLEMS AND ERROR MESSAGES</h3>
 <h4>4.1. I get 'Naming collision for 'ERROR' detected. Please
 read the FAQ for a workaround.'</h4>
