@@ -111,7 +111,7 @@ namespace log4cpp {
                     return; // fail silently                    
                 }
             }
-            _ipAddr = *(pent->h_addr);
+            _ipAddr = (struct in_addr*)pent->h_addr;
         }
         // Get a datagram socket.
         
@@ -143,8 +143,14 @@ namespace log4cpp {
         sockaddr_in sain;
         sain.sin_family = AF_INET;
         sain.sin_port   = htons (_portNumber);
+
+        if (_ipAddr == NULL)
+        {
+            return;    // Fail silently
+        }
+        
         // NO, do NOT use htonl on _ipAddr. Is already in network order.
-        sain.sin_addr.s_addr = _ipAddr;
+        sain.sin_addr.s_addr = _ipAddr->s_addr;
 
         while (messageLength > 0) {
             /* if packet larger than maximum (900 bytes), split
