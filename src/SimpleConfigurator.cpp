@@ -35,7 +35,9 @@
 #if LOG4CPP_HAVE_SYSLOG
 #include <log4cpp/SyslogAppender.hh>
 #endif
+#ifndef LOG4CPP_DISABLE_REMOTE_SYSLOG
 #include <log4cpp/RemoteSyslogAppender.hh>
+#endif
 #ifdef WIN32
 #include <log4cpp/NTEventLogAppender.hh>
 #endif
@@ -139,6 +141,7 @@ namespace log4cpp {
                             new log4cpp::NTEventLogAppender(categoryName, source);
                     } 
 #endif
+#if !defined(LOG4CPP_DISABLE_REMOTE_SYSLOG)
                     else if (appenderName.compare("remotesyslog") == 0) {
                         std::string syslogName;
                         std::string relayer;
@@ -158,7 +161,8 @@ namespace log4cpp {
                         }
                         appender =
                             new log4cpp::RemoteSyslogAppender(categoryName, syslogName, relayer, facility, portNumber);
-                    } 
+                    }
+#endif // LOG4CPP_DISABLE_REMOTE_SYSLOG
                     else {
                         throw ConfigureFailure("Invalid appender name (" +
                                                appenderName +

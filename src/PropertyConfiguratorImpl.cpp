@@ -30,7 +30,9 @@
 #include <log4cpp/Win32DebugAppender.hh>
 #include <log4cpp/NTEventLogAppender.hh>
 #endif
+#ifndef LOG4CPP_DISABLE_REMOTE_SYSLOG
 #include <log4cpp/RemoteSyslogAppender.hh>
+#endif // LOG4CPP_DISABLE_REMOTE_SYSLOG
 #ifdef LOG4CPP_HAVE_LIBIDSA
 #include <log4cpp/IdsaAppender.hh>
 #endif	// LOG4CPP_HAVE_LIBIDSA
@@ -214,6 +216,7 @@ namespace log4cpp {
             appender = new RollingFileAppender(appenderName, fileName, maxFileSize, maxBackupIndex,
                 append);
         }
+#ifndef LOG4CPP_DISABLE_REMOTE_SYSLOG
         else if (appenderType == "SyslogAppender") {
             std::string syslogName = _properties.getString(appenderPrefix + ".syslogName", "syslog");
             std::string syslogHost = _properties.getString(appenderPrefix + ".syslogHost", "localhost");
@@ -222,6 +225,7 @@ namespace log4cpp {
             appender = new RemoteSyslogAppender(appenderName, syslogName, 
                                                 syslogHost, facility, portNumber);
         }
+#endif // LOG4CPP_DISABLE_REMOTE_SYSLOG
 #ifdef LOG4CPP_HAVE_SYSLOG
         else if (appenderType == "LocalSyslogAppender") {
             std::string syslogName = _properties.getString(appenderPrefix + ".syslogName", "syslog");

@@ -74,10 +74,6 @@ AC_CHECK_FUNCS([localtime_r])
 # Checks for libraries
 # ----------------------------------------------------------------------------
 
-# for RemoteSyslogAppender
-AC_CHECK_LIB(socket,socket, LIBS="-lsocket $LIBS",,)
-AC_CHECK_LIB(nsl,gethostbyname, LIBS="-lnsl $LIBS",,)
-
 # checks for pthreads
 ACX_PTHREAD([enable_threads="pthread"],[enable_threads="no"])
 if test $enable_threads != "pthread"; then
@@ -125,6 +121,8 @@ case "$host" in
 esac
 
 PETI_PEDANTIC_GCC
+BB_ENABLE_REMOTE_SYSLOG
+BB_ENABLE_SMTP
 
 # Create files
 # ----------------------------------------------------------------------------
