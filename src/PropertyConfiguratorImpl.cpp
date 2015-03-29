@@ -25,6 +25,7 @@
 #include <log4cpp/OstreamAppender.hh>
 #include <log4cpp/FileAppender.hh>
 #include <log4cpp/RollingFileAppender.hh>
+#include <log4cpp/DailyRollingFileAppender.hh>
 #include <log4cpp/AbortAppender.hh>
 #ifdef WIN32
 #include <log4cpp/Win32DebugAppender.hh>
@@ -215,6 +216,12 @@ namespace log4cpp {
             bool append = _properties.getBool(appenderPrefix + ".append", true);
             appender = new RollingFileAppender(appenderName, fileName, maxFileSize, maxBackupIndex,
                 append);
+        }
+        else if (appenderType == "DailyRollingFileAppender") {
+            std::string fileName = _properties.getString(appenderPrefix + ".fileName", "foobar");
+            unsigned int maxDaysKeep = _properties.getInt(appenderPrefix + ".maxDaysKeep", 0);
+            bool append = _properties.getBool(appenderPrefix + ".append", true);
+            appender = new DailyRollingFileAppender(appenderName, fileName, maxDaysKeep, append);
         }
 #ifndef LOG4CPP_DISABLE_REMOTE_SYSLOG
         else if (appenderType == "SyslogAppender") {

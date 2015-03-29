@@ -224,6 +224,10 @@ SOURCE=..\..\src\RemoteSyslogAppender.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\DailyRollingFileAppender.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\RollingFileAppender.cpp
 # End Source File
 # Begin Source File
@@ -381,6 +385,10 @@ SOURCE=..\..\include\log4cpp\RemoteSyslogAppender.hh
 # Begin Source File
 
 SOURCE=..\..\include\log4cpp\RollingFileAppender.hh
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\log4cpp\DailyRollingFileAppender.hh
 # End Source File
 # Begin Source File
 

@@ -745,6 +745,28 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\..\src\DailyRollingFileAppender.cpp">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="0"
+						AdditionalIncludeDirectories=""
+						PreprocessorDefinitions="_DEBUG;WIN32;_WINDOWS;_MBCS;_USRDLL;LOG4CPP_HAS_DLL;LOG4CPP_BUILD_DLL;LOG4CPP_STLPORT_AND_BOOST_BUILD;_REENTRANT;$(NoInherit)"
+						BasicRuntimeChecks="3"
+						BrowseInformation="1"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						AdditionalIncludeDirectories=""
+						PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;_MBCS;_USRDLL;LOG4CPP_HAS_DLL;LOG4CPP_BUILD_DLL;$(NoInherit)"
+						BrowseInformation="1"/>
+				</FileConfiguration>
+			</File>
+			<File
 				RelativePath="..\..\src\SimpleConfigurator.cpp">
 				<FileConfiguration
 					Name="Debug|Win32">
@@ -972,6 +994,9 @@
 			</File>
 			<File
 				RelativePath="..\..\include\log4cpp\RemoteSyslogAppender.hh">
+			</File>
+			<File
+				RelativePath="..\..\include\log4cpp\DailyRollingFileAppender.hh">
 			</File>
 			<File
 				RelativePath="..\..\include\log4cpp\RollingFileAppender.hh">

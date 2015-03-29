@@ -518,10 +518,16 @@ link.exe /MACHINE:IX86 -dll -noentry -out:$(OutDir)\NTEventLogAppender.dll $(Out
 			RelativePath="..\..\include\log4cpp\RemoteSyslogAppender.hh">
 		</File>
 		<File
+			RelativePath="..\..\src\DailyRollingFileAppender.cpp">
+		</File>
+		<File
 			RelativePath="..\..\src\RollingFileAppender.cpp">
 		</File>
 		<File
 			RelativePath="..\..\include\log4cpp\RollingFileAppender.hh">
+		</File>
+		<File
+			RelativePath="..\..\include\log4cpp\DailyRollingFileAppender.hh">
 		</File>
 		<File
 			RelativePath="..\..\src\SimpleConfigurator.cpp">

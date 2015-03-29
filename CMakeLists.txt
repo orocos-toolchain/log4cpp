@@ -43,6 +43,7 @@ ADD_LIBRARY ( ${LOG4CPP_LIBRARY_NAME}
   src/TriggeringEventEvaluatorFactory.cpp
   src/LayoutAppender.cpp
   src/FileAppender.cpp
+  src/DailyRollingFileAppender.cpp
   src/RollingFileAppender.cpp
   src/FixedContextCategory.cpp
   src/IdsaAppender.cpp

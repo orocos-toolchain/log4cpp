@@ -17,6 +17,7 @@ liblog4cpp_la_SOURCES = \
 	TriggeringEventEvaluatorFactory.cpp \
 	LayoutAppender.cpp \
 	FileAppender.cpp \
+	DailyRollingFileAppender.cpp \
 	RollingFileAppender.cpp \
 	FixedContextCategory.cpp \
 	IdsaAppender.cpp \

@@ -14,6 +14,7 @@ namespace log4cpp
 
    std::auto_ptr<Appender> create_file_appender(const FactoryParams&);
    std::auto_ptr<Appender> create_roll_file_appender(const FactoryParams&);
+   std::auto_ptr<Appender> create_daily_roll_file_appender(const FactoryParams&);
    std::auto_ptr<Appender> create_idsa_appender(const FactoryParams&);
    std::auto_ptr<Appender> create_nt_event_log_appender(const FactoryParams&);
    std::auto_ptr<Appender> create_remote_syslog_appender(const FactoryParams&);
@@ -30,6 +31,7 @@ namespace log4cpp
          
          af->registerCreator("file", &create_file_appender);
          af->registerCreator("roll file", &create_roll_file_appender);
+         af->registerCreator("daily roll file", &create_daily_roll_file_appender);
 #if !defined(LOG4CPP_DISABLE_REMOTE_SYSLOG)
          af->registerCreator("remote syslog", &create_remote_syslog_appender);
 #endif
@@ -67,7 +69,7 @@ namespace log4cpp
    {
       const_iterator i = creators_.find(class_name);
       if (i != creators_.end())
-         throw std::invalid_argument("Appender creator for type name '" + class_name + "' allready registered");
+         throw std::invalid_argument("Appender creator for type name '" + class_name + "' already registered");
 
       creators_[class_name] = create_function;
    }

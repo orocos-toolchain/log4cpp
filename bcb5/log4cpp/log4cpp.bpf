@@ -5,6 +5,7 @@ USEUNIT("..\..\src\BasicLayout.cpp");
 USEUNIT("..\..\src\Category.cpp");
 USEUNIT("..\..\src\CategoryStream.cpp");
 USEUNIT("..\..\src\Configurator.cpp");
+USEUNIT("..\..\src\DailyRollingFileAppender.cpp");
 USEUNIT("..\..\src\DummyThreads.cpp");
 USEUNIT("..\..\src\FileAppender.cpp");
 USEUNIT("..\..\src\Filter.cpp");
