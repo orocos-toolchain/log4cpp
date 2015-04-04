@@ -17,13 +17,13 @@ liblog4cpp_la_SOURCES = \
 	TriggeringEventEvaluatorFactory.cpp \
 	LayoutAppender.cpp \
 	FileAppender.cpp \
+	DailyRollingFileAppender.cpp \
 	RollingFileAppender.cpp \
 	FixedContextCategory.cpp \
 	IdsaAppender.cpp \
 	OstreamAppender.cpp \
 	StringQueueAppender.cpp \
 	SyslogAppender.cpp \
-	RemoteSyslogAppender.cpp \
 	SimpleLayout.cpp \
 	BasicLayout.cpp \
 	PatternLayout.cpp \
@@ -55,5 +55,13 @@ liblog4cpp_la_SOURCES = \
 	PortabilityImpl.hh \
 	PortabilityImpl.cpp \
 	AbortAppender.cpp
+
+if !DISABLE_REMOTE_SYSLOG
+liblog4cpp_la_SOURCES += RemoteSyslogAppender.cpp
+endif
+
+if !DISABLE_SMTP
+liblog4cpp_la_SOURCES += SmtpAppender.cpp
+endif
 
 liblog4cpp_la_LDFLAGS = -version-info @LT_VERSION@

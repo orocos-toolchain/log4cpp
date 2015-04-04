@@ -246,6 +246,7 @@ link.exe /MACHINE:IX86 -dll -noentry -out:$(OutDir)NTEventLogAppender.dll $(OutD
     <None Include="..\..\src\PropertyConfiguratorImpl.hh" />
     <None Include="..\..\include\log4cpp\RemoteSyslogAppender.hh" />
     <None Include="..\..\include\log4cpp\RollingFileAppender.hh" />
+    <None Include="..\..\include\log4cpp\DailyRollingFileAppender.hh" />
     <None Include="..\..\include\log4cpp\SimpleConfigurator.hh" />
     <None Include="..\..\include\log4cpp\SimpleLayout.hh" />
     <None Include="..\..\include\log4cpp\SmtpAppender.hh" />
@@ -268,6 +269,7 @@ link.exe /MACHINE:IX86 -dll -noentry -out:$(OutDir)NTEventLogAppender.dll $(OutD
     <ClCompile Include="..\..\src\Category.cpp" />
     <ClCompile Include="..\..\src\CategoryStream.cpp" />
     <ClCompile Include="..\..\src\Configurator.cpp" />
+    <ClCompile Include="..\..\src\DailyRollingFileAppender.cpp" />
     <ClCompile Include="..\..\src\DllMain.cpp" />
     <ClCompile Include="..\..\src\DummyThreads.cpp" />
     <ClCompile Include="..\..\src\FactoryParams.cpp" />

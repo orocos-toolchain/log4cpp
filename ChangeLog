@@ -1,3 +1,7 @@
+2015-03-28 18:48  sanchouss_
+	
+	* Added DailyRollingFileAppender.cpp
+
 2013-12-05 18:48  sanchouss_
 	
 	* Fixed bug#137. Adjusted git attributes for *.dsp files (bug #136)
@@ -2727,7 +2731,7 @@
 	  src/Category.cpp, src/FileAppender.cpp,
 	  src/HierarchyMaintainer.cpp, src/OstreamAppender.cpp,
 	  tests/testCategory.cpp, tests/testFixedContextCategory.cpp: Merge
-	  of Borland support patch by Uwe Jäger <jaeger@varial.de>.
+	  of Borland support patch by Uwe Jï¿½ger <jaeger@varial.de>.
 
 2001-05-30 00:04  bastiaan
 

@@ -99,7 +99,7 @@ namespace log4cpp {
       bool append = true;
       mode_t mode = 664;
       int max_file_size = 0, max_backup_index = 0;
-      params.get_for("rool file appender").required("name", name)("filename", filename)("max_file_size", max_file_size)
+      params.get_for("roll file appender").required("name", name)("filename", filename)("max_file_size", max_file_size)
                                                      ("max_backup_index", max_backup_index)
                                           .optional("append", append)("mode", mode);
 

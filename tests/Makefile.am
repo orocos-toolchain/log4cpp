@@ -1,6 +1,6 @@
 TESTS = testCategory testFixedContextCategory testNDC testPattern \
 	testErrorCollision testPriority testFilter testProperties \
-	testConfig testPropertyConfig
+	testConfig testPropertyConfig testRollingFileAppender testDailyRollingFileAppender
 
 check_PROGRAMS = $(TESTS)
 check_DATA = log4cpp.init log4cpp.properties testProperties.properties \
@@ -49,6 +49,12 @@ testbench_LDADD = $(top_builddir)/src/liblog4cpp.la
 
 testErrorCollision_SOURCES = testErrorCollision.cpp
 testErrorCollision_LDADD = $(top_builddir)/src/liblog4cpp.la
+
+testRollingFileAppender_SOURCES = testRollingFileAppender.cpp
+testRollingFileAppender_LDADD = $(top_builddir)/src/liblog4cpp.la
+
+testDailyRollingFileAppender_SOURCES = testDailyRollingFileAppender.cpp
+testDailyRollingFileAppender_LDADD = $(top_builddir)/src/liblog4cpp.la
 
 distclean-local:
 	$(RM) -f *.log

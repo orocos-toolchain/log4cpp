@@ -25,12 +25,15 @@
 #include <log4cpp/OstreamAppender.hh>
 #include <log4cpp/FileAppender.hh>
 #include <log4cpp/RollingFileAppender.hh>
+#include <log4cpp/DailyRollingFileAppender.hh>
 #include <log4cpp/AbortAppender.hh>
 #ifdef WIN32
 #include <log4cpp/Win32DebugAppender.hh>
 #include <log4cpp/NTEventLogAppender.hh>
 #endif
+#ifndef LOG4CPP_DISABLE_REMOTE_SYSLOG
 #include <log4cpp/RemoteSyslogAppender.hh>
+#endif // LOG4CPP_DISABLE_REMOTE_SYSLOG
 #ifdef LOG4CPP_HAVE_LIBIDSA
 #include <log4cpp/IdsaAppender.hh>
 #endif	// LOG4CPP_HAVE_LIBIDSA
@@ -214,6 +217,13 @@ namespace log4cpp {
             appender = new RollingFileAppender(appenderName, fileName, maxFileSize, maxBackupIndex,
                 append);
         }
+        else if (appenderType == "DailyRollingFileAppender") {
+            std::string fileName = _properties.getString(appenderPrefix + ".fileName", "foobar");
+            unsigned int maxDaysKeep = _properties.getInt(appenderPrefix + ".maxDaysKeep", 0);
+            bool append = _properties.getBool(appenderPrefix + ".append", true);
+            appender = new DailyRollingFileAppender(appenderName, fileName, maxDaysKeep, append);
+        }
+#ifndef LOG4CPP_DISABLE_REMOTE_SYSLOG
         else if (appenderType == "SyslogAppender") {
             std::string syslogName = _properties.getString(appenderPrefix + ".syslogName", "syslog");
             std::string syslogHost = _properties.getString(appenderPrefix + ".syslogHost", "localhost");
@@ -222,6 +232,7 @@ namespace log4cpp {
             appender = new RemoteSyslogAppender(appenderName, syslogName, 
                                                 syslogHost, facility, portNumber);
         }
+#endif // LOG4CPP_DISABLE_REMOTE_SYSLOG
 #ifdef LOG4CPP_HAVE_SYSLOG
         else if (appenderType == "LocalSyslogAppender") {
             std::string syslogName = _properties.getString(appenderPrefix + ".syslogName", "syslog");
