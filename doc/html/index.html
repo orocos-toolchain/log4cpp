@@ -72,18 +72,13 @@ Java library, staying as close to their API as is reasonable.
 </a>
 <p>Sources are available from SourceForges <a href="http://sourceforge.net/project/showfiles.php?group_id=15190">download
 page</a>.<br>
-We do not supply binaries yet, because of the numerous incompatible
-ABIs
+We do not supply binaries, because of the numerous incompatible ABIs
 (e.g. g++ 2.95 vs 2.96 vs 3.0 vs 3.2) and different package
 formats.<br>
-An older version of log4cpp (0.2.5) is available in Debian stable,
-see <a href="http://packages.debian.org/stable/libs/liblog4cpp0.html">http://packages.debian.org/stable/libs/liblog4cpp0.html</a>.<br>
-FreeBSD users can find log4cpp (0.2.7) in the ports collection,
-see <a href="http://www.freebsd.org/ports/devel.html#log4cpp-0.2.7">http://www.freebsd.org/ports/devel.html</a><br>
-The people of the <a href="http://datagrid.in2p3.fr/">Datagrid
-Project Central Repository</a> have published the source and
-binary RPMs
-they use theirselves. These are for RedHat Linux 6.2.<br>
+A stable but older version of log4cpp is available in Debian stable,
+see <a href="http://packages.debian.org/stable/libs/">http://packages.debian.org/stable/libs/</a>.<br>
+FreeBSD users can find log4cpp in the ports collection,
+see <a href="http://www.freebsd.org/ports/devel.html">http://www.freebsd.org/ports/devel.html</a><br>
 Log4cpp includes support for building RPMs, so building your own from
 the source tar-ball is as simple as
 </p>
@@ -157,6 +152,15 @@ documentation.</dd>
 <dd>Let Doxygen use the 'dot' tool of GraphViz (<a href="http://www.graphviz.org/">http://www.graphviz.org</a>)
 todraw its graphs.</dd>
 </dl>
+<dl>
+<dt>--disable-remote-syslog </dt>
+<dd>Exclude RemoteSyslogAppender from build (included by default)</dd>
+</dl>
+<dl>
+<dt>--disable-smtp</dt>
+<dd>Exclude SmtpAppender from build (included by default)</dd>
+</dl>
+
 <p></p>
 <h3>Build notes for specific platforms</h3>
 <dl>
@@ -581,6 +585,11 @@ WARNING: releases from the development branch are a 'work in progress' and may f
 </p>
 <small>
 <dl>
+<dt>1.1.2rc1 - master branch (04 April 2015)</dt>
+<dd>Small fixes, DailyRollingFile appender, tests, options to disable support for smtp and syslog</dd>
+</dl>
+
+<dl>
 <dt>1.1.1 - stable branch (26 November 2013)</dt>
 <dd>Small code and project file fixes.</dd>
 </dl>
@@ -702,9 +711,10 @@ previous ones. (Version update should have been done in 0.2.4).</dd>
 
 <div class="chapter">
 <h2><a id="status">Status</a></h2>
-<p>The latest stable release is 1.1</p>
-<small><p>
-As of version 0.3.0 log4cpp has a separate 'stable' and 'development' branches.
+<p>The latest stable release is 1.1.1</p>
+<small>
+<p>log4cpp is moved to git since version 1.1.1, cvs is stale since then</p>
+<p>As of version 0.3.0 log4cpp has a separate 'stable' and 'development' branches.
 Releases x.y.z where y is even are considered stable and those where y is odd are experimental
 (which means that some or all features may be broken).</p>
 <p>Releases of 0.2.x are for bug 
