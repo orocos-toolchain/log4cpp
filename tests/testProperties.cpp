@@ -9,5 +9,6 @@ int main(int argc, char** argv) {
 
     properties.load(in);
     properties.save(std::cout);
+    return 0;
 }
 

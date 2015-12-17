@@ -24,7 +24,7 @@
 
 #include <iomanip>
 #include <ctime>
-#include <cmath>
+#include <cstdlib>
 #include "Localtime.hh"
 
 #ifdef LOG4CPP_HAVE_INT64_T

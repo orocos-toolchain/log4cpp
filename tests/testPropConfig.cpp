@@ -19,7 +19,11 @@ int main(int argc, char* argv[])
 {
     try {
         std::string initFileName;
+#if defined(WIN32)
+        initFileName = "./log4cpp.nt.property";
+#else
         initFileName = "./log4cpp.property";
+#endif
         log4cpp::PropertyConfigurator::configure(initFileName);
     } catch(log4cpp::ConfigureFailure& f) {
         std::cout << "Configure Problem " << f.what() << std::endl;
@@ -51,11 +55,13 @@ int main(int argc, char* argv[])
     sub2.warn("sub2 warn 6");
     sub2.warn("sub2 warn 7");
 
+#if defined(WIN32)
     log4cpp::Category& nt = 
         log4cpp::Category::getInstance(std::string("subNT"));
     nt.error("subNT error");
     nt.warn("subNT warn");
     nt.debug("subNT debug");
+#endif
 
     log4cpp::Category::shutdown();
 

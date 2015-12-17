@@ -1,3 +1,34 @@
+2015-03-28 18:48  sanchouss_
+	
+	* Added DailyRollingFileAppender.cpp
+
+2013-12-05 18:48  sanchouss_
+	
+	* Fixed bug#137. Adjusted git attributes for *.dsp files (bug #136)
+
+2013-11-27 18:48  sanchouss_
+	
+	* Migrated from cvs to git scm. Url is ssh://USERNAME@git.code.sf.net/p/log4cpp/codegit 
+
+	2012-10-15 18:48  sanchouss_
+	
+	* msvc10/ Converted solution for building from MSVC 2010 with small adjustments. Output is targeted 
+	into building directory instead of system32 dir (due to windows UAC restrictions)
+	* src/RollingFileAppender.cpp - resolved ambiguity of log10
+	
+2012-10-10 16:45  sanchouss_
+
+	* include/log4cpp/NDC.hh, src/NDC.cpp: small optimization to avoid invokation of thread-specific 
+	routines each time when a string is constructed from a log event in case if NDC feature is never used.
+	Tests show slight improvement when pthread_setspecific() is not called each time event is logged.
+
+2012-10-10 15:12  sanchouss_
+
+	* include/log4cpp/RollingFileAppender.hh, src/RollingFileAppender.cpp: 
+	[feature] number history files so that they can be lexicographically ordered by name properly.
+	Width of file extension is made constant and depends on count of backup files (i.e., 
+	for number of 15 backup files, extensions will be .01, .02, ..., .14, .15)
+
 2007-09-03 12:25  waffel
 
 	* configure.in: [feature] changed version to 1.0
@@ -2700,7 +2731,7 @@
 	  src/Category.cpp, src/FileAppender.cpp,
 	  src/HierarchyMaintainer.cpp, src/OstreamAppender.cpp,
 	  tests/testCategory.cpp, tests/testFixedContextCategory.cpp: Merge
-	  of Borland support patch by Uwe Jäger <jaeger@varial.de>.
+	  of Borland support patch by Uwe Jï¿½ger <jaeger@varial.de>.
 
 2001-05-30 00:04  bastiaan
 

@@ -1,29 +1,36 @@
+/*
+ * Copyright 2002, LifeLine Networks BV (www.lifeline.nl). All rights reserved.
+ * Copyright 2002, Bastiaan Bakker. All rights reserved.
+ *
+ * See the COPYING file for the terms of usage and distribution.
+ */
+
 #ifndef _INCLUDE_LOG4CPP_CONFIG_MINGW32_H
 #define _INCLUDE_LOG4CPP_CONFIG_MINGW32_H 1
- 
+
 /* manually edited from include/log4cpp/config.h */
 
 /* Define if you have the syslog function.  */
 /* #undef LOG4CPP_HAVE_SYSLOG */
 
 /* Define if you have the `ftime' function. */
-#ifndef LOG4CPP_HAVE_FTIME 
-#define LOG4CPP_HAVE_FTIME  1 
+#ifndef LOG4CPP_HAVE_FTIME
+#define LOG4CPP_HAVE_FTIME  1
 #endif
 
 /* Define if you have the `gettimeofday' function. */
-/* #undef LOG4CPP_HAVE_GETTIMEOFDAY */ 
+/* #undef LOG4CPP_HAVE_GETTIMEOFDAY */
 
 /* define if the compiler has int64_t */
-#ifndef LOG4CPP_HAVE_INT64_T 
+#ifndef LOG4CPP_HAVE_INT64_T
 #define LOG4CPP_HAVE_INT64_T
 #define int64_t __int64
 
 /* define if the compiler has in_addr_t */
-#ifndef LOG4CPP_HAVE_IN_ADDR_T 
+#ifndef LOG4CPP_HAVE_IN_ADDR_T
 #define LOG4CPP_HAVE_IN_ADDR_T
 
-#ifndef u_long 
+#ifndef u_long
 typedef unsigned long u_long;
 #endif
 
@@ -31,7 +38,7 @@ typedef unsigned long u_long;
 typedef u_long in_addr_t;
 
 /* u_short is the type of sockaddr_in.sin_port */
-// typedef u_short		in_port_t;
+// typedef u_short              in_port_t;
 
 #endif
 
@@ -58,7 +65,7 @@ typedef u_long in_addr_t;
 
 /* Version number of package */
 #ifndef LOG4CPP_VERSION
-#define LOG4CPP_VERSION  "0.3.5"
+#define LOG4CPP_VERSION  "1.0"
 #endif
 
 /* define if the compiler implements namespaces */
@@ -88,10 +95,11 @@ typedef u_long in_addr_t;
 /* use threads */
 #ifndef LOG4CPP_HAVE_THREADING
 #define LOG4CPP_HAVE_THREADING
-#endif
-
-#ifndef LOG4CPP_USE_MSTHREADS
-#define LOG4CPP_USE_MSTHREADS
+#   if defined(LOG4CPP_STLPORT_AND_BOOST_BUILD)
+#      define LOG4CPP_USE_BOOSTTHREADS
+#   else
+#      define LOG4CPP_USE_MSTHREADS
+#   endif
 #endif
 
 #endif
