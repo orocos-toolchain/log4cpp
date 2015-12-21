@@ -30,11 +30,7 @@ ELSE (WIN32)
   ENDIF (APPLE)
 ENDIF (WIN32)
 
-#IF ( CMAKE_BUILD_TYPE MATCHES "Debug" )
-#  SET ( LOG4CPP_LIBRARY_NAME "log4cppD" )
-#ELSE ( CMAKE_BUILD_TYPE MATCHES "Debug" )
-  SET ( LOG4CPP_LIBRARY_NAME "log4cpp" )
-#ENDIF ( CMAKE_BUILD_TYPE MATCHES "Debug" )
+SET ( LOG4CPP_LIBRARY_NAME "orocos-log4cpp" )
 
 ADD_LIBRARY ( ${LOG4CPP_LIBRARY_NAME} SHARED
   src/Appender.cpp
@@ -91,10 +87,8 @@ IF (WIN32)
 #  SET_TARGET_PROPERTIES(${LOG4CPP_LIBRARY_NAME} PROPERTIES LINK_FLAGS /NODEFAULTLIB:msvcrt)
 ENDIF (WIN32)
 
-# Note: this so-version is required by OCL, such that it can distinguish 'regular' log4cpp
-# from 'rtt' log4cpp.
-SET(VERSION "6.0.0")
-SET(SOVERSION "6.0")
+SET(VERSION "2.9.0")
+SET(SOVERSION "2.9")
 SET_TARGET_PROPERTIES(${LOG4CPP_LIBRARY_NAME} PROPERTIES VERSION ${VERSION} SOVERSION ${SOVERSION})
 
 ADD_DEFINITIONS(${LOG4CPP_CFLAGS})
@@ -119,18 +113,18 @@ SET(prefix "${CMAKE_INSTALL_PREFIX}")
 SET(exec_prefix "\${prefix}")
 SET(log4cpp_cflags "")
 SET(log4cpp_libs "${LOG4CPP_LIBS}")
-SET(includedir "\${prefix}/include")
+SET(includedir "\${prefix}/include/orocos")
 SET(libdir "\${prefix}/lib")
-CONFIGURE_FILE(log4cpp.pc.in ${CMAKE_CURRENT_BINARY_DIR}/log4cpp.pc @ONLY)
+CONFIGURE_FILE(log4cpp.pc.in ${CMAKE_CURRENT_BINARY_DIR}/orocos-log4cpp.pc @ONLY)
 
 INSTALL(
-  FILES ${CMAKE_CURRENT_BINARY_DIR}/log4cpp.pc
+  FILES ${CMAKE_CURRENT_BINARY_DIR}/orocos-log4cpp.pc
   DESTINATION lib/pkgconfig
   )
 
 INSTALL (
   DIRECTORY include/log4cpp
-  DESTINATION include
+  DESTINATION include/orocos
   PATTERN "config.h.in" EXCLUDE
   PATTERN ".svn" EXCLUDE
   PATTERN "*.am" EXCLUDE
@@ -140,7 +134,7 @@ INSTALL (
 
 INSTALL (
   FILES ${CMAKE_CURRENT_BINARY_DIR}/include/log4cpp/config.h
-  DESTINATION include/log4cpp
+  DESTINATION include/orocos/log4cpp
   )
 
 INSTALL(TARGETS ${LOG4CPP_LIBRARY_NAME}
