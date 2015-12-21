@@ -130,7 +130,7 @@ namespace log4cpp {
 #else	
 		int		_socket;
 #endif
-        struct in_addr* _ipAddr;
+        in_addr_t _ipAddr;
         private:
         int _cludge;
     };
