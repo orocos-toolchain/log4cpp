@@ -1,5 +1,9 @@
 /*
  * NTEventLogAppender.cpp
+ *
+ * Copyright 2002, Log4cpp Project. All rights reserved.
+ *
+ * See the COPYING file for the terms of usage and distribution.
  */
 
 #ifdef WIN32    // only available on Win32

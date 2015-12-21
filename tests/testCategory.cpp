@@ -183,6 +183,9 @@ int main(int argc, char** argv) {
     testLogva(root, log4cpp::Priority::NOTICE, "This contains %d %s", 2, "variable arguments");
     testLogva(root, log4cpp::Priority::DEBUG, "This contains %d %s", 2, "variable arguments");
 
+    char lengthy1[] = "Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. Test for variable-arguments lists overflow. ";
+    testLogva(root, log4cpp::Priority::ERROR, "This contains really lengthy strings which should be logged well (%d bytes): %s", sizeof(lengthy1), lengthy1);
+
     sub1.setPriority(log4cpp::Priority::INFO);
     std::cout << " root priority = " << root.getPriority() << std::endl;
     std::cout << " sub1 priority = " << sub1.getPriority() << std::endl;

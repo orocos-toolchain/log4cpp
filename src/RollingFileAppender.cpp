@@ -20,9 +20,11 @@
 #include <log4cpp/FactoryParams.hh>
 #include <memory>
 #include <stdio.h>
+#include <math.h>
 
 #ifdef LOG4CPP_HAVE_SSTREAM
 #include <sstream>
+#include <iomanip>
 #endif
 
 namespace log4cpp {
@@ -34,12 +36,14 @@ namespace log4cpp {
                                              bool append,
                                              mode_t mode) :
         FileAppender(name, fileName, append, mode),
-        _maxBackupIndex(maxBackupIndex),
+        _maxBackupIndex(maxBackupIndex > 0 ? maxBackupIndex : 1),
+        _maxBackupIndexWidth((_maxBackupIndex > 0) ? log10((float)_maxBackupIndex)+1 : 1),
         _maxFileSize(maxFileSize) {
     }
 
     void RollingFileAppender::setMaxBackupIndex(unsigned int maxBackups) { 
         _maxBackupIndex = maxBackups; 
+        _maxBackupIndexWidth = (_maxBackupIndex > 0) ? log10((float)_maxBackupIndex)+1 : 1;
     }
     
     unsigned int RollingFileAppender::getMaxBackupIndex() const { 
@@ -57,23 +61,22 @@ namespace log4cpp {
     void RollingFileAppender::rollOver() {
         ::close(_fd);
         if (_maxBackupIndex > 0) {
-            std::ostringstream oldName;
-            oldName << _fileName << "." << _maxBackupIndex << std::ends;
-            ::remove(oldName.str().c_str());
-                        size_t n = _fileName.length() + 1;
+            std::ostringstream filename_stream;
+        	filename_stream << _fileName << "." << std::setw( _maxBackupIndexWidth ) << std::setfill( '0' ) << _maxBackupIndex << std::ends;
+        	// remove the very last (oldest) file
+        	std::string last_log_filename = filename_stream.str();
+            std::cout << last_log_filename << std::endl;
+            ::remove(last_log_filename.c_str());
+            
+            // rename each existing file to the consequent one
             for(unsigned int i = _maxBackupIndex; i > 1; i--) {
-                std::string newName = oldName.str();
-#ifndef LOG4CPP_STLPORT_AND_BOOST_BUILD
-                                oldName.seekp(static_cast<std::ios::off_type>(n), std::ios::beg);
-#else
-                                // the direction parameter is broken in STLport 4.5.3, 
-                                // so we don't specify it (the code works without it)
-                                oldName.seekp(n);
-#endif
-                oldName << i-1 << std::ends;
-                ::rename(oldName.str().c_str(), newName.c_str());
+                filename_stream.str(std::string());
+                filename_stream << _fileName << '.' << std::setw( _maxBackupIndexWidth ) << std::setfill( '0' ) << i - 1 << std::ends;  // set padding so the files are listed in order
+                ::rename(filename_stream.str().c_str(), last_log_filename.c_str());
+                last_log_filename = filename_stream.str();
             }
-            ::rename(_fileName.c_str(), oldName.str().c_str());
+            // new file will be numbered 1
+            ::rename(_fileName.c_str(), last_log_filename.c_str());
         }
         _fd = ::open(_fileName.c_str(), _flags, _mode);
     }
@@ -96,7 +99,7 @@ namespace log4cpp {
       bool append = true;
       mode_t mode = 664;
       int max_file_size = 0, max_backup_index = 0;
-      params.get_for("rool file appender").required("name", name)("filename", filename)("max_file_size", max_file_size)
+      params.get_for("roll file appender").required("name", name)("filename", filename)("max_file_size", max_file_size)
                                                      ("max_backup_index", max_backup_index)
                                           .optional("append", append)("mode", mode);
 

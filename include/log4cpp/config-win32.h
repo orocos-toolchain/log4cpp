@@ -1,3 +1,10 @@
+/*
+ * Copyright 2002, LifeLine Networks BV (www.lifeline.nl). All rights reserved.
+ * Copyright 2002, Bastiaan Bakker. All rights reserved.
+ *
+ * See the COPYING file for the terms of usage and distribution.
+ */
+
 #ifndef _INCLUDE_LOG4CPP_CONFIG_WIN32_H
 #define _INCLUDE_LOG4CPP_CONFIG_WIN32_H 1
  
@@ -62,7 +69,7 @@ typedef u_long in_addr_t;
 
 /* Version number of package */
 #ifndef LOG4CPP_VERSION
-#define LOG4CPP_VERSION  "0.3.5"
+#define LOG4CPP_VERSION  "1.0"
 #endif
 
 /* define if the compiler implements namespaces */
@@ -75,14 +82,22 @@ typedef u_long in_addr_t;
 #define LOG4CPP_HAVE_SSTREAM 1
 #endif
 
-#define LOG4CPP_HAS_WCHAR_T 1
+#if defined(_MSC_VER)
+#    if _MSC_VER < 1300
+#       define LOG4CPP_HAS_WCHAR_T 0
+#    else
+#       define LOG4CPP_HAS_WCHAR_T 1
+#    endif
+#else
+#   define LOG4CPP_HAS_WCHAR_T 1
+#endif
 
 /* define if the C library has snprintf */
 #ifndef LOG4CPP_HAVE_SNPRINTF
 #define LOG4CPP_HAVE_SNPRINTF 1
 #endif
 
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) && _MSC_VER >= 1300
 #define LOG4CPP_HAVE_LOCALTIME_R 1
 #endif
 
