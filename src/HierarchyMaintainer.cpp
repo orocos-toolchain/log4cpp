@@ -124,7 +124,9 @@ namespace log4cpp {
             for(CategoryMap::const_iterator i = _categoryMap.begin(); i != _categoryMap.end(); i++) {
                 delete ((*i).second);
             }
+			_categoryMap.clear();
         }
     }
+
 
 }

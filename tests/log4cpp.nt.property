@@ -21,9 +21,9 @@ log4cpp.appender.A2.layout.ConversionPattern=The message %m at time %d%n
 log4cpp.appender.A3=RollingFileAppender
 log4cpp.appender.A3.fileName=A3.log
 log4cpp.appender.A3.maxFileSize=80
-log4cpp.appender.A3.maxBackupIndex=1
+log4cpp.appender.A3.maxBackupIndex=2
 log4cpp.appender.A3.layout=PatternLayout
-log4cpp.appender.A3.layout.ConversionPattern=The message %m at time %d{%H:%M}%n
+log4cpp.appender.A3.layout.ConversionPattern=The message %m at time %d{%H:%M:%S,%l}%n
 
 log4cpp.category.subNT=INFO, subNT
 log4cpp.appender.subNT=NTEventLogAppender
