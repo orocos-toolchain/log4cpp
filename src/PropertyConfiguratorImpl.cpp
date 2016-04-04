@@ -53,6 +53,7 @@
 #include <list>
 #include <vector>
 #include <iterator>
+#include <algorithm>
 
 #include "PropertyConfiguratorImpl.hh"
 #include "StringUtil.hh"
@@ -202,7 +203,17 @@ namespace log4cpp {
 
         // and instantiate the appropriate object
         if (appenderType == "ConsoleAppender") {
-            appender = new OstreamAppender(appenderName, &std::cout);
+            std::string target = _properties.getString(appenderPrefix + ".target", "stdout");
+            std::transform(target.begin(), target.end(), target.begin(), ::tolower);
+            if(target.compare("stdout") == 0) {
+                appender = new OstreamAppender(appenderName, &std::cout);
+            }
+            else if(target.compare("stderr") == 0) {
+                appender = new OstreamAppender(appenderName, &std::cerr);
+            }
+            else{
+                throw ConfigureFailure(appenderName + "' has invalid target '" + target + "'");
+            }
         }
         else if (appenderType == "FileAppender") {
             std::string fileName = _properties.getString(appenderPrefix + ".fileName", "foobar");
