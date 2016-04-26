@@ -92,6 +92,12 @@ SET(VERSION "2.9.0")
 SET(SOVERSION "2.9")
 SET_TARGET_PROPERTIES(${LOG4CPP_LIBRARY_NAME} PROPERTIES VERSION ${VERSION} SOVERSION ${SOVERSION})
 
+# Ensure that the full path+lib name is used in dynamic library dependencies
+# in dependent libraries/executables. Without this, CMake drops the path and
+# the dependency becomes just the lib name (which requires working DYLD_xxx)
+SET_TARGET_PROPERTIES(${LOG4CPP_LIBRARY_NAME} PROPERTIES
+    INSTALL_NAME_DIR "${CMAKE_INSTALL_PREFIX}/lib")
+
 ADD_DEFINITIONS(${LOG4CPP_CFLAGS})
 
 ###########################################################
