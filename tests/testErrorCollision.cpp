@@ -6,4 +6,5 @@
 
 int main(int argc, char** argv) {
     assert(ERROR == 666);
+    return 0;
 }

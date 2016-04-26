@@ -10,7 +10,7 @@
 #include <unistd.h>
 #endif
 
-#include <cstdlib>
+#include <stdlib.h>
 
 #include <log4cpp/Category.hh>
 #include <log4cpp/Appender.hh>
@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
         /* looking for the init file in $srcdir is a requirement of
            automake's distcheck target.
         */
-        char* srcdir = std::getenv("srcdir");
+        char* srcdir = getenv("srcdir");
         std::string initFileName;
         if (srcdir == NULL) {
             initFileName = "./testConfig.log4cpp.properties";
@@ -66,6 +66,9 @@ int main(int argc, char* argv[])
 
     log4cpp::Category& sub2 = 
         log4cpp::Category::getInstance(std::string("sub1.sub2"));
+
+    log4cpp::Category& sub3 =
+        log4cpp::Category::getInstance(std::string("sub1.sub2.sub3"));
 
     root.error("root error");
     root.warn("root warn");
@@ -95,6 +98,8 @@ int main(int argc, char* argv[])
 
     sub2 << log4cpp::Priority::WARN << "warn2.." << "..warn3..value=" << 0 
          << log4cpp::eol << "..warn4";
+
+    sub3 << log4cpp::Priority::INFO << "Very long config string follows";
 
     log4cpp::Category::shutdown();
 

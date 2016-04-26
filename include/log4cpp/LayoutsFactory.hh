@@ -1,3 +1,10 @@
+/*
+ * Copyright 2002, LifeLine Networks BV (www.lifeline.nl). All rights reserved.
+ * Copyright 2002, Bastiaan Bakker. All rights reserved.
+ *
+ * See the COPYING file for the terms of usage and distribution.
+ */
+
 #if !defined(h_409ac787_0acf_47ff_ac15_3e9024d40315)
 #define h_409ac787_0acf_47ff_ac15_3e9024d40315
 
