@@ -1,7 +1,7 @@
 # property configurator test file
 
 log4cpp.rootCategory=DEBUG, rootAppender
-log4cpp.category.sub1=DEBUG, A1, A2
+log4cpp.category.sub1=DEBUG, A1, A2, stderrAppender, stdoutAppender
 log4cpp.category.sub1.sub2=DEBUG, A3
 
 log4cpp.appender.rootAppender=ConsoleAppender
@@ -25,3 +25,14 @@ log4cpp.appender.A3.maxBackupIndex=1
 log4cpp.appender.A3.layout=PatternLayout
 log4cpp.appender.A3.layout.ConversionPattern=The message %m at time %d{%H:%M}%n
 
+log4cpp.appender.stderrAppender=ConsoleAppender
+log4cpp.appender.stderrAppender.layout=PatternLayout
+log4cpp.appender.stderrAppender.layout.ConversionPattern=stderr: %m%n
+log4cpp.appender.stderrAppender.target=stdErr
+log4cpp.appender.stderrAppender.threshold=ERROR
+
+log4cpp.appender.stdoutAppender=ConsoleAppender
+log4cpp.appender.stdoutAppender.layout=PatternLayout
+log4cpp.appender.stdoutAppender.layout.ConversionPattern=stdout: %m%n
+log4cpp.appender.stdoutAppender.target=StdOut
+log4cpp.appender.stdoutAppender.threshold=ERROR
