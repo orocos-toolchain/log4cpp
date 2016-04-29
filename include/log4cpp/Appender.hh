@@ -164,7 +164,6 @@ namespace log4cpp {
 	static Appender::AppenderMapStorageInitializer appenderMapStorageInitializer; // static initializer for every translation unit
     typedef std::set<Appender *> AppenderSet;
 
-//    extern AppenderMapStorage& _appenderMapStorage;
 }
 
 #endif // _LOG4CPP_APPENDER_HH
