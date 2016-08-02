@@ -166,7 +166,12 @@ namespace log4cpp {
             }
         }
 
-        category.setPriority(priority);
+        try {
+        	category.setPriority(priority);
+        } catch (std::invalid_argument& e) {
+        	throw ConfigureFailure(std::string(e.what()) +
+                    " for category '" + categoryName + "'");
+        }
 
         bool additive = _properties.getBool("additivity." + categoryName, true);
         category.setAdditivity(additive);
