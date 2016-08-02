@@ -65,7 +65,7 @@ namespace log4cpp {
         	filename_stream << _fileName << "." << std::setw( _maxBackupIndexWidth ) << std::setfill( '0' ) << _maxBackupIndex << std::ends;
         	// remove the very last (oldest) file
         	std::string last_log_filename = filename_stream.str();
-            std::cout << last_log_filename << std::endl;
+            // std::cout << last_log_filename << std::endl; // removed by request on sf.net #140
             ::remove(last_log_filename.c_str());
             
             // rename each existing file to the consequent one
