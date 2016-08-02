@@ -88,6 +88,9 @@ namespace log4cpp {
                     }
                     begin++;
                 }
+                if (begin == std::string::npos) {
+                    begin = 0;
+                }
                 out << event.categoryName.substr(begin);
             }
         }
