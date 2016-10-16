@@ -10,13 +10,13 @@ log4cpp.appender.rootAppender.layout=BasicLayout
 log4cpp.appender.A1=FileAppender
 log4cpp.appender.A1.fileName=A1.log
 log4cpp.appender.A1.layout=PatternLayout
-log4cpp.appender.A1.layout.ConversionPattern=The message %m at time %d%n
+log4cpp.appender.A1.layout.ConversionPattern=The message %m at time %d, thread %t%n
 
 log4cpp.appender.A2=FileAppender
 log4cpp.appender.A2.threshold=WARN
 log4cpp.appender.A2.fileName=A2.log
 log4cpp.appender.A2.layout=PatternLayout
-log4cpp.appender.A2.layout.ConversionPattern=The message %m at time %d%n
+log4cpp.appender.A2.layout.ConversionPattern=The message %m at time %d, thread %t%n
 
 log4cpp.appender.A3=RollingFileAppender
 log4cpp.appender.A3.fileName=A3.log
