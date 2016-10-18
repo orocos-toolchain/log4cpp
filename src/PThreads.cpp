@@ -6,7 +6,6 @@
 
 #include <log4cpp/threading/Threading.hh>
 #include <cstdlib>
-#include "StringUtil.hh"
 
 #if defined(LOG4CPP_HAVE_THREADING) && defined(LOG4CPP_USE_PTHREADS)
 
