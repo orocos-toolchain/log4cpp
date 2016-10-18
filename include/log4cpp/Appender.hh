@@ -152,7 +152,7 @@ namespace log4cpp {
 			AppenderMapStorage();
 			~AppenderMapStorage();
 		};
-		class AppenderMapStorageInitializer {
+		class LOG4CPP_EXPORT AppenderMapStorageInitializer {
 		public:
 			AppenderMapStorageInitializer();
 			~AppenderMapStorageInitializer();
