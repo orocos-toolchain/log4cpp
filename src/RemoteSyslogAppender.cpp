@@ -114,8 +114,14 @@ namespace log4cpp {
             _ipAddr = *(in_addr_t*)(pent->h_addr); // fixed bug #1579890
         }
         // Get a datagram socket.
-        
-        if ((_socket = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
+        _socket = socket(AF_INET, SOCK_DGRAM, 0);
+        if 
+#ifdef WIN32
+			(_socket == INVALID_SOCKET)
+#else
+			(_socket < 0) 
+#endif
+		{
             // loglog("RemoteSyslogAppender: failed to open socket");
             return; // fail silently                    
         }
