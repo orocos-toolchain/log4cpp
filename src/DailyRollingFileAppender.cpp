@@ -100,15 +100,15 @@ namespace log4cpp {
 			return;
 		for (int i = 0; i < nentries; i++) {
 			struct stat statBuf;
-			int res = ::stat(entries[i]->d_name, &statBuf);
+			const std::string fullfilename = dirname + PATHDELIMITER + entries[i]->d_name;
+			int res = ::stat(fullfilename.c_str(), &statBuf);
 			if ((res == -1) || (!S_ISREG(statBuf.st_mode))) {
 				free(entries[i]);
 				continue;
 			}
 			if (statBuf.st_mtime < oldest && strstr(entries[i]->d_name, filname.c_str())) {
-				const std::string fullfilename = dirname + PATHDELIMITER + entries[i]->d_name;
-				::unlink(fullfilename.c_str());
 				std::cout << " Deleting " << fullfilename.c_str() << std::endl;
+				::unlink(fullfilename.c_str());
 			}
 			free(entries[i]);
 		}
