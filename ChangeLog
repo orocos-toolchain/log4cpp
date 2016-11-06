@@ -1,3 +1,10 @@
+2016-11-11 18:48  sanchouss_
+
+	* Numerous fixes;
+	* Added .target property for the ConsoleAppender to allow printing to STDERR 
+	* Added method Category::shutdownForced(). It releases more memory than shutdown() by deleting all appenders. 
+	Category::shutdownForced() may be invoked several times, not only at the end of program.
+
 2015-03-28 18:48  sanchouss_
 	
 	* Added DailyRollingFileAppender.cpp
