@@ -326,8 +326,8 @@ int main()
 		res = testConfigDailyRollingFileAppender();
 
 //  Note: this test changes system time. Run it only manually
-	if (!res)
-		res = OnlyManualTesting::testDailyRollingFileAppenderChangeDateManualOnly();
+//	if (!res)
+//		res = OnlyManualTesting::testDailyRollingFileAppenderChangeDateManualOnly();
 
 	return res;
 }
