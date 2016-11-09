@@ -13,7 +13,6 @@
 #include <memory>
 #include <cstring>
 
-#include "PortabilityImpl.hh"
 #ifdef LOG4CPP_HAVE_IO_H
 #    include <io.h>
 #endif
@@ -23,6 +22,8 @@
 
 #ifndef WIN32    // only available on Win32
 #include <dirent.h>
+#else
+#include <direct.h>  
 #endif
 
 #ifdef WIN32
@@ -174,17 +175,23 @@ namespace OnlyManualTesting {
 	const int maxDaysToKeep = 3;
 
 #if defined(WIN32)
-    const char *logFilename = "C:/Temp/log4cpp/dailyrolling_abs_path_file.log";
-    const char *logPathname = "C:/Temp/log4cpp";
+    const char *logFilename = "C:\\Temp\\log4cpp\\dailyrolling_abs_path_file.log";
+    const char *logPathname = "C:\\Temp\\log4cpp";
 #else
     const char *logFilename = "/var/log/log4cpp/dailyrolling_abs_path_file.log";
     const char *logPathname = "/var/log/log4cpp";
 #endif
 
     void setupManualEntryLog() {
+#if defined(WIN32)
+		if (access(logPathname, 0) != 0) {
+			mkdir(logPathname);
+		}
+#else
 		if (access(logPathname, F_OK) != 0) {
 			mkdir(logPathname, 644);
 		}
+#endif
 
 		log4cpp::PatternLayout *ostreamLayout = new log4cpp::PatternLayout();
 		ostreamLayout->setConversionPattern("%d: %p %c %x: %m %n");
@@ -207,6 +214,32 @@ namespace OnlyManualTesting {
 
     int checkThatNoMoreThanNLogFilesPresent(const std::string _fileName, int n);
 
+	int jumpToFuture(int seconds) {
+		
+#if defined(WIN32)
+		SYSTEMTIME now;
+		GetSystemTime(&now);
+		now.wDay += seconds / (24*60*60);
+		now.wSecond += 1;
+		if (SetSystemTime(&now) == 0) {
+			std::cerr << "Can not change system time. Probably not today... Try running as admin? Err: " << GetLastError() << std::endl;
+			return -1;
+		}
+#else
+		time_t  now;
+		if (time(&now) == -1)
+			return -1;
+
+		now += seconds;
+
+		if (stime(&now) == -1) {
+			std::cerr << "Can not set date. Need admin privileges?" << std::endl;
+			return -1;
+		}
+#endif
+		return 0;
+	}
+
 	int makeManualEntryLog()
 	{
 		const int totalLinesCount = 14, linesPerDay=3, jumpPeriod=24*60*60 + 1;
@@ -219,27 +252,15 @@ namespace OnlyManualTesting {
         absolutePathCategory.debugStream() << "debug line " << i;
 		while (++i <= totalLinesCount) {
 			if (i % linesPerDay == 0) {
-				time_t  now;
-				if (time(&now) == -1)
+				if (jumpToFuture(jumpPeriod) == -1)
 					return -1;
-				now += jumpPeriod;
 				future += jumpPeriod;
-				if (stime(&now) == -1) {
-					std::cerr << "Can not set date. Need admin privileges?" << std::endl;
-					return -1;
-				}
 			}
             absolutePathCategory.debugStream() << "debug line " << i;
 		}
 
-		time_t  now;
-		if (time(&now) == -1)
+		if (jumpToFuture(0-future) == -1)
 			return -1;
-		now -= future;
-		if (stime(&now) == -1) {
-			std::cerr << "Can not set date. Need admin privileges?" << std::endl;
-			return -1;
-		}
 
         // 2. check the number of files in /var/log/log4cpp ( <= maxDaysToKeep) (+1 to allow consequent runs of test)
         if (checkThatNoMoreThanNLogFilesPresent(std::string(logFilename), maxDaysToKeep + 1) == -1)
@@ -305,8 +326,8 @@ int main()
 		res = testConfigDailyRollingFileAppender();
 
 //  Note: this test changes system time. Run it only manually
-//	if (!res)
-//		res = OnlyManualTesting::testDailyRollingFileAppenderChangeDateManualOnly();
+	if (!res)
+		res = OnlyManualTesting::testDailyRollingFileAppenderChangeDateManualOnly();
 
 	return res;
 }
