@@ -96,7 +96,19 @@ SET_TARGET_PROPERTIES(${LOG4CPP_LIBRARY_NAME} PROPERTIES VERSION ${VERSION} SOVE
 # in dependent libraries/executables. Without this, CMake drops the path and
 # the dependency becomes just the lib name (which requires working DYLD_xxx)
 SET_TARGET_PROPERTIES(${LOG4CPP_LIBRARY_NAME} PROPERTIES
-    INSTALL_NAME_DIR "${CMAKE_INSTALL_PREFIX}/lib")
+                      INSTALL_RPATH_USE_LINK_PATH ON)
+# Set INSTALL_NAME_DIR for MacOS X to tell users of this library how to find it:
+if(APPLE)
+    if (CMAKE_VERSION VERSION_LESS "3.0.0")
+        SET_TARGET_PROPERTIES( ${LOG4CPP_LIBRARY_NAME} PROPERTIES
+            INSTALL_NAME_DIR "@rpath"
+        )
+    else()
+        # cope with CMake 3.x
+        SET_TARGET_PROPERTIES( ${LOG4CPP_LIBRARY_NAME} PROPERTIES
+            MACOSX_RPATH ON)
+    endif()
+endif()
 
 ADD_DEFINITIONS(${LOG4CPP_CFLAGS})
 
