@@ -34,7 +34,7 @@ namespace log4cpp {
          * @exception ConfigureFailure if the method encountered a read or 
          * syntax error.
          **/
-        static void configure(const std::string& initFileName) throw (ConfigureFailure);
+        static void configure(const std::string& initFileName);
 
         /**
          * Configure log4cpp with the configuration in the given file.
@@ -45,7 +45,8 @@ namespace log4cpp {
          * @exception ConfigureFailure if the method encountered a read or 
          * syntax error.
          **/
-        static void configure(std::istream& initFile) throw (ConfigureFailure);    };
+        static void configure(std::istream& initFile);
+    };
 }
 
 #endif

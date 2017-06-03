@@ -28,10 +28,20 @@ namespace log4cpp {
 
         PropertyConfiguratorImpl();
         virtual ~PropertyConfiguratorImpl();
-        virtual void doConfigure(const std::string& initFileName)
-            throw (ConfigureFailure);
-        virtual void doConfigure(std::istream& in)
-            throw (ConfigureFailure);
+        /**
+         *
+         * @param initFileName
+         * @exception ConfigureFailure if the method encountered a read or
+         * syntax error.
+        */
+        virtual void doConfigure(const std::string& initFileName);
+        /**
+         *
+         * @param in
+         * @exception ConfigureFailure if the method encountered a read or
+         * syntax error.
+         */
+        virtual void doConfigure(std::istream& in);
 
         protected:
         /**
@@ -40,9 +50,10 @@ namespace log4cpp {
            @todo setting other properties like 'additivity'.
            @param categoryname	Name of the category to configure. 
            The name 'rootCategory' refers to the root Category.
-           throw ConfigureFailure
+         * @exception ConfigureFailure if the method encountered a read or
+         * syntax error.
          **/
-        void configureCategory(const std::string& categoryname) throw (ConfigureFailure);
+        void configureCategory(const std::string& categoryname);
 
         /**
          * Get a list of categories for which we should do the configuration.  This simply
@@ -51,7 +62,7 @@ namespace log4cpp {
          */
         void getCategories(std::vector<std::string>& categories) const;
 
-        void instantiateAllAppenders() throw(ConfigureFailure);
+        void instantiateAllAppenders();
 
         /**
          * Intantiate and configure the appender referred to by the given name. This method searches the
