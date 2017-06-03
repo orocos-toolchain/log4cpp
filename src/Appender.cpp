@@ -18,11 +18,11 @@ namespace log4cpp {
 
 	Appender::AppenderMapStorage::AppenderMapStorage()  { 
 		_allAppenders = new AppenderMap(); 
-	};
+	}
 	Appender::AppenderMapStorage::~AppenderMapStorage() { 
 		_deleteAllAppenders(); 
 		delete _allAppenders; 
-	};
+	}
 	
 	Appender::AppenderMapStorageInitializer::AppenderMapStorageInitializer() {
 		 if (appenders_nifty_counter++ == 0) {
