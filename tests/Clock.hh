@@ -6,6 +6,8 @@
 #ifndef __CLOCK_H
 #define __CLOCK_H
 
+#include <log4cpp/Portability.hh>
+
 #ifdef LOG4CPP_HAVE_STDINT_H
 #include <stdint.h>
 #endif // LOG4CPP_HAVE_STDINT_H

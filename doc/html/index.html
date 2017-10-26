@@ -45,7 +45,7 @@ file example</a></li>
 </ul>
 <h5>Development</h5>
 <ul>
-<li><a title="CVS Repository" href="#cvs">CVS
+<li><a title="Git Repository" href="#git">Git
 Repository</a> </li>
 <li><a title="Releases" href="#releases">Releases</a>
 </li>
@@ -561,14 +561,18 @@ Log file A3.log is rolled over as soon as it reaches limit of 200 bytes, 1 backu
 </div>
 
 <div class="chapter">
-<h2><a id="cvs">CVS Repository</a></h2>
-<p>Log4cpp is also available directly through CVS, see the <a href="http://sourceforge.net/cvs/?group_id=15190">SourceForge CVS page</a> for instructions.
-CVS currently has two branches:
+<h2><a id="git">Git Repository</a></h2>
+<p>
+log4cpp is moved to git <a href="https://sourceforge.net/p/log4cpp/codegit/">SourceForge Git page</a> since version 1.1.1, cvs is stale now.
 </p>
-<p></p><table>
+<p>Log4cpp of older versions is also available through CVS, see the <a href="https://sourceforge.net/p/log4cpp/code/">SourceForge CVS page</a> for instructions.</p>
+<small>
+CVS had two branches:
+<table>
 <tbody><tr><td>MAIN</td><td>for log4cpp development</td></tr>
 <tr><td>BRANCH_MAINT_0_2</td><td>for maintainance of log4cpp-stable (0.2.x)</td></tr>
 </tbody></table><br>
+</small>
 Each release will receive a tag named REL_x_y_z.
 <p></p>
 <p>To start working with a freshly checked out log4cpp revision, run <b>./autogen.sh</b>
@@ -584,6 +588,14 @@ You'll need at least autoconf 2.50, automake 1.6.0 and libtool 1.4.
 WARNING: releases from the development branch are a 'work in progress' and may fail to build, crash or redecorate your desktop.
 </p>
 <small>
+
+<dl>
+<dt>1.1.2 - master branch (18 April 2017)</dt>
+<dd>Fixed memory leak after Category::shutdown() called: method Category::shutdownForced() releases memory allocated for appenders.</dd>
+<dd>PropertyConfiguratorImpl: add target property to allow printing to STDERR.</dd>
+<dd>Some fixes.</dd>
+</dl>
+
 <dl>
 <dt>1.1.2rc1 - master branch (04 April 2015)</dt>
 <dd>Small fixes, DailyRollingFile appender, tests, options to disable support for smtp and syslog</dd>
@@ -711,7 +723,7 @@ previous ones. (Version update should have been done in 0.2.4).</dd>
 
 <div class="chapter">
 <h2><a id="status">Status</a></h2>
-<p>The latest stable release is 1.1.1</p>
+<p>The latest stable release is 1.1.2</p>
 <small>
 <p>log4cpp is moved to git since version 1.1.1, cvs is stale since then</p>
 <p>As of version 0.3.0 log4cpp has a separate 'stable' and 'development' branches.
@@ -784,3 +796,4 @@ projects</a></h2>
 </div>
 </div>
 </body></html>
+

@@ -95,6 +95,12 @@ namespace log4cpp {
         static void shutdown();
 
         /**
+         * This method will remove all Appenders from Categories.XXX and delete all appenders.
+		 * Releases more memory than shutdown() by deleting appenders.
+         **/
+        static void shutdownForced();
+
+		/**
          * Destructor for Category.
          **/
         virtual ~Category();
@@ -112,8 +118,7 @@ namespace log4cpp {
          * @exception std::invalid_argument if the caller tries to set
          * Priority::NOTSET on the Root Category.
          **/
-        virtual void setPriority(Priority::Value priority) 
-        throw(std::invalid_argument);
+        virtual void setPriority(Priority::Value priority);
 
         /**
          * Returns the assigned Priority, if any, for this Category.
@@ -146,8 +151,7 @@ namespace log4cpp {
          * @param appender The Appender to wich this category has to log.
          * @exception std::invalid_argument if the appender is NULL.
          **/
-        virtual void addAppender(Appender* appender) 
-        throw(std::invalid_argument);
+        virtual void addAppender(Appender* appender);
 
         /**
          * Adds an Appender for this Category.
