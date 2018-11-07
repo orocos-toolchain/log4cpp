@@ -30,7 +30,7 @@ namespace log4cpp {
                                mode_t mode) : 
             LayoutAppender(name),
             _fileName(fileName),
-#ifdef __APPLE__
+#if defined(__APPLE__) ||  defined(WIN32) 
             _flags(O_CREAT | O_APPEND | O_WRONLY),
 #else
             _flags(O_CREAT | O_APPEND | O_WRONLY | O_LARGEFILE),
@@ -45,7 +45,7 @@ namespace log4cpp {
         LayoutAppender(name),
         _fileName(""),
         _fd(fd),
-#ifdef __APPLE__
+#if defined(__APPLE__) ||  defined(WIN32) 
         _flags(O_CREAT | O_APPEND | O_WRONLY),
 #else
         _flags(O_CREAT | O_APPEND | O_WRONLY | O_LARGEFILE),
