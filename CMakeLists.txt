@@ -178,3 +178,9 @@ IF ( DOXYGEN_EXECUTABLE )
   CONFIGURE_FILE(doc/Doxyfile.in Doxyfile @ONLY)
   ADD_CUSTOM_TARGET(docs ${DOXYGEN_EXECUTABLE} "Doxyfile")
 ENDIF ( DOXYGEN_EXECUTABLE )
+
+###########################################################
+# TESTS
+###########################################################
+
+add_subdirectory(tests)
