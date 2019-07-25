@@ -8,6 +8,7 @@
 #include "StringUtil.hh"
 #include <iterator>
 #include <stdio.h>
+#include <stdarg.h>
 
 #if defined(_MSC_VER)
     #define VSNPRINTF _vsnprintf
@@ -21,7 +22,6 @@
 #define PREFER_PORTABLE_SNPRINTF
 
 #include <stdlib.h>
-#include <stdarg.h>
 
 extern "C" {
 #include "snprintf.c"
