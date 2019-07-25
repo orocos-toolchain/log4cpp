@@ -13,7 +13,7 @@
 #include <string>
 #include <vector>
 #include <climits>
-#include <stdarg.h>
+#include <cstdarg>
 
 namespace log4cpp {
 
