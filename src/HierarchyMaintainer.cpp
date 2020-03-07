@@ -127,7 +127,7 @@ HierarchyMaintainer::creator_function_t	HierarchyMaintainer::_creator_function =
             for(CategoryMap::const_iterator i = _categoryMap.begin(); i != _categoryMap.end(); i++) {
                 delete ((*i).second);
             }
-			_categoryMap.erase(_categoryMap.begin(), _categoryMap.end());
+			_categoryMap.clear();
         }
     }
 

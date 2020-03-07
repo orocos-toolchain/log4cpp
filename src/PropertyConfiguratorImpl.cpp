@@ -54,6 +54,7 @@
 #include <list>
 #include <vector>
 #include <iterator>
+#include <algorithm>
 
 #include "PropertyConfiguratorImpl.hh"
 #include "StringUtil.hh"
@@ -66,7 +67,7 @@ namespace log4cpp {
     PropertyConfiguratorImpl::~PropertyConfiguratorImpl() {
     }
 
-    void PropertyConfiguratorImpl::doConfigure(const std::string& initFileName) throw (ConfigureFailure) {
+    void PropertyConfiguratorImpl::doConfigure(const std::string& initFileName) {
         std::ifstream initFile(initFileName.c_str());
 
         if (!initFile) {
@@ -77,7 +78,7 @@ namespace log4cpp {
     }
 
 
-    void PropertyConfiguratorImpl::doConfigure(std::istream& in) throw (ConfigureFailure) {
+    void PropertyConfiguratorImpl::doConfigure(std::istream& in) {
         // parse the file to get all of the configuration
         _properties.load(in);
 
@@ -93,7 +94,7 @@ namespace log4cpp {
         }
     }
 
-    void PropertyConfiguratorImpl::instantiateAllAppenders() throw(ConfigureFailure) {
+    void PropertyConfiguratorImpl::instantiateAllAppenders() {
         std::string currentAppender;
 
         std::string prefix("appender");
@@ -132,7 +133,7 @@ namespace log4cpp {
         }
     }
 
-    void PropertyConfiguratorImpl::configureCategory(const std::string& categoryName) throw (ConfigureFailure) {
+    void PropertyConfiguratorImpl::configureCategory(const std::string& categoryName) {
         // start by reading the "rootCategory" key
         std::string tempCatName = 
             (categoryName == "rootCategory") ? categoryName : "category." + categoryName;
@@ -166,7 +167,12 @@ namespace log4cpp {
             }
         }
 
-        category.setPriority(priority);
+        try {
+        	category.setPriority(priority);
+        } catch (std::invalid_argument& e) {
+        	throw ConfigureFailure(std::string(e.what()) +
+                    " for category '" + categoryName + "'");
+        }
 
         bool additive = _properties.getBool("additivity." + categoryName, true);
         category.setAdditivity(additive);
@@ -203,7 +209,17 @@ namespace log4cpp {
 
         // and instantiate the appropriate object
         if (appenderType == "ConsoleAppender") {
-            appender = new OstreamAppender(appenderName, &std::cout);
+            std::string target = _properties.getString(appenderPrefix + ".target", "stdout");
+            std::transform(target.begin(), target.end(), target.begin(), ::tolower);
+            if(target.compare("stdout") == 0) {
+                appender = new OstreamAppender(appenderName, &std::cout);
+            }
+            else if(target.compare("stderr") == 0) {
+                appender = new OstreamAppender(appenderName, &std::cerr);
+            }
+            else{
+                throw ConfigureFailure(appenderName + "' has invalid target '" + target + "'");
+            }
         }
         else if (appenderType == "FileAppender") {
             std::string fileName = _properties.getString(appenderPrefix + ".fileName", "foobar");

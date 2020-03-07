@@ -89,6 +89,9 @@ namespace log4cpp {
                     }
                     begin++;
                 }
+                if (begin == std::string::npos) {
+                    begin = 0;
+                }
                 out << event.categoryName.substr(begin);
             }
         }
@@ -296,7 +299,7 @@ namespace log4cpp {
         _conversionPattern = "";
     }
 
-    void PatternLayout::setConversionPattern(const std::string& conversionPattern) throw(ConfigureFailure) {
+    void PatternLayout::setConversionPattern(const std::string& conversionPattern) {
 #ifdef LOG4CPP_HAVE_SSTREAM 
         std::istringstream conversionStream(conversionPattern);
 #else

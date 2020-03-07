@@ -11,8 +11,8 @@
 
 namespace log4cpp {
 
-    void PropertyConfigurator::configure(const std::string& initFileName) throw (ConfigureFailure) {
-        PropertyConfiguratorImpl configurator;
+    void PropertyConfigurator::configure(const std::string& initFileName) {
+        static PropertyConfiguratorImpl configurator;
         
         configurator.doConfigure(initFileName);
     }
