@@ -6,6 +6,6 @@ includedir=@includedir@
 Name: @PACKAGE@
 Description: C++ library for flexible logging, modeled after Log4j
 Version: @VERSION@
-Libs: -L${libdir} -llog4cpp
+Libs: -L${libdir} -l@LOG4CPP_LIBRARY_NAME@
 Cflags: -I${includedir} @log4cpp_cflags@
 Libs.private: @log4cpp_libs@

@@ -14,21 +14,19 @@
 
 #include <log4cpp/Category.hh>
 #include <log4cpp/PropertyConfigurator.hh>
+#include <log4cpp/HierarchyMaintainer.hh>
 
-int main(int argc, char* argv[])
-{
-    try {
-        std::string initFileName;
+#include <stdlib.h>
+#include <crtdbg.h>
+
+void testPropConfigRead() {
+    std::string initFileName;
 #if defined(WIN32)
         initFileName = "./log4cpp.nt.property";
 #else
         initFileName = "./log4cpp.property";
 #endif
-        log4cpp::PropertyConfigurator::configure(initFileName);
-    } catch(log4cpp::ConfigureFailure& f) {
-        std::cout << "Configure Problem " << f.what() << std::endl;
-        return -1;
-    }
+    log4cpp::PropertyConfigurator::configure(initFileName);
 
     log4cpp::Category& root = log4cpp::Category::getRoot();
 
@@ -63,8 +61,32 @@ int main(int argc, char* argv[])
     nt.debug("subNT debug");
 #endif
 
-    log4cpp::Category::shutdown();
-
-    return 0;
+    log4cpp::Category::shutdownForced(); 
+//    log4cpp::Category::shutdown(); 
 }
 
+int main(int argc, char* argv[])
+{
+// _CRTDBG_MAP_ALLOC is for detecting memory leaks on Windows
+#ifdef _CRTDBG_MAP_ALLOC
+	_CrtSetDbgFlag ( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
+#endif
+
+    try {
+		// test single properties read
+		testPropConfigRead();
+
+		// test few more instantiations and shutdowns by shutdownForced()
+		for (int i=0; i < 2; ++i) {
+			testPropConfigRead();
+		}
+    } catch(log4cpp::ConfigureFailure& f) {
+        std::cout << "Configure Problem " << f.what() << std::endl;
+        return -1; 
+    }
+
+#ifdef _CRTDBG_MAP_ALLOC
+	//_CrtDumpMemoryLeaks(); // would give detected leaks, since statically allocated objects were not freed yet
+#endif
+	return 0;
+}

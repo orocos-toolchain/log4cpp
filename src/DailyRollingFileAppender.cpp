@@ -19,9 +19,9 @@
 #include <log4cpp/Category.hh>
 #include <log4cpp/FactoryParams.hh>
 #include <memory>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <cstdio>
+#include <cstring>
+#include <cstdlib>
 #include <iostream>
 
 #ifdef LOG4CPP_HAVE_SSTREAM
@@ -73,14 +73,23 @@ namespace log4cpp {
 	void DailyRollingFileAppender::rollOver()
 	{
 		std::ostringstream filename_s;
-		::close(_fd);
+		int res_close = ::close(_fd);
+		if (res_close != 0) {
+			std::cerr << "Error closing file " << _fileName << std::endl;
+		}
 		filename_s << _fileName << "." << _logsTime.tm_year + 1900 << "-"
 						<< std::setfill('0') << std::setw(2) << _logsTime.tm_mon + 1 << "-"
 						<< std::setw(2) << _logsTime.tm_mday << std::ends;
 		const std::string lastFn = filename_s.str();
-		::rename(_fileName.c_str(), lastFn.c_str());
+		int res_rename = ::rename(_fileName.c_str(), lastFn.c_str());
+		if (res_rename != 0) {
+			std::cerr << "Error renaming file " << _fileName << " to " << lastFn << std::endl;
+		}
 
 		_fd = ::open(_fileName.c_str(), _flags, _mode);
+		if (_fd == -1) {
+			std::cerr << "Error opening file " << _fileName << std::endl;
+		}
 
 		const time_t oldest = time(NULL) - _maxDaysToKeep * 60 * 60 * 24;
 
@@ -100,15 +109,15 @@ namespace log4cpp {
 			return;
 		for (int i = 0; i < nentries; i++) {
 			struct stat statBuf;
-			int res = ::stat(entries[i]->d_name, &statBuf);
+			const std::string fullfilename = dirname + PATHDELIMITER + entries[i]->d_name;
+			int res = ::stat(fullfilename.c_str(), &statBuf);
 			if ((res == -1) || (!S_ISREG(statBuf.st_mode))) {
 				free(entries[i]);
 				continue;
 			}
 			if (statBuf.st_mtime < oldest && strstr(entries[i]->d_name, filname.c_str())) {
-				const std::string fullfilename = dirname + PATHDELIMITER + entries[i]->d_name;
-				::unlink(fullfilename.c_str());
 				std::cout << " Deleting " << fullfilename.c_str() << std::endl;
+				::unlink(fullfilename.c_str());
 			}
 			free(entries[i]);
 		}

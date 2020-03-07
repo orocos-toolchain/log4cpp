@@ -49,6 +49,12 @@ namespace log4cpp {
         HierarchyMaintainer::getDefaultMaintainer().shutdown();
     }
 
+    void Category::shutdownForced() {
+        HierarchyMaintainer::getDefaultMaintainer().shutdown();
+		Appender::_deleteAllAppenders();
+    }
+
+
     Category::Category(const std::string& name, Category* parent, Priority::Value priority) : 
         _name(name),
         _parent(parent),
@@ -68,8 +74,7 @@ namespace log4cpp {
         return _priority; 
     }
 
-    void Category::setPriority(Priority::Value priority)
-    throw(std::invalid_argument) {
+    void Category::setPriority(Priority::Value priority) {
         if ((priority < Priority::NOTSET) || (getParent() != NULL)) {
             _priority = priority;
         } else {
@@ -91,8 +96,7 @@ namespace log4cpp {
         return c->getPriority();
     }
     
-    void Category::addAppender(Appender* appender) 
-    throw(std::invalid_argument) {
+    void Category::addAppender(Appender* appender) {
         if (appender) {
             threading::ScopedLock lock(_appenderSetMutex);
             {
