@@ -1,25 +1,31 @@
-<package>
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
   <name>log4cpp</name>
   <version>2.9.1</version>
-  <description >
+  <description>
     Log4cpp maintained by Orocos developers
     This version of log4cpp deviates from the official release
     by adding custom category factories. Orocos requires this for
     setting up real-time logging.
   </description>
-  <author>Stephen Roderick, Bastiaan Bakker, Cedric Le Goater, Steve Ostlind, Marcel Harkema, Walter Stroebel, Glenn Scott and Tony Cheung</author>
-  <maintainer email="orocos-dev@lists.mech.kuleuven.be">Orocos Developers</maintainer>
-  <license>LGPL v2.1 or later</license>
+  <license>LGPL-2.1</license>
+  <maintainer email="orocos-dev@orocos.org">Orocos Developers</maintainer>
   <url>http://log4cpp.sourceforge.net/</url>
 
+  <author>Stephen Roderick</author>
+  <author>Bastiaan Bakker</author>
+  <author>Cedric Le Goater</author>
+  <author>Steve Ostlind</author>
+  <author>Marcel Harkema</author>
+  <author>Walter Stroebel</author>
+  <author>Glenn Scott</author>
+  <author>Tony Cheung</author>
+
   <buildtool_depend>cmake</buildtool_depend>
-  <run_depend>catkin</run_depend>
 
   <export>
-    <build_type>
-      cmake
-    </build_type>
+    <build_type>cmake</build_type>
   </export>
 
 </package>
-
