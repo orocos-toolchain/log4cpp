@@ -4,7 +4,7 @@
     by adding custom category factories. Orocos requires this for
     setting up real-time logging.
   </description>
-  <license>LGPL-2.1</license>
+  <license>LGPL-2.1 or later</license>
   <url>http://log4cpp.sourceforge.net/</url>
 
   <author>Stephen Roderick, Bastiaan Bakker, Cedric Le Goater, Steve Ostlind, Marcel Harkema, Walter Stroebel, Glenn Scott and Tony Cheung</author>
