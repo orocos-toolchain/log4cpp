@@ -11,6 +11,7 @@
 #include <log4cpp/FileAppender.hh>
 #include <string>
 #include <stdarg.h>
+#include <ctime>
 
 namespace log4cpp {
 
